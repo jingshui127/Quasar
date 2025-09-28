@@ -1,4 +1,4 @@
-﻿using Quasar.Client.Helper;
+﻿﻿using Quasar.Client.Helper;
 using Quasar.Common.Enums;
 using Quasar.Common.Messages;
 using Quasar.Common.Networking;
@@ -44,8 +44,8 @@ namespace Quasar.Client.Messages
 
         private void Execute(ISender client, GetDesktop message)
         {
-            // TODO: Switch to streaming mode without request-response once switched from windows forms
-            // TODO: Capture mouse in frames: https://stackoverflow.com/questions/6750056/how-to-capture-the-screen-and-mouse-pointer-using-windows-apis
+            // TODO: 一旦从windows forms切换后，切换到无请求-响应的流模式
+            // TODO: 在帧中捕获鼠标: https://stackoverflow.com/questions/6750056/how-to-capture-the-screen-and-mouse-pointer-using-windows-apis
             var monitorBounds = ScreenHelper.GetBounds((message.DisplayIndex));
             var resolution = new Resolution { Height = monitorBounds.Height, Width = monitorBounds.Width };
 
@@ -56,7 +56,7 @@ namespace Quasar.Client.Messages
             {
                 _streamCodec?.Dispose();
                 _streamCodec = new UnsafeStreamCodec(message.Quality, message.DisplayIndex, resolution);
-                OnReport("Remote desktop session started");
+                OnReport("远程桌面会话已启动");
             }
 
             if (_streamCodec.ImageQuality != message.Quality || _streamCodec.Monitor != message.DisplayIndex || _streamCodec.Resolution != resolution)
@@ -186,7 +186,7 @@ namespace Quasar.Client.Messages
         }
 
         /// <summary>
-        /// Disposes all managed and unmanaged resources associated with this message processor.
+        /// 释放与此消息处理器关联的所有托管和非托管资源。
         /// </summary>
         public void Dispose()
         {

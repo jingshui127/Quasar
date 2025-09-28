@@ -1,4 +1,4 @@
-﻿using Quasar.Common.DNS;
+﻿﻿﻿﻿﻿using Quasar.Common.DNS;
 using Quasar.Common.Helpers;
 using Quasar.Server.Build;
 using Quasar.Server.Models;
@@ -114,7 +114,7 @@ namespace Quasar.Server.Forms
         private void FrmBuilder_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (_changed &&
-                MessageBox.Show(this, "Do you want to save your current settings?", "Changes detected",
+                MessageBox.Show(this, "是否要保存当前设置？", "检测到更改",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 SaveProfile("Default");
@@ -220,8 +220,8 @@ namespace Quasar.Server.Forms
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Title = "Choose Icon";
-                ofd.Filter = "Icons *.ico|*.ico";
+                ofd.Title = "选择图标";
+                ofd.Filter = "图标文件 *.ico|*.ico";
                 ofd.Multiselect = false;
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
@@ -252,7 +252,7 @@ namespace Quasar.Server.Forms
             BuildOptions options = new BuildOptions();
             if (!CheckForEmptyInput())
             {
-                throw new Exception("Please fill out all required fields!");
+                throw new Exception("请填写所有必填字段！");
             }
 
             options.Tag = txtTag.Text;
@@ -276,19 +276,19 @@ namespace Quasar.Server.Forms
 
             if (!File.Exists("client.bin"))
             {
-                throw new Exception("Could not locate \"client.bin\" file. It should be in the same directory as Quasar.");
+                throw new Exception("无法找到 \"client.bin\" 文件。该文件应与Quasar在同一目录下。");
             }
 
             if (options.RawHosts.Length < 2)
             {
-                throw new Exception("Please enter a valid host to connect to.");
+                throw new Exception("请输入有效的连接主机。");
             }
 
             if (chkChangeIcon.Checked)
             {
                 if (string.IsNullOrWhiteSpace(options.IconPath) || !File.Exists(options.IconPath))
                 {
-                    throw new Exception("Please choose a valid icon path.");
+                    throw new Exception("请选择有效的图标路径。");
                 }
             }
             else
@@ -298,12 +298,12 @@ namespace Quasar.Server.Forms
             {
                 if (!IsValidVersionNumber(txtProductVersion.Text))
                 {
-                    throw new Exception("Please enter a valid product version number!\nExample: 1.2.3.4");
+                    throw new Exception("请输入有效的产品版本号！\n例如: 1.2.3.4");
                 }
 
                 if (!IsValidVersionNumber(txtFileVersion.Text))
                 {
-                    throw new Exception("Please enter a valid file version number!\nExample: 1.2.3.4");
+                    throw new Exception("请输入有效的文件版本号！\n例如: 1.2.3.4");
                 }
 
                 options.AssemblyInformation = new string[8];
@@ -319,20 +319,20 @@ namespace Quasar.Server.Forms
 
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
-                sfd.Title = "Save Client as";
-                sfd.Filter = "Executables *.exe|*.exe";
+                sfd.Title = "另存为客户端";
+                sfd.Filter = "可执行文件 *.exe|*.exe";
                 sfd.RestoreDirectory = true;
                 sfd.FileName = "Client-built.exe";
                 if (sfd.ShowDialog() != DialogResult.OK)
                 {
-                    throw new Exception("Please choose a valid output path.");
+                    throw new Exception("请选择有效的输出路径。");
                 }
                 options.OutputPath = sfd.FileName;
             }
 
             if (string.IsNullOrEmpty(options.OutputPath))
             {
-                throw new Exception("Please choose a valid output path.");
+                throw new Exception("请选择有效的输出路径。");
             }
 
             return options;
@@ -347,7 +347,7 @@ namespace Quasar.Server.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message, "Build failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, ex.Message, "构建失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -363,7 +363,7 @@ namespace Quasar.Server.Forms
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    btnBuild.Text = (state) ? "Build" : "Building...";
+                    btnBuild.Text = (state) ? "生成客户端" : "正在生成...";
                     btnBuild.Enabled = state;
                 });
             }
@@ -387,8 +387,8 @@ namespace Quasar.Server.Forms
                     this.Invoke((MethodInvoker) delegate
                     {
                         MessageBox.Show(this,
-                            $"Successfully built client! Saved to:\\{options.OutputPath}",
-                            "Build Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            $"客户端构建成功！保存到:\\{options.OutputPath}",
+                            "构建成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     });
                 }
                 catch (Exception)
@@ -402,7 +402,7 @@ namespace Quasar.Server.Forms
                     this.Invoke((MethodInvoker)delegate
                     {
                         MessageBox.Show(this,
-                            $"An error occurred!\n\nError Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", "Build failed",
+                            $"发生错误！\n\n错误信息: {ex.Message}\n堆栈跟踪:\n{ex.StackTrace}", "构建失败",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     });
                 }

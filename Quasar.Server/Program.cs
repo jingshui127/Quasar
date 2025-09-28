@@ -1,4 +1,4 @@
-﻿using Quasar.Server.Forms;
+﻿﻿using Quasar.Server.Forms;
 using System;
 using System.Net;
 using System.Windows.Forms;
@@ -10,7 +10,7 @@ namespace Quasar.Server
         [STAThread]
         private static void Main()
         {
-            // enable TLS 1.2
+            // 启用 TLS 1.2
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             Application.EnableVisualStyles();

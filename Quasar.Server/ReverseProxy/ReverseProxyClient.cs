@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Messages.ReverseProxy;
+﻿﻿using Quasar.Common.Messages.ReverseProxy;
 using Quasar.Server.Networking;
 using System;
 using System.Collections.Generic;
@@ -299,7 +299,7 @@ namespace Quasar.Server.ReverseProxy
         }
 
         /// <summary>
-        /// Server -> ProxyClient
+        /// 服务器 -> 代理客户端
         /// </summary>
         /// <param name="payload"></param>
         public void SendToClient(byte[] payload)

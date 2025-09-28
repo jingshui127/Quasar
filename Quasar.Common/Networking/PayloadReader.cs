@@ -39,9 +39,9 @@ namespace Quasar.Common.Networking
         }
 
         /// <summary>
-        /// Reads the serialized message of the payload and deserializes it.
+        /// 读取负载的序列化消息并反序列化它。
         /// </summary>
-        /// <returns>The deserialized message of the payload.</returns>
+        /// <returns>负载的反序列化消息。</returns>
         public IMessage ReadMessage()
         {
             ReadInteger();

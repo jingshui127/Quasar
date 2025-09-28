@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Enums;
+﻿﻿﻿﻿﻿﻿using Quasar.Common.Enums;
 using Quasar.Common.Messages;
 using Quasar.Server.Extensions;
 using Quasar.Server.Messages;
@@ -28,7 +28,7 @@ namespace Quasar.Server.Forms
         private readonly ClientStatusHandler _clientStatusHandler;
         private readonly Queue<KeyValuePair<Client, bool>> _clientConnections = new Queue<KeyValuePair<Client, bool>>();
         private readonly object _processingClientConnectionsLock = new object();
-        private readonly object _lockClients = new object(); // lock for clients-listview
+        private readonly object _lockClients = new object(); // 客户端列表视图的锁
 
         public FrmMain()
         {
@@ -38,7 +38,7 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Registers the client status message handler for client communication.
+        /// 注册客户端状态消息处理器以进行客户端通信。
         /// </summary>
         private void RegisterMessageHandler()
         {
@@ -48,7 +48,7 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Unregisters the client status message handler.
+        /// 注销客户端状态消息处理器。
         /// </summary>
         private void UnregisterMessageHandler()
         {
@@ -122,11 +122,11 @@ namespace Quasar.Server.Forms
             {
                 if (ex.ErrorCode == 10048)
                 {
-                    MessageBox.Show(this, "The port is already in use.", "Socket Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "端口已被占用。", "套接字错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show(this, $"An unexpected socket error occurred: {ex.Message}\n\nError Code: {ex.ErrorCode}\n\n", "Unexpected Socket Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, $"发生意外的套接字错误: {ex.Message}\n\n错误代码: {ex.ErrorCode}\n\n", "意外套接字错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 ListenServer.Disconnect();
             }
@@ -176,7 +176,7 @@ namespace Quasar.Server.Forms
                 {
                     if (!listening)
                         lstClients.Items.Clear();
-                    listenToolStripStatusLabel.Text = listening ? string.Format("Listening on port {0}.", port) : "Not listening.";
+                    listenToolStripStatusLabel.Text = listening ? string.Format("正在监听端口 {0}。", port) : "未监听。";
                 });
                 UpdateWindowTitle();
             }
@@ -263,10 +263,10 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Sets the tooltip text of the listview item of a client.
+        /// 设置客户端列表视图项的工具提示文本。
         /// </summary>
-        /// <param name="client">The client on which the change is performed.</param>
-        /// <param name="text">The new tooltip text.</param>
+        /// <param name="client">执行更改的客户端。</param>
+        /// <param name="text">新的工具提示文本。</param>
         public void SetToolTipText(Client client, string text)
         {
             if (client == null) return;
@@ -286,20 +286,20 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Adds a connected client to the Listview.
+        /// 将连接的客户端添加到列表视图。
         /// </summary>
-        /// <param name="client">The client to add.</param>
+        /// <param name="client">要添加的客户端。</param>
         private void AddClientToListview(Client client)
         {
             if (client == null) return;
 
             try
             {
-                // this " " leaves some space between the flag-icon and first item
+                // 这个 " " 在旗帜图标和第一项之间留出一些空间
                 ListViewItem lvi = new ListViewItem(new string[]
                 {
                     " " + client.EndPoint.Address, client.Value.Tag,
-                    client.Value.UserAtPc, client.Value.Version, "Connected", "Active", client.Value.CountryWithCode,
+                    client.Value.UserAtPc, client.Value.Version, "已连接", "活动", client.Value.CountryWithCode,
                     client.Value.OperatingSystem, client.Value.AccountType
                 }) { Tag = client, ImageIndex = client.Value.ImageIndex };
 
@@ -319,9 +319,9 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Removes a connected client from the Listview.
+        /// 从列表视图中移除连接的客户端。
         /// </summary>
-        /// <param name="client">The client to remove.</param>
+        /// <param name="client">要移除的客户端。</param>
         private void RemoveClientFromListview(Client client)
         {
             if (client == null) return;
@@ -348,11 +348,11 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Sets the status of a client.
+        /// 设置客户端的状态。
         /// </summary>
-        /// <param name="sender">The message handler which raised the event.</param>
-        /// <param name="client">The client to update the status of.</param>
-        /// <param name="text">The new status.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="client">要更新状态的客户端。</param>
+        /// <param name="text">新状态。</param>
         private void SetStatusByClient(object sender, Client client, string text)
         {
             var item = GetListViewItemByClient(client);
@@ -361,24 +361,24 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Sets the user status of a client.
+        /// 设置客户端的用户状态。
         /// </summary>
-        /// <param name="sender">The message handler which raised the event.</param>
-        /// <param name="client">The client to update the user status of.</param>
-        /// <param name="userStatus">The new user status.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="client">要更新用户状态的客户端。</param>
+        /// <param name="userStatus">新的用户状态。</param>
         private void SetUserStatusByClient(object sender, Client client, UserStatus userStatus)
         {
             var item = GetListViewItemByClient(client);
             if (item != null)
-                item.SubItems[USERSTATUS_ID].Text = userStatus.ToString();
+                item.SubItems[USERSTATUS_ID].Text = userStatus.ToChineseString();
 
         }
 
         /// <summary>
-        /// Gets the Listview item which belongs to the client. 
+        /// 获取属于客户端的列表视图项。
         /// </summary>
-        /// <param name="client">The client to get the Listview item of.</param>
-        /// <returns>Listview item of the client.</returns>
+        /// <param name="client">要获取列表视图项的客户端。</param>
+        /// <returns>客户端的列表视图项。</returns>
         private ListViewItem GetListViewItemByClient(Client client)
         {
             if (client == null) return null;
@@ -395,9 +395,9 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Gets all selected clients.
+        /// 获取所有选定的客户端。
         /// </summary>
-        /// <returns>An array of all selected Clients.</returns>
+        /// <returns>所有选定客户端的数组。</returns>
         private Client[] GetSelectedClients()
         {
             List<Client> clients = new List<Client>();
@@ -418,18 +418,18 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Gets all connected clients.
+        /// 获取所有连接的客户端。
         /// </summary>
-        /// <returns>An array of all connected Clients.</returns>
+        /// <returns>所有连接客户端的数组。</returns>
         private Client[] GetConnectedClients()
         {
             return ListenServer.ConnectedClients;
         }
 
         /// <summary>
-        /// Displays a popup with information about a client.
+        /// 显示包含客户端信息的弹出窗口。
         /// </summary>
-        /// <param name="c">The client.</param>
+        /// <param name="c">客户端。</param>
         private void ShowPopup(Client c)
         {
             try
@@ -438,8 +438,8 @@ namespace Quasar.Server.Forms
                 {
                     if (c == null || c.Value == null) return;
                     
-                    notifyIcon.ShowBalloonTip(4000, string.Format("Client connected from {0}!", c.Value.Country),
-                        string.Format("IP Address: {0}\nOperating System: {1}", c.EndPoint.Address.ToString(),
+                    notifyIcon.ShowBalloonTip(4000, string.Format("客户端从 {0} 连接！", c.Value.Country),
+                        string.Format("IP地址: {0}\n操作系统: {1}", c.EndPoint.Address.ToString(),
                         c.Value.OperatingSystem), ToolTipIcon.Info);
                 });
             }
@@ -492,8 +492,8 @@ namespace Quasar.Server.Forms
             if (
                 MessageBox.Show(
                     string.Format(
-                        "Are you sure you want to uninstall the client on {0} computer\\s?",
-                        lstClients.SelectedItems.Count), "Uninstall Confirmation", MessageBoxButtons.YesNo,
+                        "您确定要卸载 {0} 台计算机上的客户端吗？",
+                        lstClients.SelectedItems.Count), "卸载确认", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (Client c in GetSelectedClients())
@@ -743,7 +743,7 @@ namespace Quasar.Server.Forms
         private void builderToolStripMenuItem_Click(object sender, EventArgs e)
         {
 #if DEBUG
-            MessageBox.Show("Client Builder is not available in DEBUG configuration.\nPlease build the project using RELEASE configuration.", "Not available", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("客户端构建器在DEBUG配置中不可用。\n请使用RELEASE配置构建项目。", "不可用", MessageBoxButtons.OK, MessageBoxIcon.Information);
 #else
             using (var frm = new FrmBuilder())
             {

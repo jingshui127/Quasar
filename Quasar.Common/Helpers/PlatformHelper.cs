@@ -7,7 +7,7 @@ namespace Quasar.Common.Helpers
     public static class PlatformHelper
     {
         /// <summary>
-        /// Initializes the <see cref="PlatformHelper"/> class.
+        /// 初始化 <see cref="PlatformHelper"/> 类。
         /// </summary>
         static PlatformHelper()
         {
@@ -36,84 +36,84 @@ namespace Quasar.Common.Helpers
         }
 
         /// <summary>
-        /// Gets the full name of the operating system running on this computer (including the edition and architecture).
+        /// 获取在此计算机上运行的操作系统的完整名称（包括版本和架构）。
         /// </summary>
         public static string FullName { get; } 
 
         /// <summary>
-        /// Gets the name of the operating system running on this computer (including the edition).
+        /// 获取在此计算机上运行的操作系统的名称（包括版本）。
         /// </summary>
         public static string Name { get; }
 
         /// <summary>
-        /// Determines whether the Operating System is 32 or 64-bit.
+        /// 确定操作系统是32位还是64位。
         /// </summary>
         /// <value>
-        ///   <c>true</c> if the Operating System is 64-bit, otherwise <c>false</c> for 32-bit.
+        ///   如果操作系统是64位则为 <c>true</c>，否则32位为 <c>false</c>。
         /// </value>
         public static bool Is64Bit { get; }
 
         /// <summary>
-        /// Returns a indicating whether the application is running in Mono runtime.
+        /// 返回一个值，指示应用程序是否在Mono运行时中运行。
         /// </summary>
         /// <value>
-        ///   <c>true</c> if the application is running in Mono runtime; otherwise, <c>false</c>.
+        ///   如果应用程序在Mono运行时中运行则为 <c>true</c>；否则为 <c>false</c>。
         /// </value>
         public static bool RunningOnMono { get; }
 
         /// <summary>
-        /// Returns a indicating whether the Operating System is Windows 32 NT based.
+        /// 返回一个值，指示操作系统是否基于Windows 32 NT。
         /// </summary>
         /// <value>
-        ///   <c>true</c> if the Operating System is Windows 32 NT based; otherwise, <c>false</c>.
+        ///   如果操作系统基于Windows 32 NT则为 <c>true</c>；否则为 <c>false</c>。
         /// </value>
         public static bool Win32NT { get; }
 
         /// <summary>
-        /// Returns a value indicating whether the Operating System is Windows XP or higher.
+        /// 返回一个值，指示操作系统是否为Windows XP或更高版本。
         /// </summary>
         /// <value>
-        ///   <c>true</c> if the Operating System is Windows XP or higher; otherwise, <c>false</c>.
+        ///   如果操作系统为Windows XP或更高版本则为 <c>true</c>；否则为 <c>false</c>。
         /// </value>
         public static bool XpOrHigher { get; }
 
         /// <summary>
-        /// Returns a value indicating whether the Operating System is Windows Vista or higher.
+        /// 返回一个值，指示操作系统是否为Windows Vista或更高版本。
         /// </summary>
         /// <value>
-        ///   <c>true</c> if the Operating System is Windows Vista or higher; otherwise, <c>false</c>.
+        ///   如果操作系统为Windows Vista或更高版本则为 <c>true</c>；否则为 <c>false</c>。
         /// </value>
         public static bool VistaOrHigher { get; }
 
         /// <summary>
-        /// Returns a value indicating whether the Operating System is Windows 7 or higher.
+        /// 返回一个值，指示操作系统是否为Windows 7或更高版本。
         /// </summary>
         /// <value>
-        ///   <c>true</c> if the Operating System is Windows 7 or higher; otherwise, <c>false</c>.
+        ///   如果操作系统为Windows 7或更高版本则为 <c>true</c>；否则为 <c>false</c>。
         /// </value>
         public static bool SevenOrHigher { get; }
 
         /// <summary>
-        /// Returns a value indicating whether the Operating System is Windows 8 or higher.
+        /// 返回一个值，指示操作系统是否为Windows 8或更高版本。
         /// </summary>
         /// <value>
-        ///   <c>true</c> if the Operating System is Windows 8 or higher; otherwise, <c>false</c>.
+        ///   如果操作系统为Windows 8或更高版本则为 <c>true</c>；否则为 <c>false</c>。
         /// </value>
         public static bool EightOrHigher { get; }
 
         /// <summary>
-        /// Returns a value indicating whether the Operating System is Windows 8.1 or higher.
+        /// 返回一个值，指示操作系统是否为Windows 8.1或更高版本。
         /// </summary>
         /// <value>
-        ///   <c>true</c> if the Operating System is Windows 8.1 or higher; otherwise, <c>false</c>.
+        ///   如果操作系统为Windows 8.1或更高版本则为 <c>true</c>；否则为 <c>false</c>。
         /// </value>
         public static bool EightPointOneOrHigher { get; }
 
         /// <summary>
-        /// Returns a value indicating whether the Operating System is Windows 10 or higher.
+        /// 返回一个值，指示操作系统是否为Windows 10或更高版本。
         /// </summary>
         /// <value>
-        ///   <c>true</c> if the Operating System is Windows 10 or higher; otherwise, <c>false</c>.
+        ///   如果操作系统为Windows 10或更高版本则为 <c>true</c>；否则为 <c>false</c>。
         /// </value>
         public static bool TenOrHigher { get; }
     }

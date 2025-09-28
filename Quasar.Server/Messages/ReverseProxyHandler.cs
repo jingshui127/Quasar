@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Messages;
+﻿﻿using Quasar.Common.Messages;
 using Quasar.Common.Messages.ReverseProxy;
 using Quasar.Common.Networking;
 using Quasar.Server.Networking;
@@ -9,24 +9,24 @@ using System.Linq;
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with the remote reverse proxy.
+    /// 处理与远程反向代理交互的消息。
     /// </summary>
     public class ReverseProxyHandler : MessageProcessorBase<ReverseProxyClient[]>
     {
         /// <summary>
-        /// The clients which is associated with this reverse proxy handler.
+        /// 与此反向代理处理器关联的客户端。
         /// </summary>
         private readonly Client[] _clients;
 
         /// <summary>
-        /// The reverse proxy server to accept & serve SOCKS5 connections.
+        /// 用于接受和提供SOCKS5连接的反向代理服务器。
         /// </summary>
         private readonly ReverseProxyServer _socksServer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReverseProxyHandler"/> class using the given clients.
+        /// 使用给定客户端初始化 <see cref="ReverseProxyHandler"/> 类的新实例。
         /// </summary>
-        /// <param name="clients">The associated clients.</param>
+        /// <param name="clients">关联的客户端。</param>
         public ReverseProxyHandler(Client[] clients) : base(true)
         {
             _socksServer = new ReverseProxyServer();
@@ -59,9 +59,9 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Starts the reverse proxy server using the given port.
+        /// 使用给定端口启动反向代理服务器。
         /// </summary>
-        /// <param name="port">The port to listen on.</param>
+        /// <param name="port">要监听的端口。</param>
         public void StartReverseProxyServer(ushort port)
         {
             _socksServer.OnConnectionEstablished += socksServer_onConnectionEstablished;
@@ -70,7 +70,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Stops the reverse proxy server.
+        /// 停止反向代理服务器。
         /// </summary>
         public void StopReverseProxyServer()
         {
@@ -108,7 +108,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Disposes all managed and unmanaged resources associated with this message processor.
+        /// 释放与此消息处理器关联的所有托管和非托管资源。
         /// </summary>
         public void Dispose()
         {

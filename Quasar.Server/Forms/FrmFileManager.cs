@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Enums;
+﻿﻿﻿﻿﻿using Quasar.Common.Enums;
 using Quasar.Common.Helpers;
 using Quasar.Common.Messages;
 using Quasar.Common.Models;
@@ -352,7 +352,7 @@ namespace Quasar.Server.Forms
                         string path = GetAbsolutePath(files.SubItems[0].Text);
                         string newName = files.SubItems[0].Text;
 
-                        if (InputBox.Show("New name", "Enter new name:", ref newName) == DialogResult.OK)
+                        if (InputBox.Show("新名称", "输入新名称:", ref newName) == DialogResult.OK)
                         {
                             newName = GetAbsolutePath(newName);
                             _fileManagerHandler.RenameFile(path, newName, tag.Type);
@@ -366,8 +366,8 @@ namespace Quasar.Server.Forms
         {
             int count = lstDirectory.SelectedItems.Count;
             if (count == 0) return;
-            if (MessageBox.Show(string.Format("Are you sure you want to delete {0} file(s)?", count),
-                "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(string.Format("您确定要删除这 {0} 个文件吗？", count),
+                "删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (ListViewItem files in lstDirectory.SelectedItems)
                 {
@@ -444,9 +444,9 @@ namespace Quasar.Server.Forms
         {
             foreach (ListViewItem transfer in lstTransfers.SelectedItems)
             {
-                if (!transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("Downloading") &&
-                    !transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("Uploading") &&
-                    !transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("Pending")) continue;
+                if (!transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("正在下载") &&
+                    !transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("正在上传") &&
+                    !transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("等待中")) continue;
 
                 int id = int.Parse(transfer.SubItems[(int)TransferColumn.Id].Text);
 
@@ -458,9 +458,9 @@ namespace Quasar.Server.Forms
         {
             foreach (ListViewItem transfer in lstTransfers.Items)
             {
-                if (transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("Downloading") ||
-                    transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("Uploading") ||
-                    transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("Pending")) continue;
+                if (transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("正在下载") ||
+                    transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("正在上传") ||
+                    transfer.SubItems[(int)TransferColumn.Status].Text.StartsWith("等待中")) continue;
                 transfer.Remove();
             }
         }
@@ -532,7 +532,7 @@ namespace Quasar.Server.Forms
         /// <param name="message">The new status.</param>
         private void SetStatusMessage(object sender, string message)
         {
-            stripLblStatus.Text = $"Status: {message}";
+            stripLblStatus.Text = $"状态: {message}";
         }
 
         /// <summary>
@@ -550,7 +550,7 @@ namespace Quasar.Server.Forms
         private void SwitchDirectory(string remotePath)
         {
             _fileManagerHandler.GetDirectoryContents(remotePath);
-            SetStatusMessage(this, "Loading directory content...");
+            SetStatusMessage(this, "正在加载目录内容...");
         }
     }
 }

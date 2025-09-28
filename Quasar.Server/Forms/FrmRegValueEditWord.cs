@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using Quasar.Common.Models;
@@ -74,7 +74,7 @@ namespace Quasar.Server.Forms
         {
             string message = _value.Kind == RegistryValueKind.DWord ? DWORD_WARNING : QWORD_WARNING;
 
-            return ShowWarning(message, "Overflow") == DialogResult.Yes;
+            return ShowWarning(message, "溢出") == DialogResult.Yes;
         }
     }
 }

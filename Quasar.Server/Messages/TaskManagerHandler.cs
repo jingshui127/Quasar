@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Enums;
+﻿﻿using Quasar.Common.Enums;
 using Quasar.Common.Messages;
 using Quasar.Common.Models;
 using Quasar.Common.Networking;
@@ -7,32 +7,32 @@ using Quasar.Server.Networking;
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with remote tasks.
+    /// 处理与远程任务交互的消息。
     /// </summary>
     public class TaskManagerHandler : MessageProcessorBase<Process[]>
     {
         /// <summary>
-        /// Represents the method that will handle the result of a process action.
+        /// 表示将处理进程操作结果的方法。
         /// </summary>
-        /// <param name="sender">The message processor which raised the event.</param>
-        /// <param name="action">The process action which was performed.</param>
-        /// <param name="result">The result of the performed process action.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="action">执行的进程操作。</param>
+        /// <param name="result">执行的进程操作的结果。</param>
         public delegate void ProcessActionPerformedEventHandler(object sender, ProcessAction action, bool result);
 
         /// <summary>
-        /// Raised when a result of a started process is received.
+        /// 当接收到已启动进程的结果时引发。
         /// </summary>
         /// <remarks>
-        /// Handlers registered with this event will be invoked on the 
-        /// <see cref="System.Threading.SynchronizationContext"/> chosen when the instance was constructed.
+        /// 注册到此事件的处理程序将在构造实例时选择的 
+        /// <see cref="System.Threading.SynchronizationContext"/> 上调用。
         /// </remarks>
         public event ProcessActionPerformedEventHandler ProcessActionPerformed;
 
         /// <summary>
-        /// Reports the result of a started process.
+        /// 报告已启动进程的结果。
         /// </summary>
-        /// <param name="action">The process action which was performed.</param>
-        /// <param name="result">The result of the performed process action.</param>
+        /// <param name="action">执行的进程操作。</param>
+        /// <param name="result">执行的进程操作的结果。</param>
         private void OnProcessActionPerformed(ProcessAction action, bool result)
         {
             SynchronizationContext.Post(r =>
@@ -43,14 +43,14 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// The client which is associated with this remote execution handler.
+        /// 与此远程执行处理器关联的客户端。
         /// </summary>
         private readonly Client _client;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TaskManagerHandler"/> class using the given client.
+        /// 使用给定客户端初始化 <see cref="TaskManagerHandler"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The associated client.</param>
+        /// <param name="client">关联的客户端。</param>
         public TaskManagerHandler(Client client) : base(true)
         {
             _client = client;
@@ -75,27 +75,27 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Starts a new process remotely.
+        /// 远程启动一个新进程。
         /// </summary>
-        /// <param name="remotePath">The remote path used for starting the new process.</param>
-        /// <param name="isUpdate">Decides whether the process is a client update.</param>
+        /// <param name="remotePath">用于启动新进程的远程路径。</param>
+        /// <param name="isUpdate">决定进程是否为客户端更新。</param>
         public void StartProcess(string remotePath, bool isUpdate = false)
         {
             _client.Send(new DoProcessStart { FilePath = remotePath, IsUpdate = isUpdate });
         }
 
         /// <summary>
-        /// Downloads a file from the web and executes it remotely.
+        /// 从网络下载文件并远程执行。
         /// </summary>
-        /// <param name="url">The URL to download and execute.</param>
-        /// <param name="isUpdate">Decides whether the file is a client update.</param>
+        /// <param name="url">要下载和执行的URL。</param>
+        /// <param name="isUpdate">决定文件是否为客户端更新。</param>
         public void StartProcessFromWeb(string url, bool isUpdate = false)
         {
             _client.Send(new DoProcessStart { DownloadUrl = url, IsUpdate = isUpdate});
         }
 
         /// <summary>
-        /// Refreshes the current started processes.
+        /// 刷新当前已启动的进程。
         /// </summary>
         public void RefreshProcesses()
         {
@@ -103,9 +103,9 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Ends a started process given the process id.
+        /// 根据进程ID结束已启动的进程。
         /// </summary>
-        /// <param name="pid">The process id to end.</param>
+        /// <param name="pid">要结束的进程ID。</param>
         public void EndProcess(int pid)
         {
             _client.Send(new DoProcessEnd { Pid = pid });

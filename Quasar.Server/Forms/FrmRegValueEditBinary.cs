@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Windows.Forms;
 using Quasar.Common.Models;
 using Quasar.Server.Registry;
@@ -34,7 +34,7 @@ namespace Quasar.Server.Forms
                 }
                 catch
                 {
-                    ShowWarning(INVALID_BINARY_ERROR, "Warning");
+                    ShowWarning(INVALID_BINARY_ERROR, "警告");
                     this.DialogResult = DialogResult.None;
                 }
             }

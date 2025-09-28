@@ -1,4 +1,4 @@
-﻿namespace Quasar.Server.Forms
+﻿﻿﻿﻿namespace Quasar.Server.Forms
 {
     partial class FrmKeylogger
     {
@@ -57,7 +57,7 @@
             // 
             // hLogs
             // 
-            this.hLogs.Text = "Logs";
+            this.hLogs.Text = "日志";
             this.hLogs.Width = 149;
             // 
             // statusStrip
@@ -76,7 +76,7 @@
             this.btnGetLogs.Name = "btnGetLogs";
             this.btnGetLogs.Size = new System.Drawing.Size(149, 23);
             this.btnGetLogs.TabIndex = 7;
-            this.btnGetLogs.Text = "Get Logs";
+            this.btnGetLogs.Text = "获取日志";
             this.btnGetLogs.UseVisualStyleBackColor = true;
             this.btnGetLogs.Click += new System.EventHandler(this.btnGetLogs_Click);
             // 
@@ -96,7 +96,7 @@
             // 
             this.stripLblStatus.Name = "stripLblStatus";
             this.stripLblStatus.Size = new System.Drawing.Size(77, 17);
-            this.stripLblStatus.Text = "Status: Ready";
+            this.stripLblStatus.Text = "状态: 就绪";
             // 
             // FrmKeylogger
             // 
@@ -112,7 +112,7 @@
             this.MinimumSize = new System.Drawing.Size(630, 465);
             this.Name = "FrmKeylogger";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Keylogger []";
+            this.Text = "键盘记录器 []";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmKeylogger_FormClosing);
             this.Load += new System.EventHandler(this.FrmKeylogger_Load);
             this.statusStrip.ResumeLayout(false);

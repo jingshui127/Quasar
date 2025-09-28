@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Cryptography;
+﻿﻿using Quasar.Common.Cryptography;
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Quasar.Client.Config
 {
     /// <summary>
-    /// Stores the configuration of the client.
+    /// 存储客户端的配置。
     /// </summary>
     public static class Settings
     {

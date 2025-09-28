@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Helpers;
+﻿﻿﻿﻿using Quasar.Common.Helpers;
 using Quasar.Common.Messages;
 using Quasar.Common.Models;
 using Quasar.Common.Networking;
@@ -10,39 +10,39 @@ using System.IO;
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with the remote keylogger.
+    /// 处理与远程键盘记录器交互的消息。
     /// </summary>
     public class KeyloggerHandler : MessageProcessorBase<string>, IDisposable
     {
         /// <summary>
-        /// The client which is associated with this keylogger handler.
+        /// 与此键盘记录器处理器关联的客户端。
         /// </summary>
         private readonly Client _client;
 
         /// <summary>
-        /// The file manager handler used to retrieve keylogger logs from the client.
+        /// 用于从客户端检索键盘记录器日志的文件管理器处理器。
         /// </summary>
         private readonly FileManagerHandler _fileManagerHandler;
 
         /// <summary>
-        /// The remote path of the keylogger logs directory.
+        /// 键盘记录器日志目录的远程路径。
         /// </summary>
         private string _remoteKeyloggerDirectory;
 
         /// <summary>
-        /// The amount of all running log transfers.
+        /// 所有正在运行的日志传输数量。
         /// </summary>
         private int _allTransfers;
 
         /// <summary>
-        /// The amount of all completed log transfers.
+        /// 所有已完成的日志传输数量。
         /// </summary>
         private int _completedTransfers;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="KeyloggerHandler"/> class using the given client.
+        /// 使用给定客户端初始化 <see cref="KeyloggerHandler"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The associated client.</param>
+        /// <param name="client">关联的客户端。</param>
         public KeyloggerHandler(Client client) : base(true)
         {
             _client = client;
@@ -71,7 +71,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Retrieves the keylogger logs and begins downloading them.
+        /// 检索键盘记录器日志并开始下载。
         /// </summary>
         public void RetrieveLogs()
         {
@@ -142,7 +142,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Disposes all managed and unmanaged resources associated with this message processor.
+        /// 释放与此消息处理器关联的所有托管和非托管资源。
         /// </summary>
         public void Dispose()
         {

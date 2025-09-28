@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Messages;
+﻿﻿using Quasar.Common.Messages;
 using Quasar.Common.Models;
 using Quasar.Common.Networking;
 using Quasar.Server.Networking;
@@ -6,19 +6,19 @@ using Quasar.Server.Networking;
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with remote TCP connections.
+    /// 处理与远程TCP连接交互的消息。
     /// </summary>
     public class TcpConnectionsHandler : MessageProcessorBase<TcpConnection[]>
     {
         /// <summary>
-        /// The client which is associated with this tcp connections handler.
+        /// 与此TCP连接处理器关联的客户端。
         /// </summary>
         private readonly Client _client;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TcpConnectionsHandler"/> class using the given client.
+        /// 使用给定客户端初始化 <see cref="TcpConnectionsHandler"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The associated client.</param>
+        /// <param name="client">关联的客户端。</param>
         public TcpConnectionsHandler(Client client) : base(true)
         {
             _client = client;
@@ -42,7 +42,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Refreshes the current TCP connections.
+        /// 刷新当前的TCP连接。
         /// </summary>
         public void RefreshTcpConnections()
         {
@@ -50,12 +50,12 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Closes a TCP connection of the client.
+        /// 关闭客户端的TCP连接。
         /// </summary>
-        /// <param name="localAddress">Local address.</param>
-        /// <param name="localPort">Local port.</param>
-        /// <param name="remoteAddress">Remote address.</param>
-        /// <param name="remotePort">Remote port.</param>
+        /// <param name="localAddress">本地地址。</param>
+        /// <param name="localPort">本地端口。</param>
+        /// <param name="remoteAddress">远程地址。</param>
+        /// <param name="remotePort">远程端口。</param>
         public void CloseTcpConnection(string localAddress, ushort localPort, string remoteAddress, ushort remotePort)
         {
             // a unique tcp connection is determined by local address + port and remote address + port

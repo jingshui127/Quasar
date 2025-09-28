@@ -1,4 +1,4 @@
-﻿using Quasar.Server.Controls;
+﻿﻿﻿﻿﻿using Quasar.Server.Controls;
 
 namespace Quasar.Server.Forms
 {
@@ -145,7 +145,7 @@ namespace Quasar.Server.Forms
             this.btnBuild.Name = "btnBuild";
             this.btnBuild.Size = new System.Drawing.Size(121, 23);
             this.btnBuild.TabIndex = 1;
-            this.btnBuild.Text = "Build Client";
+            this.btnBuild.Text = "生成客户端";
             this.btnBuild.UseVisualStyleBackColor = true;
             this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
             // 
@@ -179,8 +179,8 @@ namespace Quasar.Server.Forms
             this.rbSystem.Size = new System.Drawing.Size(60, 17);
             this.rbSystem.TabIndex = 5;
             this.rbSystem.TabStop = true;
-            this.rbSystem.Text = "System";
-            this.tooltip.SetToolTip(this.rbSystem, "Administrator Privileges are required to install the client in System.");
+            this.rbSystem.Text = "系统";
+            this.tooltip.SetToolTip(this.rbSystem, "需要管理员权限才能在系统目录中安装客户端。");
             this.rbSystem.UseVisualStyleBackColor = true;
             this.rbSystem.CheckedChanged += new System.EventHandler(this.HasChangedSettingAndFilePath);
             // 
@@ -192,8 +192,8 @@ namespace Quasar.Server.Forms
             this.rbProgramFiles.Size = new System.Drawing.Size(94, 17);
             this.rbProgramFiles.TabIndex = 4;
             this.rbProgramFiles.TabStop = true;
-            this.rbProgramFiles.Text = "Program Files";
-            this.tooltip.SetToolTip(this.rbProgramFiles, "Administrator Privileges are required to install the client in Program Files.");
+            this.rbProgramFiles.Text = "程序文件";
+            this.tooltip.SetToolTip(this.rbProgramFiles, "需要管理员权限才能在程序文件中安装客户端。");
             this.rbProgramFiles.UseVisualStyleBackColor = true;
             this.rbProgramFiles.CheckedChanged += new System.EventHandler(this.HasChangedSettingAndFilePath);
             // 
@@ -210,7 +210,7 @@ namespace Quasar.Server.Forms
             this.removeHostToolStripMenuItem.Image = global::Quasar.Server.Properties.Resources.delete;
             this.removeHostToolStripMenuItem.Name = "removeHostToolStripMenuItem";
             this.removeHostToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.removeHostToolStripMenuItem.Text = "Remove host";
+            this.removeHostToolStripMenuItem.Text = "删除主机";
             this.removeHostToolStripMenuItem.Click += new System.EventHandler(this.removeHostToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
@@ -218,7 +218,7 @@ namespace Quasar.Server.Forms
             this.clearToolStripMenuItem.Image = global::Quasar.Server.Properties.Resources.broom;
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
             this.clearToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.clearToolStripMenuItem.Text = "Clear all";
+            this.clearToolStripMenuItem.Text = "清除所有";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // builderTabs
@@ -262,7 +262,7 @@ namespace Quasar.Server.Forms
             this.generalPage.Padding = new System.Windows.Forms.Padding(3);
             this.generalPage.Size = new System.Drawing.Size(391, 376);
             this.generalPage.TabIndex = 4;
-            this.generalPage.Text = "Basic Settings";
+            this.generalPage.Text = "基本设置";
             // 
             // label3
             // 
@@ -281,7 +281,7 @@ namespace Quasar.Server.Forms
             this.chkUnattendedMode.Name = "chkUnattendedMode";
             this.chkUnattendedMode.Size = new System.Drawing.Size(157, 17);
             this.chkUnattendedMode.TabIndex = 23;
-            this.chkUnattendedMode.Text = "Enable unattended mode";
+            this.chkUnattendedMode.Text = "启用无人值守模式";
             this.chkUnattendedMode.UseVisualStyleBackColor = true;
             this.chkUnattendedMode.CheckedChanged += new System.EventHandler(this.HasChangedSetting);
             // 
@@ -301,7 +301,7 @@ namespace Quasar.Server.Forms
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 13);
             this.label2.TabIndex = 21;
-            this.label2.Text = "Unattended mode";
+            this.label2.Text = "无人值守模式";
             // 
             // label9
             // 
@@ -329,7 +329,7 @@ namespace Quasar.Server.Forms
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(80, 13);
             this.label8.TabIndex = 4;
-            this.label8.Text = "Process Mutex";
+            this.label8.Text = "进程互斥量";
             // 
             // txtTag
             // 
@@ -346,7 +346,7 @@ namespace Quasar.Server.Forms
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(231, 13);
             this.label7.TabIndex = 1;
-            this.label7.Text = "You can choose a tag to identify your client.";
+            this.label7.Text = "您可以选择一个标签来标识您的客户端。";
             // 
             // lblTag
             // 
@@ -355,7 +355,7 @@ namespace Quasar.Server.Forms
             this.lblTag.Name = "lblTag";
             this.lblTag.Size = new System.Drawing.Size(61, 13);
             this.lblTag.TabIndex = 2;
-            this.lblTag.Text = "Client Tag:";
+            this.lblTag.Text = "客户端标签:";
             // 
             // txtMutex
             // 
@@ -372,7 +372,7 @@ namespace Quasar.Server.Forms
             this.btnMutex.Name = "btnMutex";
             this.btnMutex.Size = new System.Drawing.Size(121, 23);
             this.btnMutex.TabIndex = 8;
-            this.btnMutex.Text = "Random Mutex";
+            this.btnMutex.Text = "随机互斥量";
             this.btnMutex.UseVisualStyleBackColor = true;
             this.btnMutex.Click += new System.EventHandler(this.btnMutex_Click);
             // 
@@ -401,7 +401,7 @@ namespace Quasar.Server.Forms
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 13);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Client Identification";
+            this.label6.Text = "客户端标识";
             // 
             // connectionPage
             // 
@@ -424,7 +424,7 @@ namespace Quasar.Server.Forms
             this.connectionPage.Padding = new System.Windows.Forms.Padding(3);
             this.connectionPage.Size = new System.Drawing.Size(391, 376);
             this.connectionPage.TabIndex = 0;
-            this.connectionPage.Text = "Connection Settings";
+            this.connectionPage.Text = "连接设置";
             // 
             // numericUpDownPort
             // 
@@ -482,7 +482,7 @@ namespace Quasar.Server.Forms
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Reconnect Delay";
+            this.label4.Text = "重连延迟";
             // 
             // line1
             // 
@@ -500,7 +500,7 @@ namespace Quasar.Server.Forms
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Connection Hosts";
+            this.label1.Text = "连接主机";
             // 
             // lstHosts
             // 
@@ -518,7 +518,7 @@ namespace Quasar.Server.Forms
             this.btnAddHost.Name = "btnAddHost";
             this.btnAddHost.Size = new System.Drawing.Size(129, 22);
             this.btnAddHost.TabIndex = 4;
-            this.btnAddHost.Text = "Add Host";
+            this.btnAddHost.Text = "添加主机";
             this.btnAddHost.UseVisualStyleBackColor = true;
             this.btnAddHost.Click += new System.EventHandler(this.btnAddHost_Click);
             // 
@@ -538,7 +538,7 @@ namespace Quasar.Server.Forms
             this.lblHost.Name = "lblHost";
             this.lblHost.Size = new System.Drawing.Size(75, 13);
             this.lblHost.TabIndex = 0;
-            this.lblHost.Text = "IP/Hostname:";
+            this.lblHost.Text = "IP/主机名:";
             // 
             // txtHost
             // 
@@ -554,7 +554,7 @@ namespace Quasar.Server.Forms
             this.lblDelay.Name = "lblDelay";
             this.lblDelay.Size = new System.Drawing.Size(200, 13);
             this.lblDelay.TabIndex = 9;
-            this.lblDelay.Text = "Time to wait between reconnect tries:";
+            this.lblDelay.Text = "重新连接尝试之间等待的时间:";
             // 
             // lblPort
             // 
@@ -596,7 +596,7 @@ namespace Quasar.Server.Forms
             this.installationPage.Padding = new System.Windows.Forms.Padding(3);
             this.installationPage.Size = new System.Drawing.Size(391, 376);
             this.installationPage.TabIndex = 1;
-            this.installationPage.Text = "Installation Settings";
+            this.installationPage.Text = "安装设置";
             // 
             // chkHideSubDirectory
             // 
@@ -605,7 +605,7 @@ namespace Quasar.Server.Forms
             this.chkHideSubDirectory.Name = "chkHideSubDirectory";
             this.chkHideSubDirectory.Size = new System.Drawing.Size(185, 17);
             this.chkHideSubDirectory.TabIndex = 37;
-            this.chkHideSubDirectory.Text = "Set subdir attributes to hidden";
+            this.chkHideSubDirectory.Text = "将子目录属性设置为隐藏";
             this.chkHideSubDirectory.UseVisualStyleBackColor = true;
             // 
             // line7
@@ -624,7 +624,7 @@ namespace Quasar.Server.Forms
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 13);
             this.label10.TabIndex = 14;
-            this.label10.Text = "Autostart";
+            this.label10.Text = "自动启动";
             // 
             // line4
             // 
@@ -642,7 +642,7 @@ namespace Quasar.Server.Forms
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 13);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Installation Location";
+            this.label5.Text = "安装位置";
             // 
             // chkInstall
             // 
@@ -651,7 +651,7 @@ namespace Quasar.Server.Forms
             this.chkInstall.Name = "chkInstall";
             this.chkInstall.Size = new System.Drawing.Size(90, 17);
             this.chkInstall.TabIndex = 1;
-            this.chkInstall.Text = "Install Client";
+            this.chkInstall.Text = "安装客户端";
             this.chkInstall.UseVisualStyleBackColor = true;
             this.chkInstall.CheckedChanged += new System.EventHandler(this.chkInstall_CheckedChanged);
             // 
@@ -662,7 +662,7 @@ namespace Quasar.Server.Forms
             this.lblInstallName.Name = "lblInstallName";
             this.lblInstallName.Size = new System.Drawing.Size(73, 13);
             this.lblInstallName.TabIndex = 8;
-            this.lblInstallName.Text = "Install Name:";
+            this.lblInstallName.Text = "安装名称:";
             // 
             // txtInstallName
             // 
@@ -697,7 +697,7 @@ namespace Quasar.Server.Forms
             this.lblRegistryKeyName.Name = "lblRegistryKeyName";
             this.lblRegistryKeyName.Size = new System.Drawing.Size(80, 13);
             this.lblRegistryKeyName.TabIndex = 16;
-            this.lblRegistryKeyName.Text = "Startup Name:";
+            this.lblRegistryKeyName.Text = "启动项名称:";
             // 
             // chkStartup
             // 
@@ -706,7 +706,7 @@ namespace Quasar.Server.Forms
             this.chkStartup.Name = "chkStartup";
             this.chkStartup.Size = new System.Drawing.Size(215, 17);
             this.chkStartup.TabIndex = 15;
-            this.chkStartup.Text = "Run Client when the computer starts";
+            this.chkStartup.Text = "计算机启动时运行客户端";
             this.chkStartup.UseVisualStyleBackColor = true;
             this.chkStartup.CheckedChanged += new System.EventHandler(this.chkStartup_CheckedChanged);
             // 
@@ -719,7 +719,7 @@ namespace Quasar.Server.Forms
             this.rbAppdata.Size = new System.Drawing.Size(137, 17);
             this.rbAppdata.TabIndex = 3;
             this.rbAppdata.TabStop = true;
-            this.rbAppdata.Text = "User Application Data";
+            this.rbAppdata.Text = "用户应用程序数据";
             this.rbAppdata.UseVisualStyleBackColor = true;
             this.rbAppdata.CheckedChanged += new System.EventHandler(this.HasChangedSettingAndFilePath);
             // 
@@ -730,7 +730,7 @@ namespace Quasar.Server.Forms
             this.chkHide.Name = "chkHide";
             this.chkHide.Size = new System.Drawing.Size(168, 17);
             this.chkHide.TabIndex = 11;
-            this.chkHide.Text = "Set file attributes to hidden";
+            this.chkHide.Text = "将文件属性设置为隐藏";
             this.chkHide.UseVisualStyleBackColor = true;
             this.chkHide.CheckedChanged += new System.EventHandler(this.HasChangedSetting);
             // 
@@ -741,7 +741,7 @@ namespace Quasar.Server.Forms
             this.lblInstallDirectory.Name = "lblInstallDirectory";
             this.lblInstallDirectory.Size = new System.Drawing.Size(90, 13);
             this.lblInstallDirectory.TabIndex = 2;
-            this.lblInstallDirectory.Text = "Install Directory:";
+            this.lblInstallDirectory.Text = "安装目录:";
             // 
             // lblInstallSubDirectory
             // 
@@ -750,7 +750,7 @@ namespace Quasar.Server.Forms
             this.lblInstallSubDirectory.Name = "lblInstallSubDirectory";
             this.lblInstallSubDirectory.Size = new System.Drawing.Size(109, 13);
             this.lblInstallSubDirectory.TabIndex = 6;
-            this.lblInstallSubDirectory.Text = "Install Subdirectory:";
+            this.lblInstallSubDirectory.Text = "安装子目录:";
             // 
             // lblPreviewPath
             // 
@@ -759,7 +759,7 @@ namespace Quasar.Server.Forms
             this.lblPreviewPath.Name = "lblPreviewPath";
             this.lblPreviewPath.Size = new System.Drawing.Size(157, 13);
             this.lblPreviewPath.TabIndex = 12;
-            this.lblPreviewPath.Text = "Installation Location Preview:";
+            this.lblPreviewPath.Text = "安装位置预览:";
             // 
             // txtInstallSubDirectory
             // 
@@ -811,7 +811,7 @@ namespace Quasar.Server.Forms
             this.assemblyPage.Name = "assemblyPage";
             this.assemblyPage.Size = new System.Drawing.Size(391, 376);
             this.assemblyPage.TabIndex = 2;
-            this.assemblyPage.Text = "Assembly Settings";
+            this.assemblyPage.Text = "程序集设置";
             // 
             // iconPreview
             // 
@@ -828,7 +828,7 @@ namespace Quasar.Server.Forms
             this.btnBrowseIcon.Name = "btnBrowseIcon";
             this.btnBrowseIcon.Size = new System.Drawing.Size(125, 23);
             this.btnBrowseIcon.TabIndex = 41;
-            this.btnBrowseIcon.Text = "Browse...";
+            this.btnBrowseIcon.Text = "浏览...";
             this.btnBrowseIcon.UseVisualStyleBackColor = true;
             this.btnBrowseIcon.Click += new System.EventHandler(this.btnBrowseIcon_Click);
             // 
@@ -855,7 +855,7 @@ namespace Quasar.Server.Forms
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(118, 13);
             this.label11.TabIndex = 35;
-            this.label11.Text = "Assembly Information";
+            this.label11.Text = "程序集信息";
             // 
             // chkChangeAsmInfo
             // 
@@ -864,7 +864,7 @@ namespace Quasar.Server.Forms
             this.chkChangeAsmInfo.Name = "chkChangeAsmInfo";
             this.chkChangeAsmInfo.Size = new System.Drawing.Size(180, 17);
             this.chkChangeAsmInfo.TabIndex = 0;
-            this.chkChangeAsmInfo.Text = "Change Assembly Information";
+            this.chkChangeAsmInfo.Text = "更改程序集信息";
             this.chkChangeAsmInfo.UseVisualStyleBackColor = true;
             this.chkChangeAsmInfo.CheckedChanged += new System.EventHandler(this.chkChangeAsmInfo_CheckedChanged);
             // 
@@ -892,7 +892,7 @@ namespace Quasar.Server.Forms
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(82, 13);
             this.lblProductName.TabIndex = 1;
-            this.lblProductName.Text = "Product Name:";
+            this.lblProductName.Text = "产品名称:";
             // 
             // label12
             // 
@@ -901,7 +901,7 @@ namespace Quasar.Server.Forms
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 13);
             this.label12.TabIndex = 0;
-            this.label12.Text = "Assembly Icon";
+            this.label12.Text = "程序集图标";
             // 
             // chkChangeIcon
             // 
@@ -910,7 +910,7 @@ namespace Quasar.Server.Forms
             this.chkChangeIcon.Name = "chkChangeIcon";
             this.chkChangeIcon.Size = new System.Drawing.Size(141, 17);
             this.chkChangeIcon.TabIndex = 2;
-            this.chkChangeIcon.Text = "Change Assembly Icon";
+            this.chkChangeIcon.Text = "更改程序集图标";
             this.chkChangeIcon.UseVisualStyleBackColor = true;
             this.chkChangeIcon.CheckedChanged += new System.EventHandler(this.chkChangeIcon_CheckedChanged);
             // 
@@ -921,7 +921,7 @@ namespace Quasar.Server.Forms
             this.lblFileVersion.Name = "lblFileVersion";
             this.lblFileVersion.Size = new System.Drawing.Size(69, 13);
             this.lblFileVersion.TabIndex = 15;
-            this.lblFileVersion.Text = "File Version:";
+            this.lblFileVersion.Text = "文件版本:";
             // 
             // txtProductName
             // 
@@ -946,7 +946,7 @@ namespace Quasar.Server.Forms
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(69, 13);
             this.lblDescription.TabIndex = 3;
-            this.lblDescription.Text = "Description:";
+            this.lblDescription.Text = "描述:";
             // 
             // lblProductVersion
             // 
@@ -955,7 +955,7 @@ namespace Quasar.Server.Forms
             this.lblProductVersion.Name = "lblProductVersion";
             this.lblProductVersion.Size = new System.Drawing.Size(91, 13);
             this.lblProductVersion.TabIndex = 13;
-            this.lblProductVersion.Text = "Product Version:";
+            this.lblProductVersion.Text = "产品版本:";
             // 
             // txtDescription
             // 
@@ -980,7 +980,7 @@ namespace Quasar.Server.Forms
             this.lblCompanyName.Name = "lblCompanyName";
             this.lblCompanyName.Size = new System.Drawing.Size(90, 13);
             this.lblCompanyName.TabIndex = 5;
-            this.lblCompanyName.Text = "Company Name:";
+            this.lblCompanyName.Text = "公司名称:";
             // 
             // lblOriginalFilename
             // 
@@ -989,7 +989,7 @@ namespace Quasar.Server.Forms
             this.lblOriginalFilename.Name = "lblOriginalFilename";
             this.lblOriginalFilename.Size = new System.Drawing.Size(101, 13);
             this.lblOriginalFilename.TabIndex = 11;
-            this.lblOriginalFilename.Text = "Original Filename:";
+            this.lblOriginalFilename.Text = "原始文件名:";
             // 
             // txtCompanyName
             // 
@@ -1014,7 +1014,7 @@ namespace Quasar.Server.Forms
             this.lblCopyright.Name = "lblCopyright";
             this.lblCopyright.Size = new System.Drawing.Size(61, 13);
             this.lblCopyright.TabIndex = 7;
-            this.lblCopyright.Text = "Copyright:";
+            this.lblCopyright.Text = "版权:";
             // 
             // lblTrademarks
             // 
@@ -1023,7 +1023,7 @@ namespace Quasar.Server.Forms
             this.lblTrademarks.Name = "lblTrademarks";
             this.lblTrademarks.Size = new System.Drawing.Size(68, 13);
             this.lblTrademarks.TabIndex = 9;
-            this.lblTrademarks.Text = "Trademarks:";
+            this.lblTrademarks.Text = "商标:";
             // 
             // txtCopyright
             // 
@@ -1046,7 +1046,7 @@ namespace Quasar.Server.Forms
             this.monitoringTab.Name = "monitoringTab";
             this.monitoringTab.Size = new System.Drawing.Size(391, 376);
             this.monitoringTab.TabIndex = 3;
-            this.monitoringTab.Text = "Monitoring Settings";
+            this.monitoringTab.Text = "监控设置";
             // 
             // chkHideLogDirectory
             // 
@@ -1055,7 +1055,7 @@ namespace Quasar.Server.Forms
             this.chkHideLogDirectory.Name = "chkHideLogDirectory";
             this.chkHideLogDirectory.Size = new System.Drawing.Size(197, 17);
             this.chkHideLogDirectory.TabIndex = 7;
-            this.chkHideLogDirectory.Text = "Set directory attributes to hidden";
+            this.chkHideLogDirectory.Text = "将目录属性设置为隐藏";
             this.chkHideLogDirectory.UseVisualStyleBackColor = true;
             this.chkHideLogDirectory.CheckedChanged += new System.EventHandler(this.HasChangedSetting);
             // 
@@ -1075,7 +1075,7 @@ namespace Quasar.Server.Forms
             this.lblLogDirectory.Name = "lblLogDirectory";
             this.lblLogDirectory.Size = new System.Drawing.Size(110, 13);
             this.lblLogDirectory.TabIndex = 5;
-            this.lblLogDirectory.Text = "Log Directory Name:";
+            this.lblLogDirectory.Text = "日志目录名称:";
             // 
             // line10
             // 
@@ -1093,7 +1093,7 @@ namespace Quasar.Server.Forms
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(66, 13);
             this.label14.TabIndex = 3;
-            this.label14.Text = "Monitoring";
+            this.label14.Text = "监控";
             // 
             // chkKeylogger
             // 
@@ -1102,7 +1102,7 @@ namespace Quasar.Server.Forms
             this.chkKeylogger.Name = "chkKeylogger";
             this.chkKeylogger.Size = new System.Drawing.Size(156, 17);
             this.chkKeylogger.TabIndex = 4;
-            this.chkKeylogger.Text = "Enable keyboard logging";
+            this.chkKeylogger.Text = "启用键盘记录";
             this.chkKeylogger.UseVisualStyleBackColor = true;
             this.chkKeylogger.CheckedChanged += new System.EventHandler(this.chkKeylogger_CheckedChanged);
             // 
@@ -1121,7 +1121,7 @@ namespace Quasar.Server.Forms
             this.MinimizeBox = false;
             this.Name = "FrmBuilder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Client Builder";
+            this.Text = "客户端构建器";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBuilder_FormClosing);
             this.Load += new System.EventHandler(this.FrmBuilder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picUAC2)).EndInit();

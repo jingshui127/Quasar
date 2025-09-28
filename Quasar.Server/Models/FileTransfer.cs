@@ -1,4 +1,4 @@
-﻿using Quasar.Common.IO;
+﻿﻿using Quasar.Common.IO;
 using Quasar.Common.Utilities;
 using Quasar.Server.Enums;
 using System;
@@ -28,9 +28,9 @@ namespace Quasar.Server.Models
         }
 
         /// <summary>
-        /// Creates a new object that is a copy of the current instance.
+        /// 创建一个新对象，该对象是当前实例的副本。
         /// </summary>
-        /// <returns>A new object that is a copy of this instance.</returns>
+        /// <returns>一个新对象，它是此实例的副本。</returns>
         public FileTransfer Clone()
         {
             return new FileTransfer()

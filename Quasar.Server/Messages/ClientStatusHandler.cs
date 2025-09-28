@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Enums;
+﻿﻿using Quasar.Common.Enums;
 using Quasar.Common.Messages;
 using Quasar.Common.Networking;
 using Quasar.Server.Networking;
@@ -6,49 +6,49 @@ using Quasar.Server.Networking;
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with the remote client status.
+    /// 处理与远程客户端状态交互的消息。
     /// </summary>
     public class ClientStatusHandler : MessageProcessorBase<object>
     {
         /// <summary>
-        /// Represents the method that will handle status updates.
+        /// 表示将处理状态更新的方法。
         /// </summary>
-        /// <param name="sender">The message handler which raised the event.</param>
-        /// <param name="client">The client which updated the status.</param>
-        /// <param name="statusMessage">The new status.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="client">更新状态的客户端。</param>
+        /// <param name="statusMessage">新状态。</param>
         public delegate void StatusUpdatedEventHandler(object sender, Client client, string statusMessage);
 
         /// <summary>
-        /// Represents the method that will handle user status updates.
+        /// 表示将处理用户状态更新的方法。
         /// </summary>
-        /// <param name="sender">The message handler which raised the event.</param>
-        /// <param name="client">The client which updated the user status.</param>
-        /// <param name="userStatusMessage">The new user status.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="client">更新用户状态的客户端。</param>
+        /// <param name="userStatusMessage">新用户状态。</param>
         public delegate void UserStatusUpdatedEventHandler(object sender, Client client, UserStatus userStatusMessage);
 
         /// <summary>
-        /// Raised when a client updated its status.
+        /// 当客户端更新其状态时引发。
         /// </summary>
         /// <remarks>
-        /// Handlers registered with this event will be invoked on the 
-        /// <see cref="System.Threading.SynchronizationContext"/> chosen when the instance was constructed.
+        /// 注册到此事件的处理程序将在构造实例时选择的 
+        /// <see cref="System.Threading.SynchronizationContext"/> 上调用。
         /// </remarks>
         public event StatusUpdatedEventHandler StatusUpdated;
 
         /// <summary>
-        /// Raised when a client updated its user status.
+        /// 当客户端更新其用户状态时引发。
         /// </summary>
         /// <remarks>
-        /// Handlers registered with this event will be invoked on the 
-        /// <see cref="System.Threading.SynchronizationContext"/> chosen when the instance was constructed.
+        /// 注册到此事件的处理程序将在构造实例时选择的 
+        /// <see cref="System.Threading.SynchronizationContext"/> 上调用。
         /// </remarks>
         public event UserStatusUpdatedEventHandler UserStatusUpdated;
 
         /// <summary>
-        /// Reports an updated status.
+        /// 报告更新的状态。
         /// </summary>
-        /// <param name="client">The client which updated the status.</param>
-        /// <param name="statusMessage">The new status.</param>
+        /// <param name="client">更新状态的客户端。</param>
+        /// <param name="statusMessage">新状态。</param>
         private void OnStatusUpdated(Client client, string statusMessage)
         {
             SynchronizationContext.Post(c =>
@@ -59,10 +59,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Reports an updated user status.
+        /// 报告更新的用户状态。
         /// </summary>
-        /// <param name="client">The client which updated the user status.</param>
-        /// <param name="userStatusMessage">The new user status.</param>
+        /// <param name="client">更新用户状态的客户端。</param>
+        /// <param name="userStatusMessage">新用户状态。</param>
         private void OnUserStatusUpdated(Client client, UserStatus userStatusMessage)
         {
             SynchronizationContext.Post(c =>
@@ -73,7 +73,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClientStatusHandler"/> class.
+        /// 初始化 <see cref="ClientStatusHandler"/> 类的新实例。
         /// </summary>
         public ClientStatusHandler() : base(true)
         {

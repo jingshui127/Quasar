@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Enums;
+﻿﻿using Quasar.Common.Enums;
 using Quasar.Common.Messages;
 using Quasar.Common.Networking;
 using Quasar.Common.Video.Codecs;
@@ -10,35 +10,35 @@ using System.IO;
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with the remote desktop.
+    /// 处理与远程桌面交互的消息。
     /// </summary>
     public class RemoteDesktopHandler : MessageProcessorBase<Bitmap>, IDisposable
     {
         /// <summary>
-        /// States if the client is currently streaming desktop frames.
+        /// 指示客户端当前是否正在流式传输桌面帧。
         /// </summary>
         public bool IsStarted { get; set; }
 
         /// <summary>
-        /// Used in lock statements to synchronize access to <see cref="_codec"/> between UI thread and thread pool.
+        /// 在lock语句中使用，以同步UI线程和线程池之间对<see cref="_codec"/>的访问。
         /// </summary>
         private readonly object _syncLock = new object();
 
         /// <summary>
-        /// Used in lock statements to synchronize access to <see cref="LocalResolution"/> between UI thread and thread pool.
+        /// 在lock语句中使用，以同步UI线程和线程池之间对<see cref="LocalResolution"/>的访问。
         /// </summary>
         private readonly object _sizeLock = new object();
 
         /// <summary>
-        /// The local resolution, see <seealso cref="LocalResolution"/>.
+        /// 本地分辨率，参见<seealso cref="LocalResolution"/>。
         /// </summary>
         private Size _localResolution;
 
         /// <summary>
-        /// The local resolution in width x height. It indicates to which resolution the received frame should be resized.
+        /// 宽度x高度的本地分辨率。它指示接收到的帧应调整到的分辨率。
         /// </summary>
         /// <remarks>
-        /// This property is thread-safe.
+        /// 此属性是线程安全的。
         /// </remarks>
         public Size LocalResolution
         {
@@ -59,25 +59,25 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Represents the method that will handle display changes.
+        /// 表示将处理显示更改的方法。
         /// </summary>
-        /// <param name="sender">The message processor which raised the event.</param>
-        /// <param name="value">All currently available displays.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="value">所有当前可用的显示器。</param>
         public delegate void DisplaysChangedEventHandler(object sender, int value);
 
         /// <summary>
-        /// Raised when a display changed.
+        /// 当显示器更改时引发。
         /// </summary>
         /// <remarks>
-        /// Handlers registered with this event will be invoked on the 
-        /// <see cref="System.Threading.SynchronizationContext"/> chosen when the instance was constructed.
+        /// 注册到此事件的处理程序将在构造实例时选择的 
+        /// <see cref="System.Threading.SynchronizationContext"/> 上调用。
         /// </remarks>
         public event DisplaysChangedEventHandler DisplaysChanged;
 
         /// <summary>
-        /// Reports changed displays.
+        /// 报告更改的显示器。
         /// </summary>
-        /// <param name="value">All currently available displays.</param>
+        /// <param name="value">所有当前可用的显示器。</param>
         private void OnDisplaysChanged(int value)
         {
             SynchronizationContext.Post(val =>
@@ -88,19 +88,19 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// The client which is associated with this remote desktop handler.
+        /// 与此远程桌面处理器关联的客户端。
         /// </summary>
         private readonly Client _client;
 
         /// <summary>
-        /// The video stream codec used to decode received frames.
+        /// 用于解码接收帧的视频流编解码器。
         /// </summary>
         private UnsafeStreamCodec _codec;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RemoteDesktopHandler"/> class using the given client.
+        /// 使用给定客户端初始化 <see cref="RemoteDesktopHandler"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The associated client.</param>
+        /// <param name="client">关联的客户端。</param>
         public RemoteDesktopHandler(Client client) : base(true)
         {
             _client = client;
@@ -127,10 +127,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Begins receiving frames from the client using the specified quality and display.
+        /// 使用指定的质量和显示器开始从客户端接收帧。
         /// </summary>
-        /// <param name="quality">The quality of the remote desktop frames.</param>
-        /// <param name="display">The display to receive frames from.</param>
+        /// <param name="quality">远程桌面帧的质量。</param>
+        /// <param name="display">接收帧的显示器。</param>
         public void BeginReceiveFrames(int quality, int display)
         {
             lock (_syncLock)
@@ -143,7 +143,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Ends receiving frames from the client.
+        /// 结束从客户端接收帧。
         /// </summary>
         public void EndReceiveFrames()
         {
@@ -154,7 +154,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Refreshes the available displays of the client.
+        /// 刷新客户端的可用显示器。
         /// </summary>
         public void RefreshDisplays()
         {
@@ -162,13 +162,13 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Sends a mouse event to the specified display of the client.
+        /// 向客户端的指定显示器发送鼠标事件。
         /// </summary>
-        /// <param name="mouseAction">The mouse action to send.</param>
-        /// <param name="isMouseDown">Indicates whether it's a mousedown or mouseup event.</param>
-        /// <param name="x">The X-coordinate inside the <see cref="LocalResolution"/>.</param>
-        /// <param name="y">The Y-coordinate inside the <see cref="LocalResolution"/>.</param>
-        /// <param name="displayIndex">The display to execute the mouse event on.</param>
+        /// <param name="mouseAction">要发送的鼠标操作。</param>
+        /// <param name="isMouseDown">指示是mousedown还是mouseup事件。</param>
+        /// <param name="x"><see cref="LocalResolution"/>内的X坐标。</param>
+        /// <param name="y"><see cref="LocalResolution"/>内的Y坐标。</param>
+        /// <param name="displayIndex">执行鼠标事件的显示器。</param>
         public void SendMouseEvent(MouseAction mouseAction, bool isMouseDown, int x, int y, int displayIndex)
         {
             lock (_syncLock)
@@ -186,10 +186,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Sends a keyboard event to the client.
+        /// 向客户端发送键盘事件。
         /// </summary>
-        /// <param name="keyCode">The pressed key.</param>
-        /// <param name="keyDown">Indicates whether it's a keydown or keyup event.</param>
+        /// <param name="keyCode">按下的键。</param>
+        /// <param name="keyDown">指示是keydown还是keyup事件。</param>
         public void SendKeyboardEvent(byte keyCode, bool keyDown)
         {
             _client.Send(new DoKeyboardEvent {Key = keyCode, KeyDown = keyDown});
@@ -226,7 +226,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Disposes all managed and unmanaged resources associated with this message processor.
+        /// 释放与此消息处理器关联的所有托管和非托管资源。
         /// </summary>
         public void Dispose()
         {

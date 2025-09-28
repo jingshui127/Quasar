@@ -1,4 +1,4 @@
-﻿using Open.Nat;
+﻿﻿using Open.Nat;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -8,22 +8,22 @@ namespace Quasar.Server.Networking
     public class UPnPService
     {
         /// <summary>
-        /// Used to keep track of all created mappings.
+        /// 用于跟踪所有创建的映射。
         /// </summary>
         private readonly Dictionary<int, Mapping> _mappings = new Dictionary<int, Mapping>();
 
         /// <summary>
-        /// The discovered UPnP device.
+        /// 发现的UPnP设备。
         /// </summary>
         private NatDevice _device;
 
         /// <summary>
-        /// The NAT discoverer used to discover NAT-UPnP devices.
+        /// 用于发现NAT-UPnP设备的NAT发现器。
         /// </summary>
         private NatDiscoverer _discoverer;
 
         /// <summary>
-        /// Initializes the discovery of new UPnP devices.
+        /// 初始化新UPnP设备的发现。
         /// </summary>
         public UPnPService()
         {
@@ -31,9 +31,9 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Creates a new port mapping on the UPnP device.
+        /// 在UPnP设备上创建新的端口映射。
         /// </summary>
-        /// <param name="port">The port to map.</param>
+        /// <param name="port">要映射的端口。</param>
         public async void CreatePortMapAsync(int port)
         {
             try
@@ -56,9 +56,9 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Deletes an existing port mapping.
+        /// 删除现有的端口映射。
         /// </summary>
-        /// <param name="port">The port mapping to delete.</param>
+        /// <param name="port">要删除的端口映射。</param>
         public async void DeletePortMapAsync(int port)
         {
             if (_mappings.TryGetValue(port, out var mapping))

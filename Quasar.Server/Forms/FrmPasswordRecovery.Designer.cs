@@ -1,4 +1,4 @@
-﻿using Quasar.Server.Controls;
+﻿﻿﻿﻿﻿﻿﻿using Quasar.Server.Controls;
 
 namespace Quasar.Server.Forms
 {
@@ -77,20 +77,20 @@ namespace Quasar.Server.Forms
             this.saveToFileToolStripMenuItem.Image = global::Quasar.Server.Properties.Resources.save;
             this.saveToFileToolStripMenuItem.Name = "saveToFileToolStripMenuItem";
             this.saveToFileToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.saveToFileToolStripMenuItem.Text = "Save to File";
+            this.saveToFileToolStripMenuItem.Text = "保存到文件";
             // 
             // saveAllToolStripMenuItem
             // 
             this.saveAllToolStripMenuItem.Name = "saveAllToolStripMenuItem";
             this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveAllToolStripMenuItem.Text = "All";
+            this.saveAllToolStripMenuItem.Text = "全部";
             this.saveAllToolStripMenuItem.Click += new System.EventHandler(this.saveAllToolStripMenuItem_Click);
             // 
             // saveSelectedToolStripMenuItem
             // 
             this.saveSelectedToolStripMenuItem.Name = "saveSelectedToolStripMenuItem";
             this.saveSelectedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveSelectedToolStripMenuItem.Text = "Selected";
+            this.saveSelectedToolStripMenuItem.Text = "选中";
             this.saveSelectedToolStripMenuItem.Click += new System.EventHandler(this.saveSelectedToolStripMenuItem_Click);
             // 
             // copyToClipboardToolStripMenuItem
@@ -101,20 +101,20 @@ namespace Quasar.Server.Forms
             this.copyToClipboardToolStripMenuItem.Image = global::Quasar.Server.Properties.Resources.page_copy;
             this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
             this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.copyToClipboardToolStripMenuItem.Text = "Copy to Clipboard";
+            this.copyToClipboardToolStripMenuItem.Text = "复制到剪贴板";
             // 
             // copyAllToolStripMenuItem
             // 
             this.copyAllToolStripMenuItem.Name = "copyAllToolStripMenuItem";
             this.copyAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copyAllToolStripMenuItem.Text = "All";
+            this.copyAllToolStripMenuItem.Text = "全部";
             this.copyAllToolStripMenuItem.Click += new System.EventHandler(this.copyAllToolStripMenuItem_Click);
             // 
             // copySelectedToolStripMenuItem
             // 
             this.copySelectedToolStripMenuItem.Name = "copySelectedToolStripMenuItem";
             this.copySelectedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copySelectedToolStripMenuItem.Text = "Selected";
+            this.copySelectedToolStripMenuItem.Text = "选中";
             this.copySelectedToolStripMenuItem.Click += new System.EventHandler(this.copySelectedToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -130,20 +130,20 @@ namespace Quasar.Server.Forms
             this.clearToolStripMenuItem.Image = global::Quasar.Server.Properties.Resources.delete;
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
             this.clearToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Text = "清除";
             // 
             // clearAllToolStripMenuItem
             // 
             this.clearAllToolStripMenuItem.Name = "clearAllToolStripMenuItem";
             this.clearAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.clearAllToolStripMenuItem.Text = "All";
+            this.clearAllToolStripMenuItem.Text = "全部";
             this.clearAllToolStripMenuItem.Click += new System.EventHandler(this.clearAllToolStripMenuItem_Click);
             // 
             // clearSelectedToolStripMenuItem
             // 
             this.clearSelectedToolStripMenuItem.Name = "clearSelectedToolStripMenuItem";
             this.clearSelectedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.clearSelectedToolStripMenuItem.Text = "Selected";
+            this.clearSelectedToolStripMenuItem.Text = "选中";
             this.clearSelectedToolStripMenuItem.Click += new System.EventHandler(this.clearSelectedToolStripMenuItem_Click);
             // 
             // refreshToolStripMenuItem
@@ -151,7 +151,7 @@ namespace Quasar.Server.Forms
             this.refreshToolStripMenuItem.Image = global::Quasar.Server.Properties.Resources.refresh;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Text = "刷新";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // groupBox1
@@ -165,7 +165,7 @@ namespace Quasar.Server.Forms
             this.groupBox1.Size = new System.Drawing.Size(549, 325);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Recovered Accounts";
+            this.groupBox1.Text = "已恢复的账户";
             // 
             // groupBox2
             // 
@@ -178,7 +178,7 @@ namespace Quasar.Server.Forms
             this.groupBox2.Size = new System.Drawing.Size(549, 90);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Custom Saving/Copying Format";
+            this.groupBox2.Text = "自定义保存/复制格式";
             // 
             // lblInfo
             // 
@@ -188,8 +188,7 @@ namespace Quasar.Server.Forms
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(467, 26);
             this.lblInfo.TabIndex = 1;
-            this.lblInfo.Text = "You can change the way the accounts are saved by adjusting the format in the box " +
-    "above.\r\nAvailable variables: APP, URL, USER, PASS\r\n";
+            this.lblInfo.Text = "您可以通过调整上方框中的格式来更改账户的保存方式。\r\n可用变量: APP, URL, USER, PASS\r\n";
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtFormat
@@ -225,22 +224,22 @@ namespace Quasar.Server.Forms
             // 
             // hIdentification
             // 
-            this.hIdentification.Text = "Identification";
+            this.hIdentification.Text = "标识";
             this.hIdentification.Width = 107;
             // 
             // hURL
             // 
-            this.hURL.Text = "URL / Location";
+            this.hURL.Text = "网址 / 位置";
             this.hURL.Width = 151;
             // 
             // hUser
             // 
-            this.hUser.Text = "Username";
+            this.hUser.Text = "用户名";
             this.hUser.Width = 142;
             // 
             // hPass
             // 
-            this.hPass.Text = "Password";
+            this.hPass.Text = "密码";
             this.hPass.Width = 130;
             // 
             // FrmPasswordRecovery
@@ -255,7 +254,7 @@ namespace Quasar.Server.Forms
             this.MinimumSize = new System.Drawing.Size(589, 400);
             this.Name = "FrmPasswordRecovery";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Password Recovery []";
+            this.Text = "密码恢复 []";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPasswordRecovery_FormClosing);
             this.Load += new System.EventHandler(this.FrmPasswordRecovery_Load);
             this.contextMenuStrip.ResumeLayout(false);

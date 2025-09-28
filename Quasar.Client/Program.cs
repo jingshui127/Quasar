@@ -1,4 +1,4 @@
-﻿using Quasar.Client.IO;
+﻿﻿using Quasar.Client.IO;
 using System;
 using System.Diagnostics;
 using System.Net;
@@ -12,16 +12,16 @@ namespace Quasar.Client
         [STAThread]
         private static void Main(string[] args)
         {
-            // enable TLS 1.2
+            // 启用 TLS 1.2
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            // Set the unhandled exception mode to force all Windows Forms errors to go through our handler
+            // 设置未处理异常模式，强制所有 Windows Forms 错误通过我们的处理程序
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 
-            // Add the event handler for handling UI thread exceptions
+            // 添加处理 UI 线程异常的事件处理程序
             Application.ThreadException += HandleThreadException;
 
-            // Add the event handler for handling non-UI thread exceptions
+            // 添加处理非 UI 线程异常的事件处理程序
             AppDomain.CurrentDomain.UnhandledException += HandleUnhandledException;
 
             Application.EnableVisualStyles();
@@ -55,10 +55,10 @@ namespace Quasar.Client
         }
 
         /// <summary>
-        /// Handles unhandled exceptions by restarting the application and hoping that they don't happen again.
+        /// 通过重启应用程序来处理未处理的异常，并希望它们不再发生。
         /// </summary>
-        /// <param name="sender">The source of the unhandled exception event.</param>
-        /// <param name="e">The exception event arguments. </param>
+        /// <param name="sender">未处理异常事件的源。</param>
+        /// <param name="e">异常事件参数。</param>
         private static void HandleUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             if (e.IsTerminating)

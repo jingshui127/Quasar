@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Cryptography;
+﻿﻿using Quasar.Common.Cryptography;
 using Quasar.Common.Messages;
 using System;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace Quasar.Server.Networking
     public class QuasarServer : Server
     {
         /// <summary>
-        /// Gets the clients currently connected and identified to the server.
+        /// 获取当前连接并识别到服务器的客户端。
         /// </summary>
         public Client[] ConnectedClients
         {
@@ -19,20 +19,20 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Occurs when a client connected.
+        /// 当客户端连接时发生。
         /// </summary>
         public event ClientConnectedEventHandler ClientConnected;
 
         /// <summary>
-        /// Represents the method that will handle the connected client.
+        /// 表示将处理连接客户端的方法。
         /// </summary>
-        /// <param name="client">The connected client.</param>
+        /// <param name="client">连接的客户端。</param>
         public delegate void ClientConnectedEventHandler(Client client);
 
         /// <summary>
-        /// Fires an event that informs subscribers that the client is connected.
+        /// 触发一个事件，通知订阅者客户端已连接。
         /// </summary>
-        /// <param name="client">The connected client.</param>
+        /// <param name="client">连接的客户端。</param>
         private void OnClientConnected(Client client)
         {
             if (ProcessingDisconnect || !Listening) return;
@@ -41,20 +41,20 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Occurs when a client disconnected.
+        /// 当客户端断开连接时发生。
         /// </summary>
         public event ClientDisconnectedEventHandler ClientDisconnected;
 
         /// <summary>
-        /// Represents the method that will handle the disconnected client.
+        /// 表示将处理断开连接客户端的方法。
         /// </summary>
-        /// <param name="client">The disconnected client.</param>
+        /// <param name="client">断开连接的客户端。</param>
         public delegate void ClientDisconnectedEventHandler(Client client);
 
         /// <summary>
-        /// Fires an event that informs subscribers that the client is disconnected.
+        /// 触发一个事件，通知订阅者客户端已断开连接。
         /// </summary>
-        /// <param name="client">The disconnected client.</param>
+        /// <param name="client">断开连接的客户端。</param>
         private void OnClientDisconnected(Client client)
         {
             if (ProcessingDisconnect || !Listening) return;
@@ -63,9 +63,9 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Constructor, initializes required objects and subscribes to events of the server.
+        /// 构造函数，初始化所需对象并订阅服务器事件。
         /// </summary>
-        /// <param name="serverCertificate">The server certificate.</param>
+        /// <param name="serverCertificate">服务器证书。</param>
         public QuasarServer(X509Certificate2 serverCertificate) : base(serverCertificate)
         {
             base.ClientState += OnClientState;
@@ -73,11 +73,11 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Decides if the client connected or disconnected.
+        /// 决定客户端是连接还是断开连接。
         /// </summary>
-        /// <param name="server">The server the client is connected to.</param>
-        /// <param name="client">The client which changed its state.</param>
-        /// <param name="connected">True if the client connected, false if disconnected.</param>
+        /// <param name="server">客户端连接的服务器。</param>
+        /// <param name="client">更改状态的客户端。</param>
+        /// <param name="connected">如果客户端连接则为True，如果断开连接则为False。</param>
         private void OnClientState(Server server, Client client, bool connected)
         {
             if (!connected)
@@ -90,11 +90,11 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Forwards received messages from the client to the MessageHandler.
+        /// 将从客户端接收到的消息转发到MessageHandler。
         /// </summary>
-        /// <param name="server">The server the client is connected to.</param>
-        /// <param name="client">The client which has received the message.</param>
-        /// <param name="message">The received message.</param>
+        /// <param name="server">客户端连接的服务器。</param>
+        /// <param name="client">接收消息的客户端。</param>
+        /// <param name="message">接收到的消息。</param>
         private void OnClientRead(Server server, Client client, IMessage message)
         {
             if (!client.Identified)

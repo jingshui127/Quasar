@@ -1,28 +1,28 @@
-﻿using Quasar.Common.Networking;
+﻿﻿using Quasar.Common.Networking;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Quasar.Common.Messages
 {
     /// <summary>
-    /// Handles registrations of <see cref="IMessageProcessor"/>s and processing of <see cref="IMessage"/>s.
+    /// 处理 <see cref="IMessageProcessor"/> 的注册和 <see cref="IMessage"/> 的处理。
     /// </summary>
     public static class MessageHandler
     {
         /// <summary>
-        /// List of registered <see cref="IMessageProcessor"/>s.
+        /// 已注册的 <see cref="IMessageProcessor"/> 列表。
         /// </summary>
         private static readonly List<IMessageProcessor> Processors = new List<IMessageProcessor>();
 
         /// <summary>
-        /// Used in lock statements to synchronize access to <see cref="Processors"/> between threads.
+        /// 在 lock 语句中使用，用于同步线程间对 <see cref="Processors"/> 的访问。
         /// </summary>
         private static readonly object SyncLock = new object();
 
         /// <summary>
-        /// Registers a <see cref="IMessageProcessor"/> to the available <see cref="Processors"/>.
+        /// 将 <see cref="IMessageProcessor"/> 注册到可用的 <see cref="Processors"/> 中。
         /// </summary>
-        /// <param name="proc">The <see cref="IMessageProcessor"/> to register.</param>
+        /// <param name="proc">要注册的 <see cref="IMessageProcessor"/>。</param>
         public static void Register(IMessageProcessor proc)
         {
             lock (SyncLock)
@@ -33,7 +33,7 @@ namespace Quasar.Common.Messages
         }
 
         /// <summary>
-        /// Unregisters a <see cref="IMessageProcessor"/> from the available <see cref="Processors"/>.
+        /// 从可用的 <see cref="Processors"/> 中注销 <see cref="IMessageProcessor"/>。
         /// </summary>
         /// <param name="proc"></param>
         public static void Unregister(IMessageProcessor proc)
@@ -45,10 +45,10 @@ namespace Quasar.Common.Messages
         }
 
         /// <summary>
-        /// Forwards the received <see cref="IMessage"/> to the appropriate <see cref="IMessageProcessor"/>s to execute it.
+        /// 将接收到的 <see cref="IMessage"/> 转发给适当的 <see cref="IMessageProcessor"/> 来执行。
         /// </summary>
-        /// <param name="sender">The sender of the message.</param>
-        /// <param name="msg">The received message.</param>
+        /// <param name="sender">消息的发送者。</param>
+        /// <param name="msg">接收到的消息。</param>
         public static void Process(ISender sender, IMessage msg)
         {
             IEnumerable<IMessageProcessor> availableProcessors;

@@ -1,4 +1,4 @@
-﻿using Gma.System.MouseKeyHook;
+﻿﻿﻿﻿using Gma.System.MouseKeyHook;
 using Quasar.Common.Enums;
 using Quasar.Common.Helpers;
 using Quasar.Common.Messages;
@@ -293,8 +293,8 @@ namespace Quasar.Server.Forms
         {
             if (cbMonitors.Items.Count == 0)
             {
-                MessageBox.Show("No remote display detected.\nPlease wait till the client sends a list with available displays.",
-                    "Starting failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("未检测到远程显示。\n请等待客户端发送可用显示列表。",
+                    "启动失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -426,14 +426,14 @@ namespace Quasar.Server.Forms
             {
                 this.picDesktop.Cursor = Cursors.Default;
                 btnMouse.Image = Properties.Resources.mouse_delete;
-                toolTipButtons.SetToolTip(btnMouse, "Enable mouse input.");
+                toolTipButtons.SetToolTip(btnMouse, "禁用鼠标输入。");
                 _enableMouseInput = false;
             }
             else
             {
                 this.picDesktop.Cursor = Cursors.Hand;
                 btnMouse.Image = Properties.Resources.mouse_add;
-                toolTipButtons.SetToolTip(btnMouse, "Disable mouse input.");
+                toolTipButtons.SetToolTip(btnMouse, "启用鼠标输入。");
                 _enableMouseInput = true;
             }
 
@@ -446,14 +446,14 @@ namespace Quasar.Server.Forms
             {
                 this.picDesktop.Cursor = Cursors.Default;
                 btnKeyboard.Image = Properties.Resources.keyboard_delete;
-                toolTipButtons.SetToolTip(btnKeyboard, "Enable keyboard input.");
+                toolTipButtons.SetToolTip(btnKeyboard, "禁用键盘输入。");
                 _enableKeyboardInput = false;
             }
             else
             {
                 this.picDesktop.Cursor = Cursors.Hand;
                 btnKeyboard.Image = Properties.Resources.keyboard_add;
-                toolTipButtons.SetToolTip(btnKeyboard, "Disable keyboard input.");
+                toolTipButtons.SetToolTip(btnKeyboard, "启用键盘输入。");
                 _enableKeyboardInput = true;
             }
 

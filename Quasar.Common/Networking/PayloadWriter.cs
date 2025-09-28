@@ -1,4 +1,4 @@
-﻿using ProtoBuf;
+﻿﻿using ProtoBuf;
 using Quasar.Common.Messages;
 using System;
 using System.IO;
@@ -27,10 +27,10 @@ namespace Quasar.Common.Networking
         }
 
         /// <summary>
-        /// Writes a serialized message as payload to the stream.
+        /// 将序列化的消息作为负载写入流中。
         /// </summary>
-        /// <param name="message">The message to write.</param>
-        /// <returns>The amount of written bytes to the stream.</returns>
+        /// <param name="message">要写入的消息。</param>
+        /// <returns>写入流中的字节数量。</returns>
         public int WriteMessage(IMessage message)
         {
             using (MemoryStream ms = new MemoryStream())

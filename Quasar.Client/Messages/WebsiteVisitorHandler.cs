@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Messages;
+﻿﻿using Quasar.Common.Messages;
 using Quasar.Common.Networking;
 using System;
 using System.Diagnostics;
@@ -53,7 +53,7 @@ namespace Quasar.Client.Messages
                     }
                 }
 
-                client.Send(new SetStatus { Message = "Visited Website" });
+                client.Send(new SetStatus { Message = "已访问网站" });
             }
         }
     }

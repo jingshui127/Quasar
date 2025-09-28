@@ -5,10 +5,10 @@ namespace Quasar.Common.Extensions
     public static class DriveTypeExtensions
     {
         /// <summary>
-        /// Converts the value of the <see cref="DriveType"/> instance to its friendly string representation.
+        /// 将 <see cref="DriveType"/> 实例的值转换为其友好的字符串表示形式。
         /// </summary>
-        /// <param name="type">The <see cref="DriveType"/>.</param>
-        /// <returns>The friendly string representation of the value of this <see cref="DriveType"/> instance.</returns>
+        /// <param name="type"><see cref="DriveType"/>。</param>
+        /// <returns>此 <see cref="DriveType"/> 实例值的友好字符串表示形式。</returns>
         public static string ToFriendlyString(this DriveType type)
         {
             switch (type)

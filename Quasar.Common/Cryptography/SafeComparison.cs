@@ -5,14 +5,14 @@ namespace Quasar.Common.Cryptography
     public class SafeComparison
     {
         /// <summary>
-        /// Compares two byte arrays for equality.
+        /// 比较两个字节数组是否相等。
         /// </summary>
-        /// <param name="a1">Byte array to compare</param>
-        /// <param name="a2">Byte array to compare</param>
-        /// <returns>True if equal, else false</returns>
+        /// <param name="a1">要比较的字节数组</param>
+        /// <param name="a2">要比较的字节数组</param>
+        /// <returns>如果相等则返回true，否则返回false</returns>
         /// <remarks>
-        /// Assumes that the byte arrays have the same length.
-        /// This method is safe against timing attacks.
+        /// 假设字节数组具有相同的长度。
+        /// 此方法可防止计时攻击。
         /// </remarks>
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         public static bool AreEqual(byte[] a1, byte[] a2)

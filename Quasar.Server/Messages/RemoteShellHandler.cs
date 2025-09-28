@@ -1,39 +1,39 @@
-﻿using Quasar.Common.Messages;
+﻿﻿using Quasar.Common.Messages;
 using Quasar.Common.Networking;
 using Quasar.Server.Networking;
 
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with the remote shell.
+    /// 处理与远程shell交互的消息。
     /// </summary>
     public class RemoteShellHandler : MessageProcessorBase<string>
     {
         /// <summary>
-        /// The client which is associated with this remote shell handler.
+        /// 与此远程shell处理器关联的客户端。
         /// </summary>
         private readonly Client _client;
 
         /// <summary>
-        /// Represents the method that will command errors.
+        /// 表示将处理命令错误的方法。
         /// </summary>
-        /// <param name="sender">The message processor which raised the event.</param>
-        /// <param name="errorMessage">The error message.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="errorMessage">错误消息。</param>
         public delegate void CommandErrorEventHandler(object sender, string errorMessage);
 
         /// <summary>
-        /// Raised when a command writes to stderr.
+        /// 当命令写入stderr时引发。
         /// </summary>
         /// <remarks>
-        /// Handlers registered with this event will be invoked on the 
-        /// <see cref="System.Threading.SynchronizationContext"/> chosen when the instance was constructed.
+        /// 注册到此事件的处理程序将在构造实例时选择的 
+        /// <see cref="System.Threading.SynchronizationContext"/> 上调用。
         /// </remarks>
         public event CommandErrorEventHandler CommandError;
 
         /// <summary>
-        /// Reports a command error.
+        /// 报告命令错误。
         /// </summary>
-        /// <param name="errorMessage">The error message.</param>
+        /// <param name="errorMessage">错误消息。</param>
         private void OnCommandError(string errorMessage)
         {
             SynchronizationContext.Post(val =>
@@ -44,9 +44,9 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RemoteShellHandler"/> class using the given client.
+        /// 使用给定客户端初始化 <see cref="RemoteShellHandler"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The associated client.</param>
+        /// <param name="client">关联的客户端。</param>
         public RemoteShellHandler(Client client) : base(true)
         {
             _client = client;
@@ -70,9 +70,9 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Sends a command to execute in the remote shell of the client.
+        /// 发送要在客户端的远程shell中执行的命令。
         /// </summary>
-        /// <param name="command">The command to execute.</param>
+        /// <param name="command">要执行的命令。</param>
         public void SendCommand(string command)
         {
             _client.Send(new DoShellExecute {Command = command});

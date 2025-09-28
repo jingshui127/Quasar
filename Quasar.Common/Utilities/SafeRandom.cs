@@ -1,11 +1,11 @@
-﻿using System;
+﻿﻿using System;
 using System.Security.Cryptography;
 
 namespace Quasar.Common.Utilities
 {
     /// <summary>
-    /// Thread-safe random number generator.
-    /// Has same API as System.Random but is thread safe, similar to the implementation by Steven Toub: http://blogs.msdn.com/b/pfxteam/archive/2014/10/20/9434171.aspx
+    /// 线程安全的随机数生成器。
+    /// 具有与System.Random相同的API，但是线程安全的，类似于Steven Toub的实现：http://blogs.msdn.com/b/pfxteam/archive/2014/10/20/9434171.aspx
     /// </summary>
     public class SafeRandom
     {

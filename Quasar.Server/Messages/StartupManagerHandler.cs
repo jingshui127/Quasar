@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Messages;
+﻿﻿using Quasar.Common.Messages;
 using Quasar.Common.Models;
 using Quasar.Common.Networking;
 using Quasar.Server.Networking;
@@ -7,19 +7,19 @@ using System.Collections.Generic;
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with remote startup tasks.
+    /// 处理与远程启动任务交互的消息。
     /// </summary>
     public class StartupManagerHandler : MessageProcessorBase<List<StartupItem>>
     {
         /// <summary>
-        /// The client which is associated with this startup manager handler.
+        /// 与此启动管理器处理器关联的客户端。
         /// </summary>
         private readonly Client _client;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StartupManagerHandler"/> class using the given client.
+        /// 使用给定客户端初始化 <see cref="StartupManagerHandler"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The associated client.</param>
+        /// <param name="client">关联的客户端。</param>
         public StartupManagerHandler(Client client) : base(true)
         {
             _client = client;
@@ -43,7 +43,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Refreshes the current startup items.
+        /// 刷新当前的启动项。
         /// </summary>
         public void RefreshStartupItems()
         {
@@ -51,18 +51,18 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Removes an item from startup.
+        /// 从启动项中移除一个项目。
         /// </summary>
-        /// <param name="item">Startup item to remove.</param>
+        /// <param name="item">要移除的启动项。</param>
         public void RemoveStartupItem(StartupItem item)
         {
             _client.Send(new DoStartupItemRemove {StartupItem = item});
         }
 
         /// <summary>
-        /// Adds an item to startup.
+        /// 添加一个项目到启动项。
         /// </summary>
-        /// <param name="item">Startup item to add.</param>
+        /// <param name="item">要添加的启动项。</param>
         public void AddStartupItem(StartupItem item)
         {
             _client.Send(new DoStartupItemAdd {StartupItem = item});

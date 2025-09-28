@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Messages;
+﻿﻿using Quasar.Common.Messages;
 using Quasar.Common.Models;
 using Quasar.Common.Networking;
 using Quasar.Server.Networking;
@@ -8,37 +8,37 @@ using System.Linq;
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with the remote password recovery.
+    /// 处理与远程密码恢复交互的消息。
     /// </summary>
     public class PasswordRecoveryHandler : MessageProcessorBase<object>
     {
         /// <summary>
-        /// The clients which is associated with this password recovery handler.
+        /// 与此密码恢复处理器关联的客户端。
         /// </summary>
         private readonly Client[] _clients;
 
         /// <summary>
-        /// Represents the method that will handle recovered accounts.
+        /// 表示将处理已恢复账户的方法。
         /// </summary>
-        /// <param name="sender">The message processor which raised the event.</param>
-        /// <param name="clientIdentifier">A unique client identifier.</param>
-        /// <param name="accounts">The recovered accounts</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="clientIdentifier">唯一的客户端标识符。</param>
+        /// <param name="accounts">已恢复的账户</param>
         public delegate void AccountsRecoveredEventHandler(object sender, string clientIdentifier, List<RecoveredAccount> accounts);
 
         /// <summary>
-        /// Raised when accounts got recovered.
+        /// 当账户被恢复时引发。
         /// </summary>
         /// <remarks>
-        /// Handlers registered with this event will be invoked on the 
-        /// <see cref="System.Threading.SynchronizationContext"/> chosen when the instance was constructed.
+        /// 注册到此事件的处理程序将在构造实例时选择的 
+        /// <see cref="System.Threading.SynchronizationContext"/> 上调用。
         /// </remarks>
         public event AccountsRecoveredEventHandler AccountsRecovered;
 
         /// <summary>
-        /// Reports recovered accounts from a client.
+        /// 报告从客户端恢复的账户。
         /// </summary>
-        /// <param name="accounts">The recovered accounts.</param>
-        /// <param name="clientIdentifier">A unique client identifier.</param>
+        /// <param name="accounts">已恢复的账户。</param>
+        /// <param name="clientIdentifier">唯一的客户端标识符。</param>
         private void OnAccountsRecovered(List<RecoveredAccount> accounts, string clientIdentifier)
         {
             SynchronizationContext.Post(d =>
@@ -49,9 +49,9 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PasswordRecoveryHandler"/> class using the given clients.
+        /// 使用给定客户端初始化 <see cref="PasswordRecoveryHandler"/> 类的新实例。
         /// </summary>
-        /// <param name="clients">The associated clients.</param>
+        /// <param name="clients">关联的客户端。</param>
         public PasswordRecoveryHandler(Client[] clients) : base(true)
         {
             _clients = clients;
@@ -75,7 +75,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Starts the account recovery with the associated clients.
+        /// 使用关联的客户端开始账户恢复。
         /// </summary>
         public void BeginAccountRecovery()
         {

@@ -7,27 +7,27 @@ namespace Quasar.Server.Utilities
     public class ListViewColumnSorter : IComparer
     {
         /// <summary>
-        /// Specifies the column to be sorted
+        /// 指定要排序的列
         /// </summary>
         private int _columnToSort;
 
         /// <summary>
-        /// Specifies the order in which to sort (i.e. 'Ascending').
+        /// 指定排序的顺序（即'升序'）。
         /// </summary>
         private SortOrder _orderOfSort;
 
         /// <summary>
-        /// Case insensitive comparer object
+        /// 不区分大小写的比较器对象
         /// </summary>
         private readonly CaseInsensitiveComparer _objectCompare;
 
         /// <summary>
-        /// Specifies if number or text comparision is needed
+        /// 指定是否需要数字或文本比较
         /// </summary>
         private bool _needNumberCompare;
 
         /// <summary>
-        /// Class constructor.  Initializes various elements
+        /// 类构造函数。初始化各种元素
         /// </summary>
         public ListViewColumnSorter()
         {
@@ -44,11 +44,11 @@ namespace Quasar.Server.Utilities
         }
 
         /// <summary>
-        /// This method is inherited from the IComparer interface.  It compares the two objects passed using a case insensitive comparison.
+        /// 此方法继承自IComparer接口。它使用不区分大小写的比较来比较传入的两个对象。
         /// </summary>
-        /// <param name="x">First object to be compared</param>
-        /// <param name="y">Second object to be compared</param>
-        /// <returns>The result of the comparison. "0" if equal, negative if 'x' is less than 'y' and positive if 'x' is greater than 'y'</returns>
+        /// <param name="x">要比较的第一个对象</param>
+        /// <param name="y">要比较的第二个对象</param>
+        /// <returns>比较结果。如果相等则为"0"，如果'x'小于'y'则为负数，如果'x'大于'y'则为正数</returns>
         public int Compare(object x, object y)
         {
             // Cast the objects to be compared to ListViewItem objects
@@ -112,7 +112,7 @@ namespace Quasar.Server.Utilities
         }
 
         /// <summary>
-        /// Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
+        /// 获取或设置应用排序操作的列号（默认为'0'）。
         /// </summary>
         public int SortColumn
         {
@@ -121,7 +121,7 @@ namespace Quasar.Server.Utilities
         }
 
         /// <summary>
-        /// Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
+        /// 获取或设置要应用的排序顺序（例如，'升序'或'降序'）。
         /// </summary>
         public SortOrder Order
         {
@@ -130,7 +130,7 @@ namespace Quasar.Server.Utilities
         }
 
         /// <summary>
-        /// Specifies if number or text comparision is needed.
+        /// 指定是否需要数字或文本比较。
         /// </summary>
         public bool NeedNumberCompare
         {

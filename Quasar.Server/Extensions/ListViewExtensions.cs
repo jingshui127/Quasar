@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Helpers;
+﻿﻿using Quasar.Common.Helpers;
 using Quasar.Server.Helper;
 using Quasar.Server.Utilities;
 using System;
@@ -12,9 +12,9 @@ namespace Quasar.Server.Extensions
         private static readonly IntPtr AUTOSIZE_USEHEADER = new IntPtr(-2);
 
         /// <summary>
-        /// Automatically determines the correct column size on the the given listview.
+        /// 自动确定给定列表视图上的正确列大小。
         /// </summary>
-        /// <param name="targetListView">The listview whose columns are to be autosized.</param>
+        /// <param name="targetListView">要自动调整列大小的列表视图。</param>
         public static void AutosizeColumns(this ListView targetListView)
         {
             if (PlatformHelper.RunningOnMono) return;
@@ -25,9 +25,9 @@ namespace Quasar.Server.Extensions
         }
 
         /// <summary>
-        /// Selects all items on the given listview.
+        /// 选择给定列表视图上的所有项目。
         /// </summary>
-        /// <param name="targetListView">The listview whose items are to be selected.</param>
+        /// <param name="targetListView">要选择项目的列表视图。</param>
         public static void SelectAllItems(this ListView targetListView)
         {
             NativeMethodsHelper.SetItemState(targetListView.Handle, -1, 2, 2);

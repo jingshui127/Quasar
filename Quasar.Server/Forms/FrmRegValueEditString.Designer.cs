@@ -1,4 +1,4 @@
-﻿namespace Quasar.Server.Forms
+﻿﻿namespace Quasar.Server.Forms
 {
     partial class FrmRegValueEditString
     {
@@ -46,7 +46,7 @@
             this.label1.Location = new System.Drawing.Point(9, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.Text = "Value name:";
+            this.label1.Text = "值名称:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // valueNameTxtBox
@@ -69,7 +69,7 @@
             this.label2.Location = new System.Drawing.Point(9, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.Text = "Value data:";
+            this.label2.Text = "值数据:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // valueDataTxtBox
@@ -90,7 +90,7 @@
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 2;
-            this.cancelButton.Text = "Cancel";
+            this.cancelButton.Text = "取消";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // okButton
@@ -100,7 +100,7 @@
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 1;
-            this.okButton.Text = "OK";
+            this.okButton.Text = "确定";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
@@ -125,7 +125,7 @@
             this.Name = "FrmRegValueEditString";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Edit String";
+            this.Text = "编辑字符串值";
             this.ResumeLayout(false);
             this.PerformLayout();
 

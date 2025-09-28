@@ -1,10 +1,10 @@
-﻿using System;
+﻿﻿using System;
 using System.Runtime.InteropServices;
 
 namespace Quasar.Common
 {
     /// <summary>
-    /// Provides access to Win32 API and Microsoft C Runtime Library (msvcrt.dll).
+    /// 提供对Win32 API和Microsoft C运行时库（msvcrt.dll）的访问。
     /// </summary>
     public class NativeMethods
     {

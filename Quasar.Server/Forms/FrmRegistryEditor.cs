@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -129,8 +129,8 @@ namespace Quasar.Server.Forms
             if (_connectClient.Value.AccountType != "Admin")
             {
                 MessageBox.Show(
-                    "The client software is not running as administrator and therefore some functionality like Update, Create, Open and Delete may not work properly!",
-                    "Alert!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    "客户端软件未以管理员身份运行，因此某些功能如更新、创建、打开和删除可能无法正常工作！",
+                    "警告！", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             this.Text = WindowHelper.GetWindowTitle("Registry Editor", _connectClient);
@@ -146,7 +146,7 @@ namespace Quasar.Server.Forms
         
         private void ShowErrorMessage(object sender, string errorMsg)
         {
-            MessageBox.Show(errorMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(errorMsg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #region TreeView helper functions
@@ -417,7 +417,7 @@ namespace Quasar.Server.Forms
                 {
                     if (e.Node.Parent.Nodes.ContainsKey(e.Label))
                     {
-                        MessageBox.Show("Invalid label. \nA node with that label already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("标签无效。\n具有该标签的节点已存在。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         e.Node.BeginEdit();
                     }
                     else
@@ -428,7 +428,7 @@ namespace Quasar.Server.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Invalid label. \nThe label cannot be blank.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("标签无效。\n标签不能为空。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     e.Node.BeginEdit();
                 }
             }
@@ -589,7 +589,7 @@ namespace Quasar.Server.Forms
                 {
                     if (lstRegistryValues.Items.ContainsKey(e.Label))
                     {
-                        MessageBox.Show("Invalid label. \nA node with that label already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("标签无效。\n具有该标签的节点已存在。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         lstRegistryValues.Items[index].BeginEdit();
                         return;
                     }
@@ -600,7 +600,7 @@ namespace Quasar.Server.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Invalid label. \nThe label cannot be blank.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("标签无效。\n标签不能为空。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     lstRegistryValues.Items[index].BeginEdit();
 
                 }

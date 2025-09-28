@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Video.Compression;
+﻿﻿using Quasar.Common.Video.Compression;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -41,11 +41,11 @@ namespace Quasar.Common.Video.Codecs
         private JpgCompression _jpgCompression;
 
         /// <summary>
-        /// Initialize a new instance of UnsafeStreamCodec class.
+        /// 初始化UnsafeStreamCodec类的新实例。
         /// </summary>
-        /// <param name="imageQuality">The quality to use between 0-100.</param>
-        /// <param name="monitor">The monitor used for the images.</param>
-        /// <param name="resolution">The resolution of the monitor.</param>
+        /// <param name="imageQuality">使用的质量，范围为0-100。</param>
+        /// <param name="monitor">用于图像的监视器。</param>
+        /// <param name="resolution">监视器的分辨率。</param>
         public UnsafeStreamCodec(int imageQuality, int monitor, Resolution resolution)
         {
             this.ImageQuality = imageQuality;

@@ -1,14 +1,14 @@
-﻿using Quasar.Common.Enums;
+﻿﻿using Quasar.Common.Enums;
 
 namespace Quasar.Common.Extensions
 {
     public static class StringExtensions
     {
         /// <summary>
-        /// Converts the file extension string to its <see cref="ContentType"/> representation.
+        /// 将文件扩展名字符串转换为其 <see cref="ContentType"/> 表示形式。
         /// </summary>
-        /// <param name="fileExtension">The file extension string.</param>
-        /// <returns>The <see cref="ContentType"/> representation of the file extension string.</returns>
+        /// <param name="fileExtension">文件扩展名字符串。</param>
+        /// <returns>文件扩展名字符串的 <see cref="ContentType"/> 表示形式。</returns>
         public static ContentType ToContentType(this string fileExtension)
         {
             switch (fileExtension.ToLower())

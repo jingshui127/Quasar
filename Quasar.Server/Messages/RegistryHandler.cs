@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+﻿﻿﻿using Microsoft.Win32;
 using Quasar.Common.Messages;
 using Quasar.Common.Models;
 using Quasar.Common.Networking;
@@ -7,12 +7,12 @@ using Quasar.Server.Networking;
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with the remote registry.
+    /// 处理与远程注册表交互的消息。
     /// </summary>
     public class RegistryHandler : MessageProcessorBase<string>
     {
         /// <summary>
-        /// The client which is associated with this registry handler.
+        /// 与此注册表处理器关联的客户端。
         /// </summary>
         private readonly Client _client;
 
@@ -35,10 +35,10 @@ namespace Quasar.Server.Messages
         public event ValueChangedEventHandler ValueChanged;
 
         /// <summary>
-        /// Reports initially received registry keys.
+        /// 报告最初接收的注册表键。
         /// </summary>
-        /// <param name="rootKey">The root registry key name.</param>
-        /// <param name="matches">The child registry keys.</param>
+        /// <param name="rootKey">根注册表键名称。</param>
+        /// <param name="matches">子注册表键。</param>
         private void OnKeysReceived(string rootKey, RegSeekerMatch[] matches)
         {
             SynchronizationContext.Post(t =>
@@ -49,10 +49,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Reports created registry keys.
+        /// 报告创建的注册表键。
         /// </summary>
-        /// <param name="parentPath">The registry key parent path.</param>
-        /// <param name="match">The created registry key.</param>
+        /// <param name="parentPath">注册表键父路径。</param>
+        /// <param name="match">创建的注册表键。</param>
         private void OnKeyCreated(string parentPath, RegSeekerMatch match)
         {
             SynchronizationContext.Post(t =>
@@ -63,10 +63,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Reports deleted registry keys.
+        /// 报告删除的注册表键。
         /// </summary>
-        /// <param name="parentPath">The registry key parent path.</param>
-        /// <param name="subKey">The registry sub key name.</param>
+        /// <param name="parentPath">注册表键父路径。</param>
+        /// <param name="subKey">注册表子键名称。</param>
         private void OnKeyDeleted(string parentPath, string subKey)
         {
             SynchronizationContext.Post(t =>
@@ -77,11 +77,11 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Reports renamed registry keys.
+        /// 报告重命名的注册表键。
         /// </summary>
-        /// <param name="parentPath">The registry key parent path.</param>
-        /// <param name="oldSubKey">The old registry sub key name.</param>
-        /// <param name="newSubKey">The new registry sub key name.</param>
+        /// <param name="parentPath">注册表键父路径。</param>
+        /// <param name="oldSubKey">旧注册表子键名称。</param>
+        /// <param name="newSubKey">新注册表子键名称。</param>
         private void OnKeyRenamed(string parentPath, string oldSubKey, string newSubKey)
         {
             SynchronizationContext.Post(t =>
@@ -92,10 +92,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Reports created registry values.
+        /// 报告创建的注册表值。
         /// </summary>
-        /// <param name="keyPath">The registry key path.</param>
-        /// <param name="value">The created value.</param>
+        /// <param name="keyPath">注册表键路径。</param>
+        /// <param name="value">创建的值。</param>
         private void OnValueCreated(string keyPath, RegValueData value)
         {
             SynchronizationContext.Post(t =>
@@ -106,10 +106,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Reports deleted registry values.
+        /// 报告删除的注册表值。
         /// </summary>
-        /// <param name="keyPath">The registry key path.</param>
-        /// <param name="valueName">The value name.</param>
+        /// <param name="keyPath">注册表键路径。</param>
+        /// <param name="valueName">值名称。</param>
         private void OnValueDeleted(string keyPath, string valueName)
         {
             SynchronizationContext.Post(t =>
@@ -120,11 +120,11 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Reports renamed registry values.
+        /// 报告重命名的注册表值。
         /// </summary>
-        /// <param name="keyPath">The registry key path.</param>
-        /// <param name="oldValueName">The old value name.</param>
-        /// <param name="newValueName">The new value name.</param>
+        /// <param name="keyPath">注册表键路径。</param>
+        /// <param name="oldValueName">旧值名称。</param>
+        /// <param name="newValueName">新值名称。</param>
         private void OnValueRenamed(string keyPath, string oldValueName, string newValueName)
         {
             SynchronizationContext.Post(t =>
@@ -135,10 +135,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Reports changed registry values.
+        /// 报告更改的注册表值。
         /// </summary>
-        /// <param name="keyPath">The registry key path.</param>
-        /// <param name="value">The new value.</param>
+        /// <param name="keyPath">注册表键路径。</param>
+        /// <param name="value">新值。</param>
         private void OnValueChanged(string keyPath, RegValueData value)
         {
             SynchronizationContext.Post(t =>
@@ -149,9 +149,9 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegistryHandler"/> class using the given client.
+        /// 使用给定客户端初始化 <see cref="RegistryHandler"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The associated client.</param>
+        /// <param name="client">关联的客户端。</param>
         public RegistryHandler(Client client) : base(true)
         {
             _client = client;
@@ -203,9 +203,9 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Loads the registry keys of a given root key.
+        /// 加载给定根键的注册表键。
         /// </summary>
-        /// <param name="rootKeyName">The root key name.</param>
+        /// <param name="rootKeyName">根键名称。</param>
         public void LoadRegistryKey(string rootKeyName)
         {
             _client.Send(new DoLoadRegistryKey
@@ -215,9 +215,9 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Creates a registry key at the given parent path.
+        /// 在给定父路径创建注册表键。
         /// </summary>
-        /// <param name="parentPath">The parent path.</param>
+        /// <param name="parentPath">父路径。</param>
         public void CreateRegistryKey(string parentPath)
         {
             _client.Send(new DoCreateRegistryKey
@@ -227,10 +227,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Deletes the given registry key.
+        /// 删除给定的注册表键。
         /// </summary>
-        /// <param name="parentPath">The parent path of the registry key to delete.</param>
-        /// <param name="keyName">The registry key name to delete.</param>
+        /// <param name="parentPath">要删除的注册表键的父路径。</param>
+        /// <param name="keyName">要删除的注册表键名称。</param>
         public void DeleteRegistryKey(string parentPath, string keyName)
         {
             _client.Send(new DoDeleteRegistryKey
@@ -241,11 +241,11 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Renames the given registry key.
+        /// 重命名给定的注册表键。
         /// </summary>
-        /// <param name="parentPath">The parent path of the registry key to rename.</param>
-        /// <param name="oldKeyName">The old name of the registry key.</param>
-        /// <param name="newKeyName">The new name of the registry key.</param>
+        /// <param name="parentPath">要重命名的注册表键的父路径。</param>
+        /// <param name="oldKeyName">注册表键的旧名称。</param>
+        /// <param name="newKeyName">注册表键的新名称。</param>
         public void RenameRegistryKey(string parentPath, string oldKeyName, string newKeyName)
         {
             _client.Send(new DoRenameRegistryKey
@@ -257,10 +257,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Creates a registry key value.
+        /// 创建注册表键值。
         /// </summary>
-        /// <param name="keyPath">The registry key path.</param>
-        /// <param name="kind">The kind of registry key value.</param>
+        /// <param name="keyPath">注册表键路径。</param>
+        /// <param name="kind">注册表键值的类型。</param>
         public void CreateRegistryValue(string keyPath, RegistryValueKind kind)
         {
             _client.Send(new DoCreateRegistryValue
@@ -271,10 +271,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Deletes the registry key value.
+        /// 删除注册表键值。
         /// </summary>
-        /// <param name="keyPath">The registry key path.</param>
-        /// <param name="valueName">The registry key value name to delete.</param>
+        /// <param name="keyPath">注册表键路径。</param>
+        /// <param name="valueName">要删除的注册表键值名称。</param>
         public void DeleteRegistryValue(string keyPath, string valueName)
         {
             _client.Send(new DoDeleteRegistryValue
@@ -285,11 +285,11 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Renames the registry key value.
+        /// 重命名注册表键值。
         /// </summary>
-        /// <param name="keyPath">The registry key path.</param>
-        /// <param name="oldValueName">The old registry key value name.</param>
-        /// <param name="newValueName">The new registry key value name.</param>
+        /// <param name="keyPath">注册表键路径。</param>
+        /// <param name="oldValueName">旧注册表键值名称。</param>
+        /// <param name="newValueName">新注册表键值名称。</param>
         public void RenameRegistryValue(string keyPath, string oldValueName, string newValueName)
         {
             _client.Send(new DoRenameRegistryValue
@@ -301,10 +301,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Changes the registry key value.
+        /// 更改注册表键值。
         /// </summary>
-        /// <param name="keyPath">The registry key path.</param>
-        /// <param name="value">The updated registry key value.</param>
+        /// <param name="keyPath">注册表键路径。</param>
+        /// <param name="value">更新的注册表键值。</param>
         public void ChangeRegistryValue(string keyPath, RegValueData value)
         {
             _client.Send(new DoChangeRegistryValue

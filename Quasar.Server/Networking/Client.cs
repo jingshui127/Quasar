@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Messages;
+﻿﻿﻿﻿using Quasar.Common.Messages;
 using Quasar.Common.Networking;
 using System;
 using System.Collections.Generic;
@@ -11,21 +11,21 @@ namespace Quasar.Server.Networking
     public class Client : IEquatable<Client>, ISender
     {
         /// <summary>
-        /// Occurs when the state of the client changes.
+        /// 当客户端状态更改时发生。
         /// </summary>
         public event ClientStateEventHandler ClientState;
 
         /// <summary>
-        /// Represents the method that will handle a change in a client's state.
+        /// 表示将处理客户端状态更改的方法。
         /// </summary>
-        /// <param name="s">The client which changed its state.</param>
-        /// <param name="connected">The new connection state of the client.</param>
+        /// <param name="s">更改状态的客户端。</param>
+        /// <param name="connected">客户端的新连接状态。</param>
         public delegate void ClientStateEventHandler(Client s, bool connected);
 
         /// <summary>
-        /// Fires an event that informs subscribers that the state of the client has changed.
+        /// 触发一个事件，通知订阅者客户端状态已更改。
         /// </summary>
-        /// <param name="connected">The new connection state of the client.</param>
+        /// <param name="connected">客户端的新连接状态。</param>
         private void OnClientState(bool connected)
         {
             if (Connected == connected) return;
@@ -37,24 +37,23 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Occurs when a message is received from the client.
+        /// 当从客户端接收到消息时发生。
         /// </summary>
         public event ClientReadEventHandler ClientRead;
 
         /// <summary>
-        /// Represents the method that will handle a message received from the client.
+        /// 表示将处理从客户端接收的消息的方法。
         /// </summary>
-        /// <param name="s">The client that has received the message.</param>
-        /// <param name="message">The message that received by the client.</param>
-        /// <param name="messageLength">The length of the message.</param>
+        /// <param name="s">接收消息的客户端。</param>
+        /// <param name="message">客户端接收的消息。</param>
+        /// <param name="messageLength">消息的长度。</param>
         public delegate void ClientReadEventHandler(Client s, IMessage message, int messageLength);
 
         /// <summary>
-        /// Fires an event that informs subscribers that a message has been
-        /// received from the client.
+        /// 触发一个事件，通知订阅者已从客户端接收到消息。
         /// </summary>
-        /// <param name="message">The message that received by the client.</param>
-        /// <param name="messageLength">The length of the message.</param>
+        /// <param name="message">客户端接收的消息。</param>
+        /// <param name="messageLength">消息的长度。</param>
         private void OnClientRead(IMessage message, int messageLength)
         {
             var handler = ClientRead;
@@ -62,23 +61,23 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Occurs when a message is sent by the client.
+        /// 当客户端发送消息时发生。
         /// </summary>
         public event ClientWriteEventHandler ClientWrite;
 
         /// <summary>
-        /// Represents the method that will handle the sent message.
+        /// 表示将处理发送消息的方法。
         /// </summary>
-        /// <param name="s">The client that has sent the message.</param>
-        /// <param name="message">The message that has been sent by the client.</param>
-        /// <param name="messageLength">The length of the message.</param>
+        /// <param name="s">发送消息的客户端。</param>
+        /// <param name="message">客户端发送的消息。</param>
+        /// <param name="messageLength">消息的长度。</param>
         public delegate void ClientWriteEventHandler(Client s, IMessage message, int messageLength);
 
         /// <summary>
-        /// Fires an event that informs subscribers that the client has sent a message.
+        /// 触发一个事件，通知订阅者客户端已发送消息。
         /// </summary>
-        /// <param name="message">The message that has been sent by the client.</param>
-        /// <param name="messageLength">The length of the message.</param>
+        /// <param name="message">客户端发送的消息。</param>
+        /// <param name="messageLength">消息的长度。</param>
         private void OnClientWrite(IMessage message, int messageLength)
         {
             var handler = ClientWrite;
@@ -99,10 +98,10 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Checks whether the clients are equal.
+        /// 检查客户端是否相等。
         /// </summary>
-        /// <param name="other">Client to compare with.</param>
-        /// <returns>True if equal, else False.</returns>
+        /// <param name="other">要比较的客户端。</param>
+        /// <returns>如果相等则为True，否则为False。</returns>
         public bool Equals(Client other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -125,16 +124,16 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Returns the hashcode for this instance.
+        /// 返回此实例的哈希码。
         /// </summary>
-        /// <returns>A hash code for the current instance.</returns>
+        /// <returns>当前实例的哈希码。</returns>
         public override int GetHashCode()
         {
             return this.EndPoint.GetHashCode();
         }  
 
         /// <summary>
-        /// The type of the message received.
+        /// 接收到的消息类型。
         /// </summary>
         public enum ReceiveType
         {
@@ -143,42 +142,42 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// The stream used for communication.
+        /// 用于通信的流。
         /// </summary>
         private readonly SslStream _stream;
 
         /// <summary>
-        /// The buffer pool to hold the receive-buffers for the clients.
+        /// 用于保存客户端接收缓冲区的缓冲池。
         /// </summary>
         private readonly BufferPool _bufferPool;
 
         /// <summary>
-        /// The queue which holds messages to send.
+        /// 保存要发送消息的队列。
         /// </summary>
         private readonly Queue<IMessage> _sendBuffers = new Queue<IMessage>();
 
         /// <summary>
-        /// Determines if the client is currently sending messages.
+        /// 确定客户端当前是否正在发送消息。
         /// </summary>
         private bool _sendingMessages;
 
         /// <summary>
-        /// Lock object for the sending messages boolean.
+        /// 发送消息布尔值的锁定对象。
         /// </summary>
         private readonly object _sendingMessagesLock = new object();
 
         /// <summary>
-        /// The queue which holds buffers to read.
+        /// 保存要读取缓冲区的队列。
         /// </summary>
         private readonly Queue<byte[]> _readBuffers = new Queue<byte[]>();
 
         /// <summary>
-        /// Determines if the client is currently reading messages.
+        /// 确定客户端当前是否正在读取消息。
         /// </summary>
         private bool _readingMessages;
 
         /// <summary>
-        /// Lock object for the reading messages boolean.
+        /// 读取消息布尔值的锁定对象。
         /// </summary>
         private readonly object _readingMessagesLock = new object();
 
@@ -190,52 +189,52 @@ namespace Quasar.Server.Networking
         private ReceiveType _receiveState = ReceiveType.Header;
 
         /// <summary>
-        /// The time when the client connected.
+        /// 客户端连接的时间。
         /// </summary>
         public DateTime ConnectedTime { get; }
 
         /// <summary>
-        /// The connection state of the client.
+        /// 客户端的连接状态。
         /// </summary>
         public bool Connected { get; private set; }
 
         /// <summary>
-        /// Determines if the client is identified.
+        /// 确定客户端是否已识别。
         /// </summary>
         public bool Identified { get; set; }
 
         /// <summary>
-        /// Stores values of the user.
+        /// 存储用户的值。
         /// </summary>
         public UserState Value { get; set; }
 
         /// <summary>
-        /// The Endpoint which the client is connected to.
+        /// 客户端连接的端点。
         /// </summary>
         public IPEndPoint EndPoint { get; }
 
         /// <summary>
-        /// The buffer for the client's incoming messages.
+        /// 客户端传入消息的缓冲区。
         /// </summary>
         private readonly byte[] _readBuffer;
 
         /// <summary>
-        /// The buffer for the client's incoming payload.
+        /// 客户端传入有效载荷的缓冲区。
         /// </summary>
         private byte[] _payloadBuffer;
 
         /// <summary>
-        /// The header size in bytes.
+        /// 头部大小（以字节为单位）。
         /// </summary>
         private const int HeaderSize = 4;  // 4 B
 
         /// <summary>
-        /// The maximum size of a message in bytes.
+        /// 消息的最大大小（以字节为单位）。
         /// </summary>
         private const int MaxMessageSize = (1024 * 1024) * 5; // 5 MB
 
         /// <summary>
-        /// The mutex prevents multiple simultaneous write operations on the <see cref="_stream"/>.
+        /// 互斥锁防止在<see cref="_stream"/>上进行多个同时写入操作。
         /// </summary>
         private readonly Mutex _singleWriteMutex = new Mutex();
 
@@ -462,10 +461,10 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Sends a message to the connected client.
+        /// 向连接的客户端发送消息。
         /// </summary>
-        /// <typeparam name="T">The type of the message.</typeparam>
-        /// <param name="message">The message to be sent.</param>
+        /// <typeparam name="T">消息的类型。</typeparam>
+        /// <param name="message">要发送的消息。</param>
         public void Send<T>(T message) where T : IMessage
         {
             if (!Connected || message == null) return;
@@ -485,11 +484,11 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Sends a message to the connected client.
-        /// Blocks the thread until the message has been sent.
+        /// 向连接的客户端发送消息。
+        /// 阻塞线程直到消息发送完毕。
         /// </summary>
-        /// <typeparam name="T">The type of the message.</typeparam>
-        /// <param name="message">The message to be sent.</param>
+        /// <typeparam name="T">消息的类型。</typeparam>
+        /// <param name="message">要发送的消息。</param>
         public void SendBlocking<T>(T message) where T : IMessage
         {
             if (!Connected || message == null) return;
@@ -498,10 +497,10 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Safely sends a message and prevents multiple simultaneous
-        /// write operations on the <see cref="_stream"/>.
+        /// 安全地发送消息并防止在<see cref="_stream"/>上进行多个同时
+        /// 写入操作。
         /// </summary>
-        /// <param name="message">The message to send.</param>
+        /// <param name="message">要发送的消息。</param>
         private void SafeSendMessage(IMessage message)
         {
             try
@@ -565,8 +564,8 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Disconnect the client from the server and dispose of
-        /// resources associated with the client.
+        /// 断开客户端与服务器的连接并释放
+        /// 与客户端关联的资源。
         /// </summary>
         public void Disconnect()
         {

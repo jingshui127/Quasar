@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Utilities;
+﻿﻿using Quasar.Common.Utilities;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -7,25 +7,25 @@ namespace Quasar.Common.Helpers
     public static class StringHelper
     {
         /// <summary>
-        /// Available alphabet for generation of random strings.
+        /// 用于生成随机字符串的可用字母表。
         /// </summary>
         private const string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
         /// <summary>
-        /// Abbreviations of file sizes.
+        /// 文件大小的缩写。
         /// </summary>
         private static readonly string[] Sizes = { "B", "KB", "MB", "GB", "TB", "PB" };
 
         /// <summary>
-        /// Random number generator.
+        /// 随机数生成器。
         /// </summary>
         private static readonly SafeRandom Random = new SafeRandom();
 
         /// <summary>
-        /// Gets a random string with given length.
+        /// 获取指定长度的随机字符串。
         /// </summary>
-        /// <param name="length">The length of the random string.</param>
-        /// <returns>A random string.</returns>
+        /// <param name="length">随机字符串的长度。</param>
+        /// <returns>随机字符串。</returns>
         public static string GetRandomString(int length)
         {
             StringBuilder randomName = new StringBuilder(length);
@@ -36,10 +36,10 @@ namespace Quasar.Common.Helpers
         }
 
         /// <summary>
-        /// Gets the human readable file size for a given size.
+        /// 获取给定大小的人类可读文件大小。
         /// </summary>
-        /// <param name="size">The file size in bytes.</param>
-        /// <returns>The human readable file size.</returns>
+        /// <param name="size">以字节为单位的文件大小。</param>
+        /// <returns>人类可读的文件大小。</returns>
         public static string GetHumanReadableFileSize(long size)
         {
             double len = size;
@@ -53,10 +53,10 @@ namespace Quasar.Common.Helpers
         }
 
         /// <summary>
-        /// Gets the formatted MAC address.
+        /// 获取格式化的MAC地址。
         /// </summary>
-        /// <param name="macAddress">The unformatted MAC address.</param>
-        /// <returns>The formatted MAC address.</returns>
+        /// <param name="macAddress">未格式化的MAC地址。</param>
+        /// <returns>格式化的MAC地址。</returns>
         public static string GetFormattedMacAddress(string macAddress)
         {
             return (macAddress.Length != 12)
@@ -65,11 +65,11 @@ namespace Quasar.Common.Helpers
         }
 
         /// <summary>
-        /// Safely removes the last N chars from a string.
+        /// 安全地从字符串中移除最后N个字符。
         /// </summary>
-        /// <param name="input">The input string.</param>
-        /// <param name="amount">The amount of last chars to remove (=N).</param>
-        /// <returns>The input string with N removed chars.</returns>
+        /// <param name="input">输入字符串。</param>
+        /// <param name="amount">要移除的最后字符数量（=N）。</param>
+        /// <returns>移除了N个字符的输入字符串。</returns>
         public static string RemoveLastChars(string input, int amount = 2)
         {
             if (input.Length > amount)

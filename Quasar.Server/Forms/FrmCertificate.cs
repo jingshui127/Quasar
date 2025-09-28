@@ -1,4 +1,4 @@
-﻿using Quasar.Server.Helper;
+﻿﻿﻿using Quasar.Server.Helper;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -45,7 +45,7 @@ namespace Quasar.Server.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(this, $"Error importing the certificate:\n{ex.Message}", "Save error",
+                        MessageBox.Show(this, $"导入证书时出错:\n{ex.Message}", "保存错误",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -65,8 +65,8 @@ namespace Quasar.Server.Forms
                 File.WriteAllBytes(Settings.CertificatePath, _certificate.Export(X509ContentType.Pkcs12));
 
                 MessageBox.Show(this,
-                    "Please backup the certificate now. Loss of the certificate results in loosing all clients!",
-                    "Certificate backup", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "请立即备份证书。证书丢失将导致失去所有客户端！",
+                    "证书备份", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 string argument = "/select, \"" + Settings.CertificatePath + "\"";
                 Process.Start("explorer.exe", argument);
@@ -75,20 +75,20 @@ namespace Quasar.Server.Forms
             }
             catch (ArgumentNullException)
             {
-                MessageBox.Show(this, "Please create or import a certificate first.", "Save error",
+                MessageBox.Show(this, "请先创建或导入证书。", "保存错误",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArgumentException)
             {
                 MessageBox.Show(this,
-                    "The imported certificate has no associated private key. Please import a different certificate.",
-                    "Save error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    "导入的证书没有关联的私钥。请导入其他证书。",
+                    "保存错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
                 MessageBox.Show(this,
-                    "There was an error saving the certificate, please make sure you have write access to the Quasar directory.",
-                    "Save error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    "保存证书时出错，请确保您对Quasar目录具有写入权限。",
+                    "保存错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

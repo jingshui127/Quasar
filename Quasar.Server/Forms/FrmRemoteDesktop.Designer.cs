@@ -1,4 +1,4 @@
-﻿using Quasar.Server.Controls;
+﻿﻿﻿using Quasar.Server.Controls;
 
 namespace Quasar.Server.Forms
 {
@@ -57,7 +57,7 @@ namespace Quasar.Server.Forms
             this.btnStart.Size = new System.Drawing.Size(68, 23);
             this.btnStart.TabIndex = 1;
             this.btnStart.TabStop = false;
-            this.btnStart.Text = "Start";
+            this.btnStart.Text = "开始";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
@@ -69,7 +69,7 @@ namespace Quasar.Server.Forms
             this.btnStop.Size = new System.Drawing.Size(68, 23);
             this.btnStop.TabIndex = 2;
             this.btnStop.TabStop = false;
-            this.btnStop.Text = "Stop";
+            this.btnStop.Text = "停止";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
@@ -92,7 +92,7 @@ namespace Quasar.Server.Forms
             this.lblQuality.Name = "lblQuality";
             this.lblQuality.Size = new System.Drawing.Size(46, 13);
             this.lblQuality.TabIndex = 4;
-            this.lblQuality.Text = "Quality:";
+            this.lblQuality.Text = "质量:";
             // 
             // lblQualityShow
             // 
@@ -101,7 +101,7 @@ namespace Quasar.Server.Forms
             this.lblQualityShow.Name = "lblQualityShow";
             this.lblQualityShow.Size = new System.Drawing.Size(52, 13);
             this.lblQualityShow.TabIndex = 5;
-            this.lblQualityShow.Text = "75 (high)";
+            this.lblQualityShow.Text = "75 (高)";
             // 
             // btnMouse
             // 
@@ -111,7 +111,7 @@ namespace Quasar.Server.Forms
             this.btnMouse.Size = new System.Drawing.Size(28, 28);
             this.btnMouse.TabIndex = 6;
             this.btnMouse.TabStop = false;
-            this.toolTipButtons.SetToolTip(this.btnMouse, "Enable mouse input.");
+            this.toolTipButtons.SetToolTip(this.btnMouse, "启用鼠标输入。");
             this.btnMouse.UseVisualStyleBackColor = true;
             this.btnMouse.Click += new System.EventHandler(this.btnMouse_Click);
             // 
@@ -140,7 +140,7 @@ namespace Quasar.Server.Forms
             this.btnKeyboard.Size = new System.Drawing.Size(28, 28);
             this.btnKeyboard.TabIndex = 9;
             this.btnKeyboard.TabStop = false;
-            this.toolTipButtons.SetToolTip(this.btnKeyboard, "Enable keyboard input.");
+            this.toolTipButtons.SetToolTip(this.btnKeyboard, "启用键盘输入。");
             this.btnKeyboard.UseVisualStyleBackColor = true;
             this.btnKeyboard.Click += new System.EventHandler(this.btnKeyboard_Click);
             // 
@@ -161,7 +161,7 @@ namespace Quasar.Server.Forms
             this.btnHide.Size = new System.Drawing.Size(54, 19);
             this.btnHide.TabIndex = 7;
             this.btnHide.TabStop = false;
-            this.btnHide.Text = "Hide";
+            this.btnHide.Text = "隐藏";
             this.btnHide.UseVisualStyleBackColor = true;
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
             // 
@@ -172,7 +172,7 @@ namespace Quasar.Server.Forms
             this.btnShow.Size = new System.Drawing.Size(54, 19);
             this.btnShow.TabIndex = 8;
             this.btnShow.TabStop = false;
-            this.btnShow.Text = "Show";
+            this.btnShow.Text = "显示";
             this.btnShow.UseVisualStyleBackColor = true;
             this.btnShow.Visible = false;
             this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
@@ -209,7 +209,7 @@ namespace Quasar.Server.Forms
             this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "FrmRemoteDesktop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Remote Desktop []";
+            this.Text = "远程桌面 []";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmRemoteDesktop_FormClosing);
             this.Load += new System.EventHandler(this.FrmRemoteDesktop_Load);
             this.Resize += new System.EventHandler(this.FrmRemoteDesktop_Resize);

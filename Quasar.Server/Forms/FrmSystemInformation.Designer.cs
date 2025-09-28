@@ -1,4 +1,4 @@
-﻿using Quasar.Server.Controls;
+﻿﻿﻿﻿using Quasar.Server.Controls;
 
 namespace Quasar.Server.Forms
 {
@@ -64,12 +64,12 @@ namespace Quasar.Server.Forms
             // 
             // hComponent
             // 
-            this.hComponent.Text = "Component";
+            this.hComponent.Text = "组件";
             this.hComponent.Width = 172;
             // 
             // hValue
             // 
-            this.hValue.Text = "Value";
+            this.hValue.Text = "值";
             this.hValue.Width = 321;
             // 
             // contextMenuStrip
@@ -89,20 +89,20 @@ namespace Quasar.Server.Forms
             this.copyToClipboardToolStripMenuItem.Image = global::Quasar.Server.Properties.Resources.page_copy;
             this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
             this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.copyToClipboardToolStripMenuItem.Text = "Copy to Clipboard";
+            this.copyToClipboardToolStripMenuItem.Text = "复制到剪贴板";
             // 
             // copyAllToolStripMenuItem
             // 
             this.copyAllToolStripMenuItem.Name = "copyAllToolStripMenuItem";
             this.copyAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copyAllToolStripMenuItem.Text = "All";
+            this.copyAllToolStripMenuItem.Text = "全部";
             this.copyAllToolStripMenuItem.Click += new System.EventHandler(this.copyAllToolStripMenuItem_Click);
             // 
             // copySelectedToolStripMenuItem
             // 
             this.copySelectedToolStripMenuItem.Name = "copySelectedToolStripMenuItem";
             this.copySelectedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copySelectedToolStripMenuItem.Text = "Selected";
+            this.copySelectedToolStripMenuItem.Text = "选中项";
             this.copySelectedToolStripMenuItem.Click += new System.EventHandler(this.copySelectedToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
@@ -115,7 +115,7 @@ namespace Quasar.Server.Forms
             this.refreshToolStripMenuItem.Image = global::Quasar.Server.Properties.Resources.refresh;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Text = "刷新";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // FrmSystemInformation
@@ -129,7 +129,7 @@ namespace Quasar.Server.Forms
             this.MinimumSize = new System.Drawing.Size(576, 373);
             this.Name = "FrmSystemInformation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "System Information []";
+            this.Text = "系统信息 []";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSystemInformation_FormClosing);
             this.Load += new System.EventHandler(this.FrmSystemInformation_Load);
             this.contextMenuStrip.ResumeLayout(false);

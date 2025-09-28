@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Enums;
+﻿﻿using Quasar.Common.Enums;
 using Quasar.Common.Messages;
 using Quasar.Common.Networking;
 using System;
@@ -33,25 +33,25 @@ namespace Quasar.Client.Messages
                     case ShutdownAction.Shutdown:
                         startInfo.WindowStyle = ProcessWindowStyle.Hidden;
                         startInfo.UseShellExecute = true;
-                        startInfo.Arguments = "/s /t 0"; // shutdown
+                        startInfo.Arguments = "/s /t 0"; // 关机
                         startInfo.FileName = "shutdown";
                         Process.Start(startInfo);
                         break;
                     case ShutdownAction.Restart:
                         startInfo.WindowStyle = ProcessWindowStyle.Hidden;
                         startInfo.UseShellExecute = true;
-                        startInfo.Arguments = "/r /t 0"; // restart
+                        startInfo.Arguments = "/r /t 0"; // 重启
                         startInfo.FileName = "shutdown";
                         Process.Start(startInfo);
                         break;
                     case ShutdownAction.Standby:
-                        Application.SetSuspendState(PowerState.Suspend, true, true); // standby
+                        Application.SetSuspendState(PowerState.Suspend, true, true); // 待机
                         break;
                 }
             }
             catch (Exception ex)
             {
-                client.Send(new SetStatus { Message = $"Action failed: {ex.Message}" });
+                client.Send(new SetStatus { Message = $"操作失败: {ex.Message}" });
             }
         }
     }

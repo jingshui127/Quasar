@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Messages;
+﻿﻿using Quasar.Common.Messages;
 using Quasar.Common.Networking;
 using System;
 using System.Threading;
@@ -26,14 +26,14 @@ namespace Quasar.Client.Messages
         {
             new Thread(() =>
             {
-                // messagebox thread resides in csrss.exe - wtf?
+                // 消息框线程驻留在 csrss.exe 中 - 什么鬼？
                 MessageBox.Show(message.Text, message.Caption,
                     (MessageBoxButtons)Enum.Parse(typeof(MessageBoxButtons), message.Button),
                     (MessageBoxIcon)Enum.Parse(typeof(MessageBoxIcon), message.Icon),
                     MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
             }) {IsBackground = true}.Start();
 
-            client.Send(new SetStatus { Message = "Successfully displayed MessageBox" });
+            client.Send(new SetStatus { Message = "成功显示消息框" });
         }
     }
 }

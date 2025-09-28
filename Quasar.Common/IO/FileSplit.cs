@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Models;
+﻿﻿using Quasar.Common.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,30 +9,30 @@ namespace Quasar.Common.IO
     public class FileSplit : IEnumerable<FileChunk>, IDisposable
     {
         /// <summary>
-        /// The maximum size per file chunk.
+        /// 每个文件块的最大大小。
         /// </summary>
         public readonly int MaxChunkSize = 65535;
 
         /// <summary>
-        /// The file path of the opened file.
+        /// 打开文件的文件路径。
         /// </summary>
         public string FilePath => _fileStream.Name;
 
         /// <summary>
-        /// The file size of the opened file.
+        /// 打开文件的文件大小。
         /// </summary>
         public long FileSize => _fileStream.Length;
 
         /// <summary>
-        /// The file stream of the opened file.
+        /// 打开文件的文件流。
         /// </summary>
         private readonly FileStream _fileStream;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileSplit"/> class using the given file path and access mode.
+        /// 使用给定的文件路径和访问模式初始化 <see cref="FileSplit"/> 类的新实例。
         /// </summary>
-        /// <param name="filePath">The path to the file to open.</param>
-        /// <param name="fileAccess">The file access mode for opening the file. Allowed are <see cref="FileAccess.Read"/> and <see cref="FileAccess.Write"/>.</param>
+        /// <param name="filePath">要打开的文件路径。</param>
+        /// <param name="fileAccess">打开文件的文件访问模式。允许使用 <see cref="FileAccess.Read"/> 和 <see cref="FileAccess.Write"/>。</param>
         public FileSplit(string filePath, FileAccess fileAccess)
         {
             switch (fileAccess)
@@ -49,7 +49,7 @@ namespace Quasar.Common.IO
         }
 
         /// <summary>
-        /// Writes a chunk to the file. In other words.
+        /// 将一个块写入文件。
         /// </summary>
         /// <param name="chunk"></param>
         public void WriteChunk(FileChunk chunk)
@@ -59,14 +59,13 @@ namespace Quasar.Common.IO
         }
 
         /// <summary>
-        /// Reads a chunk of the file.
+        /// 读取文件的一个块。
         /// </summary>
-        /// <param name="offset">Offset of the file, must be a multiple of <see cref="MaxChunkSize"/> for proper reconstruction.</param>
-        /// <returns>The read file chunk at the given offset.</returns>
+        /// <param name="offset">文件的偏移量，必须是 <see cref="MaxChunkSize"/> 的倍数才能正确重建。</param>
+        /// <returns>在给定偏移量处读取的文件块。</returns>
         /// <remarks>
-        /// The returned file chunk can be smaller than <see cref="MaxChunkSize"/> iff the
-        /// remaining file size from the offset is smaller than <see cref="MaxChunkSize"/>,
-        /// then the remaining file size is used.
+        /// 如果从偏移量开始的剩余文件大小小于 <see cref="MaxChunkSize"/>，则返回的文件块可能小于 <see cref="MaxChunkSize"/>，
+        /// 此时使用剩余文件大小。
         /// </remarks>
         public FileChunk ReadChunk(long offset)
         {
@@ -87,9 +86,9 @@ namespace Quasar.Common.IO
         }
 
         /// <summary>
-        /// Returns an enumerator that iterates through the file chunks.
+        /// 返回一个枚举器，用于遍历文件块。
         /// </summary>
-        /// <returns>An <see cref="IEnumerator"/> object that can be used to iterate through the file chunks.</returns>
+        /// <returns>一个 <see cref="IEnumerator"/> 对象，可用于遍历文件块。</returns>
         public IEnumerator<FileChunk> GetEnumerator()
         {
             for (long currentChunk = 0; currentChunk <= _fileStream.Length / MaxChunkSize; currentChunk++)
@@ -113,7 +112,7 @@ namespace Quasar.Common.IO
         }
 
         /// <summary>
-        /// Disposes all managed and unmanaged resources associated with this class.
+        /// 释放与此类关联的所有托管和非托管资源。
         /// </summary>
         public void Dispose()
         {

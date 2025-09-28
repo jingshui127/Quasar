@@ -1,27 +1,27 @@
-﻿using System.Net;
+﻿﻿using System.Net;
 
 namespace Quasar.Common.DNS
 {
     public class Host
     {
         /// <summary>
-        /// Stores the hostname of the Host.
+        /// 存储主机的主机名。
         /// </summary>
         /// <remarks>
-        /// Can be an IPv4, IPv6 address or hostname.
+        /// 可以是IPv4、IPv6地址或主机名。
         /// </remarks>
         public string Hostname { get; set; }
 
         /// <summary>
-        /// Stores the IP address of host. 
+        /// 存储主机的IP地址。
         /// </summary>
         /// <remarks>
-        /// Can be an IPv4 or IPv6 address.
+        /// 可以是IPv4或IPv6地址。
         /// </remarks>
         public IPAddress IpAddress { get; set; }
 
         /// <summary>
-        /// Stores the port of the Host.
+        /// 存储主机的端口。
         /// </summary>
         public ushort Port { get; set; }
 

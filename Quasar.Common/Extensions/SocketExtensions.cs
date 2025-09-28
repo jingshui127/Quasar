@@ -1,18 +1,18 @@
-﻿using System;
+﻿﻿using System;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
 namespace Quasar.Common.Extensions
 {
     /// <summary>
-    /// Socket Extension for KeepAlive
+    /// Socket KeepAlive 扩展
     /// </summary>
     /// <Author>Abdullah Saleem</Author>
     /// <Email>a.saleem2993@gmail.com</Email>
     public static class SocketExtensions
     {
         /// <summary>
-        ///     A structure used by SetKeepAliveEx Method
+        ///     SetKeepAliveEx 方法使用的结构
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         internal struct TcpKeepAlive
@@ -23,11 +23,11 @@ namespace Quasar.Common.Extensions
         };
 
         /// <summary>
-        ///     Sets the Keep-Alive values for the current tcp connection
+        ///     为当前TCP连接设置Keep-Alive值
         /// </summary>
-        /// <param name="socket">Current socket instance</param>
-        /// <param name="keepAliveInterval">Specifies how often TCP repeats keep-alive transmissions when no response is received. TCP sends keep-alive transmissions to verify that idle connections are still active. This prevents TCP from inadvertently disconnecting active lines.</param>
-        /// <param name="keepAliveTime">Specifies how often TCP sends keep-alive transmissions. TCP sends keep-alive transmissions to verify that an idle connection is still active. This entry is used when the remote system is responding to TCP. Otherwise, the interval between transmissions is determined by the value of the keepAliveInterval entry.</param>
+        /// <param name="socket">当前socket实例</param>
+        /// <param name="keepAliveInterval">指定当没有收到响应时TCP重复发送keep-alive传输的频率。TCP发送keep-alive传输以验证空闲连接是否仍然活跃。这可以防止TCP意外断开活动线路。</param>
+        /// <param name="keepAliveTime">指定TCP发送keep-alive传输的频率。TCP发送keep-alive传输以验证空闲连接是否仍然活跃。当远程系统响应TCP时使用此条目。否则，传输间隔由keepAliveInterval条目的值确定。</param>
         public static void SetKeepAliveEx(this Socket socket, uint keepAliveInterval, uint keepAliveTime)
         {
             var keepAlive = new TcpKeepAlive

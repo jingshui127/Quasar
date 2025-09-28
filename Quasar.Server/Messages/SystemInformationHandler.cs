@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Messages;
+﻿﻿using Quasar.Common.Messages;
 using Quasar.Common.Networking;
 using Quasar.Server.Networking;
 using System;
@@ -7,19 +7,19 @@ using System.Collections.Generic;
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with the remote system information.
+    /// 处理与远程系统信息交互的消息。
     /// </summary>
     public class SystemInformationHandler : MessageProcessorBase<List<Tuple<string, string>>>
     {
         /// <summary>
-        /// The client which is associated with this system information handler.
+        /// 与此系统信息处理器关联的客户端。
         /// </summary>
         private readonly Client _client;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SystemInformationHandler"/> class using the given client.
+        /// 使用给定客户端初始化 <see cref="SystemInformationHandler"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The associated client.</param>
+        /// <param name="client">关联的客户端。</param>
         public SystemInformationHandler(Client client) : base(true)
         {
             _client = client;
@@ -43,7 +43,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Refreshes the system information of the client.
+        /// 刷新客户端的系统信息。
         /// </summary>
         public void RefreshSystemInformation()
         {

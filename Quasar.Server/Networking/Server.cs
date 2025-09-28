@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Extensions;
+﻿﻿﻿﻿using Quasar.Common.Extensions;
 using Quasar.Common.Messages;
 using System;
 using System.Collections.Generic;
@@ -14,22 +14,22 @@ namespace Quasar.Server.Networking
     public class Server
     {
         /// <summary>
-        /// Occurs when the state of the server changes.
+        /// 当服务器状态更改时发生。
         /// </summary>
         public event ServerStateEventHandler ServerState;
 
         /// <summary>
-        /// Represents a method that will handle a change in the server's state.
+        /// 表示将处理服务器状态更改的方法。
         /// </summary>
-        /// <param name="s">The server which changed its state.</param>
-        /// <param name="listening">The new listening state of the server.</param>
-        /// <param name="port">The port the server is listening on, if listening is True.</param>
+        /// <param name="s">更改状态的服务器。</param>
+        /// <param name="listening">服务器的新监听状态。</param>
+        /// <param name="port">服务器监听的端口，如果listening为True。</param>
         public delegate void ServerStateEventHandler(Server s, bool listening, ushort port);
 
         /// <summary>
-        /// Fires an event that informs subscribers that the server has changed it's state.
+        /// 触发一个事件，通知订阅者服务器已更改其状态。
         /// </summary>
-        /// <param name="listening">The new listening state of the server.</param>
+        /// <param name="listening">服务器的新监听状态。</param>
         private void OnServerState(bool listening)
         {
             if (Listening == listening) return;
@@ -41,23 +41,23 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Occurs when the state of a client changes.
+        /// 当客户端状态更改时发生。
         /// </summary>
         public event ClientStateEventHandler ClientState;
 
         /// <summary>
-        /// Represents a method that will handle a change in a client's state.
+        /// 表示将处理客户端状态更改的方法。
         /// </summary>
-        /// <param name="s">The server, the client is connected to.</param>
-        /// <param name="c">The client which changed its state.</param>
-        /// <param name="connected">The new connection state of the client.</param>
+        /// <param name="s">客户端连接的服务器。</param>
+        /// <param name="c">更改状态的客户端。</param>
+        /// <param name="connected">客户端的新连接状态。</param>
         public delegate void ClientStateEventHandler(Server s, Client c, bool connected);
 
         /// <summary>
-        /// Fires an event that informs subscribers that a client has changed its state.
+        /// 触发一个事件，通知订阅者客户端已更改其状态。
         /// </summary>
-        /// <param name="c">The client which changed its state.</param>
-        /// <param name="connected">The new connection state of the client.</param>
+        /// <param name="c">更改状态的客户端。</param>
+        /// <param name="connected">客户端的新连接状态。</param>
         private void OnClientState(Client c, bool connected)
         {
             if (!connected)
@@ -68,25 +68,24 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Occurs when a message is received by a client.
+        /// 当客户端接收到消息时发生。
         /// </summary>
         public event ClientReadEventHandler ClientRead;
 
         /// <summary>
-        /// Represents a method that will handle a message received from a client.
+        /// 表示将处理从客户端接收消息的方法。
         /// </summary>
-        /// <param name="s">The server, the client is connected to.</param>
-        /// <param name="c">The client that has received the message.</param>
-        /// <param name="message">The message that received by the client.</param>
+        /// <param name="s">客户端连接的服务器。</param>
+        /// <param name="c">接收消息的客户端。</param>
+        /// <param name="message">客户端接收的消息。</param>
         public delegate void ClientReadEventHandler(Server s, Client c, IMessage message);
 
         /// <summary>
-        /// Fires an event that informs subscribers that a message has been
-        /// received from the client.
+        /// 触发一个事件，通知订阅者已从客户端接收到消息。
         /// </summary>
-        /// <param name="c">The client that has received the message.</param>
-        /// <param name="message">The message that received by the client.</param>
-        /// <param name="messageLength">The length of the message.</param>
+        /// <param name="c">接收消息的客户端。</param>
+        /// <param name="message">客户端接收的消息。</param>
+        /// <param name="messageLength">消息的长度。</param>
         private void OnClientRead(Client c, IMessage message, int messageLength)
         {
             BytesReceived += messageLength;
@@ -95,24 +94,24 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Occurs when a message is sent by a client.
+        /// 当客户端发送消息时发生。
         /// </summary>
         public event ClientWriteEventHandler ClientWrite;
 
         /// <summary>
-        /// Represents the method that will handle the sent message by a client.
+        /// 表示将处理客户端发送消息的方法。
         /// </summary>
-        /// <param name="s">The server, the client is connected to.</param>
-        /// <param name="c">The client that has sent the message.</param>
-        /// <param name="message">The message that has been sent by the client.</param>
+        /// <param name="s">客户端连接的服务器。</param>
+        /// <param name="c">发送消息的客户端。</param>
+        /// <param name="message">客户端发送的消息。</param>
         public delegate void ClientWriteEventHandler(Server s, Client c, IMessage message);
 
         /// <summary>
-        /// Fires an event that informs subscribers that the client has sent a message.
+        /// 触发一个事件，通知订阅者客户端已发送消息。
         /// </summary>
-        /// <param name="c">The client that has sent the message.</param>
-        /// <param name="message">The message that has been sent by the client.</param>
-        /// <param name="messageLength">The length of the message.</param>
+        /// <param name="c">发送消息的客户端。</param>
+        /// <param name="message">客户端发送的消息。</param>
+        /// <param name="messageLength">消息的长度。</param>
         private void OnClientWrite(Client c, IMessage message, int messageLength)
         {
             BytesSent += messageLength;
@@ -121,47 +120,47 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// The port on which the server is listening.
+        /// 服务器监听的端口。
         /// </summary>
         public ushort Port { get; private set; }
 
         /// <summary>
-        /// The total amount of received bytes.
+        /// 接收的总字节数。
         /// </summary>
         public long BytesReceived { get; set; }
 
         /// <summary>
-        /// The total amount of sent bytes.
+        /// 发送的总字节数。
         /// </summary>
         public long BytesSent { get; set; }
 
         /// <summary>
-        /// The buffer size for receiving data in bytes.
+        /// 接收数据的缓冲区大小（以字节为单位）。
         /// </summary>
         private const int BufferSize = 1024 * 16; // 16 KB
 
         /// <summary>
-        /// The keep-alive time in ms.
+        /// 保持活动状态的时间（以毫秒为单位）。
         /// </summary>
         private const uint KeepAliveTime = 25000; // 25 s
 
         /// <summary>
-        /// The keep-alive interval in ms.
+        /// 保持活动状态的间隔（以毫秒为单位）。
         /// </summary>
         private const uint KeepAliveInterval = 25000; // 25 s
 
         /// <summary>
-        /// The buffer pool to hold the receive-buffers for the clients.
+        /// 用于保存客户端接收缓冲区的缓冲池。
         /// </summary>
         private readonly BufferPool _bufferPool = new BufferPool(BufferSize, 1) { ClearOnReturn = false };
 
         /// <summary>
-        /// The listening state of the server. True if listening, else False.
+        /// 服务器的监听状态。如果正在监听则为True，否则为False。
         /// </summary>
         public bool Listening { get; private set; }
 
         /// <summary>
-        /// Gets the clients currently connected to the server.
+        /// 获取当前连接到服务器的客户端。
         /// </summary>
         protected Client[] Clients
         {
@@ -175,44 +174,44 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Handle of the Server Socket.
+        /// 服务器套接字的句柄。
         /// </summary>
         private Socket _handle;
 
         /// <summary>
-        /// The server certificate.
+        /// 服务器证书。
         /// </summary>
         protected readonly X509Certificate2 ServerCertificate;
 
         /// <summary>
-        /// The event to accept new connections asynchronously.
+        /// 异步接受新连接的事件。
         /// </summary>
         private SocketAsyncEventArgs _item;
 
         /// <summary>
-        /// List of the clients connected to the server.
+        /// 连接到服务器的客户端列表。
         /// </summary>
         private readonly List<Client> _clients = new List<Client>();
 
         /// <summary>
-        /// The UPnP service used to discover, create and delete port mappings.
+        /// 用于发现、创建和删除端口映射的UPnP服务。
         /// </summary>
         private UPnPService _UPnPService;
 
         /// <summary>
-        /// Lock object for the list of clients.
+        /// 客户端列表的锁定对象。
         /// </summary>
         private readonly object _clientsLock = new object();
 
         /// <summary>
-        /// Determines if the server is currently processing Disconnect method. 
+        /// 确定服务器当前是否正在处理Disconnect方法。
         /// </summary>
         protected bool ProcessingDisconnect { get; set; }
 
         /// <summary>
-        /// Constructor of the server, initializes serializer types.
+        /// 服务器的构造函数，初始化序列化器类型。
         /// </summary>
-        /// <param name="serverCertificate">The server certificate.</param>
+        /// <param name="serverCertificate">服务器证书。</param>
         protected Server(X509Certificate2 serverCertificate)
         {
             ServerCertificate = serverCertificate;
@@ -220,11 +219,11 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Begins listening for clients.
+        /// 开始监听客户端。
         /// </summary>
-        /// <param name="port">Port to listen for clients on.</param>
-        /// <param name="ipv6">If set to true, use a dual-stack socket to allow IPv4/6 connections. Otherwise use IPv4-only socket.</param>
-        /// <param name="enableUPnP">Enables the automatic UPnP port forwarding.</param>
+        /// <param name="port">监听客户端的端口。</param>
+        /// <param name="ipv6">如果设置为true，使用双栈套接字允许IPv4/6连接。否则使用仅IPv4套接字。</param>
+        /// <param name="enableUPnP">启用自动UPnP端口转发。</param>
         public void Listen(ushort port, bool ipv6, bool enableUPnP)
         {
             if (Listening) return;
@@ -259,10 +258,10 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Accepts and begins authenticating an incoming client.
+        /// 接受并开始验证传入的客户端。
         /// </summary>
-        /// <param name="s">The sender.</param>
-        /// <param name="e">Asynchronous socket event.</param>
+        /// <param name="s">发送者。</param>
+        /// <param name="e">异步套接字事件。</param>
         private void AcceptClient(object s, SocketAsyncEventArgs e)
         {
             try
@@ -312,9 +311,9 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Ends the authentication process of a newly connected client.
+        /// 结束新连接客户端的验证过程。
         /// </summary>
-        /// <param name="ar">The status of the asynchronous operation.</param>
+        /// <param name="ar">异步操作的状态。</param>
         private void EndAuthenticateClient(IAsyncResult ar)
         {
             var con = (PendingClient) ar.AsyncState;
@@ -333,10 +332,10 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Adds a connected client to the list of clients,
-        /// subscribes to the client's events.
+        /// 将连接的客户端添加到客户端列表中，
+        /// 订阅客户端的事件。
         /// </summary>
-        /// <param name="client">The client to add.</param>
+        /// <param name="client">要添加的客户端。</param>
         private void AddClient(Client client)
         {
             lock (_clientsLock)
@@ -349,10 +348,10 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Removes a disconnected client from the list of clients,
-        /// unsubscribes from the client's events.
+        /// 从客户端列表中移除断开连接的客户端，
+        /// 取消订阅客户端的事件。
         /// </summary>
-        /// <param name="client">The client to remove.</param>
+        /// <param name="client">要移除的客户端。</param>
         private void RemoveClient(Client client)
         {
             if (ProcessingDisconnect) return;
@@ -367,8 +366,8 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Disconnect the server from all of the clients and discontinue
-        /// listening (placing the server in an "off" state).
+        /// 断开服务器与所有客户端的连接并停止
+        /// 监听（将服务器置于"关闭"状态）。
         /// </summary>
         public void Disconnect()
         {
