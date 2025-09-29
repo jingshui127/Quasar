@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Win32;
@@ -13,14 +13,14 @@ namespace Quasar.Client.Helper
         private static string DEFAULT_VALUE = String.Empty;
 
         /// <summary>
-        /// Adds a value to the registry key.
+        /// 向注册表键添加一个值。
         /// </summary>
-        /// <param name="hive">Represents the possible values for a top-level node on a foreign machine.</param>
-        /// <param name="path">The path to the registry key.</param>
-        /// <param name="name">The name of the value.</param>
-        /// <param name="value">The value.</param>
-        /// <param name="addQuotes">If set to True, adds quotes to the value.</param>
-        /// <returns>True on success, else False.</returns>
+        /// <param name="hive">表示远程计算机上顶级节点的可能值。</param>
+        /// <param name="path">注册表键的路径。</param>
+        /// <param name="name">值的名称。</param>
+        /// <param name="value">值。</param>
+        /// <param name="addQuotes">如果设置为True，则向值添加引号。</param>
+        /// <returns>成功时返回True，否则返回False。</returns>
         public static bool AddRegistryKeyValue(RegistryHive hive, string path, string name, string value, bool addQuotes = false)
         {
             try
@@ -43,10 +43,10 @@ namespace Quasar.Client.Helper
         }
 
         /// <summary>
-        /// Opens a read-only registry key.
+        /// 打开一个只读注册表键。
         /// </summary>
-        /// <param name="hive">Represents the possible values for a top-level node on a foreign machine.</param>
-        /// <param name="path">The path to the registry key.</param>
+        /// <param name="hive">表示远程计算机上顶级节点的可能值。</param>
+        /// <param name="path">注册表键的路径。</param>
         /// <returns></returns>
         public static RegistryKey OpenReadonlySubKey(RegistryHive hive, string path)
         {
@@ -61,12 +61,12 @@ namespace Quasar.Client.Helper
         }
 
         /// <summary>
-        /// Deletes the specified value from the registry key.
+        /// 从注册表键中删除指定的值。
         /// </summary>
-        /// <param name="hive">Represents the possible values for a top-level node on a foreign machine.</param>
-        /// <param name="path">The path to the registry key.</param>
-        /// <param name="name">The name of the value to delete.</param>
-        /// <returns>True on success, else False.</returns>
+        /// <param name="hive">表示远程计算机上顶级节点的可能值。</param>
+        /// <param name="path">注册表键的路径。</param>
+        /// <param name="name">要删除的值的名称。</param>
+        /// <returns>成功时返回True，否则返回False。</returns>
         public static bool DeleteRegistryKeyValue(RegistryHive hive, string path, string name)
         {
             try
@@ -85,21 +85,21 @@ namespace Quasar.Client.Helper
         }
 
         /// <summary>
-        /// Checks if the provided value is the default value
+        /// 检查提供的值是否为默认值
         /// </summary>
-        /// <param name="valueName">The name of the value</param>
-        /// <returns>True if default value, else False</returns>
+        /// <param name="valueName">值的名称</param>
+        /// <returns>如果是默认值则返回True，否则返回False</returns>
         public static bool IsDefaultValue(string valueName)
         {
             return String.IsNullOrEmpty(valueName);
         }
 
         /// <summary>
-        /// Adds the default value to the list of values and returns them as an array. 
-        /// If default value already exists this function will only return the list as an array.
+        /// 将默认值添加到值列表中并将其作为数组返回。
+        /// 如果默认值已存在，则此函数只会将列表作为数组返回。
         /// </summary>
-        /// <param name="values">The list with the values for which the default value should be added to</param>
-        /// <returns>Array with all of the values including the default value</returns>
+        /// <param name="values">应添加默认值的值列表</param>
+        /// <returns>包含所有值（包括默认值）的数组</returns>
         public static RegValueData[] AddDefaultValue(List<RegValueData> values)
         {
             if(!values.Any(value => IsDefaultValue(value.Name)))
@@ -110,9 +110,9 @@ namespace Quasar.Client.Helper
         }
 
         /// <summary>
-        /// Gets the default registry values
+        /// 获取默认注册表值
         /// </summary>
-        /// <returns>A array with the default registry values</returns>
+        /// <returns>包含默认注册表值的数组</returns>
         public static RegValueData[] GetDefaultValues()
         {
             return new[] {GetDefaultValue()};

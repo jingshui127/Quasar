@@ -93,14 +93,14 @@ namespace Quasar.Server.Messages
         private void StatusUpdated(object sender, string value)
         {
             // called when directory does not exist or access is denied
-            OnReport($"No logs found ({value})");
+            OnReport($"未找到日志 ({value})");
         }
 
         private void DirectoryChanged(object sender, string remotePath, FileSystemEntry[] items)
         {
             if (items.Length == 0)
             {
-                OnReport("No logs found");
+                OnReport("未找到日志");
                 return;
             }
 
@@ -131,12 +131,12 @@ namespace Quasar.Server.Messages
                     _completedTransfers++;
                     File.WriteAllText(transfer.LocalPath, FileHelper.ReadLogFile(transfer.LocalPath, _client.Value.AesInstance));
                     OnReport(_allTransfers == _completedTransfers
-                        ? "Successfully retrieved all logs"
+                        ? "成功检索所有日志"
                         : GetDownloadProgress(_allTransfers, _completedTransfers));
                 }
                 catch (Exception)
                 {
-                    OnReport("Failed to decrypt and write logs");
+                    OnReport("解密和写入日志失败");
                 }
             }
         }

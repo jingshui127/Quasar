@@ -2,33 +2,31 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// Allgemeine Informationen über eine Assembly werden über die folgenden 
-// Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
-// die mit einer Assembly verknüpft sind.
-[assembly: AssemblyTitle("Quasar Server")]
-[assembly: AssemblyDescription("Remote Administration Tool")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Quasar")]
-[assembly: AssemblyCopyright("Copyright © MaxXor 2023")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-[assembly: InternalsVisibleTo("Server.Tests")]
+// 程序集的通用信息由以下属性控制。更改这些属性值可修改
+// 与程序集关联的信息。
+//[assembly: AssemblyTitle("Quasar Server")]
+//[assembly: AssemblyDescription("Remote Administration Tool")]
+//[assembly: AssemblyConfiguration("")]
+//[assembly: AssemblyCompany("")]
+//[assembly: AssemblyProduct("Quasar")]
+//[assembly: AssemblyCopyright("Copyright © MaxXor 2023")]
+//[assembly: AssemblyTrademark("")]
+//[assembly: AssemblyCulture("")]
+//[assembly: InternalsVisibleTo("Server.Tests")]
 
-// Durch Festlegen von ComVisible auf "false" werden die Typen in dieser Assembly unsichtbar 
-// für COM-Komponenten. Wenn Sie auf einen Typ in dieser Assembly von 
-// COM zugreifen müssen, legen Sie das ComVisible-Attribut für diesen Typ auf "true" fest.
+// 将 ComVisible 设置为 false 可使此程序集中的类型对 COM 组件不可见。
+// 如果需要从 COM 访问此程序集中的类型，请将该类型的 ComVisible 属性设置为 true。
 [assembly: ComVisible(false)]
 
-// Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
+// 程序集的版本信息由以下四个值组成:
 //
-//      Hauptversion
-//      Nebenversion 
-//      Buildnummer
-//      Revision
+//      主版本
+//      次版本
+//      内部版本号
+//      修订号
 //
-// Sie können alle Werte angeben oder die standardmäßigen Build- und Revisionsnummern 
-// übernehmen, indem Sie "*" eingeben:
+// 您可以指定所有这些值，也可以使用 "*" 预设内部版本号和修订号，
+// 方法是按如下所示使用 "*":
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.4.1")]
-[assembly: AssemblyFileVersion("1.4.1")]
+//[assembly: AssemblyVersion("2.2025.0929.1")]
+//[assembly: AssemblyFileVersion("2.2025.0929.1")]

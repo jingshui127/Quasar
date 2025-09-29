@@ -4,18 +4,18 @@ using System.Collections.Generic;
 namespace Quasar.Client.Recovery
 {
     /// <summary>
-    /// Provides a common way to read stored accounts from applications.
+    /// 提供从应用程序读取存储账户的通用方法。
     /// </summary>
     public interface IAccountReader
     {
         /// <summary>
-        /// Reads the stored accounts of the application.
+        /// 读取应用程序的存储账户。
         /// </summary>
-        /// <returns>A list of recovered accounts</returns>
+        /// <returns>恢复账户的列表</returns>
         IEnumerable<RecoveredAccount> ReadAccounts();
 
         /// <summary>
-        /// The name of the application.
+        /// 应用程序的名称。
         /// </summary>
         string ApplicationName { get; }
     }

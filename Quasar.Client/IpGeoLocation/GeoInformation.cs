@@ -1,7 +1,7 @@
 ﻿namespace Quasar.Client.IpGeoLocation
 {
     /// <summary>
-    /// Stores the IP geolocation information.
+    /// 存储IP地理位置信息。
     /// </summary>
     public class GeoInformation
     {

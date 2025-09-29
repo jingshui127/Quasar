@@ -1,16 +1,16 @@
-﻿using System.IO;
+﻿﻿using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
 namespace Quasar.Client.Helper
 {
     /// <summary>
-    /// Provides methods to serialize and deserialize JSON.
+    /// 提供序列化和反序列化JSON的方法。
     /// </summary>
     public static class JsonHelper
     {
         /// <summary>
-        /// Serializes an object to the respectable JSON string.
+        /// 将对象序列化为相应的JSON字符串。
         /// </summary>
         public static string Serialize<T>(T o)
         {
@@ -23,7 +23,7 @@ namespace Quasar.Client.Helper
         }
 
         /// <summary>
-        /// Deserializes a JSON string to the specified object.
+        /// 将JSON字符串反序列化为指定对象。
         /// </summary>
         public static T Deserialize<T>(string json)
         {
@@ -35,7 +35,7 @@ namespace Quasar.Client.Helper
         }
 
         /// <summary>
-        /// Deserializes a JSON stream to the specified object.
+        /// 将JSON流反序列化为指定对象。
         /// </summary>
         public static T Deserialize<T>(Stream stream)
         {

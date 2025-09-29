@@ -1,49 +1,49 @@
-# Quasar
+# Quasar 远程管理工具
 
 [![Build status](https://ci.appveyor.com/api/projects/status/5857hfy6r1ltb5f2?svg=true)](https://ci.appveyor.com/project/MaxXor/quasar)
 [![Downloads](https://img.shields.io/github/downloads/quasar/Quasar/total.svg)](https://github.com/quasar/Quasar/releases)
 [![License](https://img.shields.io/github/license/quasar/Quasar.svg)](LICENSE)
 
-**Free, Open-Source Remote Administration Tool for Windows**
+**免费、开源的 Windows 远程管理工具**
 
-Quasar is a fast and light-weight remote administration tool coded in C#. The usage ranges from user support through day-to-day administrative work to employee monitoring. Providing high stability and an easy-to-use user interface, Quasar is the perfect remote administration solution for you.
+Quasar 是一款使用 C# 编写的快速、轻量级远程管理工具。其用途涵盖从用户支持、日常系统管理到员工监控等多个场景。凭借高稳定性和易于使用的用户界面，Quasar 是您理想的远程管理解决方案。
 
-Please check out the [Getting Started](https://github.com/quasar/Quasar/wiki/Getting-Started) guide.
+请查看 [入门指南](https://github.com/quasar/Quasar/wiki/Getting-Started)。
 
-## Screenshots
+## 界面截图
 
-![remote-shell](Images/remote-shell.png)
+![远程命令行](Images/remote-shell.png)
 
-![remote-desktop](Images/remote-desktop.png)
+![远程桌面](Images/remote-desktop.png)
 
-![remote-files](Images/remote-files.png)
+![远程文件管理](Images/remote-files.png)
 
-## Features
-* TCP network stream (IPv4 & IPv6 support)
-* Fast network serialization (Protocol Buffers)
-* Encrypted communication (TLS)
-* UPnP Support (automatic port forwarding)
-* Task Manager
-* File Manager
-* Startup Manager
-* Remote Desktop
-* Remote Shell
-* Remote Execution
-* System Information
-* Registry Editor
-* System Power Commands (Restart, Shutdown, Standby)
-* Keylogger (Unicode Support)
-* Reverse Proxy (SOCKS5)
-* Password Recovery (Common Browsers and FTP Clients)
-* ... and many more!
+## 功能特性
+* TCP 网络通信（支持 IPv4 和 IPv6）
+* 高效的网络序列化（Protocol Buffers）
+* 加密通信（TLS）
+* UPnP 支持（自动端口映射）
+* 任务管理器
+* 文件管理器
+* 启动项管理器
+* 远程桌面
+* 远程命令行
+* 远程执行
+* 系统信息查看
+* 注册表编辑器
+* 系统电源控制（重启、关机、待机）
+* 键盘记录（支持 Unicode）
+* 反向代理（SOCKS5）
+* 密码恢复（常见浏览器和 FTP 客户端）
+* 以及更多功能！
 
-## Download
-* [Latest stable release](https://github.com/quasar/Quasar/releases) (recommended)
-* [Latest development snapshot](https://ci.appveyor.com/project/MaxXor/quasar)
+## 下载地址
+* [最新稳定版本](https://github.com/quasar/Quasar/releases)（推荐）
+* [最新开发快照](https://ci.appveyor.com/project/MaxXor/quasar)
 
-## Supported runtimes and operating systems
-* .NET Framework 4.5.2 or higher
-* Supported operating systems (32- and 64-bit)
+## 支持的运行环境和操作系统
+* .NET Framework 4.5.2 或更高版本
+* 支持的操作系统（32 位和 64 位）
   * Windows 11
   * Windows Server 2022
   * Windows 10
@@ -53,29 +53,29 @@ Please check out the [Getting Started](https://github.com/quasar/Quasar/wiki/Get
   * Windows Server 2012
   * Windows 7
   * Windows Server 2008 R2
-* For older systems please use [Quasar version 1.3.0](https://github.com/quasar/Quasar/releases/tag/v1.3.0.0)
+* 对于较旧的系统，请使用 [Quasar 1.3.0 版本](https://github.com/quasar/Quasar/releases/tag/v1.3.0.0)
 
-## Compiling
-Open the project `Quasar.sln` in Visual Studio 2019+ with installed .NET desktop development features and [restore the NuGET packages](https://docs.microsoft.com/en-us/nuget/consume-packages/package-restore). Once all packages are installed the project can be compiled as usual by clicking `Build` at the top or by pressing `F6`. The resulting executables can be found in the `Bin` directory. See below which build configuration to choose from.
+## 编译说明
+在 Visual Studio 2019+ 中打开项目文件 `Quasar.sln`，确保已安装 .NET 桌面开发功能，并[还原 NuGET 包](https://docs.microsoft.com/en-us/nuget/consume-packages/package-restore)。所有包安装完成后，可以通过点击顶部的 `Build` 菜单或按 `F6` 键来编译项目。生成的可执行文件可以在 `Bin` 目录中找到。请参见下表选择合适的构建配置。
 
-## Building a client
-| Build configuration         | Usage scenario | Description
-| ----------------------------|----------------|--------------
-| Debug configuration         | Testing        | The pre-defined [Settings.cs](/Quasar.Client/Config/Settings.cs) will be used, so edit this file before compiling the client. You can execute the client directly with the specified settings.
-| Release configuration       | Production     | Start `Quasar.exe` and use the client builder.
+## 客户端构建
+| 构建配置 | 使用场景 | 说明
+|---------|---------|------
+| Debug 配置 | 测试 | 将使用预定义的 [Settings.cs](/Quasar.Client/Config/Settings.cs) 文件，因此在编译客户端之前需要编辑此文件。您可以直接使用指定的设置执行客户端。
+| Release 配置 | 生产 | 启动 `Quasar.exe` 并使用客户端构建器。
 
-## Contributing
-See [CONTRIBUTING.md](CONTRIBUTING.md)
+## 贡献代码
+参见 [CONTRIBUTING.md](CONTRIBUTING.md)
 
-## Roadmap
-See [ROADMAP.md](ROADMAP.md)
+## 发展路线
+参见 [ROADMAP.md](ROADMAP.md)
 
-## Documentation
-See the [wiki](https://github.com/quasar/Quasar/wiki) for usage instructions and other documentation.
+## 文档资料
+使用说明和其他文档请参见 [wiki](https://github.com/quasar/Quasar/wiki)。
 
-## License
-Quasar is distributed under the [MIT License](LICENSE).  
-Third-party licenses are located [here](Licenses).
+## 许可证
+Quasar 采用 [MIT 许可证](LICENSE) 分发。  
+第三方许可证位于 [此处](Licenses)。
 
-## Thank you!
-I really appreciate all kinds of feedback and contributions. Thanks for using and supporting Quasar!
+## 感谢您！
+我非常感谢各种反馈和贡献。感谢您使用和支持 Quasar！

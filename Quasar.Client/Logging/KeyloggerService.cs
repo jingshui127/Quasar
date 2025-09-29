@@ -1,31 +1,31 @@
-﻿using System;
+﻿﻿using System;
 using System.Threading;
 using System.Windows.Forms;
 
 namespace Quasar.Client.Logging
 {
     /// <summary>
-    /// Provides a service to run the keylogger.
+    /// 提供运行键盘记录器的服务。
     /// </summary>
     public class KeyloggerService : IDisposable
     {
         /// <summary>
-        /// The thread containing the executed keylogger and message loop.
+        /// 包含执行的键盘记录器和消息循环的线程。
         /// </summary>
         private readonly Thread _msgLoopThread;
         
         /// <summary>
-        /// The message loop which is needed to receive key events.
+        /// 接收按键事件所需的消息循环。
         /// </summary>
         private ApplicationContext _msgLoop;
         
         /// <summary>
-        /// Provides keylogging functionality.
+        /// 提供键盘记录功能。
         /// </summary>
         private Keylogger _keylogger;
 
         /// <summary>
-        /// Initializes a new instance of <see cref="KeyloggerService"/>.
+        /// 初始化 <see cref="KeyloggerService"/> 的新实例。
         /// </summary>
         public KeyloggerService()
         {
@@ -39,7 +39,7 @@ namespace Quasar.Client.Logging
         }
 
         /// <summary>
-        /// Starts the keylogger and message loop.
+        /// 启动键盘记录器和消息循环。
         /// </summary>
         public void Start()
         {
@@ -47,7 +47,7 @@ namespace Quasar.Client.Logging
         }
 
         /// <summary>
-        /// Disposes all managed and unmanaged resources associated with this keylogger service.
+        /// 释放与此键盘记录器服务关联的所有托管和非托管资源。
         /// </summary>
         public void Dispose()
         {

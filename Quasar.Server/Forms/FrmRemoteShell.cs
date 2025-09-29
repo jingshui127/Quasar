@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,26 +12,26 @@ namespace Quasar.Server.Forms
     public partial class FrmRemoteShell : Form
     {
         /// <summary>
-        /// The client which can be used for the remote shell.
+        /// 可用于远程shell的客户端。
         /// </summary>
         private readonly Client _connectClient;
 
         /// <summary>
-        /// The message handler for handling the communication with the client.
+        /// 用于处理与客户端通信的消息处理器。
         /// </summary>
         public readonly RemoteShellHandler RemoteShellHandler;
 
         /// <summary>
-        /// Holds the opened remote shell form for each client.
+        /// 为每个客户端保存已打开的远程shell表单。
         /// </summary>
         private static readonly Dictionary<Client, FrmRemoteShell> OpenedForms = new Dictionary<Client, FrmRemoteShell>();
 
         /// <summary>
-        /// Creates a new remote shell form for the client or gets the current open form, if there exists one already.
+        /// 为客户端创建新的远程shell表单，或者如果已存在则获取当前打开的表单。
         /// </summary>
-        /// <param name="client">The client used for the remote shell form.</param>
+        /// <param name="client">用于远程shell表单的客户端。</param>
         /// <returns>
-        /// Returns a new remote shell form for the client if there is none currently open, otherwise creates a new one.
+        /// 如果当前没有打开的远程shell表单，则为客户端返回一个新的远程shell表单，否则创建一个新的。
         /// </returns>
         public static FrmRemoteShell CreateNewOrGetExisting(Client client)
         {
@@ -46,9 +46,9 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FrmRemoteShell"/> class using the given client.
+        /// 使用给定的客户端初始化 <see cref="FrmRemoteShell"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The client used for the remote shell form.</param>
+        /// <param name="client">用于远程shell表单的客户端。</param>
         public FrmRemoteShell(Client client)
         {
             _connectClient = client;
@@ -61,7 +61,7 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Registers the remote shell message handler for client communication.
+        /// 注册远程shell消息处理器以进行客户端通信。
         /// </summary>
         private void RegisterMessageHandler()
         {
@@ -72,7 +72,7 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Unregisters the remote shell message handler.
+        /// 注销远程shell消息处理器。
         /// </summary>
         private void UnregisterMessageHandler()
         {
@@ -83,10 +83,10 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Called whenever the remote shell writes to stdout.
+        /// 当远程shell写入stdout时调用。
         /// </summary>
-        /// <param name="sender">The message processor which raised the event.</param>
-        /// <param name="output">The output to write.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="output">要写入的输出。</param>
         private void CommandOutput(object sender, string output)
         {
             txtConsoleOutput.SelectionColor = Color.WhiteSmoke;
@@ -94,10 +94,10 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Called whenever the remote shell writes to stderr.
+        /// 当远程shell写入stderr时调用。
         /// </summary>
-        /// <param name="sender">The message processor which raised the event.</param>
-        /// <param name="output">The error output to write.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="output">要写入的错误输出。</param>
         private void CommandError(object sender, string output)
         {
             txtConsoleOutput.SelectionColor = Color.Red;
@@ -105,10 +105,10 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Called whenever a client disconnects.
+        /// 当客户端断开连接时调用。
         /// </summary>
-        /// <param name="client">The client which disconnected.</param>
-        /// <param name="connected">True if the client connected, false if disconnected</param>
+        /// <param name="client">断开连接的客户端。</param>
+        /// <param name="connected">如果客户端连接则为True，如果断开连接则为false</param>
         private void ClientDisconnected(Client client, bool connected)
         {
             if (!connected)

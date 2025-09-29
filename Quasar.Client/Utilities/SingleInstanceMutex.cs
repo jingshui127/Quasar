@@ -4,29 +4,29 @@ using System.Threading;
 namespace Quasar.Client.Utilities
 {
     /// <summary>
-    /// A user-wide mutex that ensures that only one instance runs at a time.
+    /// 用户范围的互斥锁，确保一次只运行一个实例。
     /// </summary>
     public class SingleInstanceMutex : IDisposable
     {
         /// <summary>
-        /// The mutex used for process synchronization.
+        /// 用于进程同步的互斥锁。
         /// </summary>
         private readonly Mutex _appMutex;
 
         /// <summary>
-        /// Represents if the mutex was created on the system or it already existed.
+        /// 表示互斥锁是在系统上创建的还是已经存在的。
         /// </summary>
         public bool CreatedNew { get; }
 
         /// <summary>
-        /// Determines if the instance is disposed and should not be used anymore.
+        /// 确定实例是否已释放且不应再使用。
         /// </summary>
         public bool IsDisposed { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="SingleInstanceMutex"/> using the given mutex name.
+        /// 使用给定的互斥锁名称初始化 <see cref="SingleInstanceMutex"/> 的新实例。
         /// </summary>
-        /// <param name="name">The name of the mutex.</param>
+        /// <param name="name">互斥锁的名称。</param>
         public SingleInstanceMutex(string name)
         {
             _appMutex = new Mutex(false, $"Local\\{name}", out var createdNew);
@@ -34,7 +34,7 @@ namespace Quasar.Client.Utilities
         }
 
         /// <summary>
-        /// Releases all resources used by this <see cref="SingleInstanceMutex"/>.
+        /// 释放此 <see cref="SingleInstanceMutex"/> 使用的所有资源。
         /// </summary>
         public void Dispose()
         {
@@ -43,9 +43,9 @@ namespace Quasar.Client.Utilities
         }
 
         /// <summary>
-        /// Releases the mutex object.
+        /// 释放互斥锁对象。
         /// </summary>
-        /// <param name="disposing"><c>True</c> if called from <see cref="Dispose"/>, <c>false</c> if called from the finalizer.</param>
+        /// <param name="disposing">如果从 <see cref="Dispose"/> 调用则为 <c>True</c>，如果从终结器调用则为 <c>false</c>。</param>
         protected virtual void Dispose(bool disposing)
         {
             if (IsDisposed)

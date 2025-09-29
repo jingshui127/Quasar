@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Cryptography;
+﻿﻿using Quasar.Common.Cryptography;
 using Quasar.Common.Helpers;
 using System;
 using System.Linq;
@@ -9,78 +9,78 @@ using System.Net.Sockets;
 namespace Quasar.Client.IO
 {
     /// <summary>
-    /// Provides access to retrieve information about the used hardware devices.
+    /// 提供访问以检索有关使用的硬件设备的信息。
     /// </summary>
-    /// <remarks>Caches the retrieved information to reduce the slowdown of the slow WMI queries.</remarks>
+    /// <remarks>缓存检索到的信息以减少缓慢的WMI查询的延迟。</remarks>
     public static class HardwareDevices
     {
         /// <summary>
-        /// Gets a unique hardware id as a combination of various hardware components.
+        /// 获取作为各种硬件组件组合的唯一硬件ID。
         /// </summary>
         public static string HardwareId => _hardwareId ?? (_hardwareId = Sha256.ComputeHash(CpuName + MainboardName + BiosManufacturer));
 
         /// <summary>
-        /// Used to cache the hardware id.
+        /// 用于缓存硬件ID。
         /// </summary>
         private static string _hardwareId;
 
         /// <summary>
-        /// Gets the name of the system CPU.
+        /// 获取系统CPU的名称。
         /// </summary>
         public static string CpuName => _cpuName ?? (_cpuName = GetCpuName());
 
         /// <summary>
-        /// Used to cache the CPU name.
+        /// 用于缓存CPU名称。
         /// </summary>
         private static string _cpuName;
 
         /// <summary>
-        /// Gets the name of the GPU.
+        /// 获取GPU的名称。
         /// </summary>
         public static string GpuName => _gpuName ?? (_gpuName = GetGpuName());
 
         /// <summary>
-        /// Used to cache the GPU name.
+        /// 用于缓存GPU名称。
         /// </summary>
         private static string _gpuName;
 
         /// <summary>
-        /// Gets the name of the BIOS manufacturer.
+        /// 获取BIOS制造商的名称。
         /// </summary>
         public static string BiosManufacturer => _biosManufacturer ?? (_biosManufacturer = GetBiosManufacturer());
 
         /// <summary>
-        /// Used to cache the BIOS manufacturer.
+        /// 用于缓存BIOS制造商。
         /// </summary>
         private static string _biosManufacturer;
 
         /// <summary>
-        /// Gets the name of the mainboard.
+        /// 获取主板的名称。
         /// </summary>
         public static string MainboardName => _mainboardName ?? (_mainboardName = GetMainboardName());
 
         /// <summary>
-        /// Used to cache the mainboard name.
+        /// 用于缓存主板名称。
         /// </summary>
         private static string _mainboardName;
 
         /// <summary>
-        /// Gets the total physical memory of the system in megabytes (MB).
+        /// 获取系统总物理内存（以兆字节MB为单位）。
         /// </summary>
         public static int? TotalPhysicalMemory => _totalPhysicalMemory ?? (_totalPhysicalMemory = GetTotalPhysicalMemoryInMb());
 
         /// <summary>
-        /// Used to cache the total physical memory.
+        /// 用于缓存总物理内存。
         /// </summary>
         private static int? _totalPhysicalMemory;
 
         /// <summary>
-        /// Gets the LAN IP address of the network interface.
+        /// 获取网络接口的LAN IP地址。
         /// </summary>
         public static string LanIpAddress => GetLanIpAddress();
 
         /// <summary>
-        /// Gets the MAC address of the network interface.
+        /// 获取网络接口的MAC地址。
         /// </summary>
         public static string MacAddress => GetMacAddress();
 

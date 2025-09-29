@@ -1,19 +1,19 @@
-# Contributing
+# 贡献代码
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new pull request (PR)
+1. Fork 项目
+2. 创建您的功能分支 (`git checkout -b my-new-feature`)
+3. 提交您的更改 (`git commit -am 'Add some feature'`)
+4. 推送到分支 (`git push origin my-new-feature`)
+5. 创建新的拉取请求 (PR)
 
-## Guidelines for pull requests:
+## 拉取请求指南：
 
-1. Respect the coding style of Quasar.
-2. Create a new branch for each PR.
-3. Single feature or bug-fix per PR.
-4. Make single commit per PR.
-5. Make your modification compact - don't reformat source code in your request. It makes code review more difficult.
-6. PR of reformatting (changing of ws/TAB, line endings or coding style) of source code won't be accepted. Use the issue tracker for your request instead.
-7. Typo fixing and code refactoring won't be accepted - please create issues with title started with TYPO to request the changing.
+1. 遵循 Quasar 的编码风格。
+2. 为每个 PR 创建新分支。
+3. 每个 PR 只处理单个功能或错误修复。
+4. 每个 PR 只做一个提交。
+5. 保持修改内容紧凑 - 不要在请求中重新格式化源代码。这会使代码审查变得更加困难。
+6. 不会接受仅重新格式化（更改空格/TAB、行尾符或编码风格）源代码的 PR。请使用问题跟踪器来提交此类请求。
+7. 不会接受拼写修正和代码重构 - 请创建标题以 TYPO 开头的问题来请求更改。
 
-In short: The easier the code review is, the better the chance your pull request will get accepted.
+简而言之：代码审查越容易，您的拉取请求被接受的机会就越大。

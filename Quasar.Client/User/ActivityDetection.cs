@@ -8,34 +8,34 @@ using System.Threading;
 namespace Quasar.Client.User
 {
     /// <summary>
-    /// Provides user activity detection and sends <see cref="SetUserStatus"/> messages on change.
+    /// 提供用户活动检测，并在状态改变时发送 <see cref="SetUserStatus"/> 消息。
     /// </summary>
     public class ActivityDetection : IDisposable
     {
         /// <summary>
-        /// Stores the last user status to detect changes.
+        /// 存储最后的用户状态以检测变化。
         /// </summary>
         private UserStatus _lastUserStatus;
 
         /// <summary>
-        /// The client to use for communication with the server.
+        /// 用于与服务器通信的客户端。
         /// </summary>
         private readonly QuasarClient _client;
 
         /// <summary>
-        /// Create a <see cref="_token"/> and signals cancellation.
+        /// 创建 <see cref="_token"/> 并发出取消信号。
         /// </summary>
         private readonly CancellationTokenSource _tokenSource;
 
         /// <summary>
-        /// The token to check for cancellation.
+        /// 用于检查取消的令牌。
         /// </summary>
         private readonly CancellationToken _token;
 
         /// <summary>
-        /// Initializes a new instance of <see cref="ActivityDetection"/> using the given client.
+        /// 使用给定的客户端初始化 <see cref="ActivityDetection"/> 的新实例。
         /// </summary>
-        /// <param name="client">The name of the mutex.</param>
+        /// <param name="client">互斥锁的名称。</param>
         public ActivityDetection(QuasarClient client)
         {
             _client = client;
@@ -52,7 +52,7 @@ namespace Quasar.Client.User
         }
 
         /// <summary>
-        /// Starts the user activity detection.
+        /// 启动用户活动检测。
         /// </summary>
         public void Start()
         {
@@ -60,7 +60,7 @@ namespace Quasar.Client.User
         }
 
         /// <summary>
-        /// Checks for user activity changes sends <see cref="SetUserStatus"/> to the <see cref="_client"/> on change.
+        /// 检查用户活动变化，在状态改变时向 <see cref="_client"/> 发送 <see cref="SetUserStatus"/>。
         /// </summary>
         private void UserActivityThread()
         {
@@ -89,9 +89,9 @@ namespace Quasar.Client.User
         }
 
         /// <summary>
-        /// Determines whether the user is idle if the last user input was more than 10 minutes ago.
+        /// 如果最后一次用户输入是在10分钟前，则确定用户是否空闲。
         /// </summary>
-        /// <returns><c>True</c> if the user is idle, else <c>false</c>.</returns>
+        /// <returns>如果用户空闲则返回 <c>True</c>，否则返回 <c>false</c>。</returns>
         private bool IsUserIdle()
         {
             var ticks = Environment.TickCount;
@@ -104,7 +104,7 @@ namespace Quasar.Client.User
         }
 
         /// <summary>
-        /// Disposes all managed and unmanaged resources associated with this activity detection service.
+        /// 释放与此活动检测服务关联的所有托管和非托管资源。
         /// </summary>
         public void Dispose()
         {

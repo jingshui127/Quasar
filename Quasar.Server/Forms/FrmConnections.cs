@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Quasar.Common.Messages;
@@ -12,12 +12,12 @@ namespace Quasar.Server.Forms
     public partial class FrmConnections : Form
     {
         /// <summary>
-        /// The client which can be used for the connections manager.
+        /// 可用于连接管理器的客户端。
         /// </summary>
         private readonly Client _connectClient;
 
         /// <summary>
-        /// The message handler for handling the communication with the client.
+        /// 用于处理与客户端通信的消息处理器。
         /// </summary>
         private readonly TcpConnectionsHandler _connectionsHandler;
 
@@ -27,16 +27,16 @@ namespace Quasar.Server.Forms
         private readonly Dictionary<string, ListViewGroup> _groups = new Dictionary<string, ListViewGroup>();
 
         /// <summary>
-        /// Holds the opened connections manager form for each client.
+        /// 为每个客户端保存已打开的连接管理器表单。
         /// </summary>
         private static readonly Dictionary<Client, FrmConnections> OpenedForms = new Dictionary<Client, FrmConnections>();
 
         /// <summary>
-        /// Creates a new connections manager form for the client or gets the current open form, if there exists one already.
+        /// 为客户创建新的连接管理器表单，或者如果已存在则获取当前打开的表单。
         /// </summary>
-        /// <param name="client">The client used for the connections manager form.</param>
+        /// <param name="client">用于连接管理器表单的客户端。</param>
         /// <returns>
-        /// Returns a new connections manager form for the client if there is none currently open, otherwise creates a new one.
+        /// 如果当前没有打开的连接管理器表单，则为客户端返回一个新的连接管理器表单，否则创建一个新的。
         /// </returns>
         public static FrmConnections CreateNewOrGetExisting(Client client)
         {
@@ -51,9 +51,9 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FrmConnections"/> class using the given client.
+        /// 使用给定的客户端初始化 <see cref="FrmConnections"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The client used for the connections manager form.</param>
+        /// <param name="client">用于连接管理器表单的客户端。</param>
         public FrmConnections(Client client)
         {
             _connectClient = client;
@@ -64,7 +64,7 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Registers the connections manager message handler for client communication.
+        /// 注册连接管理器消息处理器以进行客户端通信。
         /// </summary>
         private void RegisterMessageHandler()
         {
@@ -74,7 +74,7 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Unregisters the connections manager message handler.
+        /// 注销连接管理器消息处理器。
         /// </summary>
         private void UnregisterMessageHandler()
         {
@@ -84,10 +84,10 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Called whenever a client disconnects.
+        /// 当客户端断开连接时调用。
         /// </summary>
-        /// <param name="client">The client which disconnected.</param>
-        /// <param name="connected">True if the client connected, false if disconnected</param>
+        /// <param name="client">断开连接的客户端。</param>
+        /// <param name="connected">如果客户端连接则为True，如果断开连接则为false</param>
         private void ClientDisconnected(Client client, bool connected)
         {
             if (!connected)
@@ -97,10 +97,10 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Called whenever a TCP connection changed.
+        /// 当TCP连接发生变化时调用。
         /// </summary>
-        /// <param name="sender">The message handler which raised the event.</param>
-        /// <param name="connections">The current TCP connections of the client.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="connections">客户端的当前TCP连接。</param>
         private void TcpConnectionsChanged(object sender, TcpConnection[] connections)
         {
             lstConnections.Items.Clear();

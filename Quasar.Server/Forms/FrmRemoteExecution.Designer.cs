@@ -1,16 +1,16 @@
-﻿namespace Quasar.Server.Forms
+﻿﻿namespace Quasar.Server.Forms
 {
     partial class FrmRemoteExecution
     {
         /// <summary>
-        /// Required designer variable.
+        /// 必需的设计器变量。
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// 清理所有正在使用的资源。
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -23,11 +23,12 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// 设计器支持所需的方法 - 不要修改
+        /// 此方法的内容。
         /// </summary>
         private void InitializeComponent()
         {
+            Quasar.Server.Utilities.ListViewColumnSorter listViewColumnSorter1 = new Quasar.Server.Utilities.ListViewColumnSorter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRemoteExecution));
             this.btnExecute = new System.Windows.Forms.Button();
             this.txtURL = new System.Windows.Forms.TextBox();
@@ -49,9 +50,11 @@
             // 
             // btnExecute
             // 
-            this.btnExecute.Location = new System.Drawing.Point(353, 459);
+            this.btnExecute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExecute.Location = new System.Drawing.Point(824, 963);
+            this.btnExecute.Margin = new System.Windows.Forms.Padding(8);
             this.btnExecute.Name = "btnExecute";
-            this.btnExecute.Size = new System.Drawing.Size(138, 23);
+            this.btnExecute.Size = new System.Drawing.Size(345, 58);
             this.btnExecute.TabIndex = 6;
             this.btnExecute.Text = "远程执行";
             this.btnExecute.UseVisualStyleBackColor = true;
@@ -59,17 +62,19 @@
             // 
             // txtURL
             // 
-            this.txtURL.Location = new System.Drawing.Point(56, 25);
+            this.txtURL.Location = new System.Drawing.Point(140, 62);
+            this.txtURL.Margin = new System.Windows.Forms.Padding(8);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(320, 22);
+            this.txtURL.Size = new System.Drawing.Size(794, 44);
             this.txtURL.TabIndex = 1;
             // 
             // lblURL
             // 
             this.lblURL.AutoSize = true;
-            this.lblURL.Location = new System.Drawing.Point(20, 28);
+            this.lblURL.Location = new System.Drawing.Point(50, 70);
+            this.lblURL.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblURL.Name = "lblURL";
-            this.lblURL.Size = new System.Drawing.Size(30, 13);
+            this.lblURL.Size = new System.Drawing.Size(81, 38);
             this.lblURL.TabIndex = 0;
             this.lblURL.Text = "网址:";
             // 
@@ -78,18 +83,22 @@
             this.groupLocalFile.Controls.Add(this.btnBrowse);
             this.groupLocalFile.Controls.Add(this.txtPath);
             this.groupLocalFile.Controls.Add(this.label1);
-            this.groupLocalFile.Location = new System.Drawing.Point(12, 35);
+            this.groupLocalFile.Location = new System.Drawing.Point(30, 88);
+            this.groupLocalFile.Margin = new System.Windows.Forms.Padding(8);
             this.groupLocalFile.Name = "groupLocalFile";
-            this.groupLocalFile.Size = new System.Drawing.Size(479, 75);
+            this.groupLocalFile.Padding = new System.Windows.Forms.Padding(8);
+            this.groupLocalFile.Size = new System.Drawing.Size(1198, 153);
             this.groupLocalFile.TabIndex = 1;
             this.groupLocalFile.TabStop = false;
             this.groupLocalFile.Text = "本地文件";
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(382, 23);
+            this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBrowse.Location = new System.Drawing.Point(955, 58);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(8);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowse.Size = new System.Drawing.Size(188, 58);
             this.btnBrowse.TabIndex = 2;
             this.btnBrowse.Text = "浏览...";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -97,18 +106,20 @@
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(59, 24);
+            this.txtPath.Location = new System.Drawing.Point(148, 60);
+            this.txtPath.Margin = new System.Windows.Forms.Padding(8);
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(317, 22);
+            this.txtPath.Size = new System.Drawing.Size(786, 44);
             this.txtPath.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 27);
+            this.label1.Location = new System.Drawing.Point(50, 68);
+            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.Size = new System.Drawing.Size(81, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "路径:";
             // 
@@ -117,9 +128,11 @@
             this.groupURL.Controls.Add(this.txtURL);
             this.groupURL.Controls.Add(this.lblURL);
             this.groupURL.Enabled = false;
-            this.groupURL.Location = new System.Drawing.Point(12, 139);
+            this.groupURL.Location = new System.Drawing.Point(30, 320);
+            this.groupURL.Margin = new System.Windows.Forms.Padding(8);
             this.groupURL.Name = "groupURL";
-            this.groupURL.Size = new System.Drawing.Size(479, 75);
+            this.groupURL.Padding = new System.Windows.Forms.Padding(8);
+            this.groupURL.Size = new System.Drawing.Size(1198, 130);
             this.groupURL.TabIndex = 3;
             this.groupURL.TabStop = false;
             this.groupURL.Text = "网址";
@@ -128,9 +141,10 @@
             // 
             this.radioLocalFile.AutoSize = true;
             this.radioLocalFile.Checked = true;
-            this.radioLocalFile.Location = new System.Drawing.Point(12, 12);
+            this.radioLocalFile.Location = new System.Drawing.Point(30, 30);
+            this.radioLocalFile.Margin = new System.Windows.Forms.Padding(8);
             this.radioLocalFile.Name = "radioLocalFile";
-            this.radioLocalFile.Size = new System.Drawing.Size(110, 17);
+            this.radioLocalFile.Size = new System.Drawing.Size(228, 42);
             this.radioLocalFile.TabIndex = 0;
             this.radioLocalFile.TabStop = true;
             this.radioLocalFile.Text = "执行本地文件";
@@ -140,9 +154,10 @@
             // radioURL
             // 
             this.radioURL.AutoSize = true;
-            this.radioURL.Location = new System.Drawing.Point(12, 116);
+            this.radioURL.Location = new System.Drawing.Point(30, 262);
+            this.radioURL.Margin = new System.Windows.Forms.Padding(8);
             this.radioURL.Name = "radioURL";
-            this.radioURL.Size = new System.Drawing.Size(114, 17);
+            this.radioURL.Size = new System.Drawing.Size(190, 42);
             this.radioURL.TabIndex = 2;
             this.radioURL.Text = "从URL执行";
             this.radioURL.UseVisualStyleBackColor = true;
@@ -159,9 +174,14 @@
             this.lstTransfers.FullRowSelect = true;
             this.lstTransfers.GridLines = true;
             this.lstTransfers.HideSelection = false;
-            this.lstTransfers.Location = new System.Drawing.Point(12, 220);
+            this.lstTransfers.Location = new System.Drawing.Point(30, 480);
+            listViewColumnSorter1.NeedNumberCompare = false;
+            listViewColumnSorter1.Order = System.Windows.Forms.SortOrder.None;
+            listViewColumnSorter1.SortColumn = 0;
+            this.lstTransfers.LvwColumnSorter = listViewColumnSorter1;
+            this.lstTransfers.Margin = new System.Windows.Forms.Padding(8);
             this.lstTransfers.Name = "lstTransfers";
-            this.lstTransfers.Size = new System.Drawing.Size(479, 233);
+            this.lstTransfers.Size = new System.Drawing.Size(1134, 443);
             this.lstTransfers.TabIndex = 4;
             this.lstTransfers.UseCompatibleStateImageBehavior = false;
             this.lstTransfers.View = System.Windows.Forms.View.Details;
@@ -178,10 +198,12 @@
             // 
             // chkUpdate
             // 
+            this.chkUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chkUpdate.AutoSize = true;
-            this.chkUpdate.Location = new System.Drawing.Point(180, 463);
+            this.chkUpdate.Location = new System.Drawing.Point(392, 973);
+            this.chkUpdate.Margin = new System.Windows.Forms.Padding(8);
             this.chkUpdate.Name = "chkUpdate";
-            this.chkUpdate.Size = new System.Drawing.Size(167, 17);
+            this.chkUpdate.Size = new System.Drawing.Size(345, 42);
             this.chkUpdate.TabIndex = 5;
             this.chkUpdate.Text = "使用此文件更新客户端";
             this.chkUpdate.UseVisualStyleBackColor = true;
@@ -189,9 +211,9 @@
             // FrmRemoteExecution
             // 
             this.AcceptButton = this.btnExecute;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(503, 494);
+            this.ClientSize = new System.Drawing.Size(1200, 1046);
             this.Controls.Add(this.chkUpdate);
             this.Controls.Add(this.lstTransfers);
             this.Controls.Add(this.radioURL);
@@ -201,6 +223,7 @@
             this.Controls.Add(this.btnExecute);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(8);
             this.Name = "FrmRemoteExecution";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "远程执行 []";

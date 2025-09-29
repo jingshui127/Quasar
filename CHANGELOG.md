@@ -1,104 +1,104 @@
-# Quasar Changelog
+# Quasar 更新日志
 
-## Quasar v1.4.1 [12.03.2023]
-* Added missing WOW64 subsystem autostart locations
-* Fixed file transfers of files larger than 2 GB
-* Fixed file transfers of empty files
-* Fixed browser credentials recovery
-* Fixed race condition on shutdown
-* Fixed IP Geolocation
-* Fixed opening remote shell sessions on non-system drives
-* Fixed incorrectly set file attributes on client installations
-* Fixed sorting of listview columns with numbers
-* Updated dependencies
+## Quasar v1.4.1 [2023年3月12日]
+* 添加了缺失的 WOW64 子系统自启动位置
+* 修复了大于 2GB 文件的传输问题
+* 修复了空文件的传输问题
+* 修复了浏览器凭证恢复功能
+* 修复了关闭时的竞争条件
+* 修复了 IP 地理位置功能
+* 修复了在非系统驱动器上打开远程 shell 会话的问题
+* 修复了客户端安装时文件属性设置不正确的问题
+* 修复了数字列的列表视图排序问题
+* 更新了依赖项
 
-## Quasar v1.4.0 [05.06.2020]
-* **Changed target framework to .NET Framework 4.5.2**
-* **Changed license to MIT**
-* Changed message serializer to Protobuf
-* Changed versioning scheme to Semantic Versioning (https://semver.org/)
-* Added attended/unattended client modes
-* Added TLS 1.2 as transport encryption
-* Added UTC timestamps to log files
-* Added dependencies as NuGet packages
-* Updated dependencies
-* Updated message processing in client and server
-* Updated mouse and keyboard input to SendInput API
-* Fixed file transfer vulnerbilities ([#623](https://github.com/quasar/Quasar/issues/623))
-* Lots of under the hood changes for an upcoming plugin system
+## Quasar v1.4.0 [2020年6月5日]
+* **将目标框架更改为 .NET Framework 4.5.2**
+* **将许可证更改为 MIT**
+* 将消息序列化器更改为 Protobuf
+* 将版本控制方案更改为语义化版本控制 (https://semver.org/)
+* 添加了有人/无人客户端模式
+* 添加了 TLS 1.2 传输加密
+* 为日志文件添加了 UTC 时间戳
+* 将依赖项添加为 NuGet 包
+* 更新了依赖项
+* 更新了客户端和服务器中的消息处理
+* 将鼠标和键盘输入更新为 SendInput API
+* 修复了文件传输漏洞 ([#623](https://github.com/quasar/Quasar/issues/623))
+* 进行了许多底层更改，为即将到来的插件系统做准备
 
-## Quasar v1.3.0.0 [28.09.2016]
-* Added Registry Editor
-* Added Remote Webcam
-* Added Windows DPI scaling support
-* Added IPv6 support
-* Added ability to elevate Client
-* Added full Unicode support
-* Added Remote TCP Connections Viewer
-* Added option to hide sub directory of installation path
-* Improved cryptography
-* Fixed XSS vulnerability in Keylogger Logs
-* Fixed Remote Messagebox having wrong icon
-* Fixed FileZilla Recovery base64 decoding
-* Fixed UPnP discovery freezing in some cases
-* Fixed IP Geolocation
-* Fixed Client loses Administrator privileges on restart
-* Some minor improvements
+## Quasar v1.3.0.0 [2016年9月28日]
+* 添加了注册表编辑器
+* 添加了远程网络摄像头
+* 添加了 Windows DPI 缩放支持
+* 添加了 IPv6 支持
+* 添加了提升客户端权限的功能
+* 添加了完整的 Unicode 支持
+* 添加了远程 TCP 连接查看器
+* 添加了隐藏安装路径子目录的选项
+* 改进了加密技术
+* 修复了键盘记录器日志中的 XSS 漏洞
+* 修复了远程消息框图标错误的问题
+* 修复了 FileZilla 恢复的 base64 解码问题
+* 修复了在某些情况下 UPnP 发现冻结的问题
+* 修复了 IP 地理位置功能
+* 修复了客户端重启后丢失管理员权限的问题
+* 一些小的改进
 
-## Quasar v1.2.0.0 [12.10.2015]
-* Added Client restart on unhandled exceptions
-* Added additional settings to Keylogger (set/hide log-directory)
-* Added encrypted Keylogger logs
-* Improved Client Builder
-* Improved System Information
-* Improved File Manager behaviour when loading directories with many files
-* Improved Remote Shell (scrolls now correctly to the bottom when new text received)
-* Improved compatibility with many connected clients (1k+)
-* Improved AES encryption/decryption speed (if available, makes use of hardware accelerated AES)
-* Fixed Client not setting file attribute correctly on startup
-* Fixed Remote Desktop lagging with mouse input and maximized window
-* Some minor improvements
+## Quasar v1.2.0.0 [2015年10月12日]
+* 添加了客户端在未处理异常时重启功能
+* 为键盘记录器添加了附加设置（设置/隐藏日志目录）
+* 添加了加密的键盘记录器日志
+* 改进了客户端构建器
+* 改进了系统信息功能
+* 改进了加载包含大量文件的目录时的文件管理器行为
+* 改进了远程 Shell（现在在接收到新文本时能正确滚动到底部）
+* 改进了与大量连接客户端（1000+）的兼容性
+* 改进了 AES 加密/解密速度（如果可用，使用硬件加速 AES）
+* 修复了客户端启动时未正确设置文件属性的问题
+* 修复了远程桌面在鼠标输入和窗口最大化时卡顿的问题
+* 一些小的改进
 
-## Quasar v1.1.0.0 [30.08.2015]
-* **Changed Target Framework to .NET Framework 4.0 Client Profile**
-* Added deletion of ZoneIdentifier file when installing
-* Improved Client installation error handling
-* Improved Client HardwareID generation
-* Improved Client-Server handshake
-* Support detection of multiple AVs, Firewalls, GPUs, CPUs
-* Fixed Builder Profile not saving correctly Installation Subfolder
-* Fixed Builder not validating input correctly
-* Fixed Builder creating Client with empty list of hosts
-* Fixed Settings Password not hashed when pressing 'Start listening'
-* Fixed Reverse Proxy using always wrong port
-* Fixed Server throwing NullReferenceException when closing and no Clients connected
-* Fixed Client reporting wrong uptime on systems with uptime longer than 49.7 days
-* Fixed Client installation path empty on Windows XP 32-bit in some scenarios
-* Fixed Client installation to system directory failing on 64-bit OS
-* Fixed Client uninstallation not working when file is marked as read-only
-* Fixed Client crashing after update on first start in some scenarios
-* Fixed Client crashing when list of hosts is empty (Client exits now)
-* Fixed Client not reconnecting when Server uses different password
-* Fixed Client registry access
-* Removed Statistics window, will be remade in a later version
+## Quasar v1.1.0.0 [2015年8月30日]
+* **将目标框架更改为 .NET Framework 4.0 Client Profile**
+* 添加了安装时删除 ZoneIdentifier 文件的功能
+* 改进了客户端安装错误处理
+* 改进了客户端硬件 ID 生成
+* 改进了客户端-服务器握手
+* 支持检测多个杀毒软件、防火墙、GPU、CPU
+* 修复了构建器配置文件未正确保存安装子文件夹的问题
+* 修复了构建器未正确验证输入的问题
+* 修复了构建器创建主机列表为空的客户端的问题
+* 修复了按下"开始监听"时设置密码未哈希的问题
+* 修复了反向代理总是使用错误端口的问题
+* 修复了关闭时无客户端连接时服务器抛出 NullReferenceException 的问题
+* 修复了系统运行时间超过 49.7 天时客户端报告错误运行时间的问题
+* 修复了在某些场景下 Windows XP 32 位客户端安装路径为空的问题
+* 修复了在 64 位操作系统上客户端安装到系统目录失败的问题
+* 修复了文件标记为只读时客户端卸载不工作的问题
+* 修复了某些场景下客户端更新后首次启动崩溃的问题
+* 修复了主机列表为空时客户端崩溃的问题（客户端现在会退出）
+* 修复了服务器使用不同密码时客户端不重新连接的问题
+* 修复了客户端注册表访问问题
+* 移除了统计窗口，将在后续版本中重新制作
 
-## Quasar v1.0.0.0 [22.08.2015]
-* **xRAT is now Quasar**
-* Added Password Recovery (Common Browsers and FTP Clients)
-* Added Server compatiblity with Mono (Server now runs on Linux with Mono installed)
-  * Client Builder works also on Linux/Mono
-* Added ability to upload batch files
-* Added Client support for multiple hosts
-* Added maximum simultaneous file downloads/uploads (current max: 2)
-* Fixed Remote Shell redirecting of standard output not working after redirecting error output
-* Fixed Remote Shell not displaying unicode characters correctly
-* Fixed Remote Desktop crash when changing screen resolution
-* Fixed File Manager would refresh directory when double-clicking files
-* Improved support for Windows 8 and above
-* Improved Remote Desktop (Speed, Full Mouse and Keyboard support)
-* Improved File Manager (Show name of drive, current path, upload files)
-* Improved UPnP support
-* Improved Geo IP support
-* Improved Builder UI
-* Switched from Protobuff to NetSerializer
-* Lots of under the hood changes for stability and performance
+## Quasar v1.0.0.0 [2015年8月22日]
+* **xRAT 现在更名为 Quasar**
+* 添加了密码恢复功能（常见浏览器和 FTP 客户端）
+* 添加了服务器对 Mono 的兼容性（服务器现在可以在安装了 Mono 的 Linux 上运行）
+  * 客户端构建器也可以在 Linux/Mono 上运行
+* 添加了上传批处理文件的功能
+* 添加了客户端对多个主机的支持
+* 添加了最大同时文件下载/上传数量（当前最大值：2）
+* 修复了远程 Shell 重定向标准输出在重定向错误输出后不工作的问题
+* 修复了远程 Shell 无法正确显示 Unicode 字符的问题
+* 修复了更改屏幕分辨率时远程桌面崩溃的问题
+* 修复了文件管理器双击文件时刷新目录的问题
+* 改进了对 Windows 8 及以上版本的支持
+* 改进了远程桌面（速度、完整的鼠标和键盘支持）
+* 改进了文件管理器（显示驱动器名称、当前路径、上传文件）
+* 改进了 UPnP 支持
+* 改进了 Geo IP 支持
+* 改进了构建器 UI
+* 从 Protobuff 切换到 NetSerializer
+* 进行了许多底层更改以提高稳定性和性能

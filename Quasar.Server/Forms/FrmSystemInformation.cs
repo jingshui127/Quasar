@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,26 +13,26 @@ namespace Quasar.Server.Forms
     public partial class FrmSystemInformation : Form
     {
         /// <summary>
-        /// The client which can be used for the system information.
+        /// 可用于系统信息的客户端。
         /// </summary>
         private readonly Client _connectClient;
 
         /// <summary>
-        /// The message handler for handling the communication with the client.
+        /// 用于处理与客户端通信的消息处理器。
         /// </summary>
         private readonly SystemInformationHandler _sysInfoHandler;
 
         /// <summary>
-        /// Holds the opened system information form for each client.
+        /// 为每个客户端保存已打开的系统信息表单。
         /// </summary>
         private static readonly Dictionary<Client, FrmSystemInformation> OpenedForms = new Dictionary<Client, FrmSystemInformation>();
 
         /// <summary>
-        /// Creates a new system information form for the client or gets the current open form, if there exists one already.
+        /// 为客户端创建新的系统信息表单，或者如果已存在则获取当前打开的表单。
         /// </summary>
-        /// <param name="client">The client used for the system information form.</param>
+        /// <param name="client">用于系统信息表单的客户端。</param>
         /// <returns>
-        /// Returns a new system information form for the client if there is none currently open, otherwise creates a new one.
+        /// 如果当前没有打开的系统信息表单，则为客户端返回一个新的系统信息表单，否则创建一个新的。
         /// </returns>
         public static FrmSystemInformation CreateNewOrGetExisting(Client client)
         {
@@ -47,9 +47,9 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FrmSystemInformation"/> class using the given client.
+        /// 使用给定的客户端初始化 <see cref="FrmSystemInformation"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The client used for the remote desktop form.</param>
+        /// <param name="client">用于远程桌面表单的客户端。</param>
         public FrmSystemInformation(Client client)
         {
             _connectClient = client;
@@ -60,7 +60,7 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Registers the system information message handler for client communication.
+        /// 注册系统信息消息处理器以进行客户端通信。
         /// </summary>
         private void RegisterMessageHandler()
         {
@@ -70,7 +70,7 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Unregisters the system information message handler.
+        /// 注销系统信息消息处理器。
         /// </summary>
         private void UnregisterMessageHandler()
         {
@@ -80,10 +80,10 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Called whenever a client disconnects.
+        /// 当客户端断开连接时调用。
         /// </summary>
-        /// <param name="client">The client which disconnected.</param>
-        /// <param name="connected">True if the client connected, false if disconnected</param>
+        /// <param name="client">断开连接的客户端。</param>
+        /// <param name="connected">如果客户端连接则为True，如果断开连接则为false</param>
         private void ClientDisconnected(Client client, bool connected)
         {
             if (!connected)
@@ -158,7 +158,7 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Adds basic system information which is already available to the ListView.
+        /// 将已有的基本系统信息添加到ListView中。
         /// </summary>
         private void AddBasicSystemInformation()
         {

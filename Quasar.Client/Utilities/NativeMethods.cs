@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Text;
 namespace Quasar.Client.Utilities
 {
     /// <summary>
-    /// Provides access to the Win32 API.
+    /// 提供对Win32 API的访问。
     /// </summary>
     public static class NativeMethods
     {
@@ -32,21 +32,19 @@ namespace Quasar.Client.Utilities
         internal static extern bool QueryFullProcessImageName([In] IntPtr hProcess, [In] uint dwFlags, [Out] StringBuilder lpExeName, [In, Out] ref uint lpdwSize);
 
         /// <summary>
-        ///    Performs a bit-block transfer of the color data corresponding to a
-        ///    rectangle of pixels from the specified source device context into
-        ///    a destination device context.
+        ///    执行从指定源设备上下文到目标设备上下文的像素矩形颜色数据的位块传输。
         /// </summary>
-        /// <param name="hdc">Handle to the destination device context.</param>
-        /// <param name="nXDest">The leftmost x-coordinate of the destination rectangle (in pixels).</param>
-        /// <param name="nYDest">The topmost y-coordinate of the destination rectangle (in pixels).</param>
-        /// <param name="nWidth">The width of the source and destination rectangles (in pixels).</param>
-        /// <param name="nHeight">The height of the source and the destination rectangles (in pixels).</param>
-        /// <param name="hdcSrc">Handle to the source device context.</param>
-        /// <param name="nXSrc">The leftmost x-coordinate of the source rectangle (in pixels).</param>
-        /// <param name="nYSrc">The topmost y-coordinate of the source rectangle (in pixels).</param>
-        /// <param name="dwRop">A raster-operation code.</param>
+        /// <param name="hdc">目标设备上下文的句柄。</param>
+        /// <param name="nXDest">目标矩形的最左x坐标（以像素为单位）。</param>
+        /// <param name="nYDest">目标矩形的最上y坐标（以像素为单位）。</param>
+        /// <param name="nWidth">源矩形和目标矩形的宽度（以像素为单位）。</param>
+        /// <param name="nHeight">源矩形和目标矩形的高度（以像素为单位）。</param>
+        /// <param name="hdcSrc">源设备上下文的句柄。</param>
+        /// <param name="nXSrc">源矩形的最左x坐标（以像素为单位）。</param>
+        /// <param name="nYSrc">源矩形的最上y坐标（以像素为单位）。</param>
+        /// <param name="dwRop">光栅操作代码。</param>
         /// <returns>
-        ///    <c>true</c> if the operation succeedes, <c>false</c> otherwise. To get extended error information, call <see cref="System.Runtime.InteropServices.Marshal.GetLastWin32Error"/>.
+        ///    <c>true</c>如果操作成功，则为<c>true</c>，否则为<c>false</c>。要获取扩展错误信息，请调用<see cref="System.Runtime.InteropServices.Marshal.GetLastWin32Error"/>。
         /// </returns>
         [DllImport("gdi32.dll", EntryPoint = "BitBlt", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -69,7 +67,7 @@ namespace Quasar.Client.Utilities
         internal static extern IntPtr GetMessageExtraInfo();
 
         /// <summary>
-        /// Synthesizes keystrokes, mouse motions, and button clicks.
+        /// 合成击键、鼠标移动和按钮点击。
         /// </summary>
         [DllImport("user32.dll")]
         internal static extern uint SendInput(uint nInputs,

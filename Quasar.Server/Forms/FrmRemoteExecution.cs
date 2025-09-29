@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Enums;
+﻿﻿using Quasar.Common.Enums;
 using Quasar.Common.Messages;
 using Quasar.Server.Helper;
 using Quasar.Server.Messages;
@@ -20,7 +20,7 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// The clients which can be used for the remote execution.
+        /// 可用于远程执行的客户端。
         /// </summary>
         private readonly Client[] _clients;
 
@@ -61,11 +61,11 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Registers the message handlers for client communication.
+        /// 注册用于客户端通信的消息处理器。
         /// </summary>
         private void RegisterMessageHandler(RemoteExecutionMessageHandler remoteExecutionMessageHandler)
         {
-            // TODO handle disconnects
+            // TODO 处理断开连接
             remoteExecutionMessageHandler.TaskHandler.ProcessActionPerformed += ProcessActionPerformed;
             remoteExecutionMessageHandler.FileHandler.ProgressChanged += SetStatusMessage;
             remoteExecutionMessageHandler.FileHandler.FileTransferUpdated += FileTransferUpdated;
@@ -74,7 +74,7 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Unregisters the message handlers.
+        /// 注销消息处理器。
         /// </summary>
         private void UnregisterMessageHandler(RemoteExecutionMessageHandler remoteExecutionMessageHandler)
         {
@@ -151,10 +151,10 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Called whenever a file transfer gets updated.
+        /// 当文件传输更新时调用。
         /// </summary>
-        /// <param name="sender">The message processor which raised the event.</param>
-        /// <param name="transfer">The updated file transfer.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="transfer">更新的文件传输。</param>
         private void FileTransferUpdated(object sender, FileTransfer transfer)
         {
             for (var i = 0; i < lstTransfers.Items.Count; i++)
@@ -174,12 +174,12 @@ namespace Quasar.Server.Forms
             }
         }
 
-        // TODO: update documentation
+        // TODO: 更新文档
         /// <summary>
-        /// Sets the status of the file manager.
+        /// 设置文件管理器的状态。
         /// </summary>
-        /// <param name="sender">The message handler which raised the event.</param>
-        /// <param name="message">The new status.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="message">新状态。</param>
         private void SetStatusMessage(object sender, string message)
         {
             for (var i = 0; i < lstTransfers.Items.Count; i++)

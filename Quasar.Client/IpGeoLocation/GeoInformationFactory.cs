@@ -1,36 +1,36 @@
-﻿using System;
+﻿﻿using System;
 
 namespace Quasar.Client.IpGeoLocation
 {
     /// <summary>
-    /// Factory to retrieve and cache the last IP geolocation information for <see cref="MINIMUM_VALID_TIME"/> minutes.
+    /// 工厂类，用于检索和缓存最近的IP地理位置信息，缓存时间为 <see cref="MINIMUM_VALID_TIME"/> 分钟。
     /// </summary>
     public static class GeoInformationFactory
     {
         /// <summary>
-        /// Retriever used to get geolocation information about the WAN IP address.
+        /// 用于获取WAN IP地址地理位置信息的检索器。
         /// </summary>
         private static readonly GeoInformationRetriever Retriever = new GeoInformationRetriever();
 
         /// <summary>
-        /// Used to cache the latest IP geolocation information.
+        /// 用于缓存最新的IP地理位置信息。
         /// </summary>
         private static GeoInformation _geoInformation;
 
         /// <summary>
-        /// Time of the last successful location retrieval.
+        /// 上次成功获取位置信息的时间。
         /// </summary>
         private static DateTime _lastSuccessfulLocation = new DateTime(1, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>
-        /// The minimum amount of minutes a successful IP geolocation retrieval is valid.
+        /// 成功获取IP地理位置信息的最小有效分钟数。
         /// </summary>
         private const int MINIMUM_VALID_TIME = 60 * 12;
 
         /// <summary>
-        /// Gets the IP geolocation information, either cached or freshly retrieved if more than <see cref="MINIMUM_VALID_TIME"/> minutes have passed.
+        /// 获取IP地理位置信息，如果超过 <see cref="MINIMUM_VALID_TIME"/> 分钟则重新获取，否则使用缓存。
         /// </summary>
-        /// <returns>The latest IP geolocation information.</returns>
+        /// <returns>最新的IP地理位置信息。</returns>
         public static GeoInformation GetGeoInformation()
         {
             var passedTime = new TimeSpan(DateTime.UtcNow.Ticks - _lastSuccessfulLocation.Ticks);

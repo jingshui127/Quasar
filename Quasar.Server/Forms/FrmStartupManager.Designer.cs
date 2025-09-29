@@ -1,18 +1,18 @@
-﻿﻿﻿using Quasar.Server.Controls;
+﻿﻿﻿﻿﻿﻿using Quasar.Server.Controls;
 
 namespace Quasar.Server.Forms
 {
     partial class FrmStartupManager
     {
         /// <summary>
-        /// Required designer variable.
+        /// 必需的设计器变量。
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// 清理所有正在使用的资源。
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">如果应释放托管资源为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -25,8 +25,8 @@ namespace Quasar.Server.Forms
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// 设计器支持所需的方法 - 不要修改
+        /// 此方法的内容。
         /// </summary>
         private void InitializeComponent()
         {

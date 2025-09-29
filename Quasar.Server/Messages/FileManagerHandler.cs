@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Enums;
+using Quasar.Common.Enums;
 using Quasar.Common.IO;
 using Quasar.Common.Messages;
 using Quasar.Common.Models;
@@ -15,63 +15,63 @@ using System.Threading;
 namespace Quasar.Server.Messages
 {
     /// <summary>
-    /// Handles messages for the interaction with remote files and directories.
+    /// 处理与远程文件和目录交互的消息。
     /// </summary>
     public class FileManagerHandler : MessageProcessorBase<string>, IDisposable
     {
         /// <summary>
-        /// Represents the method that will handle drive changes.
+        /// 表示将处理驱动器更改的方法。
         /// </summary>
-        /// <param name="sender">The message processor which raised the event.</param>
-        /// <param name="drives">All currently available drives.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="drives">所有当前可用的驱动器。</param>
         public delegate void DrivesChangedEventHandler(object sender, Drive[] drives);
 
         /// <summary>
-        /// Represents the method that will handle directory changes.
+        /// 表示将处理目录更改的方法。
         /// </summary>
-        /// <param name="sender">The message processor which raised the event.</param>
-        /// <param name="remotePath">The remote path of the directory.</param>
-        /// <param name="items">The directory content.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="remotePath">目录的远程路径。</param>
+        /// <param name="items">目录内容。</param>
         public delegate void DirectoryChangedEventHandler(object sender, string remotePath, FileSystemEntry[] items);
 
         /// <summary>
-        /// Represents the method that will handle file transfer updates.
+        /// 表示将处理文件传输更新的方法。
         /// </summary>
-        /// <param name="sender">The message processor which raised the event.</param>
-        /// <param name="transfer">The updated file transfer.</param>
+        /// <param name="sender">引发事件的消息处理器。</param>
+        /// <param name="transfer">更新的文件传输。</param>
         public delegate void FileTransferUpdatedEventHandler(object sender, FileTransfer transfer);
 
         /// <summary>
-        /// Raised when drives changed.
+        /// 当驱动器更改时引发。
         /// </summary>
         /// <remarks>
-        /// Handlers registered with this event will be invoked on the 
-        /// <see cref="System.Threading.SynchronizationContext"/> chosen when the instance was constructed.
+        /// 注册到此事件的处理程序将在构造实例时选择的 
+        /// <see cref="System.Threading.SynchronizationContext"/> 上调用。
         /// </remarks>
         public event DrivesChangedEventHandler DrivesChanged;
 
         /// <summary>
-        /// Raised when a directory changed.
+        /// 当目录更改时引发。
         /// </summary>
         /// <remarks>
-        /// Handlers registered with this event will be invoked on the 
-        /// <see cref="System.Threading.SynchronizationContext"/> chosen when the instance was constructed.
+        /// 注册到此事件的处理程序将在构造实例时选择的 
+        /// <see cref="System.Threading.SynchronizationContext"/> 上调用。
         /// </remarks>
         public event DirectoryChangedEventHandler DirectoryChanged;
 
         /// <summary>
-        /// Raised when a file transfer updated.
+        /// 当文件传输更新时引发。
         /// </summary>
         /// <remarks>
-        /// Handlers registered with this event will be invoked on the 
-        /// <see cref="System.Threading.SynchronizationContext"/> chosen when the instance was constructed.
+        /// 注册到此事件的处理程序将在构造实例时选择的 
+        /// <see cref="System.Threading.SynchronizationContext"/> 上调用。
         /// </remarks>
         public event FileTransferUpdatedEventHandler FileTransferUpdated;
 
         /// <summary>
-        /// Reports changed remote drives.
+        /// 报告更改的远程驱动器。
         /// </summary>
-        /// <param name="drives">The current remote drives.</param>
+        /// <param name="drives">当前远程驱动器。</param>
         private void OnDrivesChanged(Drive[] drives)
         {
             SynchronizationContext.Post(d =>
@@ -82,10 +82,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Reports a directory change.
+        /// 报告目录更改。
         /// </summary>
-        /// <param name="remotePath">The remote path of the directory.</param>
-        /// <param name="items">The directory content.</param>
+        /// <param name="remotePath">目录的远程路径。</param>
+        /// <param name="items">目录内容。</param>
         private void OnDirectoryChanged(string remotePath, FileSystemEntry[] items)
         {
             SynchronizationContext.Post(i =>
@@ -96,9 +96,9 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Reports updated file transfers.
+        /// 报告更新的文件传输。
         /// </summary>
-        /// <param name="transfer">The updated file transfer.</param>
+        /// <param name="transfer">更新的文件传输。</param>
         private void OnFileTransferUpdated(FileTransfer transfer)
         {
             SynchronizationContext.Post(t =>
@@ -109,37 +109,37 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Keeps track of all active file transfers. Finished or canceled transfers get removed.
+        /// 跟踪所有活动的文件传输。已完成或已取消的传输将被移除。
         /// </summary>
         private readonly List<FileTransfer> _activeFileTransfers = new List<FileTransfer>();
 
         /// <summary>
-        /// Used in lock statements to synchronize access between UI thread and thread pool.
+        /// 在lock语句中使用以同步UI线程和线程池之间的访问。
         /// </summary>
         private readonly object _syncLock = new object();
 
         /// <summary>
-        /// The client which is associated with this file manager handler.
+        /// 与此文件管理器处理器关联的客户端。
         /// </summary>
         private readonly Client _client;
 
         /// <summary>
-        /// Used to only allow two simultaneous file uploads.
+        /// 仅用于允许两个同时的文件上传。
         /// </summary>
         private readonly Semaphore _limitThreads = new Semaphore(2, 2);
 
         /// <summary>
-        /// Path to the base download directory of the client.
+        /// 客户端的基本下载目录路径。
         /// </summary>
         private readonly string _baseDownloadPath;
 
         private readonly TaskManagerHandler _taskManagerHandler;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileManagerHandler"/> class using the given client.
+        /// 使用给定的客户端初始化 <see cref="FileManagerHandler"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The associated client.</param>
-        /// <param name="subDirectory">Optional sub directory name.</param>
+        /// <param name="client">关联的客户端。</param>
+        /// <param name="subDirectory">可选的子目录名称。</param>
         public FileManagerHandler(Client client, string subDirectory = "") : base(true)
         {
             _client = client;
@@ -187,11 +187,11 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Begins downloading a file from the client.
+        /// 开始从客户端下载文件。
         /// </summary>
-        /// <param name="remotePath">The remote path of the file to download.</param>
-        /// <param name="localFileName">The local file name.</param>
-        /// <param name="overwrite">Overwrite the local file with the newly downloaded.</param>
+        /// <param name="remotePath">要下载的文件的远程路径。</param>
+        /// <param name="localFileName">本地文件名。</param>
+        /// <param name="overwrite">用新下载的文件覆盖本地文件。</param>
         public void BeginDownloadFile(string remotePath, string localFileName = "", bool overwrite = false)
         {
             if (string.IsNullOrEmpty(remotePath))
@@ -247,10 +247,10 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Begins uploading a file to the client.
+        /// 开始向客户端上传文件。
         /// </summary>
-        /// <param name="localPath">The local path of the file to upload.</param>
-        /// <param name="remotePath">Save the uploaded file to this remote path. If empty, generate a temporary file name.</param>
+        /// <param name="localPath">要上传的文件的本地路径。</param>
+        /// <param name="remotePath">将上传的文件保存到此远程路径。如果为空，则生成临时文件名。</param>
         public void BeginUploadFile(string localPath, string remotePath = "")
         {
             new Thread(() =>
@@ -345,20 +345,20 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Cancels a file transfer.
+        /// 取消文件传输。
         /// </summary>
-        /// <param name="transferId">The id of the file transfer to cancel.</param>
+        /// <param name="transferId">要取消的文件传输的ID。</param>
         public void CancelFileTransfer(int transferId)
         {
             _client.Send(new FileTransferCancel {Id = transferId});
         }
 
         /// <summary>
-        /// Renames a remote file or directory.
+        /// 重命名远程文件或目录。
         /// </summary>
-        /// <param name="remotePath">The remote file or directory path to rename.</param>
-        /// <param name="newPath">The new name of the remote file or directory path.</param>
-        /// <param name="type">The type of the file (file or directory).</param>
+        /// <param name="remotePath">要重命名的远程文件或目录路径。</param>
+        /// <param name="newPath">远程文件或目录路径的新名称。</param>
+        /// <param name="type">文件类型（文件或目录）。</param>
         public void RenameFile(string remotePath, string newPath, FileType type)
         {
             _client.Send(new DoPathRename
@@ -370,44 +370,44 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Deletes a remote file or directory.
+        /// 删除远程文件或目录。
         /// </summary>
-        /// <param name="remotePath">The remote file or directory path.</param>
-        /// <param name="type">The type of the file (file or directory).</param>
+        /// <param name="remotePath">远程文件或目录路径。</param>
+        /// <param name="type">文件类型（文件或目录）。</param>
         public void DeleteFile(string remotePath, FileType type)
         {
             _client.Send(new DoPathDelete {Path = remotePath, PathType = type});
         }
 
         /// <summary>
-        /// Starts a new process remotely.
+        /// 启动远程进程。
         /// </summary>
-        /// <param name="remotePath">The remote path used for starting the new process.</param>
+        /// <param name="remotePath">用于启动新进程的远程路径。</param>
         public void StartProcess(string remotePath)
         {
             _taskManagerHandler.StartProcess(remotePath);
         }
 
         /// <summary>
-        /// Adds an item to the startup of the client.
+        /// 将项目添加到客户端的启动项。
         /// </summary>
-        /// <param name="item">The startup item to add.</param>
+        /// <param name="item">要添加的启动项。</param>
         public void AddToStartup(StartupItem item)
         {
             _client.Send(new DoStartupItemAdd {StartupItem = item});
         }
 
         /// <summary>
-        /// Gets the directory contents for the remote path.
+        /// 获取远程路径的目录内容。
         /// </summary>
-        /// <param name="remotePath">The remote path of the directory.</param>
+        /// <param name="remotePath">目录的远程路径。</param>
         public void GetDirectoryContents(string remotePath)
         {
             _client.Send(new GetDirectory {RemotePath = remotePath});
         }
 
         /// <summary>
-        /// Refreshes the remote drives.
+        /// 刷新远程驱动器。
         /// </summary>
         public void RefreshDrives()
         {
@@ -507,13 +507,13 @@ namespace Quasar.Server.Messages
         private void ProcessActionPerformed(object sender, ProcessAction action, bool result)
         {
             if (action != ProcessAction.Start) return;
-            OnReport(result ? "Process started successfully" : "Process failed to start");
+            OnReport(result ? "进程启动成功" : "进程启动失败");
         }
 
         /// <summary>
-        /// Removes a file transfer given the transfer id.
+        /// 根据传输ID移除文件传输。
         /// </summary>
-        /// <param name="transferId">The file transfer id.</param>
+        /// <param name="transferId">文件传输ID。</param>
         private void RemoveFileTransfer(int transferId)
         {
             lock (_syncLock)
@@ -525,9 +525,9 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Generates a unique file transfer id.
+        /// 生成唯一的文件传输ID。
         /// </summary>
-        /// <returns>A unique file transfer id.</returns>
+        /// <returns>唯一的文件传输ID。</returns>
         private int GetUniqueFileTransferId()
         {
             int id;
@@ -544,7 +544,7 @@ namespace Quasar.Server.Messages
         }
 
         /// <summary>
-        /// Disposes all managed and unmanaged resources associated with this message processor.
+        /// 释放与此消息处理器关联的所有托管和非托管资源。
         /// </summary>
         public void Dispose()
         {

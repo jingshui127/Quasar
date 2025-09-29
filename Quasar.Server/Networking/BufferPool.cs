@@ -1,12 +1,12 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 
 namespace Quasar.Server.Networking
 {
     /// <summary>
-    /// Implements a pool of byte arrays to improve allocation performance when parsing data.
+    /// 实现字节数组池以提高解析数据时的分配性能。
     /// </summary>
-    /// <threadsafety>This type is safe for multi-threaded operations.</threadsafety>
+    /// <threadsafety>此类型对于多线程操作是安全的。</threadsafety>
     public class BufferPool
     {
         private readonly int _bufferLength;
@@ -14,13 +14,13 @@ namespace Quasar.Server.Networking
         private readonly Stack<byte[]> _buffers;
 
         /// <summary>
-        /// Informs listeners when a new buffer beyond the initial length has been allocated.
+        /// 当分配超出初始长度的新缓冲区时通知侦听器。
         /// </summary>
         public event EventHandler NewBufferAllocated;
         /// <summary>
-        /// Fires the <see>NewBufferAllocated</see> event.
+        /// 引发 <see>NewBufferAllocated</see> 事件。
         /// </summary>
-        /// <param name="e">The event arguments.</param>
+        /// <param name="e">事件参数。</param>
         protected virtual void OnNewBufferAllocated(EventArgs e)
         {
             var handler = NewBufferAllocated;
@@ -29,13 +29,13 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Informs listeners that a buffer has been allocated.
+        /// 通知侦听器已分配缓冲区。
         /// </summary>
         public event EventHandler BufferRequested;
         /// <summary>
-        /// Raises the <see>BufferRequested</see> event.
+        /// 引发 <see>BufferRequested</see> 事件。
         /// </summary>
-        /// <param name="e">The event arguments.</param>
+        /// <param name="e">事件参数。</param>
         protected virtual void OnBufferRequested(EventArgs e)
         {
             var handler =BufferRequested;
@@ -44,13 +44,13 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Informs listeners that a buffer has been returned.
+        /// 通知侦听器已返回缓冲区。
         /// </summary>
         public event EventHandler BufferReturned;
         /// <summary>
-        /// Raises the <see>BufferReturned</see> event.
+        /// 引发 <see>BufferReturned</see> 事件。
         /// </summary>
-        /// <param name="e">The event arguments.</param>
+        /// <param name="e">事件参数。</param>
         protected virtual void OnBufferReturned(EventArgs e)
         {
             var handler = BufferReturned; 
@@ -59,7 +59,7 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Gets the size of the buffers allocated from this pool.
+        /// 获取从此池分配的缓冲区大小。
         /// </summary>
         public int BufferLength
         {
@@ -67,7 +67,7 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Gets the maximum number of buffers available at any given time from this pool.
+        /// 获取从此池在任何给定时间可用的最大缓冲区数。
         /// </summary>
         public int MaxBufferCount
         {
@@ -75,28 +75,28 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Gets the current number of buffers available for use.
+        /// 获取当前可用于使用的缓冲区数。
         /// </summary>
         public int BuffersAvailable => _buffers.Count;
 
         /// <summary>
-        /// Gets or sets whether to zero the contents of a buffer when it is returned.  
+        /// 获取或设置返回缓冲区时是否将其内容清零。  
         /// </summary>
         public bool ClearOnReturn { get; set; }
 
         /// <summary>
-        /// Creates a new buffer pool with the specified name, buffer sizes, and buffer count.
+        /// 创建具有指定名称、缓冲区大小和缓冲区计数的新缓冲池。
         /// </summary>
-        /// <param name="baseBufferLength">The size of the preallocated buffers.</param>
-        /// <param name="baseBufferCount">The number of preallocated buffers that should be available.</param>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="baseBufferLength"/> or
-        /// <paramref name="baseBufferCount"/> are zero or negative.</exception>
+        /// <param name="baseBufferLength">预分配缓冲区的大小。</param>
+        /// <param name="baseBufferCount">应该可用的预分配缓冲区数量。</param>
+        /// <exception cref="ArgumentOutOfRangeException">如果 <paramref name="baseBufferLength"/> 或
+        /// <paramref name="baseBufferCount"/> 为零或负数时抛出。</exception>
         public BufferPool(int baseBufferLength, int baseBufferCount)
         {
             if (baseBufferLength <= 0)
-                throw new ArgumentOutOfRangeException("baseBufferLength", baseBufferLength, "Buffer length must be a positive integer value.");
+                throw new ArgumentOutOfRangeException("baseBufferLength", baseBufferLength, "缓冲区长度必须为正整数值。");
             if (baseBufferCount <= 0)
-                throw new ArgumentOutOfRangeException("baseBufferCount", baseBufferCount, "Buffer count must be a positive integer value.");
+                throw new ArgumentOutOfRangeException("baseBufferCount", baseBufferCount, "缓冲区计数必须为正整数值。");
 
             _bufferLength = baseBufferLength;
             _bufferCount = baseBufferCount;
@@ -110,13 +110,13 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Gets a buffer from the available pool if one is available, or else allocates a new one.
+        /// 如果有可用的缓冲区则从可用池中获取一个，否则分配一个新的。
         /// </summary>
         /// <remarks>
-        /// <para>Buffers retrieved with this method should be returned to the pool by using the
-        /// <see>ReturnBuffer</see> method.</para>
+        /// <para>使用此方法检索的缓冲区应通过使用
+        /// <see>ReturnBuffer</see> 方法返回到池中。</para>
         /// </remarks>
-        /// <returns>A <see>byte</see>[] from the pool.</returns>
+        /// <returns>来自池的 <see>byte</see>[]。</returns>
         public byte[] GetBuffer()
         {
             lock (_buffers)
@@ -141,19 +141,18 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Returns the specified buffer to the pool.
+        /// 将指定的缓冲区返回到池中。
         /// </summary>
-        /// <returns><see langword="true" /> if the buffer belonged to this pool and was freed; otherwise <see langword="false" />.</returns>
+        /// <returns>如果缓冲区属于此池并已释放则为 <see langword="true" />；否则为 <see langword="false" />。</returns>
         /// <remarks>
-        /// <para>If the <see>ClearOnFree</see> property is <see langword="true" />, then the buffer will be zeroed before 
-        /// being restored to the pool.</para>
+        /// <para>如果 <see>ClearOnFree</see> 属性为 <see langword="true" />，则在将缓冲区恢复到池中之前会将其清零。</para>
         /// </remarks>
-        /// <param name="buffer">The buffer to return to the pool.</param>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="buffer" /> is <see langword="null" />.</exception>
+        /// <param name="buffer">要返回到池中的缓冲区。</param>
+        /// <exception cref="ArgumentNullException">如果 <paramref name="buffer" /> 为 <see langword="null" /> 时抛出。</exception>
         public bool ReturnBuffer(byte[] buffer)
         {
             if (buffer == null)
-                throw new ArgumentNullException("buffer");
+                throw new ArgumentNullException("buffer", "缓冲区不能为空。");
             if (buffer.Length != _bufferLength)
                 return false;
 
@@ -169,18 +168,18 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Increases the number of buffers available in the pool by a given size.
+        /// 通过给定大小增加池中可用的缓冲区数量。
         /// </summary>
-        /// <param name="buffersToAdd">The number of buffers to preallocate.</param>
-        /// <exception cref="OutOfMemoryException">Thrown if the system is unable to preallocate the requested number of buffers.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="buffersToAdd"/> is less than or equal to 0.</exception>
+        /// <param name="buffersToAdd">要预分配的缓冲区数量。</param>
+        /// <exception cref="OutOfMemoryException">如果系统无法预分配请求的缓冲区数量时抛出。</exception>
+        /// <exception cref="ArgumentOutOfRangeException">如果 <paramref name="buffersToAdd"/> 小于或等于 0 时抛出。</exception>
         /// <remarks>
-        /// <para>This method does not cause the <see>NewBufferAllocated</see> event to be raised.</para>
+        /// <para>此方法不会导致引发 <see>NewBufferAllocated</see> 事件。</para>
         /// </remarks>
         public void IncreaseBufferCount(int buffersToAdd)
         {
             if (buffersToAdd <= 0)
-                throw new ArgumentOutOfRangeException("buffersToAdd", buffersToAdd, "The number of buffers to add must be a nonnegative, nonzero integer.");
+                throw new ArgumentOutOfRangeException("buffersToAdd", buffersToAdd, "要添加的缓冲区数量必须是非负、非零整数。");
 
             List<byte[]> newBuffers = new List<byte[]>(buffersToAdd);
             for (int i = 0; i < buffersToAdd; i++)
@@ -199,20 +198,20 @@ namespace Quasar.Server.Networking
         }
 
         /// <summary>
-        /// Removes up to the specified number of buffers from the pool.
+        /// 从池中最多移除指定数量的缓冲区。
         /// </summary>
-        /// <param name="buffersToRemove">The number of buffers to attempt to remove.</param>
-        /// <returns>The number of buffers actually removed.</returns>
+        /// <param name="buffersToRemove">要尝试移除的缓冲区数量。</param>
+        /// <returns>实际移除的缓冲区数量。</returns>
         /// <remarks>
-        /// <para>The number of buffers removed may actually be lower than the number requested if the specified number of buffers are not free.
-        /// For example, if the number of buffers free is 15, and the callee requests the removal of 20 buffers, only 15 will be freed, and so the
-        /// returned value will be 15.</para>
+        /// <para>如果指定数量的缓冲区未空闲，则实际移除的缓冲区数量可能低于请求的数量。
+        /// 例如，如果空闲缓冲区数量为 15，而调用者请求移除 20 个缓冲区，则只会释放 15 个，因此
+        /// 返回值将为 15。</para>
         /// </remarks>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="buffersToRemove"/> is less than or equal to 0.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">如果 <paramref name="buffersToRemove"/> 小于或等于 0 时抛出。</exception>
         public int DecreaseBufferCount(int buffersToRemove)
         {
             if (buffersToRemove <= 0)
-                throw new ArgumentOutOfRangeException("buffersToRemove", buffersToRemove, "The number of buffers to remove must be a nonnegative, nonzero integer.");
+                throw new ArgumentOutOfRangeException("buffersToRemove", buffersToRemove, "要移除的缓冲区数量必须是非负、非零整数。");
 
             int numRemoved = 0;
 

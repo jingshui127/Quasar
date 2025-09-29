@@ -6,12 +6,12 @@ using System.Net;
 namespace Quasar.Client.IpGeoLocation
 {
     /// <summary>
-    /// Class to retrieve the IP geolocation information.
+    /// 用于检索IP地理位置信息的类。
     /// </summary>
     public class GeoInformationRetriever
     {
         /// <summary>
-        /// List of all available flag images on the server side.
+        /// 服务器端所有可用国旗图像的列表。
         /// </summary>
         private readonly string[] _imageList =
         {
@@ -42,9 +42,9 @@ namespace Quasar.Client.IpGeoLocation
         };
 
         /// <summary>
-        /// Retrieves the IP geolocation information.
+        /// 检索IP地理位置信息。
         /// </summary>
-        /// <returns>The retrieved IP geolocation information.</returns>
+        /// <returns>检索到的IP地理位置信息。</returns>
         public GeoInformation Retrieve()
         {
             var geo = TryRetrieveOnline() ?? TryRetrieveLocally();
@@ -74,9 +74,9 @@ namespace Quasar.Client.IpGeoLocation
         }
 
         /// <summary>
-        /// Tries to retrieve the geolocation information online.
+        /// 尝试在线检索地理位置信息。
         /// </summary>
-        /// <returns>The retrieved geolocation information if successful, otherwise <c>null</c>.</returns>
+        /// <returns>如果成功则返回检索到的地理位置信息，否则返回 <c>null</c>。</returns>
         private GeoInformation TryRetrieveOnline()
         {
             try
@@ -113,9 +113,9 @@ namespace Quasar.Client.IpGeoLocation
         }
 
         /// <summary>
-        /// Tries to retrieve the geolocation information locally.
+        /// 尝试本地检索地理位置信息。
         /// </summary>
-        /// <returns>The retrieved geolocation information if successful, otherwise <c>null</c>.</returns>
+        /// <returns>如果成功则返回检索到的地理位置信息，否则返回 <c>null</c>。</returns>
         private GeoInformation TryRetrieveLocally()
         {
             try
@@ -139,9 +139,9 @@ namespace Quasar.Client.IpGeoLocation
         }
 
         /// <summary>
-        /// Tries to retrieves the WAN IP.
+        /// 尝试检索WAN IP。
         /// </summary>
-        /// <returns>The WAN IP as string if successful, otherwise <c>null</c>.</returns>
+        /// <returns>如果成功则返回WAN IP字符串，否则返回 <c>null</c>。</returns>
         private string TryGetWanIp()
         {
             string wanIp = "";

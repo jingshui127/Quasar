@@ -1,4 +1,4 @@
-﻿using Quasar.Client.Config;
+﻿﻿using Quasar.Client.Config;
 using Quasar.Client.Helper;
 using Quasar.Client.IO;
 using Quasar.Client.IpGeoLocation;
@@ -17,35 +17,35 @@ namespace Quasar.Client.Networking
     public class QuasarClient : Client, IDisposable
     {
         /// <summary>
-        /// Used to keep track if the client has been identified by the server.
+        /// 用于跟踪客户端是否已被服务器识别。
         /// </summary>
         private bool _identified;
 
         /// <summary>
-        /// The hosts manager which contains the available hosts to connect to.
+        /// 包含可连接主机的主机管理器。
         /// </summary>
         private readonly HostsManager _hosts;
 
         /// <summary>
-        /// Random number generator to slightly randomize the reconnection delay.
+        /// 随机数生成器，用于稍微随机化重连延迟。
         /// </summary>
         private readonly SafeRandom _random;
 
         /// <summary>
-        /// Create a <see cref="_token"/> and signals cancellation.
+        /// 创建一个<see cref="_token"/>并发出取消信号。
         /// </summary>
         private readonly CancellationTokenSource _tokenSource;
 
         /// <summary>
-        /// The token to check for cancellation.
+        /// 用于检查取消的令牌。
         /// </summary>
         private readonly CancellationToken _token;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QuasarClient"/> class.
+        /// 初始化<see cref="QuasarClient"/>类的新实例。
         /// </summary>
-        /// <param name="hostsManager">The hosts manager which contains the available hosts to connect to.</param>
-        /// <param name="serverCertificate">The server certificate.</param>
+        /// <param name="hostsManager">包含可连接主机的主机管理器。</param>
+        /// <param name="serverCertificate">服务器证书。</param>
         public QuasarClient(HostsManager hostsManager, X509Certificate2 serverCertificate)
             : base(serverCertificate)
         {
@@ -59,11 +59,11 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Connection loop used to reconnect and keep the connection open.
+        /// 连接循环，用于重新连接并保持连接打开。
         /// </summary>
         public void ConnectLoop()
         {
-            // TODO: do not re-use object
+            // TODO: 不要重复使用对象
             while (!_token.IsCancellationRequested)
             {
                 if (!Connected)
@@ -147,7 +147,7 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Stops the connection loop and disconnects the connection.
+        /// 停止连接循环并断开连接。
         /// </summary>
         public void Exit()
         {
@@ -156,7 +156,7 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Disposes all managed and unmanaged resources associated with this activity detection service.
+        /// 释放与此活动检测服务关联的所有托管和非托管资源。
         /// </summary>
         public void Dispose()
         {

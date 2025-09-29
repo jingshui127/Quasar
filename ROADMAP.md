@@ -1,25 +1,25 @@
-# Quasar Roadmap
+# Quasar 发展路线图
 
 ## Web API
-A web API (e.g. REST-like) allows to interact with the clients in more flexible ways and can be used to build a web interface for Quasar.
+Web API（例如类 REST API）允许以更灵活的方式与客户端交互，并可用于为 Quasar 构建 Web 界面。
 
-## Transparent communication protocol
-To open up the way for Quasar clients in different programming languages the communication protocol needs to be clearly specified and documented.
+## 透明的通信协议
+为了为不同编程语言的 Quasar 客户端铺平道路，需要明确定义和记录通信协议。
 
-## Cross-platform support
-A long-term goal is to support operating systems such as MacOS and Linux. The new .NET Core framework will help achieve this goal.
+## 跨平台支持
+长期目标是支持 MacOS 和 Linux 等操作系统。新的 .NET Core 框架将有助于实现这一目标。
 
-## Command line (CLI) version of the server
-It should be possible to use the server as a simple CLI tool to accept and forward (proxy) connections to other servers.
+## 服务器命令行（CLI）版本
+应该可以将服务器用作简单的 CLI 工具来接受和转发（代理）连接到其他服务器。
 
-## GUI overhaul
-The GUI needs to be reworked in a more modern way, such as WPF or a web-based interface. WPF as GUI framework would drastically improve rendering performance of the remote desktop with the hardware accelerated rendering, similar to a web-based GUI depending on the used browser.
+## GUI 界面重构
+GUI 需要以更现代化的方式重新设计，例如 WPF 或基于 Web 的界面。WPF 作为 GUI 框架将显著提高远程桌面的渲染性能，通过硬件加速渲染，类似于基于 Web 的 GUI（取决于使用的浏览器）。
 
-## Allow different types of clients (permissioned clients)
-Allow clients with higher privileges (i.e. ability to administrate other lower privileged clients) connect to the server. This change would allow administrators to manage clients from their own computers with a lightweight client without having to run the server.
+## 允许不同类型的客户端（权限客户端）
+允许具有更高权限的客户端（即能够管理其他低权限客户端）连接到服务器。这一变化将允许管理员使用轻量级客户端从自己的计算机管理客户端，而无需运行服务器。
 
-## Allow client installation as Windows service
-Currently the client is installed on a per-user basis and this makes it unflexible to remotly manage the machine when the user is not logged in. it also requires the client to be installed for every account who uses the machine. Machines which are used by multiple users would greatly benefit when Quasar could be run as a Windows service.
+## 允许客户端作为 Windows 服务安装
+目前客户端是按用户安装的，当用户未登录时，这使得远程管理计算机变得不灵活。它还要求为使用计算机的每个账户安装客户端。多用户使用的计算机将大大受益于 Quasar 能够作为 Windows 服务运行。
 
-## Basic client GUI
-Add a basic GUI to the client to allow the user at any time to check the status if a specific feature is active. Additionally it can show a notification when the client gets installed or when someone requests permission to use remote desktop (similar to teamviewer).
+## 基本客户端 GUI
+为客户端添加基本的 GUI，以允许用户随时检查特定功能是否处于活动状态。此外，它可以在客户端安装时或有人请求使用远程桌面权限时显示通知（类似于 TeamViewer）。

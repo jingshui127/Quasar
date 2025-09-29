@@ -7,7 +7,7 @@ using System.Text;
 namespace Quasar.Client.Recovery.Browsers
 {
     /// <summary>
-    /// Provides methods to decrypt Firefox credentials.
+    /// 提供解密Firefox凭据的方法。
     /// </summary>
     public class FFDecryptor : IDisposable
     {
@@ -95,7 +95,7 @@ namespace Quasar.Client.Recovery.Browsers
         }
 
         /// <summary>
-        /// Disposes all managed and unmanaged resources associated with this class.
+        /// 释放与此类关联的所有托管和非托管资源。
         /// </summary>
         public void Dispose()
         {

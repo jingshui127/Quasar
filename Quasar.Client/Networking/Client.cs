@@ -1,4 +1,4 @@
-﻿using Quasar.Client.ReverseProxy;
+﻿﻿using Quasar.Client.ReverseProxy;
 using Quasar.Common.Extensions;
 using Quasar.Common.Messages;
 using Quasar.Common.Messages.ReverseProxy;
@@ -19,21 +19,21 @@ namespace Quasar.Client.Networking
     public class Client : ISender
     {
         /// <summary>
-        /// Occurs as a result of an unrecoverable issue with the client.
+        /// 由于客户端出现不可恢复的问题而发生。
         /// </summary>
         public event ClientFailEventHandler ClientFail;
 
         /// <summary>
-        /// Represents a method that will handle failure of the client.
+        /// 表示将处理客户端故障的方法。
         /// </summary>
-        /// <param name="s">The client that has failed.</param>
-        /// <param name="ex">The exception containing information about the cause of the client's failure.</param>
+        /// <param name="s">已失败的客户端。</param>
+        /// <param name="ex">包含有关客户端故障原因信息的异常。</param>
         public delegate void ClientFailEventHandler(Client s, Exception ex);
 
         /// <summary>
-        /// Fires an event that informs subscribers that the client has failed.
+        /// 触发一个事件，通知订阅者客户端已失败。
         /// </summary>
-        /// <param name="ex">The exception containing information about the cause of the client's failure.</param>
+        /// <param name="ex">包含有关客户端故障原因信息的异常。</param>
         private void OnClientFail(Exception ex)
         {
             var handler = ClientFail;
@@ -41,21 +41,21 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Occurs when the state of the client has changed.
+        /// 当客户端状态发生变化时发生。
         /// </summary>
         public event ClientStateEventHandler ClientState;
 
         /// <summary>
-        /// Represents the method that will handle a change in the client's state
+        /// 表示将处理客户端状态更改的方法
         /// </summary>
-        /// <param name="s">The client which changed its state.</param>
-        /// <param name="connected">The new connection state of the client.</param>
+        /// <param name="s">更改了状态的客户端。</param>
+        /// <param name="connected">客户端的新连接状态。</param>
         public delegate void ClientStateEventHandler(Client s, bool connected);
 
         /// <summary>
-        /// Fires an event that informs subscribers that the state of the client has changed.
+        /// 触发一个事件，通知订阅者客户端状态已更改。
         /// </summary>
-        /// <param name="connected">The new connection state of the client.</param>
+        /// <param name="connected">客户端的新连接状态。</param>
         private void OnClientState(bool connected)
         {
             if (Connected == connected) return;
@@ -67,23 +67,23 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Occurs when a message is received from the server.
+        /// 当从服务器接收到消息时发生。
         /// </summary>
         public event ClientReadEventHandler ClientRead;
 
         /// <summary>
-        /// Represents a method that will handle a message from the server.
+        /// 表示将处理来自服务器的消息的方法。
         /// </summary>
-        /// <param name="s">The client that has received the message.</param>
-        /// <param name="message">The message that has been received by the server.</param>
-        /// <param name="messageLength">The length of the message.</param>
+        /// <param name="s">已接收到消息的客户端。</param>
+        /// <param name="message">已由服务器接收的消息。</param>
+        /// <param name="messageLength">消息的长度。</param>
         public delegate void ClientReadEventHandler(Client s, IMessage message, int messageLength);
 
         /// <summary>
-        /// Fires an event that informs subscribers that a message has been received by the server.
+        /// 触发一个事件，通知订阅者服务器已接收到消息。
         /// </summary>
-        /// <param name="message">The message that has been received by the server.</param>
-        /// <param name="messageLength">The length of the message.</param>
+        /// <param name="message">已由服务器接收的消息。</param>
+        /// <param name="messageLength">消息的长度。</param>
         private void OnClientRead(IMessage message, int messageLength)
         {
             var handler = ClientRead;
@@ -91,23 +91,23 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Occurs when a message is sent by the client.
+        /// 当客户端发送消息时发生。
         /// </summary>
         public event ClientWriteEventHandler ClientWrite;
 
         /// <summary>
-        /// Represents the method that will handle the sent message.
+        /// 表示将处理已发送消息的方法。
         /// </summary>
-        /// <param name="s">The client that has sent the message.</param>
-        /// <param name="message">The message that has been sent by the client.</param>
-        /// <param name="messageLength">The length of the message.</param>
+        /// <param name="s">已发送消息的客户端。</param>
+        /// <param name="message">已由客户端发送的消息。</param>
+        /// <param name="messageLength">消息的长度。</param>
         public delegate void ClientWriteEventHandler(Client s, IMessage message, int messageLength);
 
         /// <summary>
-        /// Fires an event that informs subscribers that the client has sent a message.
+        /// 触发一个事件，通知订阅者客户端已发送消息。
         /// </summary>
-        /// <param name="message">The message that has been sent by the client.</param>
-        /// <param name="messageLength">The length of the message.</param>
+        /// <param name="message">已由客户端发送的消息。</param>
+        /// <param name="messageLength">消息的长度。</param>
         private void OnClientWrite(IMessage message, int messageLength)
         {
             var handler = ClientWrite;
@@ -115,7 +115,7 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// The type of the message received.
+        /// 接收到的消息类型。
         /// </summary>
         public enum ReceiveType
         {
@@ -124,32 +124,32 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// The buffer size for receiving data in bytes.
+        /// 以字节为单位的接收数据缓冲区大小。
         /// </summary>
         public int BUFFER_SIZE { get { return 1024 * 16; } } // 16KB
 
         /// <summary>
-        /// The keep-alive time in ms.
+        /// 以毫秒为单位的保活时间。
         /// </summary>
         public uint KEEP_ALIVE_TIME { get { return 25000; } } // 25s
 
         /// <summary>
-        /// The keep-alive interval in ms.
+        /// 以毫秒为单位的保活间隔。
         /// </summary>
         public uint KEEP_ALIVE_INTERVAL { get { return 25000; } } // 25s
 
         /// <summary>
-        /// The header size in bytes.
+        /// 以字节为单位的头部大小。
         /// </summary>
         public int HEADER_SIZE { get { return 4; } } // 4B
 
         /// <summary>
-        /// The maximum size of a message in bytes.
+        /// 以字节为单位的消息最大大小。
         /// </summary>
         public int MAX_MESSAGE_SIZE { get { return (1024 * 1024) * 5; } } // 5MB
 
         /// <summary>
-        /// Returns an array containing all of the proxy clients of this client.
+        /// 返回包含此客户端所有代理客户端的数组。
         /// </summary>
         public ReverseProxyClient[] ProxyClients
         {
@@ -163,72 +163,72 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Gets if the client is currently connected to a server.
+        /// 获取客户端当前是否连接到服务器。
         /// </summary>
         public bool Connected { get; private set; }
 
         /// <summary>
-        /// The stream used for communication.
+        /// 用于通信的流。
         /// </summary>
         private SslStream _stream;
 
         /// <summary>
-        /// The server certificate.
+        /// 服务器证书。
         /// </summary>
         private readonly X509Certificate2 _serverCertificate;
 
         /// <summary>
-        /// A list of all the connected proxy clients that this client holds.
+        /// 此客户端持有的所有已连接代理客户端的列表。
         /// </summary>
         private List<ReverseProxyClient> _proxyClients = new List<ReverseProxyClient>();
 
         /// <summary>
-        /// The internal index of the message type.
+        /// 消息类型的内部索引。
         /// </summary>
         private int _typeIndex;
 
         /// <summary>
-        /// Lock object for the list of proxy clients.
+        /// 代理客户端列表的锁定对象。
         /// </summary>
         private readonly object _proxyClientsLock = new object();
 
         /// <summary>
-        /// The buffer for incoming messages.
+        /// 传入消息的缓冲区。
         /// </summary>
         private byte[] _readBuffer;
 
         /// <summary>
-        /// The buffer for the client's incoming payload.
+        /// 客户端传入负载的缓冲区。
         /// </summary>
         private byte[] _payloadBuffer;
 
         /// <summary>
-        /// The queue which holds messages to send.
+        /// 保存要发送的消息的队列。
         /// </summary>
         private readonly Queue<IMessage> _sendBuffers = new Queue<IMessage>();
 
         /// <summary>
-        /// Determines if the client is currently sending messages.
+        /// 确定客户端当前是否正在发送消息。
         /// </summary>
         private bool _sendingMessages;
 
         /// <summary>
-        /// Lock object for the sending messages boolean.
+        /// 发送消息布尔值的锁定对象。
         /// </summary>
         private readonly object _sendingMessagesLock = new object();
 
         /// <summary>
-        /// The queue which holds buffers to read.
+        /// 保存要读取的缓冲区的队列。
         /// </summary>
         private readonly Queue<byte[]> _readBuffers = new Queue<byte[]>();
 
         /// <summary>
-        /// Determines if the client is currently reading messages.
+        /// 确定客户端当前是否正在读取消息。
         /// </summary>
         private bool _readingMessages;
 
         /// <summary>
-        /// Lock object for the reading messages boolean.
+        /// 读取消息布尔值的锁定对象。
         /// </summary>
         private readonly object _readingMessagesLock = new object();
 
@@ -240,14 +240,14 @@ namespace Quasar.Client.Networking
         private ReceiveType _receiveState = ReceiveType.Header;
 
         /// <summary>
-        /// The mutex prevents multiple simultaneous write operations on the <see cref="_stream"/>.
+        /// 互斥锁防止在<see cref="_stream"/>上进行多个同时写操作。
         /// </summary>
         private readonly Mutex _singleWriteMutex = new Mutex();
 
         /// <summary>
-        /// Constructor of the client, initializes serializer types.
+        /// 客户端的构造函数，初始化序列化器类型。
         /// </summary>
-        /// <param name="serverCertificate">The server certificate.</param>
+        /// <param name="serverCertificate">服务器证书。</param>
         protected Client(X509Certificate2 serverCertificate)
         {
             _serverCertificate = serverCertificate;
@@ -256,10 +256,10 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Attempts to connect to the specified ip address on the specified port.
+        /// 尝试连接到指定端口上的指定IP地址。
         /// </summary>
-        /// <param name="ip">The ip address to connect to.</param>
-        /// <param name="port">The port of the host.</param>
+        /// <param name="ip">要连接的IP地址。</param>
+        /// <param name="port">主机的端口。</param>
         protected void Connect(IPAddress ip, ushort port)
         {
             Socket handle = null;
@@ -291,22 +291,22 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Validates the server certificate by comparing it with the included server certificate.
+        /// 通过将服务器证书与包含的服务器证书进行比较来验证服务器证书。
         /// </summary>
-        /// <param name="sender">The sender of the callback.</param>
-        /// <param name="certificate">The server certificate to validate.</param>
-        /// <param name="chain">The X.509 chain.</param>
-        /// <param name="sslPolicyErrors">The SSL policy errors.</param>
-        /// <returns>Returns <value>true</value> when the validation was successful, otherwise <value>false</value>.</returns>
+        /// <param name="sender">回调的发送方。</param>
+        /// <param name="certificate">要验证的服务器证书。</param>
+        /// <param name="chain">X.509链。</param>
+        /// <param name="sslPolicyErrors">SSL策略错误。</param>
+        /// <returns>当验证成功时返回<value>true</value>，否则返回<value>false</value>。</returns>
         private bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
 #if DEBUG
-            // for debugging don't validate server certificate
+            // 用于调试时不验证服务器证书
             return true;
 #else
             var serverCsp = (RSACryptoServiceProvider)_serverCertificate.PublicKey.Key;
             var connectedCsp = (RSACryptoServiceProvider)new X509Certificate2(certificate).PublicKey.Key;
-            // compare the received server certificate with the included server certificate to validate we are connected to the correct server
+            // 将接收到的服务器证书与包含的服务器证书进行比较，以验证我们是否连接到了正确的服务器
             return _serverCertificate.Equals(certificate);
 #endif
         }
@@ -407,7 +407,7 @@ namespace Quasar.Client.Networking
 
                                 if (_readableDataLen + _writeOffset >= HEADER_SIZE)
                                 {
-                                    // completely received header
+                                    // 完全接收头部
                                     int headerLength = HEADER_SIZE - _writeOffset;
 
                                     try
@@ -437,7 +437,7 @@ namespace Quasar.Client.Networking
                                 }
                                 else // _readableDataLen + _writeOffset < HeaderSize
                                 {
-                                    // received only a part of the header
+                                    // 仅接收了头部的一部分
                                     try
                                     {
                                         Array.Copy(readBuffer, _readOffset, _payloadBuffer, _writeOffset, _readableDataLen);
@@ -478,7 +478,7 @@ namespace Quasar.Client.Networking
 
                                 if (_writeOffset - HEADER_SIZE == _payloadLen)
                                 {
-                                    // completely received payload
+                                    // 完全接收负载
                                     try
                                     {
                                         using (PayloadReader pr = new PayloadReader(_payloadBuffer, _payloadLen + HEADER_SIZE, false))
@@ -514,10 +514,10 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Sends a message to the connected server.
+        /// 向已连接的服务器发送消息。
         /// </summary>
-        /// <typeparam name="T">The type of the message.</typeparam>
-        /// <param name="message">The message to be sent.</param>
+        /// <typeparam name="T">消息的类型。</typeparam>
+        /// <param name="message">要发送的消息。</param>
         public void Send<T>(T message) where T : IMessage
         {
             if (!Connected || message == null) return;
@@ -537,11 +537,11 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Sends a message to the connected server.
-        /// Blocks the thread until the message has been sent.
+        /// 向已连接的服务器发送消息。
+        /// 阻塞线程直到消息已发送。
         /// </summary>
-        /// <typeparam name="T">The type of the message.</typeparam>
-        /// <param name="message">The message to be sent.</param>
+        /// <typeparam name="T">消息的类型。</typeparam>
+        /// <param name="message">要发送的消息。</param>
         public void SendBlocking<T>(T message) where T : IMessage
         {
             if (!Connected || message == null) return;
@@ -550,10 +550,10 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Safely sends a message and prevents multiple simultaneous
-        /// write operations on the <see cref="_stream"/>.
+        /// 安全地发送消息并防止在<see cref="_stream"/>上进行多个同时
+        /// 写操作。
         /// </summary>
-        /// <param name="message">The message to send.</param>
+        /// <param name="message">要发送的消息。</param>
         private void SafeSendMessage(IMessage message)
         {
             try
@@ -617,9 +617,8 @@ namespace Quasar.Client.Networking
         }
 
         /// <summary>
-        /// Disconnect the client from the server, disconnect all proxies that
-        /// are held by this client, and dispose of other resources associated
-        /// with this client.
+        /// 断开客户端与服务器的连接，断开由此客户端持有的所有代理，
+        /// 并释放与此客户端关联的其他资源。
         /// </summary>
         public void Disconnect()
         {

@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+﻿﻿﻿using Microsoft.Win32;
 using Quasar.Common.Utilities;
 using System;
 using System.Collections.Generic;
@@ -7,30 +7,28 @@ using System.Linq;
 namespace Quasar.Client.Extensions
 {
     /// <summary>
-    /// Provides extensions for registry key and value operations.
+    /// 为注册表键和值操作提供扩展。
     /// </summary>
     public static class RegistryKeyExtensions
     {
         /// <summary>
-        /// Determines if the registry key by the name provided is null or has the value of null.
+        /// 确定提供的名称的注册表键是否为null或具有null值。
         /// </summary>
-        /// <param name="keyName">The name associated with the registry key.</param>
-        /// <param name="key">The actual registry key.</param>
-        /// <returns>True if the provided name is null or empty, or the key is null; False if otherwise.</returns>
+        /// <param name="keyName">与注册表键关联的名称。</param>
+        /// <param name="key">实际的注册表键。</param>
+        /// <returns>如果提供的名称为null或空，或键为null则返回True；否则返回False。</returns>
         private static bool IsNameOrValueNull(this string keyName, RegistryKey key)
         {
             return (string.IsNullOrEmpty(keyName) || (key == null));
         }
 
         /// <summary>
-        /// Attempts to get the string value of the key using the specified key name. This method assumes
-        /// correct input.
+        /// 尝试使用指定的键名获取键的字符串值。此方法假定输入正确。
         /// </summary>
-        /// <param name="key">The key of which we obtain the value of.</param>
-        /// <param name="keyName">The name of the key.</param>
-        /// <param name="defaultValue">The default value if value can not be determined.</param>
-        /// <returns>Returns the value of the key using the specified key name. If unable to do so,
-        /// defaultValue will be returned instead.</returns>
+        /// <param name="key">我们获取其值的键。</param>
+        /// <param name="keyName">键的名称。</param>
+        /// <param name="defaultValue">如果无法确定值，则为默认值。</param>
+        /// <returns>返回使用指定键名获取的键值。如果无法获取，则返回defaultValue。</returns>
         public static string GetValueSafe(this RegistryKey key, string keyName, string defaultValue = "")
         {
             try
@@ -44,14 +42,12 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Attempts to obtain a readonly (non-writable) sub key from the key provided using the
-        /// specified name. Exceptions thrown will be caught and will only return a null key.
-        /// This method assumes the caller will dispose of the key when done using it.
+        /// 尝试从提供的键中使用指定名称获取只读（不可写）子键。抛出的异常将被捕获，只会返回null键。
+        /// 此方法假定调用者在使用完键后会处理它。
         /// </summary>
-        /// <param name="key">The key of which the sub key is obtained from.</param>
-        /// <param name="name">The name of the sub-key.</param>
-        /// <returns>Returns the sub-key obtained from the key and name provided; Returns null if
-        /// unable to obtain a sub-key.</returns>
+        /// <param name="key">获取子键的键。</param>
+        /// <param name="name">子键的名称。</param>
+        /// <returns>返回从提供的键和名称获取的子键；如果无法获取子键则返回null。</returns>
         public static RegistryKey OpenReadonlySubKeySafe(this RegistryKey key, string name)
         {
             try
@@ -65,13 +61,11 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Attempts to obtain a writable sub key from the key provided using the specified
-        /// name. This method assumes the caller will dispose of the key when done using it.
+        /// 尝试从提供的键中使用指定名称获取可写子键。此方法假定调用者在使用完键后会处理它。
         /// </summary>
-        /// <param name="key">The key of which the sub key is obtained from.</param>
-        /// <param name="name">The name of the sub-key.</param>
-        /// <returns>Returns the sub-key obtained from the key and name provided; Returns null if
-        /// unable to obtain a sub-key.</returns>
+        /// <param name="key">获取子键的键。</param>
+        /// <param name="name">子键的名称。</param>
+        /// <returns>返回从提供的键和名称获取的子键；如果无法获取子键则返回null。</returns>
         public static RegistryKey OpenWritableSubKeySafe(this RegistryKey key, string name)
         {
             try
@@ -85,13 +79,11 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Attempts to create a sub key from the key provided using the specified
-        /// name. This method assumes the caller will dispose of the key when done using it.
+        /// 尝试从提供的键中使用指定名称创建子键。此方法假定调用者在使用完键后会处理它。
         /// </summary>
-        /// <param name="key">The key of which the sub key is to be created from.</param>
-        /// <param name="name">The name of the sub-key.</param>
-        /// <returns>Returns the sub-key that was created for the key and name provided; Returns null if
-        /// unable to create a sub-key.</returns>
+        /// <param name="key">创建子键的键。</param>
+        /// <param name="name">子键的名称。</param>
+        /// <returns>返回为提供的键和名称创建的子键；如果无法创建子键则返回null。</returns>
         public static RegistryKey CreateSubKeySafe(this RegistryKey key, string name)
         {
             try
@@ -105,12 +97,11 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Attempts to delete a sub-key and its children from the key provided using the specified
-        /// name.
+        /// 尝试从提供的键中使用指定名称删除子键及其子项。
         /// </summary>
-        /// <param name="key">The key of which the sub-key is to be deleted from.</param>
-        /// <param name="name">The name of the sub-key.</param>
-        /// <returns>Returns <c>true</c> if the action succeeded, otherwise <c>false</c>.</returns>
+        /// <param name="key">删除子键的键。</param>
+        /// <param name="name">子键的名称。</param>
+        /// <returns>如果操作成功则返回<c>true</c>，否则返回<c>false</c>。</returns>
         public static bool DeleteSubKeyTreeSafe(this RegistryKey key, string name)
         {
             try
@@ -140,13 +131,12 @@ namespace Quasar.Client.Extensions
         */
 
         /// <summary>
-        /// Attempts to rename a sub-key to the key provided using the specified old
-        /// name and new name.
+        /// 尝试使用指定的旧名称和新名称将子键重命名为提供的键。
         /// </summary>
-        /// <param name="key">The key of which the subkey is to be renamed from.</param>
-        /// <param name="oldName">The old name of the sub-key.</param>
-        /// <param name="newName">The new name of the sub-key.</param>
-        /// <returns>Returns <c>true</c> if the action succeeded, otherwise <c>false</c>.</returns>
+        /// <param name="key">重命孙子键的键。</param>
+        /// <param name="oldName">子键的旧名称。</param>
+        /// <param name="newName">子键的新名称。</param>
+        /// <returns>如果操作成功则返回<c>true</c>，否则返回<c>false</c>。</returns>
         public static bool RenameSubKeySafe(this RegistryKey key, string oldName, string newName)
         {
             try
@@ -166,12 +156,11 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Attempts to copy a old subkey to a new subkey for the key 
-        /// provided using the specified old name and new name. (throws exceptions)
+        /// 尝试将旧子键复制到新子键，使用指定的旧名称和新名称为提供的键复制。(抛出异常)
         /// </summary>
-        /// <param name="key">The key of which the subkey is to be deleted from.</param>
-        /// <param name="oldName">The old name of the sub-key.</param>
-        /// <param name="newName">The new name of the sub-key.</param>
+        /// <param name="key">删除子键的键。</param>
+        /// <param name="oldName">子键的旧名称。</param>
+        /// <param name="newName">子键的新名称。</param>
         public static void CopyKey(this RegistryKey key, string oldName, string newName)
         {
             //Create a new key
@@ -187,11 +176,10 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Attempts to rename a sub-key to the key provided using the specified old
-        /// name and new name.
+        /// 尝试使用指定的旧名称和新名称将子键重命名为提供的键。
         /// </summary>
-        /// <param name="sourceKey">The source key to copy from.</param>
-        /// <param name="destKey">The destination key to copy to.</param>
+        /// <param name="sourceKey">要复制的源键。</param>
+        /// <param name="destKey">要复制到的目标键。</param>
         private static void RecursiveCopyKey(RegistryKey sourceKey, RegistryKey destKey)
         {
 
@@ -218,14 +206,13 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Attempts to set a registry value for the key provided using the specified
-        /// name, data and kind. If the registry value does not exist it will be created
+        /// 尝试使用指定的名称、数据和类型为提供的键设置注册表值。如果注册表值不存在，则会创建它
         /// </summary>
-        /// <param name="key">The key of which the value is to be set for.</param>
-        /// <param name="name">The name of the value.</param>
-        /// <param name="data">The data of the value</param>
-        /// <param name="kind">The value kind of the value</param>
-        /// <returns>Returns <c>true</c> if the action succeeded, otherwise <c>false</c>.</returns>
+        /// <param name="key">要为其设置值的键。</param>
+        /// <param name="name">值的名称。</param>
+        /// <param name="data">值的数据</param>
+        /// <param name="kind">值的类型</param>
+        /// <returns>如果操作成功则返回<c>true</c>，否则返回<c>false</c>。</returns>
         public static bool SetValueSafe(this RegistryKey key, string name, object data, RegistryValueKind kind)
         {
             try
@@ -260,12 +247,11 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Attempts to delete a registry value for the key provided using the specified
-        /// name.
+        /// 尝试使用指定的名称删除提供的键的注册表值。
         /// </summary>
-        /// <param name="key">The key of which the value is to be delete from.</param>
-        /// <param name="name">The name of the value.</param>
-        /// <returns>Returns <c>true</c> if the action succeeded, otherwise <c>false</c>.</returns>
+        /// <param name="key">要从中删除值的键。</param>
+        /// <param name="name">值的名称。</param>
+        /// <returns>如果操作成功则返回<c>true</c>，否则返回<c>false</c>。</returns>
         public static bool DeleteValueSafe(this RegistryKey key, string name)
         {
             try
@@ -280,13 +266,12 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Attempts to rename a registry value to the key provided using the specified old
-        /// name and new name.
+        /// 尝试使用指定的旧名称和新名称将注册表值重命名为提供的键。
         /// </summary>
-        /// <param name="key">The key of which the registry value is to be renamed from.</param>
-        /// <param name="oldName">The old name of the registry value.</param>
-        /// <param name="newName">The new name of the registry value.</param>
-        /// <returns>Returns <c>true</c> if the action succeeded, otherwise <c>false</c>.</returns>
+        /// <param name="key">要从中重命名注册表值的键。</param>
+        /// <param name="oldName">注册表值的旧名称。</param>
+        /// <param name="newName">注册表值的新名称。</param>
+        /// <returns>如果操作成功则返回<c>true</c>，否则返回<c>false</c>。</returns>
         public static bool RenameValueSafe(this RegistryKey key, string oldName, string newName)
         {
             try
@@ -306,12 +291,11 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Attempts to copy a old registry value to a new registry value for the key 
-        /// provided using the specified old name and new name. (throws exceptions)
+        /// 尝试使用指定的旧名称和新名称将旧注册表值复制到提供的键的新注册表值。(抛出异常)
         /// </summary>
-        /// <param name="key">The key of which the registry value is to be copied.</param>
-        /// <param name="oldName">The old name of the registry value.</param>
-        /// <param name="newName">The new name of the registry value.</param>
+        /// <param name="key">要复制注册表值的键。</param>
+        /// <param name="oldName">注册表值的旧名称。</param>
+        /// <param name="newName">注册表值的新名称。</param>
         public static void CopyValue(this RegistryKey key, string oldName, string newName)
         {
             RegistryValueKind valueKind = key.GetValueKind(oldName);
@@ -321,11 +305,11 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Checks if the specified subkey exists in the key
+        /// 检查指定的子键是否存在于键中
         /// </summary>
-        /// <param name="key">The key of which to search.</param>
-        /// <param name="name">The name of the sub-key to find.</param>
-        /// <returns>Returns <c>true</c> if the action succeeded, otherwise <c>false</c>.</returns>
+        /// <param name="key">要搜索的键。</param>
+        /// <param name="name">要查找的子键名称。</param>
+        /// <returns>如果操作成功则返回<c>true</c>，否则返回<c>false</c>。</returns>
         public static bool ContainsSubKey(this RegistryKey key, string name)
         {
             foreach (string subkey in key.GetSubKeyNames())
@@ -339,11 +323,11 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Checks if the specified registry value exists in the key
+        /// 检查指定的注册表值是否存在于键中
         /// </summary>
-        /// <param name="key">The key of which to search.</param>
-        /// <param name="name">The name of the registry value to find.</param>
-        /// <returns>Returns <c>true</c> if the action succeeded, otherwise <c>false</c>.</returns>
+        /// <param name="key">要搜索的键。</param>
+        /// <param name="name">要查找的注册表值名称。</param>
+        /// <returns>如果操作成功则返回<c>true</c>，否则返回<c>false</c>。</returns>
         public static bool ContainsValue(this RegistryKey key, string name)
         {
             foreach (string value in key.GetValueNames())
@@ -357,11 +341,10 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Gets all of the value names associated with the registry key and returns
-        /// formatted strings of the filtered values.
+        /// 获取与注册表键关联的所有值名称，并返回过滤值的格式化字符串。
         /// </summary>
-        /// <param name="key">The registry key of which the values are obtained.</param>
-        /// <returns>Yield returns formatted strings of the key and the key value.</returns>
+        /// <param name="key">获取值的注册表键。</param>
+        /// <returns>Yield返回键和键值的格式化字符串。</returns>
         public static IEnumerable<Tuple<string, string>> GetKeyValues(this RegistryKey key)
         {
             if (key == null) yield break;
@@ -373,10 +356,10 @@ namespace Quasar.Client.Extensions
         }
 
         /// <summary>
-        /// Gets the default value for a given data type of a registry value.
+        /// 获取给定注册表值数据类型的默认值。
         /// </summary>
-        /// <param name="valueKind">The data type of the registry value.</param>
-        /// <returns>The default value for the given <see cref="valueKind"/>.</returns>
+        /// <param name="valueKind">注册表值的数据类型。</param>
+        /// <returns>给定<see cref="valueKind"/>的默认值。</returns>
         public static object GetDefault(this RegistryValueKind valueKind)
         {
             switch (valueKind)

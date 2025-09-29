@@ -12,7 +12,7 @@ using System.Text;
 namespace Quasar.Client.Recovery.Browsers
 {
     /// <summary>
-    /// Provides methods to decrypt Chromium credentials.
+    /// 提供解密Chromium凭据的方法。
     /// </summary>
     public class ChromiumDecryptor
     {

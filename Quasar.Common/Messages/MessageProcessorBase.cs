@@ -5,50 +5,50 @@ using System.Threading;
 namespace Quasar.Common.Messages
 {
     /// <summary>
-    /// Provides a MessageProcessor implementation that provides progress report callbacks.
+    /// 提供一个消息处理器实现，该实现提供进度报告回调。
     /// </summary>
-    /// <typeparam name="T">Specifies the type of the progress report value.</typeparam>
+    /// <typeparam name="T">指定进度报告值的类型。</typeparam>
     /// <remarks>
-    /// Any event handlers registered with the <see cref="ProgressChanged"/> event are invoked through a 
-    /// <see cref="System.Threading.SynchronizationContext"/> instance chosen when the instance is constructed.
+    /// 任何注册到<see cref="ProgressChanged"/>事件的事件处理程序都将通过在构造实例时选择的
+    /// <see cref="System.Threading.SynchronizationContext"/>实例来调用。
     /// </remarks>
     public abstract class MessageProcessorBase<T> : IMessageProcessor, IProgress<T>
     {
         /// <summary>
-        /// The synchronization context chosen upon construction.
+        /// 在构造时选择的同步上下文。
         /// </summary>
         protected readonly SynchronizationContext SynchronizationContext;
 
         /// <summary>
-        /// A cached delegate used to post invocation to the synchronization context.
+        /// 用于向同步上下文发布调用的缓存委托。
         /// </summary>
         private readonly SendOrPostCallback _invokeReportProgressHandlers;
 
         /// <summary>
-        /// Represents the method that will handle progress updates.
+        /// 表示将处理进度更新的方法。
         /// </summary>
-        /// <param name="sender">The message processor which updated the progress.</param>
-        /// <param name="value">The new progress.</param>
+        /// <param name="sender">更新进度的消息处理器。</param>
+        /// <param name="value">新的进度。</param>
         public delegate void ReportProgressEventHandler(object sender, T value);
 
         /// <summary>
-        /// Raised for each reported progress value.
+        /// 为每个报告的进度值引发。
         /// </summary>
         /// <remarks>
-        /// Handlers registered with this event will be invoked on the 
-        /// <see cref="System.Threading.SynchronizationContext"/> chosen when the instance was constructed.
+        /// 注册到此事件的处理程序将在构造实例时选择的
+        /// <see cref="System.Threading.SynchronizationContext"/>上调用。
         /// </remarks>
         public event ReportProgressEventHandler ProgressChanged;
 
         /// <summary>
-        /// Reports a progress change.
+        /// 报告进度更改。
         /// </summary>
-        /// <param name="value">The value of the updated progress.</param>
+        /// <param name="value">更新进度的值。</param>
         protected virtual void OnReport(T value)
         {
-            // If there's no handler, don't bother going through the sync context.
-            // Inside the callback, we'll need to check again, in case 
-            // an event handler is removed between now and then.
+            // 如果没有处理程序，就不要费心通过同步上下文。
+            // 在回调内部，我们需要再次检查，以防
+            // 事件处理程序在此期间被移除。
             var handler = ProgressChanged;
             if (handler != null)
             {
@@ -57,11 +57,11 @@ namespace Quasar.Common.Messages
         }
 
         /// <summary>
-        /// Initializes the <see cref="MessageProcessorBase{T}"/>
+        /// 初始化<see cref="MessageProcessorBase{T}"/>
         /// </summary>
         /// <param name="useCurrentContext">
-        /// If this value is <c>false</c>, the progress callbacks will be invoked on the ThreadPool.
-        /// Otherwise the current SynchronizationContext will be used.
+        /// 如果此值为<c>false</c>，进度回调将在ThreadPool上调用。
+        /// 否则将使用当前的SynchronizationContext。
         /// </param>
         protected MessageProcessorBase(bool useCurrentContext)
         {
@@ -70,9 +70,9 @@ namespace Quasar.Common.Messages
         }
 
         /// <summary>
-        /// Invokes the progress event callbacks.
+        /// 调用进度事件回调。
         /// </summary>
-        /// <param name="state">The progress value.</param>
+        /// <param name="state">进度值。</param>
         private void InvokeReportProgressHandlers(object state)
         {
             var handler = ProgressChanged;
@@ -92,15 +92,15 @@ namespace Quasar.Common.Messages
     }
 
     /// <summary>
-    /// Holds static values for <see cref="MessageProcessorBase{T}"/>.
+    /// 保存<see cref="MessageProcessorBase{T}"/>的静态值。
     /// </summary>
     /// <remarks>
-    /// This avoids one static instance per type T.
+    /// 这避免了每个类型T有一个静态实例。
     /// </remarks>
     internal static class ProgressStatics
     {
         /// <summary>
-        /// A default synchronization context that targets the <see cref="ThreadPool"/>.
+        /// 一个以<see cref="ThreadPool"/>为目标的默认同步上下文。
         /// </summary>
         internal static readonly SynchronizationContext DefaultContext = new SynchronizationContext();
     }

@@ -1,4 +1,4 @@
-﻿using Quasar.Common.Enums;
+﻿﻿using Quasar.Common.Enums;
 using Quasar.Common.Helpers;
 using Quasar.Common.Models;
 using System;
@@ -27,10 +27,10 @@ namespace Quasar.Server.Forms
         }
 
         /// <summary>
-        /// Adds all supported startup types to ComboBox groups.
+        /// 将所有支持的启动类型添加到ComboBox组中。
         /// </summary>
         /// <remarks>
-        /// Must be in same order as <see cref="StartupType"/>.
+        /// 必须与 <see cref="StartupType"/> 保持相同顺序。
         /// </remarks>
         private void AddTypes()
         {

