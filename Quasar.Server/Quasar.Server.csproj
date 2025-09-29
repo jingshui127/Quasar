@@ -5,7 +5,7 @@
     <AssemblyName>Quasar</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
     <!--<GenerateAssemblyInfo>false</GenerateAssemblyInfo>-->
-
+<ComVisible>false</ComVisible>
         <AssemblyTitle>科控PC协助助手</AssemblyTitle>
     <Description>科控PC协助助手，可以远程控制PC，传送文件，修改注册表等。</Description>
     <Company>科控物联</Company>

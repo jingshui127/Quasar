@@ -6,28 +6,33 @@ namespace Quasar.Server.Forms
 {
     public partial class FrmAbout : Form
     {
-        private readonly string _repositoryUrl = @"https://github.com/quasar/Quasar";
+        private readonly string _repositoryUrl = @"https://mp.weixin.qq.com/s/ox7770xwp7zDBM0AJZ7teA";
 
         public FrmAbout()
         {
             InitializeComponent();
 
-            lblVersion.Text = $"v{Application.ProductVersion}";
-            rtxtContent.Text = Properties.Resources.License;
 
-            //lnkGithubPage.Links.Add(new LinkLabel.Link {LinkData = _repositoryUrl});
-            //lnkCredits.Links.Add(new LinkLabel.Link {LinkData = _repositoryUrl + "/tree/master/Licenses"});
+
+            lblVersion.Text = $"v{Application.ProductVersion}";
+           // rtxtContent.Text = Properties.Resources.License;
+
+           lnkGithubPage.Links.Add(new LinkLabel.Link {LinkData = _repositoryUrl});
+            lnkCredits.Links.Add(new LinkLabel.Link {LinkData = _repositoryUrl + "/tree/master/Licenses"});
+
+            Process.Start(_repositoryUrl);
+
         }
-        
+
         private void lnkGithubPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-           // lnkGithubPage.LinkVisited = true;
+            lnkGithubPage.LinkVisited = true;
             Process.Start(e.Link.LinkData.ToString());
         }
 
         private void lnkCredits_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //lnkCredits.LinkVisited = true;
+            lnkCredits.LinkVisited = true;
             Process.Start(e.Link.LinkData.ToString());
         }
 
