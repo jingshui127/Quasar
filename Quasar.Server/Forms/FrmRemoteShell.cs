@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿﻿﻿﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -119,6 +119,7 @@ namespace Quasar.Server.Forms
 
         private void FrmRemoteShell_Load(object sender, EventArgs e)
         {
+            this.Icon = Properties.Resources.favicon;
             this.DoubleBuffered = true;
             this.Text = WindowHelper.GetWindowTitle("Remote Shell", _connectClient);
         }

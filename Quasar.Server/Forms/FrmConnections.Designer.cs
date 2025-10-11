@@ -31,11 +31,12 @@ namespace Quasar.Server.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Quasar.Server.Utilities.ListViewColumnSorter listViewColumnSorter1 = new Quasar.Server.Utilities.ListViewColumnSorter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConnections));
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lstConnections = new AeroListView();
+            this.lstConnections = new Quasar.Server.Controls.AeroListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,17 +48,18 @@ namespace Quasar.Server.Forms
             // 
             // contextMenuStrip
             // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.refreshToolStripMenuItem,
             this.closeConnectionToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(169, 48);
+            this.contextMenuStrip.Size = new System.Drawing.Size(239, 100);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Image = global::Quasar.Server.Properties.Resources.refresh;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(238, 48);
             this.refreshToolStripMenuItem.Text = "刷新";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
@@ -65,7 +67,7 @@ namespace Quasar.Server.Forms
             // 
             this.closeConnectionToolStripMenuItem.Image = global::Quasar.Server.Properties.Resources.uac_shield;
             this.closeConnectionToolStripMenuItem.Name = "closeConnectionToolStripMenuItem";
-            this.closeConnectionToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.closeConnectionToolStripMenuItem.Size = new System.Drawing.Size(238, 48);
             this.closeConnectionToolStripMenuItem.Text = "关闭连接";
             this.closeConnectionToolStripMenuItem.Click += new System.EventHandler(this.closeConnectionToolStripMenuItem_Click);
             // 
@@ -81,9 +83,15 @@ namespace Quasar.Server.Forms
             this.lstConnections.ContextMenuStrip = this.contextMenuStrip;
             this.lstConnections.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstConnections.FullRowSelect = true;
+            this.lstConnections.HideSelection = false;
             this.lstConnections.Location = new System.Drawing.Point(0, 0);
+            listViewColumnSorter1.NeedNumberCompare = false;
+            listViewColumnSorter1.Order = System.Windows.Forms.SortOrder.None;
+            listViewColumnSorter1.SortColumn = 0;
+            this.lstConnections.LvwColumnSorter = listViewColumnSorter1;
+            this.lstConnections.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.lstConnections.Name = "lstConnections";
-            this.lstConnections.Size = new System.Drawing.Size(703, 421);
+            this.lstConnections.Size = new System.Drawing.Size(1758, 1052);
             this.lstConnections.TabIndex = 0;
             this.lstConnections.UseCompatibleStateImageBehavior = false;
             this.lstConnections.View = System.Windows.Forms.View.Details;
@@ -121,12 +129,13 @@ namespace Quasar.Server.Forms
             // 
             // FrmConnections
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(703, 421);
+            this.ClientSize = new System.Drawing.Size(1758, 1052);
             this.Controls.Add(this.lstConnections);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.Name = "FrmConnections";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "连接 []";

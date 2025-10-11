@@ -72,12 +72,6 @@ namespace Quasar.Server.Forms
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.listenToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.fIleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.builderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lstClients = new Quasar.Server.Controls.AeroListView();
             this.hIP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.hTag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -88,6 +82,12 @@ namespace Quasar.Server.Forms
             this.hCountry = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.hOS = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.hAccountType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.fIleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.builderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.tableLayoutPanel.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -667,7 +667,7 @@ namespace Quasar.Server.Forms
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(1972, 818);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1763, 850);
             this.tableLayoutPanel.TabIndex = 6;
             // 
             // statusStrip
@@ -676,10 +676,10 @@ namespace Quasar.Server.Forms
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listenToolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 763);
+            this.statusStrip.Location = new System.Drawing.Point(0, 795);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 35, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1972, 55);
+            this.statusStrip.Size = new System.Drawing.Size(1763, 55);
             this.statusStrip.TabIndex = 3;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -688,59 +688,6 @@ namespace Quasar.Server.Forms
             this.listenToolStripStatusLabel.Name = "listenToolStripStatusLabel";
             this.listenToolStripStatusLabel.Size = new System.Drawing.Size(123, 42);
             this.listenToolStripStatusLabel.Text = "监听: 否";
-            // 
-            // menuStrip
-            // 
-            this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fIleToolStripMenuItem,
-            this.settingsToolStripMenuItem,
-            this.builderToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(481, 59);
-            this.menuStrip.TabIndex = 2;
-            // 
-            // fIleToolStripMenuItem
-            // 
-            this.fIleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.closeToolStripMenuItem});
-            this.fIleToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fIleToolStripMenuItem.Name = "fIleToolStripMenuItem";
-            this.fIleToolStripMenuItem.Size = new System.Drawing.Size(114, 49);
-            this.fIleToolStripMenuItem.Text = "文件";
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(258, 54);
-            this.closeToolStripMenuItem.Text = "关闭";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(106, 49);
-            this.settingsToolStripMenuItem.Text = "设置";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
-            // 
-            // builderToolStripMenuItem
-            // 
-            this.builderToolStripMenuItem.Name = "builderToolStripMenuItem";
-            this.builderToolStripMenuItem.Size = new System.Drawing.Size(138, 49);
-            this.builderToolStripMenuItem.Text = "构建器";
-            this.builderToolStripMenuItem.Click += new System.EventHandler(this.builderToolStripMenuItem_Click);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(106, 49);
-            this.aboutToolStripMenuItem.Text = "关于";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // lstClients
             // 
@@ -764,10 +711,10 @@ namespace Quasar.Server.Forms
             listViewColumnSorter1.Order = System.Windows.Forms.SortOrder.None;
             listViewColumnSorter1.SortColumn = 0;
             this.lstClients.LvwColumnSorter = listViewColumnSorter1;
-            this.lstClients.Margin = new System.Windows.Forms.Padding(8);
+            this.lstClients.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.lstClients.Name = "lstClients";
             this.lstClients.ShowItemToolTips = true;
-            this.lstClients.Size = new System.Drawing.Size(1956, 685);
+            this.lstClients.Size = new System.Drawing.Size(1747, 717);
             this.lstClients.SmallImageList = this.imgFlags;
             this.lstClients.TabIndex = 1;
             this.lstClients.UseCompatibleStateImageBehavior = false;
@@ -818,20 +765,74 @@ namespace Quasar.Server.Forms
             this.hAccountType.Text = "账户类型";
             this.hAccountType.Width = 100;
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fIleToolStripMenuItem,
+            this.settingsToolStripMenuItem,
+            this.builderToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(869, 60);
+            this.menuStrip.TabIndex = 2;
+            // 
+            // fIleToolStripMenuItem
+            // 
+            this.fIleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.closeToolStripMenuItem});
+            this.fIleToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fIleToolStripMenuItem.Name = "fIleToolStripMenuItem";
+            this.fIleToolStripMenuItem.Size = new System.Drawing.Size(114, 56);
+            this.fIleToolStripMenuItem.Text = "文件";
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(258, 54);
+            this.closeToolStripMenuItem.Text = "关闭";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(106, 56);
+            this.settingsToolStripMenuItem.Text = "设置";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // builderToolStripMenuItem
+            // 
+            this.builderToolStripMenuItem.Name = "builderToolStripMenuItem";
+            this.builderToolStripMenuItem.Size = new System.Drawing.Size(234, 56);
+            this.builderToolStripMenuItem.Text = "被控端构建器";
+            this.builderToolStripMenuItem.Click += new System.EventHandler(this.builderToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(106, 56);
+            this.aboutToolStripMenuItem.Text = "关于";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1972, 818);
+            this.ClientSize = new System.Drawing.Size(1763, 850);
             this.Controls.Add(this.tableLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
-            this.MinimumSize = new System.Drawing.Size(1652, 906);
+            this.MinimumSize = new System.Drawing.Size(1645, 885);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quasar - 已连接: 0";
+            this.Text = "科控物联远程电脑管理 - 已连接: 0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.contextMenuStrip.ResumeLayout(false);

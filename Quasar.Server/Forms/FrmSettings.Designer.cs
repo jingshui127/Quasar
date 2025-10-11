@@ -52,9 +52,10 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(227, 298);
+            this.btnSave.Location = new System.Drawing.Point(340, 447);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(112, 34);
             this.btnSave.TabIndex = 19;
             this.btnSave.Text = "保存(&S)";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -63,15 +64,17 @@
             // lblPort
             // 
             this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(12, 11);
+            this.lblPort.Location = new System.Drawing.Point(18, 16);
+            this.lblPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPort.Name = "lblPort";
-            this.lblPort.Size = new System.Drawing.Size(93, 13);
+            this.lblPort.Size = new System.Drawing.Size(82, 23);
             this.lblPort.TabIndex = 0;
             this.lblPort.Text = "监听端口:";
             // 
             // ncPort
             // 
-            this.ncPort.Location = new System.Drawing.Point(111, 7);
+            this.ncPort.Location = new System.Drawing.Point(166, 10);
+            this.ncPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ncPort.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -83,7 +86,7 @@
             0,
             0});
             this.ncPort.Name = "ncPort";
-            this.ncPort.Size = new System.Drawing.Size(75, 22);
+            this.ncPort.Size = new System.Drawing.Size(112, 29);
             this.ncPort.TabIndex = 1;
             this.ncPort.Value = new decimal(new int[] {
             1,
@@ -94,9 +97,10 @@
             // chkAutoListen
             // 
             this.chkAutoListen.AutoSize = true;
-            this.chkAutoListen.Location = new System.Drawing.Point(12, 68);
+            this.chkAutoListen.Location = new System.Drawing.Point(18, 102);
+            this.chkAutoListen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkAutoListen.Name = "chkAutoListen";
-            this.chkAutoListen.Size = new System.Drawing.Size(222, 17);
+            this.chkAutoListen.Size = new System.Drawing.Size(172, 27);
             this.chkAutoListen.TabIndex = 6;
             this.chkAutoListen.Text = "启动时监听新连接";
             this.chkAutoListen.UseVisualStyleBackColor = true;
@@ -104,18 +108,20 @@
             // chkPopup
             // 
             this.chkPopup.AutoSize = true;
-            this.chkPopup.Location = new System.Drawing.Point(12, 91);
+            this.chkPopup.Location = new System.Drawing.Point(18, 136);
+            this.chkPopup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkPopup.Name = "chkPopup";
-            this.chkPopup.Size = new System.Drawing.Size(259, 17);
+            this.chkPopup.Size = new System.Drawing.Size(206, 27);
             this.chkPopup.TabIndex = 7;
             this.chkPopup.Text = "新连接时显示弹出通知";
             this.chkPopup.UseVisualStyleBackColor = true;
             // 
             // btnListen
             // 
-            this.btnListen.Location = new System.Drawing.Point(192, 6);
+            this.btnListen.Location = new System.Drawing.Point(288, 9);
+            this.btnListen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnListen.Name = "btnListen";
-            this.btnListen.Size = new System.Drawing.Size(110, 23);
+            this.btnListen.Size = new System.Drawing.Size(165, 34);
             this.btnListen.TabIndex = 2;
             this.btnListen.Text = "开始监听";
             this.btnListen.UseVisualStyleBackColor = true;
@@ -123,9 +129,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(146, 298);
+            this.btnCancel.Location = new System.Drawing.Point(219, 447);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(112, 34);
             this.btnCancel.TabIndex = 18;
             this.btnCancel.Text = "取消(&C)";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -134,9 +141,10 @@
             // chkUseUpnp
             // 
             this.chkUseUpnp.AutoSize = true;
-            this.chkUseUpnp.Location = new System.Drawing.Point(12, 114);
+            this.chkUseUpnp.Location = new System.Drawing.Point(18, 171);
+            this.chkUseUpnp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkUseUpnp.Name = "chkUseUpnp";
-            this.chkUseUpnp.Size = new System.Drawing.Size(249, 17);
+            this.chkUseUpnp.Size = new System.Drawing.Size(229, 27);
             this.chkUseUpnp.TabIndex = 8;
             this.chkUseUpnp.Text = "尝试自动转发端口 (UPnP)";
             this.chkUseUpnp.UseVisualStyleBackColor = true;
@@ -144,9 +152,10 @@
             // chkShowTooltip
             // 
             this.chkShowTooltip.AutoSize = true;
-            this.chkShowTooltip.Location = new System.Drawing.Point(12, 137);
+            this.chkShowTooltip.Location = new System.Drawing.Point(18, 206);
+            this.chkShowTooltip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkShowTooltip.Name = "chkShowTooltip";
-            this.chkShowTooltip.Size = new System.Drawing.Size(268, 17);
+            this.chkShowTooltip.Size = new System.Drawing.Size(291, 27);
             this.chkShowTooltip.TabIndex = 9;
             this.chkShowTooltip.Text = "在客户端上显示系统信息工具提示";
             this.chkShowTooltip.UseVisualStyleBackColor = true;
@@ -154,9 +163,10 @@
             // chkNoIPIntegration
             // 
             this.chkNoIPIntegration.AutoSize = true;
-            this.chkNoIPIntegration.Location = new System.Drawing.Point(12, 177);
+            this.chkNoIPIntegration.Location = new System.Drawing.Point(18, 266);
+            this.chkNoIPIntegration.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkNoIPIntegration.Name = "chkNoIPIntegration";
-            this.chkNoIPIntegration.Size = new System.Drawing.Size(187, 17);
+            this.chkNoIPIntegration.Size = new System.Drawing.Size(252, 27);
             this.chkNoIPIntegration.TabIndex = 10;
             this.chkNoIPIntegration.Text = "启用 No-Ip.com DNS 更新器";
             this.chkNoIPIntegration.UseVisualStyleBackColor = true;
@@ -166,9 +176,10 @@
             // 
             this.lblHost.AutoSize = true;
             this.lblHost.Enabled = false;
-            this.lblHost.Location = new System.Drawing.Point(30, 203);
+            this.lblHost.Location = new System.Drawing.Point(45, 304);
+            this.lblHost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHost.Name = "lblHost";
-            this.lblHost.Size = new System.Drawing.Size(34, 13);
+            this.lblHost.Size = new System.Drawing.Size(48, 23);
             this.lblHost.TabIndex = 11;
             this.lblHost.Text = "主机:";
             // 
@@ -176,9 +187,10 @@
             // 
             this.lblPass.AutoSize = true;
             this.lblPass.Enabled = false;
-            this.lblPass.Location = new System.Drawing.Point(167, 231);
+            this.lblPass.Location = new System.Drawing.Point(250, 346);
+            this.lblPass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(32, 13);
+            this.lblPass.Size = new System.Drawing.Size(48, 23);
             this.lblPass.TabIndex = 15;
             this.lblPass.Text = "密码:";
             // 
@@ -186,43 +198,48 @@
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.Enabled = false;
-            this.lblUser.Location = new System.Drawing.Point(30, 231);
+            this.lblUser.Location = new System.Drawing.Point(45, 346);
+            this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(32, 13);
+            this.lblUser.Size = new System.Drawing.Size(48, 23);
             this.lblUser.TabIndex = 13;
             this.lblUser.Text = "邮箱:";
             // 
             // txtNoIPPass
             // 
             this.txtNoIPPass.Enabled = false;
-            this.txtNoIPPass.Location = new System.Drawing.Point(199, 228);
+            this.txtNoIPPass.Location = new System.Drawing.Point(298, 342);
+            this.txtNoIPPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNoIPPass.Name = "txtNoIPPass";
-            this.txtNoIPPass.Size = new System.Drawing.Size(100, 22);
+            this.txtNoIPPass.Size = new System.Drawing.Size(148, 29);
             this.txtNoIPPass.TabIndex = 16;
             // 
             // txtNoIPUser
             // 
             this.txtNoIPUser.Enabled = false;
-            this.txtNoIPUser.Location = new System.Drawing.Point(70, 228);
+            this.txtNoIPUser.Location = new System.Drawing.Point(105, 342);
+            this.txtNoIPUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNoIPUser.Name = "txtNoIPUser";
-            this.txtNoIPUser.Size = new System.Drawing.Size(91, 22);
+            this.txtNoIPUser.Size = new System.Drawing.Size(134, 29);
             this.txtNoIPUser.TabIndex = 14;
             // 
             // txtNoIPHost
             // 
             this.txtNoIPHost.Enabled = false;
-            this.txtNoIPHost.Location = new System.Drawing.Point(70, 200);
+            this.txtNoIPHost.Location = new System.Drawing.Point(105, 300);
+            this.txtNoIPHost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNoIPHost.Name = "txtNoIPHost";
-            this.txtNoIPHost.Size = new System.Drawing.Size(229, 22);
+            this.txtNoIPHost.Size = new System.Drawing.Size(342, 29);
             this.txtNoIPHost.TabIndex = 12;
             // 
             // chkShowPassword
             // 
             this.chkShowPassword.AutoSize = true;
             this.chkShowPassword.Enabled = false;
-            this.chkShowPassword.Location = new System.Drawing.Point(192, 256);
+            this.chkShowPassword.Location = new System.Drawing.Point(288, 384);
+            this.chkShowPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkShowPassword.Name = "chkShowPassword";
-            this.chkShowPassword.Size = new System.Drawing.Size(107, 17);
+            this.chkShowPassword.Size = new System.Drawing.Size(104, 27);
             this.chkShowPassword.TabIndex = 17;
             this.chkShowPassword.Text = "显示密码";
             this.chkShowPassword.UseVisualStyleBackColor = true;
@@ -231,18 +248,19 @@
             // chkIPv6Support
             // 
             this.chkIPv6Support.AutoSize = true;
-            this.chkIPv6Support.Location = new System.Drawing.Point(12, 45);
+            this.chkIPv6Support.Location = new System.Drawing.Point(18, 68);
+            this.chkIPv6Support.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkIPv6Support.Name = "chkIPv6Support";
-            this.chkIPv6Support.Size = new System.Drawing.Size(128, 17);
+            this.chkIPv6Support.Size = new System.Drawing.Size(146, 27);
             this.chkIPv6Support.TabIndex = 5;
             this.chkIPv6Support.Text = "启用 IPv6 支持";
             this.chkIPv6Support.UseVisualStyleBackColor = true;
             // 
             // FrmSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(314, 333);
+            this.ClientSize = new System.Drawing.Size(471, 500);
             this.Controls.Add(this.chkIPv6Support);
             this.Controls.Add(this.chkShowPassword);
             this.Controls.Add(this.txtNoIPHost);
@@ -264,6 +282,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmSettings";

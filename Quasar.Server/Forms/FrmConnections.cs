@@ -130,6 +130,7 @@ namespace Quasar.Server.Forms
 
         private void FrmConnections_Load(object sender, EventArgs e)
         {
+            this.Icon = Properties.Resources.favicon;
             this.Text = WindowHelper.GetWindowTitle("Connections", _connectClient);
             _connectionsHandler.RefreshTcpConnections();
         }

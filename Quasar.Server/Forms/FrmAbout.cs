@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -22,6 +22,11 @@ namespace Quasar.Server.Forms
 
             Process.Start(_repositoryUrl);
 
+        }
+
+        private void FrmAbout_Load(object sender, EventArgs e)
+        {
+            this.Icon = Properties.Resources.favicon;
         }
 
         private void lnkGithubPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

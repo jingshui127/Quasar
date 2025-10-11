@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿using Quasar.Common.Enums;
+﻿﻿﻿﻿﻿﻿﻿﻿using Quasar.Common.Enums;
 using Quasar.Common.Messages;
 using Quasar.Server.Extensions;
 using Quasar.Server.Messages;
@@ -67,9 +67,9 @@ namespace Quasar.Server.Forms
                 {
                     int selected = lstClients.SelectedItems.Count;
                     this.Text = (selected > 0)
-                        ? string.Format("Quasar - Connected: {0} [Selected: {1}]", ListenServer.ConnectedClients.Length,
+                        ? string.Format("科控物联远程管理助手 - 已连接: {0} [已选择: {1}]", ListenServer.ConnectedClients.Length,
                             selected)
-                        : string.Format("Quasar - Connected: {0}", ListenServer.ConnectedClients.Length);
+                        : string.Format("科控物联远程管理助手 - 已连接: {0}", ListenServer.ConnectedClients.Length);
                 });
             }
             catch (Exception)
@@ -151,6 +151,7 @@ namespace Quasar.Server.Forms
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            this.Icon = Properties.Resources.favicon;
             InitializeServer();
             AutostartListening();
         }

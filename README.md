@@ -62,7 +62,7 @@ Quasar 是一款使用 C# 编写的快速、轻量级远程管理工具。其用
 | 构建配置 | 使用场景 | 说明
 |---------|---------|------
 | Debug 配置 | 测试 | 将使用预定义的 [Settings.cs](/Quasar.Client/Config/Settings.cs) 文件，因此在编译客户端之前需要编辑此文件。您可以直接使用指定的设置执行客户端。
-| Release 配置 | 生产 | 启动 `Quasar.exe` 并使用客户端构建器。
+| Release 配置 | 生产 | 启动 `TcServer.exe` 并使用客户端构建器。
 
 ## 贡献代码
 参见 [CONTRIBUTING.md](CONTRIBUTING.md)

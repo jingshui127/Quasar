@@ -99,6 +99,8 @@ namespace Quasar.Server.Forms
 
         private void FrmBuilder_Load(object sender, EventArgs e)
         {
+            this.Icon = Properties.Resources.favicon;
+
             lstHosts.DataSource = new BindingSource(_hosts, null);
             LoadProfile("Default");
 

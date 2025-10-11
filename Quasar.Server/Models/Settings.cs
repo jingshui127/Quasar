@@ -9,7 +9,7 @@ namespace Quasar.Server.Models
     {
         private static readonly string SettingsPath = Path.Combine(Application.StartupPath, "settings.xml");
 
-        public static readonly string CertificatePath = Path.Combine(Application.StartupPath, "quasar.p12");
+        public static readonly string CertificatePath = Path.Combine(Application.StartupPath, "TcServer.p12");
 
         public static ushort ListenPort
         {

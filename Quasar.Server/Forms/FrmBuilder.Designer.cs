@@ -142,7 +142,7 @@ namespace Quasar.Server.Forms
             // btnBuild
             // 
             this.btnBuild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuild.Location = new System.Drawing.Point(818, 985);
+            this.btnBuild.Location = new System.Drawing.Point(719, 976);
             this.btnBuild.Margin = new System.Windows.Forms.Padding(8);
             this.btnBuild.Name = "btnBuild";
             this.btnBuild.Size = new System.Drawing.Size(302, 58);
@@ -154,7 +154,7 @@ namespace Quasar.Server.Forms
             // picUAC2
             // 
             this.picUAC2.Image = global::Quasar.Server.Properties.Resources.uac_shield;
-            this.picUAC2.Location = new System.Drawing.Point(908, 220);
+            this.picUAC2.Location = new System.Drawing.Point(738, 218);
             this.picUAC2.Margin = new System.Windows.Forms.Padding(8);
             this.picUAC2.Name = "picUAC2";
             this.picUAC2.Size = new System.Drawing.Size(16, 20);
@@ -166,7 +166,7 @@ namespace Quasar.Server.Forms
             // picUAC1
             // 
             this.picUAC1.Image = global::Quasar.Server.Properties.Resources.uac_shield;
-            this.picUAC1.Location = new System.Drawing.Point(908, 170);
+            this.picUAC1.Location = new System.Drawing.Point(738, 168);
             this.picUAC1.Margin = new System.Windows.Forms.Padding(8);
             this.picUAC1.Name = "picUAC1";
             this.picUAC1.Size = new System.Drawing.Size(16, 20);
@@ -178,7 +178,7 @@ namespace Quasar.Server.Forms
             // rbSystem
             // 
             this.rbSystem.AutoSize = true;
-            this.rbSystem.Location = new System.Drawing.Point(602, 228);
+            this.rbSystem.Location = new System.Drawing.Point(432, 226);
             this.rbSystem.Margin = new System.Windows.Forms.Padding(8);
             this.rbSystem.Name = "rbSystem";
             this.rbSystem.Size = new System.Drawing.Size(112, 42);
@@ -229,7 +229,7 @@ namespace Quasar.Server.Forms
             this.builderTabs.Multiline = true;
             this.builderTabs.Name = "builderTabs";
             this.builderTabs.SelectedIndex = 0;
-            this.builderTabs.Size = new System.Drawing.Size(1137, 960);
+            this.builderTabs.Size = new System.Drawing.Size(1050, 960);
             this.builderTabs.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.builderTabs.TabIndex = 0;
             // 
@@ -255,7 +255,7 @@ namespace Quasar.Server.Forms
             this.generalPage.Margin = new System.Windows.Forms.Padding(8);
             this.generalPage.Name = "generalPage";
             this.generalPage.Padding = new System.Windows.Forms.Padding(8);
-            this.generalPage.Size = new System.Drawing.Size(1015, 952);
+            this.generalPage.Size = new System.Drawing.Size(906, 952);
             this.generalPage.TabIndex = 4;
             this.generalPage.Text = "基本设置";
             // 
@@ -333,7 +333,7 @@ namespace Quasar.Server.Forms
             // 
             // txtTag
             // 
-            this.txtTag.Location = new System.Drawing.Point(325, 100);
+            this.txtTag.Location = new System.Drawing.Point(226, 102);
             this.txtTag.Margin = new System.Windows.Forms.Padding(8);
             this.txtTag.Name = "txtTag";
             this.txtTag.Size = new System.Drawing.Size(632, 44);
@@ -362,7 +362,7 @@ namespace Quasar.Server.Forms
             // 
             // txtMutex
             // 
-            this.txtMutex.Location = new System.Drawing.Point(325, 325);
+            this.txtMutex.Location = new System.Drawing.Point(228, 329);
             this.txtMutex.Margin = new System.Windows.Forms.Padding(8);
             this.txtMutex.MaxLength = 64;
             this.txtMutex.Name = "txtMutex";
@@ -372,7 +372,7 @@ namespace Quasar.Server.Forms
             // 
             // btnMutex
             // 
-            this.btnMutex.Location = new System.Drawing.Point(655, 395);
+            this.btnMutex.Location = new System.Drawing.Point(556, 401);
             this.btnMutex.Margin = new System.Windows.Forms.Padding(8);
             this.btnMutex.Name = "btnMutex";
             this.btnMutex.Size = new System.Drawing.Size(302, 58);
@@ -431,13 +431,13 @@ namespace Quasar.Server.Forms
             this.connectionPage.Margin = new System.Windows.Forms.Padding(8);
             this.connectionPage.Name = "connectionPage";
             this.connectionPage.Padding = new System.Windows.Forms.Padding(8);
-            this.connectionPage.Size = new System.Drawing.Size(1015, 952);
+            this.connectionPage.Size = new System.Drawing.Size(906, 952);
             this.connectionPage.TabIndex = 0;
             this.connectionPage.Text = "连接设置";
             // 
             // numericUpDownPort
             // 
-            this.numericUpDownPort.Location = new System.Drawing.Point(635, 128);
+            this.numericUpDownPort.Location = new System.Drawing.Point(589, 163);
             this.numericUpDownPort.Margin = new System.Windows.Forms.Padding(8);
             this.numericUpDownPort.Maximum = new decimal(new int[] {
             65535,
@@ -450,7 +450,7 @@ namespace Quasar.Server.Forms
             0,
             0});
             this.numericUpDownPort.Name = "numericUpDownPort";
-            this.numericUpDownPort.Size = new System.Drawing.Size(322, 44);
+            this.numericUpDownPort.Size = new System.Drawing.Size(200, 44);
             this.numericUpDownPort.TabIndex = 3;
             this.numericUpDownPort.Value = new decimal(new int[] {
             1,
@@ -460,7 +460,8 @@ namespace Quasar.Server.Forms
             // 
             // numericUpDownDelay
             // 
-            this.numericUpDownDelay.Location = new System.Drawing.Point(690, 445);
+            this.numericUpDownDelay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDownDelay.Location = new System.Drawing.Point(582, 782);
             this.numericUpDownDelay.Margin = new System.Windows.Forms.Padding(8);
             this.numericUpDownDelay.Maximum = new decimal(new int[] {
             600000,
@@ -479,18 +480,20 @@ namespace Quasar.Server.Forms
             // 
             // line3
             // 
+            this.line3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.line3.LineAlignment = Quasar.Server.Controls.Line.Alignment.Horizontal;
-            this.line3.Location = new System.Drawing.Point(238, 398);
+            this.line3.Location = new System.Drawing.Point(197, 731);
             this.line3.Margin = new System.Windows.Forms.Padding(8);
             this.line3.Name = "line3";
-            this.line3.Size = new System.Drawing.Size(725, 32);
+            this.line3.Size = new System.Drawing.Size(693, 35);
             this.line3.TabIndex = 18;
             this.line3.TabStop = false;
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 398);
+            this.label4.Location = new System.Drawing.Point(14, 731);
             this.label4.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 38);
@@ -500,7 +503,7 @@ namespace Quasar.Server.Forms
             // line1
             // 
             this.line1.LineAlignment = Quasar.Server.Controls.Line.Alignment.Horizontal;
-            this.line1.Location = new System.Drawing.Point(260, 12);
+            this.line1.Location = new System.Drawing.Point(220, 12);
             this.line1.Margin = new System.Windows.Forms.Padding(8);
             this.line1.Name = "line1";
             this.line1.Size = new System.Drawing.Size(702, 32);
@@ -525,13 +528,13 @@ namespace Quasar.Server.Forms
             this.lstHosts.Location = new System.Drawing.Point(50, 52);
             this.lstHosts.Margin = new System.Windows.Forms.Padding(8);
             this.lstHosts.Name = "lstHosts";
-            this.lstHosts.Size = new System.Drawing.Size(366, 263);
+            this.lstHosts.Size = new System.Drawing.Size(366, 633);
             this.lstHosts.TabIndex = 5;
             this.lstHosts.TabStop = false;
             // 
             // btnAddHost
             // 
-            this.btnAddHost.Location = new System.Drawing.Point(635, 195);
+            this.btnAddHost.Location = new System.Drawing.Point(516, 223);
             this.btnAddHost.Margin = new System.Windows.Forms.Padding(8);
             this.btnAddHost.Name = "btnAddHost";
             this.btnAddHost.Size = new System.Drawing.Size(322, 55);
@@ -542,8 +545,9 @@ namespace Quasar.Server.Forms
             // 
             // lblMS
             // 
+            this.lblMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMS.AutoSize = true;
-            this.lblMS.Location = new System.Drawing.Point(890, 458);
+            this.lblMS.Location = new System.Drawing.Point(782, 785);
             this.lblMS.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblMS.Name = "lblMS";
             this.lblMS.Size = new System.Drawing.Size(75, 38);
@@ -553,7 +557,7 @@ namespace Quasar.Server.Forms
             // lblHost
             // 
             this.lblHost.AutoSize = true;
-            this.lblHost.Location = new System.Drawing.Point(438, 62);
+            this.lblHost.Location = new System.Drawing.Point(438, 58);
             this.lblHost.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblHost.Name = "lblHost";
             this.lblHost.Size = new System.Drawing.Size(144, 38);
@@ -562,16 +566,17 @@ namespace Quasar.Server.Forms
             // 
             // txtHost
             // 
-            this.txtHost.Location = new System.Drawing.Point(635, 55);
+            this.txtHost.Location = new System.Drawing.Point(445, 106);
             this.txtHost.Margin = new System.Windows.Forms.Padding(8);
             this.txtHost.Name = "txtHost";
-            this.txtHost.Size = new System.Drawing.Size(316, 44);
+            this.txtHost.Size = new System.Drawing.Size(400, 44);
             this.txtHost.TabIndex = 1;
             // 
             // lblDelay
             // 
+            this.lblDelay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDelay.AutoSize = true;
-            this.lblDelay.Location = new System.Drawing.Point(42, 455);
+            this.lblDelay.Location = new System.Drawing.Point(41, 788);
             this.lblDelay.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblDelay.Name = "lblDelay";
             this.lblDelay.Size = new System.Drawing.Size(400, 38);
@@ -581,7 +586,7 @@ namespace Quasar.Server.Forms
             // lblPort
             // 
             this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(438, 132);
+            this.lblPort.Location = new System.Drawing.Point(432, 167);
             this.lblPort.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblPort.Name = "lblPort";
             this.lblPort.Size = new System.Drawing.Size(81, 38);
@@ -618,14 +623,14 @@ namespace Quasar.Server.Forms
             this.installationPage.Margin = new System.Windows.Forms.Padding(8);
             this.installationPage.Name = "installationPage";
             this.installationPage.Padding = new System.Windows.Forms.Padding(8);
-            this.installationPage.Size = new System.Drawing.Size(993, 952);
+            this.installationPage.Size = new System.Drawing.Size(906, 952);
             this.installationPage.TabIndex = 1;
             this.installationPage.Text = "安装设置";
             // 
             // chkHideSubDirectory
             // 
             this.chkHideSubDirectory.AutoSize = true;
-            this.chkHideSubDirectory.Location = new System.Drawing.Point(465, 462);
+            this.chkHideSubDirectory.Location = new System.Drawing.Point(435, 462);
             this.chkHideSubDirectory.Margin = new System.Windows.Forms.Padding(8);
             this.chkHideSubDirectory.Name = "chkHideSubDirectory";
             this.chkHideSubDirectory.Size = new System.Drawing.Size(374, 42);
@@ -636,7 +641,7 @@ namespace Quasar.Server.Forms
             // line7
             // 
             this.line7.LineAlignment = Quasar.Server.Controls.Line.Alignment.Horizontal;
-            this.line7.Location = new System.Drawing.Point(150, 685);
+            this.line7.Location = new System.Drawing.Point(120, 685);
             this.line7.Margin = new System.Windows.Forms.Padding(8);
             this.line7.Name = "line7";
             this.line7.Size = new System.Drawing.Size(808, 32);
@@ -666,7 +671,7 @@ namespace Quasar.Server.Forms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(645, 170);
+            this.label5.Location = new System.Drawing.Point(475, 168);
             this.label5.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(133, 38);
@@ -697,7 +702,7 @@ namespace Quasar.Server.Forms
             // 
             // rbProgramFiles
             // 
-            this.rbProgramFiles.Location = new System.Drawing.Point(602, 158);
+            this.rbProgramFiles.Location = new System.Drawing.Point(432, 156);
             this.rbProgramFiles.Margin = new System.Windows.Forms.Padding(8);
             this.rbProgramFiles.Name = "rbProgramFiles";
             this.rbProgramFiles.Size = new System.Drawing.Size(260, 60);
@@ -705,7 +710,7 @@ namespace Quasar.Server.Forms
             // 
             // txtInstallName
             // 
-            this.txtInstallName.Location = new System.Drawing.Point(455, 382);
+            this.txtInstallName.Location = new System.Drawing.Point(285, 380);
             this.txtInstallName.Margin = new System.Windows.Forms.Padding(8);
             this.txtInstallName.Name = "txtInstallName";
             this.txtInstallName.Size = new System.Drawing.Size(419, 44);
@@ -715,7 +720,7 @@ namespace Quasar.Server.Forms
             // 
             // txtRegistryKeyName
             // 
-            this.txtRegistryKeyName.Location = new System.Drawing.Point(455, 810);
+            this.txtRegistryKeyName.Location = new System.Drawing.Point(425, 810);
             this.txtRegistryKeyName.Margin = new System.Windows.Forms.Padding(8);
             this.txtRegistryKeyName.Name = "txtRegistryKeyName";
             this.txtRegistryKeyName.Size = new System.Drawing.Size(496, 44);
@@ -725,7 +730,7 @@ namespace Quasar.Server.Forms
             // lblExtension
             // 
             this.lblExtension.AutoSize = true;
-            this.lblExtension.Location = new System.Drawing.Point(880, 398);
+            this.lblExtension.Location = new System.Drawing.Point(710, 396);
             this.lblExtension.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblExtension.Name = "lblExtension";
             this.lblExtension.Size = new System.Drawing.Size(66, 38);
@@ -758,7 +763,7 @@ namespace Quasar.Server.Forms
             // 
             this.rbAppdata.AutoSize = true;
             this.rbAppdata.Checked = true;
-            this.rbAppdata.Location = new System.Drawing.Point(602, 112);
+            this.rbAppdata.Location = new System.Drawing.Point(432, 110);
             this.rbAppdata.Margin = new System.Windows.Forms.Padding(8);
             this.rbAppdata.Name = "rbAppdata";
             this.rbAppdata.Size = new System.Drawing.Size(286, 42);
@@ -812,7 +817,7 @@ namespace Quasar.Server.Forms
             // 
             // txtInstallSubDirectory
             // 
-            this.txtInstallSubDirectory.Location = new System.Drawing.Point(455, 308);
+            this.txtInstallSubDirectory.Location = new System.Drawing.Point(285, 306);
             this.txtInstallSubDirectory.Margin = new System.Windows.Forms.Padding(8);
             this.txtInstallSubDirectory.Name = "txtInstallSubDirectory";
             this.txtInstallSubDirectory.Size = new System.Drawing.Size(496, 44);
@@ -822,7 +827,7 @@ namespace Quasar.Server.Forms
             // 
             // txtPreviewPath
             // 
-            this.txtPreviewPath.Location = new System.Drawing.Point(50, 585);
+            this.txtPreviewPath.Location = new System.Drawing.Point(20, 585);
             this.txtPreviewPath.Margin = new System.Windows.Forms.Padding(8);
             this.txtPreviewPath.Name = "txtPreviewPath";
             this.txtPreviewPath.ReadOnly = true;
@@ -861,13 +866,14 @@ namespace Quasar.Server.Forms
             this.assemblyPage.Location = new System.Drawing.Point(140, 4);
             this.assemblyPage.Margin = new System.Windows.Forms.Padding(8);
             this.assemblyPage.Name = "assemblyPage";
-            this.assemblyPage.Size = new System.Drawing.Size(993, 952);
+            this.assemblyPage.Size = new System.Drawing.Size(906, 952);
             this.assemblyPage.TabIndex = 2;
             this.assemblyPage.Text = "程序集设置";
             // 
             // iconPreview
             // 
-            this.iconPreview.Location = new System.Drawing.Point(798, 755);
+            this.iconPreview.Image = global::Quasar.Server.Properties.Resources.远程控制;
+            this.iconPreview.Location = new System.Drawing.Point(731, 755);
             this.iconPreview.Margin = new System.Windows.Forms.Padding(8);
             this.iconPreview.Name = "iconPreview";
             this.iconPreview.Size = new System.Drawing.Size(160, 160);
@@ -877,7 +883,7 @@ namespace Quasar.Server.Forms
             // 
             // btnBrowseIcon
             // 
-            this.btnBrowseIcon.Location = new System.Drawing.Point(442, 858);
+            this.btnBrowseIcon.Location = new System.Drawing.Point(410, 858);
             this.btnBrowseIcon.Margin = new System.Windows.Forms.Padding(8);
             this.btnBrowseIcon.Name = "btnBrowseIcon";
             this.btnBrowseIcon.Size = new System.Drawing.Size(312, 58);
@@ -888,7 +894,7 @@ namespace Quasar.Server.Forms
             // 
             // txtIconPath
             // 
-            this.txtIconPath.Location = new System.Drawing.Point(50, 788);
+            this.txtIconPath.Location = new System.Drawing.Point(18, 788);
             this.txtIconPath.Margin = new System.Windows.Forms.Padding(8);
             this.txtIconPath.Name = "txtIconPath";
             this.txtIconPath.Size = new System.Drawing.Size(699, 44);
@@ -928,17 +934,18 @@ namespace Quasar.Server.Forms
             // 
             // txtFileVersion
             // 
-            this.txtFileVersion.Location = new System.Drawing.Point(455, 600);
+            this.txtFileVersion.Location = new System.Drawing.Point(326, 600);
             this.txtFileVersion.Margin = new System.Windows.Forms.Padding(8);
             this.txtFileVersion.Name = "txtFileVersion";
             this.txtFileVersion.Size = new System.Drawing.Size(496, 44);
             this.txtFileVersion.TabIndex = 16;
+            this.txtFileVersion.Text = "2.0.0";
             this.txtFileVersion.TextChanged += new System.EventHandler(this.HasChangedSetting);
             // 
             // line9
             // 
             this.line9.LineAlignment = Quasar.Server.Controls.Line.Alignment.Horizontal;
-            this.line9.Location = new System.Drawing.Point(208, 690);
+            this.line9.Location = new System.Drawing.Point(176, 690);
             this.line9.Margin = new System.Windows.Forms.Padding(8);
             this.line9.Name = "line9";
             this.line9.Size = new System.Drawing.Size(750, 32);
@@ -989,20 +996,22 @@ namespace Quasar.Server.Forms
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(455, 110);
+            this.txtProductName.Location = new System.Drawing.Point(326, 110);
             this.txtProductName.Margin = new System.Windows.Forms.Padding(8);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(496, 44);
             this.txtProductName.TabIndex = 2;
+            this.txtProductName.Text = "PC远程管理助手";
             this.txtProductName.TextChanged += new System.EventHandler(this.HasChangedSetting);
             // 
             // txtProductVersion
             // 
-            this.txtProductVersion.Location = new System.Drawing.Point(455, 530);
+            this.txtProductVersion.Location = new System.Drawing.Point(326, 530);
             this.txtProductVersion.Margin = new System.Windows.Forms.Padding(8);
             this.txtProductVersion.Name = "txtProductVersion";
             this.txtProductVersion.Size = new System.Drawing.Size(496, 44);
             this.txtProductVersion.TabIndex = 14;
+            this.txtProductVersion.Text = "2.0.0";
             this.txtProductVersion.TextChanged += new System.EventHandler(this.HasChangedSetting);
             // 
             // lblDescription
@@ -1027,16 +1036,17 @@ namespace Quasar.Server.Forms
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(455, 180);
+            this.txtDescription.Location = new System.Drawing.Point(326, 180);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(8);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(496, 44);
             this.txtDescription.TabIndex = 4;
+            this.txtDescription.Text = "用户支持；日常系统管理；员工监控等场景";
             this.txtDescription.TextChanged += new System.EventHandler(this.HasChangedSetting);
             // 
             // txtOriginalFilename
             // 
-            this.txtOriginalFilename.Location = new System.Drawing.Point(455, 460);
+            this.txtOriginalFilename.Location = new System.Drawing.Point(326, 460);
             this.txtOriginalFilename.Margin = new System.Windows.Forms.Padding(8);
             this.txtOriginalFilename.Name = "txtOriginalFilename";
             this.txtOriginalFilename.Size = new System.Drawing.Size(496, 44);
@@ -1065,16 +1075,17 @@ namespace Quasar.Server.Forms
             // 
             // txtCompanyName
             // 
-            this.txtCompanyName.Location = new System.Drawing.Point(455, 250);
+            this.txtCompanyName.Location = new System.Drawing.Point(326, 250);
             this.txtCompanyName.Margin = new System.Windows.Forms.Padding(8);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(496, 44);
             this.txtCompanyName.TabIndex = 6;
+            this.txtCompanyName.Text = "科控物联";
             this.txtCompanyName.TextChanged += new System.EventHandler(this.HasChangedSetting);
             // 
             // txtTrademarks
             // 
-            this.txtTrademarks.Location = new System.Drawing.Point(455, 390);
+            this.txtTrademarks.Location = new System.Drawing.Point(326, 390);
             this.txtTrademarks.Margin = new System.Windows.Forms.Padding(8);
             this.txtTrademarks.Name = "txtTrademarks";
             this.txtTrademarks.Size = new System.Drawing.Size(496, 44);
@@ -1103,11 +1114,12 @@ namespace Quasar.Server.Forms
             // 
             // txtCopyright
             // 
-            this.txtCopyright.Location = new System.Drawing.Point(455, 320);
+            this.txtCopyright.Location = new System.Drawing.Point(326, 320);
             this.txtCopyright.Margin = new System.Windows.Forms.Padding(8);
             this.txtCopyright.Name = "txtCopyright";
             this.txtCopyright.Size = new System.Drawing.Size(496, 44);
             this.txtCopyright.TabIndex = 8;
+            this.txtCopyright.Text = "版权所有 (c) 2025 科控物联";
             this.txtCopyright.TextChanged += new System.EventHandler(this.HasChangedSetting);
             // 
             // monitoringTab
@@ -1122,7 +1134,7 @@ namespace Quasar.Server.Forms
             this.monitoringTab.Location = new System.Drawing.Point(140, 4);
             this.monitoringTab.Margin = new System.Windows.Forms.Padding(8);
             this.monitoringTab.Name = "monitoringTab";
-            this.monitoringTab.Size = new System.Drawing.Size(993, 952);
+            this.monitoringTab.Size = new System.Drawing.Size(906, 952);
             this.monitoringTab.TabIndex = 3;
             this.monitoringTab.Text = "监控设置";
             // 
@@ -1140,10 +1152,10 @@ namespace Quasar.Server.Forms
             // 
             // txtLogDirectoryName
             // 
-            this.txtLogDirectoryName.Location = new System.Drawing.Point(655, 110);
+            this.txtLogDirectoryName.Location = new System.Drawing.Point(274, 110);
             this.txtLogDirectoryName.Margin = new System.Windows.Forms.Padding(8);
             this.txtLogDirectoryName.Name = "txtLogDirectoryName";
-            this.txtLogDirectoryName.Size = new System.Drawing.Size(289, 44);
+            this.txtLogDirectoryName.Size = new System.Drawing.Size(500, 44);
             this.txtLogDirectoryName.TabIndex = 6;
             this.txtLogDirectoryName.TextChanged += new System.EventHandler(this.HasChangedSetting);
             this.txtLogDirectoryName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLogDirectoryName_KeyPress);
@@ -1195,7 +1207,7 @@ namespace Quasar.Server.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1137, 1060);
+            this.ClientSize = new System.Drawing.Size(1050, 1046);
             this.Controls.Add(this.builderTabs);
             this.Controls.Add(this.btnBuild);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

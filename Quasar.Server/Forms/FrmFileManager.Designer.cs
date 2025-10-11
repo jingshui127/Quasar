@@ -258,7 +258,7 @@ namespace Quasar.Server.Forms
             this.TabControlFileManager.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControlFileManager.ItemSize = new System.Drawing.Size(44, 136);
             this.TabControlFileManager.Location = new System.Drawing.Point(0, 0);
-            this.TabControlFileManager.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.TabControlFileManager.Margin = new System.Windows.Forms.Padding(8);
             this.TabControlFileManager.Multiline = true;
             this.TabControlFileManager.Name = "TabControlFileManager";
             this.TabControlFileManager.SelectedIndex = 0;
@@ -276,9 +276,9 @@ namespace Quasar.Server.Forms
             this.tabFileExplorer.Controls.Add(this.lblDrive);
             this.tabFileExplorer.Controls.Add(this.cmbDrives);
             this.tabFileExplorer.Location = new System.Drawing.Point(140, 4);
-            this.tabFileExplorer.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.tabFileExplorer.Margin = new System.Windows.Forms.Padding(8);
             this.tabFileExplorer.Name = "tabFileExplorer";
-            this.tabFileExplorer.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.tabFileExplorer.Padding = new System.Windows.Forms.Padding(8);
             this.tabFileExplorer.Size = new System.Drawing.Size(1938, 775);
             this.tabFileExplorer.TabIndex = 0;
             this.tabFileExplorer.Text = "文件浏览器";
@@ -290,7 +290,7 @@ namespace Quasar.Server.Forms
             this.btnRefresh.Image = global::Quasar.Server.Properties.Resources.refresh;
             this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefresh.Location = new System.Drawing.Point(1642, 20);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(8);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(55, 55);
             this.btnRefresh.TabIndex = 5;
@@ -313,7 +313,7 @@ namespace Quasar.Server.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPath.Location = new System.Drawing.Point(900, 20);
-            this.txtPath.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.txtPath.Margin = new System.Windows.Forms.Padding(8);
             this.txtPath.Name = "txtPath";
             this.txtPath.ReadOnly = true;
             this.txtPath.Size = new System.Drawing.Size(741, 44);
@@ -339,7 +339,7 @@ namespace Quasar.Server.Forms
             listViewColumnSorter1.Order = System.Windows.Forms.SortOrder.None;
             listViewColumnSorter1.SortColumn = 0;
             this.lstDirectory.LvwColumnSorter = listViewColumnSorter1;
-            this.lstDirectory.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.lstDirectory.Margin = new System.Windows.Forms.Padding(8);
             this.lstDirectory.Name = "lstDirectory";
             this.lstDirectory.Size = new System.Drawing.Size(1681, 652);
             this.lstDirectory.SmallImageList = this.imgListDirectory;
@@ -381,7 +381,7 @@ namespace Quasar.Server.Forms
             this.cmbDrives.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDrives.FormattingEnabled = true;
             this.cmbDrives.Location = new System.Drawing.Point(125, 20);
-            this.cmbDrives.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.cmbDrives.Margin = new System.Windows.Forms.Padding(8);
             this.cmbDrives.Name = "cmbDrives";
             this.cmbDrives.Size = new System.Drawing.Size(524, 45);
             this.cmbDrives.TabIndex = 1;
@@ -393,17 +393,17 @@ namespace Quasar.Server.Forms
             this.tabTransfers.Controls.Add(this.btnOpenDLFolder);
             this.tabTransfers.Controls.Add(this.lstTransfers);
             this.tabTransfers.Location = new System.Drawing.Point(140, 4);
-            this.tabTransfers.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.tabTransfers.Margin = new System.Windows.Forms.Padding(8);
             this.tabTransfers.Name = "tabTransfers";
-            this.tabTransfers.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
-            this.tabTransfers.Size = new System.Drawing.Size(2001, 1132);
+            this.tabTransfers.Padding = new System.Windows.Forms.Padding(8);
+            this.tabTransfers.Size = new System.Drawing.Size(1938, 775);
             this.tabTransfers.TabIndex = 1;
             this.tabTransfers.Text = "传输";
             // 
             // btnOpenDLFolder
             // 
             this.btnOpenDLFolder.Location = new System.Drawing.Point(20, 20);
-            this.btnOpenDLFolder.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.btnOpenDLFolder.Margin = new System.Windows.Forms.Padding(8);
             this.btnOpenDLFolder.Name = "btnOpenDLFolder";
             this.btnOpenDLFolder.Size = new System.Drawing.Size(362, 52);
             this.btnOpenDLFolder.TabIndex = 0;
@@ -430,7 +430,7 @@ namespace Quasar.Server.Forms
             listViewColumnSorter2.Order = System.Windows.Forms.SortOrder.None;
             listViewColumnSorter2.SortColumn = 0;
             this.lstTransfers.LvwColumnSorter = listViewColumnSorter2;
-            this.lstTransfers.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.lstTransfers.Margin = new System.Windows.Forms.Padding(8);
             this.lstTransfers.Name = "lstTransfers";
             this.lstTransfers.Size = new System.Drawing.Size(1739, 1012);
             this.lstTransfers.SmallImageList = this.imgListTransfers;
@@ -468,7 +468,7 @@ namespace Quasar.Server.Forms
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.Margin = new System.Windows.Forms.Padding(8);
             this.MinimumSize = new System.Drawing.Size(1610, 810);
             this.Name = "FrmFileManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

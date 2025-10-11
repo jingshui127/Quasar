@@ -113,6 +113,7 @@ namespace Quasar.Server.Forms
         private void FrmKeylogger_Load(object sender, EventArgs e)
         {
             this.Text = WindowHelper.GetWindowTitle("Keylogger", _connectClient);
+            this.Icon = Properties.Resources.favicon;
 
             if (!Directory.Exists(_baseDownloadPath))
             {

@@ -211,6 +211,16 @@ namespace Quasar.Server.Properties {
         }
         
         /// <summary>
+        ///   查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon favicon {
+            get {
+                object obj = ResourceManager.GetObject("favicon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap folder {
@@ -273,8 +283,8 @@ namespace Quasar.Server.Properties {
         /// <summary>
         ///   查找类似 MIT License
         ///
-        ///Copyright (c) 2023 MaxXor
-        ///
+        ///Copyright (c) 2025 TC
+        ///QQ:2452123056
         ///Permission is hereby granted, free of charge, to any person obtaining a copy
         ///of this software and associated documentation files (the &quot;Software&quot;), to deal
         ///in the Software without restriction, including without limitation the rights
@@ -282,7 +292,7 @@ namespace Quasar.Server.Properties {
         ///copies of the Software, and to permit persons to whom the Software is
         ///furnished to do so, subject to the following conditions:
         ///
-        ///The above copyright notice  [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///The above copyrigh [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         internal static string License {
             get {
@@ -546,6 +556,16 @@ namespace Quasar.Server.Properties {
         internal static System.Drawing.Bitmap world_link {
             get {
                 object obj = ResourceManager.GetObject("world_link", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 远程控制 {
+            get {
+                object obj = ResourceManager.GetObject("远程控制", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
