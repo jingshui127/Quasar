@@ -6,7 +6,7 @@ namespace Quasar.Server.Forms
 {
     public partial class FrmAbout : Form
     {
-        private readonly string _repositoryUrl = @"https://mp.weixin.qq.com/s/ox7770xwp7zDBM0AJZ7teA";
+        private readonly string _repositoryUrl = @"https://mp.weixin.qq.com/s/PwG3651fEfdB-nZUTWBRzA";
 
         public FrmAbout()
         {

@@ -1,4 +1,4 @@
-﻿﻿namespace Quasar.Server.Forms
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿namespace Quasar.Server.Forms
 {
     partial class FrmAbout
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAbout));
             this.picIcon = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@
             this.lblSubTitle = new System.Windows.Forms.Label();
             this.lnkGithubPage = new System.Windows.Forms.LinkLabel();
             this.lnkCredits = new System.Windows.Forms.LinkLabel();
+            this.tooltip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +86,7 @@
             this.btnOkay.Size = new System.Drawing.Size(188, 58);
             this.btnOkay.TabIndex = 7;
             this.btnOkay.Text = "确定(&O)";
+            this.tooltip.SetToolTip(this.btnOkay, "关闭关于窗口");
             this.btnOkay.UseVisualStyleBackColor = true;
             this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
             // 
@@ -119,6 +122,7 @@
             this.lnkGithubPage.TabIndex = 8;
             this.lnkGithubPage.TabStop = true;
             this.lnkGithubPage.Text = "使用帮助";
+            this.tooltip.SetToolTip(this.lnkGithubPage, "查看使用帮助文档");
             this.lnkGithubPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkGithubPage_LinkClicked);
             // 
             // lnkCredits
@@ -130,6 +134,7 @@
             this.lnkCredits.TabIndex = 9;
             this.lnkCredits.TabStop = true;
             this.lnkCredits.Text = "其他许可";
+            this.tooltip.SetToolTip(this.lnkCredits, "查看第三方许可信息");
             // 
             // FrmAbout
             // 
@@ -157,6 +162,10 @@
             this.Text = "科控物联远程协助助手 - 关于";
             this.Load += new System.EventHandler(this.FrmAbout_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picIcon)).EndInit();
+            // 
+            // 设置ToolTip背景色为浅黄色
+            // 
+            this.tooltip.BackColor = System.Drawing.Color.LightYellow;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +181,6 @@
         private System.Windows.Forms.Label lblSubTitle;
         private System.Windows.Forms.LinkLabel lnkGithubPage;
         private System.Windows.Forms.LinkLabel lnkCredits;
+        private System.Windows.Forms.ToolTip tooltip;
     }
 }

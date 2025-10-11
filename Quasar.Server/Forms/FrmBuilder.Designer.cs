@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Quasar.Server.Controls;
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Quasar.Server.Controls;
 
 namespace Quasar.Server.Forms
 {
@@ -34,6 +34,7 @@ namespace Quasar.Server.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBuilder));
             this.btnBuild = new System.Windows.Forms.Button();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.tooltip.BackColor = System.Drawing.Color.LightYellow;
             this.picUAC2 = new System.Windows.Forms.PictureBox();
             this.picUAC1 = new System.Windows.Forms.PictureBox();
             this.rbSystem = new System.Windows.Forms.RadioButton();
@@ -148,6 +149,7 @@ namespace Quasar.Server.Forms
             this.btnBuild.Size = new System.Drawing.Size(302, 58);
             this.btnBuild.TabIndex = 1;
             this.btnBuild.Text = "生成客户端";
+            this.tooltip.SetToolTip(this.btnBuild, "开始构建客户端可执行文件");
             this.btnBuild.UseVisualStyleBackColor = true;
             this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
             // 
@@ -278,6 +280,7 @@ namespace Quasar.Server.Forms
             this.chkUnattendedMode.Size = new System.Drawing.Size(287, 42);
             this.chkUnattendedMode.TabIndex = 23;
             this.chkUnattendedMode.Text = "启用无人值守模式";
+            this.tooltip.SetToolTip(this.chkUnattendedMode, "启用后，客户端将在没有用户交互的情况下运行");
             this.chkUnattendedMode.UseVisualStyleBackColor = true;
             this.chkUnattendedMode.CheckedChanged += new System.EventHandler(this.HasChangedSetting);
             // 
@@ -337,6 +340,7 @@ namespace Quasar.Server.Forms
             this.txtTag.Margin = new System.Windows.Forms.Padding(8);
             this.txtTag.Name = "txtTag";
             this.txtTag.Size = new System.Drawing.Size(632, 44);
+            this.tooltip.SetToolTip(this.txtTag, "为客户端设置一个标识标签，便于区分不同的客户端");
             this.txtTag.TabIndex = 3;
             this.txtTag.TextChanged += new System.EventHandler(this.HasChangedSetting);
             // 
@@ -367,6 +371,7 @@ namespace Quasar.Server.Forms
             this.txtMutex.MaxLength = 64;
             this.txtMutex.Name = "txtMutex";
             this.txtMutex.Size = new System.Drawing.Size(626, 44);
+            this.tooltip.SetToolTip(this.txtMutex, "设置客户端的互斥量，确保同一系统上只有一个实例运行");
             this.txtMutex.TabIndex = 7;
             this.txtMutex.TextChanged += new System.EventHandler(this.HasChangedSetting);
             // 
@@ -378,6 +383,7 @@ namespace Quasar.Server.Forms
             this.btnMutex.Size = new System.Drawing.Size(302, 58);
             this.btnMutex.TabIndex = 8;
             this.btnMutex.Text = "随机互斥量";
+            this.tooltip.SetToolTip(this.btnMutex, "生成一个随机的互斥量字符串");
             this.btnMutex.UseVisualStyleBackColor = true;
             this.btnMutex.Click += new System.EventHandler(this.btnMutex_Click);
             // 
@@ -451,6 +457,7 @@ namespace Quasar.Server.Forms
             0});
             this.numericUpDownPort.Name = "numericUpDownPort";
             this.numericUpDownPort.Size = new System.Drawing.Size(200, 44);
+            this.tooltip.SetToolTip(this.numericUpDownPort, "设置客户端连接到控制端服务器的端口号");
             this.numericUpDownPort.TabIndex = 3;
             this.numericUpDownPort.Value = new decimal(new int[] {
             1,
@@ -470,6 +477,7 @@ namespace Quasar.Server.Forms
             0});
             this.numericUpDownDelay.Name = "numericUpDownDelay";
             this.numericUpDownDelay.Size = new System.Drawing.Size(200, 44);
+            this.tooltip.SetToolTip(this.numericUpDownDelay, "设置客户端在连接失败后重新连接的延迟时间");
             this.numericUpDownDelay.TabIndex = 10;
             this.numericUpDownDelay.Value = new decimal(new int[] {
             5000,
@@ -529,6 +537,7 @@ namespace Quasar.Server.Forms
             this.lstHosts.Margin = new System.Windows.Forms.Padding(8);
             this.lstHosts.Name = "lstHosts";
             this.lstHosts.Size = new System.Drawing.Size(366, 633);
+            this.tooltip.SetToolTip(this.lstHosts, "显示已添加的连接主机列表，右键可删除或清空");
             this.lstHosts.TabIndex = 5;
             this.lstHosts.TabStop = false;
             // 
@@ -540,6 +549,7 @@ namespace Quasar.Server.Forms
             this.btnAddHost.Size = new System.Drawing.Size(322, 55);
             this.btnAddHost.TabIndex = 4;
             this.btnAddHost.Text = "添加主机";
+            this.tooltip.SetToolTip(this.btnAddHost, "主机是指控制端的电脑。可以设置多台");
             this.btnAddHost.UseVisualStyleBackColor = true;
             this.btnAddHost.Click += new System.EventHandler(this.btnAddHost_Click);
             // 
@@ -570,6 +580,7 @@ namespace Quasar.Server.Forms
             this.txtHost.Margin = new System.Windows.Forms.Padding(8);
             this.txtHost.Name = "txtHost";
             this.txtHost.Size = new System.Drawing.Size(400, 44);
+            this.tooltip.SetToolTip(this.txtHost, "输入控制端服务器的IP地址或域名");
             this.txtHost.TabIndex = 1;
             // 
             // lblDelay
@@ -636,6 +647,7 @@ namespace Quasar.Server.Forms
             this.chkHideSubDirectory.Size = new System.Drawing.Size(374, 42);
             this.chkHideSubDirectory.TabIndex = 37;
             this.chkHideSubDirectory.Text = "将子目录属性设置为隐藏";
+            this.tooltip.SetToolTip(this.chkHideSubDirectory, "启用后，将安装的客户端子目录属性设置为隐藏");
             this.chkHideSubDirectory.UseVisualStyleBackColor = true;
             // 
             // line7
@@ -687,6 +699,7 @@ namespace Quasar.Server.Forms
             this.chkInstall.Size = new System.Drawing.Size(200, 42);
             this.chkInstall.TabIndex = 1;
             this.chkInstall.Text = "安装客户端";
+            this.tooltip.SetToolTip(this.chkInstall, "启用后，客户端将在目标计算机上安装并持久化运行");
             this.chkInstall.UseVisualStyleBackColor = true;
             this.chkInstall.CheckedChanged += new System.EventHandler(this.chkInstall_CheckedChanged);
             // 
@@ -714,6 +727,7 @@ namespace Quasar.Server.Forms
             this.txtInstallName.Margin = new System.Windows.Forms.Padding(8);
             this.txtInstallName.Name = "txtInstallName";
             this.txtInstallName.Size = new System.Drawing.Size(419, 44);
+            this.tooltip.SetToolTip(this.txtInstallName, "设置客户端安装后的文件名");
             this.txtInstallName.TabIndex = 9;
             this.txtInstallName.TextChanged += new System.EventHandler(this.HasChangedSettingAndFilePath);
             this.txtInstallName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInstallname_KeyPress);
@@ -724,6 +738,7 @@ namespace Quasar.Server.Forms
             this.txtRegistryKeyName.Margin = new System.Windows.Forms.Padding(8);
             this.txtRegistryKeyName.Name = "txtRegistryKeyName";
             this.txtRegistryKeyName.Size = new System.Drawing.Size(496, 44);
+            this.tooltip.SetToolTip(this.txtRegistryKeyName, "设置客户端在注册表中的启动项名称");
             this.txtRegistryKeyName.TabIndex = 17;
             this.txtRegistryKeyName.TextChanged += new System.EventHandler(this.HasChangedSetting);
             // 
@@ -756,8 +771,9 @@ namespace Quasar.Server.Forms
             this.chkStartup.Size = new System.Drawing.Size(374, 42);
             this.chkStartup.TabIndex = 15;
             this.chkStartup.Text = "计算机启动时运行客户端";
+            this.tooltip.SetToolTip(this.chkStartup, "启用后，客户端将在系统启动时自动运行");
             this.chkStartup.UseVisualStyleBackColor = true;
-            this.chkStartup.CheckedChanged += new System.EventHandler(this.chkStartup_CheckedChanged);
+            this.chkStartup.CheckedChanged += new System.EventHandler(this.chkInstall_CheckedChanged);
             // 
             // rbAppdata
             // 
@@ -782,6 +798,7 @@ namespace Quasar.Server.Forms
             this.chkHide.Size = new System.Drawing.Size(345, 42);
             this.chkHide.TabIndex = 11;
             this.chkHide.Text = "将文件属性设置为隐藏";
+            this.tooltip.SetToolTip(this.chkHide, "启用后，将安装的客户端文件属性设置为隐藏");
             this.chkHide.UseVisualStyleBackColor = true;
             this.chkHide.CheckedChanged += new System.EventHandler(this.HasChangedSetting);
             // 
@@ -821,6 +838,7 @@ namespace Quasar.Server.Forms
             this.txtInstallSubDirectory.Margin = new System.Windows.Forms.Padding(8);
             this.txtInstallSubDirectory.Name = "txtInstallSubDirectory";
             this.txtInstallSubDirectory.Size = new System.Drawing.Size(496, 44);
+            this.tooltip.SetToolTip(this.txtInstallSubDirectory, "设置客户端安装的子目录名称");
             this.txtInstallSubDirectory.TabIndex = 7;
             this.txtInstallSubDirectory.TextChanged += new System.EventHandler(this.HasChangedSettingAndFilePath);
             this.txtInstallSubDirectory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInstallsub_KeyPress);
@@ -889,6 +907,7 @@ namespace Quasar.Server.Forms
             this.btnBrowseIcon.Size = new System.Drawing.Size(312, 58);
             this.btnBrowseIcon.TabIndex = 41;
             this.btnBrowseIcon.Text = "浏览...";
+            this.tooltip.SetToolTip(this.btnBrowseIcon, "选择客户端的自定义图标文件");
             this.btnBrowseIcon.UseVisualStyleBackColor = true;
             this.btnBrowseIcon.Click += new System.EventHandler(this.btnBrowseIcon_Click);
             // 
@@ -898,6 +917,7 @@ namespace Quasar.Server.Forms
             this.txtIconPath.Margin = new System.Windows.Forms.Padding(8);
             this.txtIconPath.Name = "txtIconPath";
             this.txtIconPath.Size = new System.Drawing.Size(699, 44);
+            this.tooltip.SetToolTip(this.txtIconPath, "显示选择的图标文件路径");
             this.txtIconPath.TabIndex = 39;
             // 
             // line8
@@ -929,6 +949,7 @@ namespace Quasar.Server.Forms
             this.chkChangeAsmInfo.Size = new System.Drawing.Size(258, 42);
             this.chkChangeAsmInfo.TabIndex = 0;
             this.chkChangeAsmInfo.Text = "更改程序集信息";
+            this.tooltip.SetToolTip(this.chkChangeAsmInfo, "启用后，可以自定义生成客户端的程序集信息");
             this.chkChangeAsmInfo.UseVisualStyleBackColor = true;
             this.chkChangeAsmInfo.CheckedChanged += new System.EventHandler(this.chkChangeAsmInfo_CheckedChanged);
             // 
@@ -938,6 +959,7 @@ namespace Quasar.Server.Forms
             this.txtFileVersion.Margin = new System.Windows.Forms.Padding(8);
             this.txtFileVersion.Name = "txtFileVersion";
             this.txtFileVersion.Size = new System.Drawing.Size(496, 44);
+            this.tooltip.SetToolTip(this.txtFileVersion, "设置客户端的文件版本号");
             this.txtFileVersion.TabIndex = 16;
             this.txtFileVersion.Text = "2.0.0";
             this.txtFileVersion.TextChanged += new System.EventHandler(this.HasChangedSetting);
@@ -981,6 +1003,7 @@ namespace Quasar.Server.Forms
             this.chkChangeIcon.Size = new System.Drawing.Size(258, 42);
             this.chkChangeIcon.TabIndex = 2;
             this.chkChangeIcon.Text = "更改程序集图标";
+            this.tooltip.SetToolTip(this.chkChangeIcon, "启用后，可以为客户端设置自定义图标");
             this.chkChangeIcon.UseVisualStyleBackColor = true;
             this.chkChangeIcon.CheckedChanged += new System.EventHandler(this.chkChangeIcon_CheckedChanged);
             // 
@@ -1000,6 +1023,7 @@ namespace Quasar.Server.Forms
             this.txtProductName.Margin = new System.Windows.Forms.Padding(8);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(496, 44);
+            this.tooltip.SetToolTip(this.txtProductName, "设置客户端的产品名称");
             this.txtProductName.TabIndex = 2;
             this.txtProductName.Text = "PC远程管理助手";
             this.txtProductName.TextChanged += new System.EventHandler(this.HasChangedSetting);
@@ -1010,6 +1034,7 @@ namespace Quasar.Server.Forms
             this.txtProductVersion.Margin = new System.Windows.Forms.Padding(8);
             this.txtProductVersion.Name = "txtProductVersion";
             this.txtProductVersion.Size = new System.Drawing.Size(496, 44);
+            this.tooltip.SetToolTip(this.txtProductVersion, "设置客户端的产品版本号");
             this.txtProductVersion.TabIndex = 14;
             this.txtProductVersion.Text = "2.0.0";
             this.txtProductVersion.TextChanged += new System.EventHandler(this.HasChangedSetting);
@@ -1040,6 +1065,7 @@ namespace Quasar.Server.Forms
             this.txtDescription.Margin = new System.Windows.Forms.Padding(8);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(496, 44);
+            this.tooltip.SetToolTip(this.txtDescription, "设置客户端的描述信息");
             this.txtDescription.TabIndex = 4;
             this.txtDescription.Text = "用户支持；日常系统管理；员工监控等场景";
             this.txtDescription.TextChanged += new System.EventHandler(this.HasChangedSetting);
@@ -1050,6 +1076,7 @@ namespace Quasar.Server.Forms
             this.txtOriginalFilename.Margin = new System.Windows.Forms.Padding(8);
             this.txtOriginalFilename.Name = "txtOriginalFilename";
             this.txtOriginalFilename.Size = new System.Drawing.Size(496, 44);
+            this.tooltip.SetToolTip(this.txtOriginalFilename, "设置客户端的原始文件名");
             this.txtOriginalFilename.TabIndex = 12;
             this.txtOriginalFilename.TextChanged += new System.EventHandler(this.HasChangedSetting);
             // 
@@ -1079,6 +1106,7 @@ namespace Quasar.Server.Forms
             this.txtCompanyName.Margin = new System.Windows.Forms.Padding(8);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(496, 44);
+            this.tooltip.SetToolTip(this.txtCompanyName, "设置客户端的公司名称");
             this.txtCompanyName.TabIndex = 6;
             this.txtCompanyName.Text = "科控物联";
             this.txtCompanyName.TextChanged += new System.EventHandler(this.HasChangedSetting);
@@ -1089,6 +1117,7 @@ namespace Quasar.Server.Forms
             this.txtTrademarks.Margin = new System.Windows.Forms.Padding(8);
             this.txtTrademarks.Name = "txtTrademarks";
             this.txtTrademarks.Size = new System.Drawing.Size(496, 44);
+            this.tooltip.SetToolTip(this.txtTrademarks, "设置客户端的商标信息");
             this.txtTrademarks.TabIndex = 10;
             this.txtTrademarks.TextChanged += new System.EventHandler(this.HasChangedSetting);
             // 
@@ -1118,6 +1147,7 @@ namespace Quasar.Server.Forms
             this.txtCopyright.Margin = new System.Windows.Forms.Padding(8);
             this.txtCopyright.Name = "txtCopyright";
             this.txtCopyright.Size = new System.Drawing.Size(496, 44);
+            this.tooltip.SetToolTip(this.txtCopyright, "设置客户端的版权信息");
             this.txtCopyright.TabIndex = 8;
             this.txtCopyright.Text = "版权所有 (c) 2025 科控物联";
             this.txtCopyright.TextChanged += new System.EventHandler(this.HasChangedSetting);
@@ -1147,6 +1177,7 @@ namespace Quasar.Server.Forms
             this.chkHideLogDirectory.Size = new System.Drawing.Size(345, 42);
             this.chkHideLogDirectory.TabIndex = 7;
             this.chkHideLogDirectory.Text = "将目录属性设置为隐藏";
+            this.tooltip.SetToolTip(this.chkHideLogDirectory, "启用后，将隐藏键盘记录日志目录");
             this.chkHideLogDirectory.UseVisualStyleBackColor = true;
             this.chkHideLogDirectory.CheckedChanged += new System.EventHandler(this.HasChangedSetting);
             // 
@@ -1156,6 +1187,7 @@ namespace Quasar.Server.Forms
             this.txtLogDirectoryName.Margin = new System.Windows.Forms.Padding(8);
             this.txtLogDirectoryName.Name = "txtLogDirectoryName";
             this.txtLogDirectoryName.Size = new System.Drawing.Size(500, 44);
+            this.tooltip.SetToolTip(this.txtLogDirectoryName, "设置键盘记录日志的目录名称");
             this.txtLogDirectoryName.TabIndex = 6;
             this.txtLogDirectoryName.TextChanged += new System.EventHandler(this.HasChangedSetting);
             this.txtLogDirectoryName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLogDirectoryName_KeyPress);
@@ -1199,6 +1231,7 @@ namespace Quasar.Server.Forms
             this.chkKeylogger.Size = new System.Drawing.Size(229, 42);
             this.chkKeylogger.TabIndex = 4;
             this.chkKeylogger.Text = "启用键盘记录";
+            this.tooltip.SetToolTip(this.chkKeylogger, "启用后，客户端将记录用户的键盘输入");
             this.chkKeylogger.UseVisualStyleBackColor = true;
             this.chkKeylogger.CheckedChanged += new System.EventHandler(this.chkKeylogger_CheckedChanged);
             // 

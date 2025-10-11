@@ -5,6 +5,7 @@ using Quasar.Server.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -384,6 +385,21 @@ namespace Quasar.Server.Forms
 
                 builder.Build();
 
+                // 添加防火墙规则
+                try
+                {
+                    AddFirewallRule(options.OutputPath);
+                }
+                catch (Exception ex)
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        MessageBox.Show(this,
+                            $"添加防火墙规则时出错:\n{ex.Message}\n\n请手动添加防火墙例外以确保客户端正常工作。",
+                            "防火墙规则警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    });
+                }
+
                 try
                 {
                     this.Invoke((MethodInvoker) delegate
@@ -413,6 +429,58 @@ namespace Quasar.Server.Forms
                 }
             }
             SetBuildState(true);
+        }
+
+        /// <summary>
+        /// 添加防火墙例外规则
+        /// </summary>
+        /// <param name="applicationPath">应用程序路径</param>
+        private void AddFirewallRule(string applicationPath)
+        {
+            try
+            {
+                // 使用netsh命令添加防火墙规则
+                var processInfo = new ProcessStartInfo
+                {
+                    FileName = "netsh",
+                    Arguments = $"advfirewall firewall add rule name=\"TcServer Client\" dir=in action=allow program=\"{applicationPath}\" enable=yes",
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden
+                };
+
+                using (var process = Process.Start(processInfo))
+                {
+                    process.WaitForExit();
+                    if (process.ExitCode != 0)
+                    {
+                        throw new Exception($"netsh命令执行失败，退出代码: {process.ExitCode}");
+                    }
+                }
+
+                // 添加出站规则
+                var outboundProcessInfo = new ProcessStartInfo
+                {
+                    FileName = "netsh",
+                    Arguments = $"advfirewall firewall add rule name=\"TcServer Client\" dir=out action=allow program=\"{applicationPath}\" enable=yes",
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden
+                };
+
+                using (var process = Process.Start(outboundProcessInfo))
+                {
+                    process.WaitForExit();
+                    if (process.ExitCode != 0)
+                    {
+                        throw new Exception($"netsh命令执行失败，退出代码: {process.ExitCode}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"无法添加防火墙规则: {ex.Message}");
+            }
         }
 
         private void RefreshPreviewPath()
